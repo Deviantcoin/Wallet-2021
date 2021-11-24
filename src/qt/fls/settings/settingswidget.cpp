@@ -349,6 +349,13 @@ void SettingsWidget::showDebugConsole(){
     onDebugConsoleClicked();
 }
 
+void SettingsWidget::showInformation() {
+	ui->pushButtonTools->setChecked(true);
+	onToolsClicked();
+	ui->pushButtonTools2->setChecked(true);
+	onInformationClicked();
+}
+
 void SettingsWidget::onDebugConsoleClicked() {
     ui->stackedWidgetContainer->setCurrentWidget(settingsConsoleWidget);
     selectOption(ui->pushButtonTools2);
@@ -371,6 +378,11 @@ void SettingsWidget::onAboutClicked() {
     HelpMessageDialog dlg(this, true);
     dlg.exec();
 
+}
+
+void SettingsWidget::openNetworkMonitor()
+{
+    settingsInformationWidget->openNetworkMonitor();
 }
 
 void SettingsWidget::selectOption(QPushButton* option){

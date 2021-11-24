@@ -116,7 +116,6 @@ TopBar::TopBar(FLSGUI* _mainWindow, QWidget *parent) :
     ui->pushButtonLock->setButtonText("Wallet Locked  ");
     ui->pushButtonLock->setButtonClaFLStyle("cssClass", "btn-check-status-lock");
 
-
     connect(ui->pushButtonQR, &QPushButton::clicked, this, &TopBar::onBtnReceiveClicked);
     connect(ui->btnQr, &QPushButton::clicked, this, &TopBar::onBtnReceiveClicked);
     connect(ui->pushButtonLock, &ExpandableButton::Mouse_Pressed, this, &TopBar::onBtnLockClicked);
@@ -125,6 +124,8 @@ TopBar::TopBar(FLSGUI* _mainWindow, QWidget *parent) :
     connect(ui->pushButtonColdStaking, &ExpandableButton::Mouse_Pressed, this, &TopBar::onColdStakingClicked);
     connect(ui->pushButtonSync, &ExpandableButton::Mouse_HoverLeave, this, &TopBar::refreshProgressBarSize);
     connect(ui->pushButtonSync, &ExpandableButton::Mouse_Hover, this, &TopBar::refreshProgressBarSize);
+    connect(ui->pushButtonSync, &ExpandableButton::Mouse_Pressed, [this](){window->goToSettingsInfo();});
+    connect(ui->pushButtonConnection, &ExpandableButton::Mouse_Pressed, [this](){window->openNetworkMonitor();});
 }
 
 void TopBar::onThemeClicked()

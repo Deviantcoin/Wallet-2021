@@ -80,12 +80,12 @@
     </message>
     <message>
         <location line="+7"/>
-        <source>These are your FLS addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
+        <source>These are your DEV addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+4"/>
-        <source>These are your FLS addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
+        <source>These are your DEV addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -221,7 +221,7 @@
     </message>
     <message>
         <location line="+9"/>
-        <source>FLS will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your FLSs from being stolen by malware infecting your computer.</source>
+        <source>DEV will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your DEVs from being stolen by malware infecting your computer.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -231,7 +231,7 @@
     </message>
     <message>
         <location line="+0"/>
-        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR FLS&lt;/b&gt;!</source>
+        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR DEV&lt;/b&gt;!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -326,12 +326,12 @@
     </message>
     <message>
         <location line="-424"/>
-        <source>Enter a FLS Address that you would like to encrypt using BIP 38. Enter a passphrase in the middle box. Press encrypt to compute the encrypted private key.</source>
+        <source>Enter a DEV Address that you would like to encrypt using BIP 38. Enter a passphrase in the middle box. Press encrypt to compute the encrypted private key.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+31"/>
-        <source>The FLS address to encrypt</source>
+        <source>The DEV address to encrypt</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -375,7 +375,7 @@
     </message>
     <message>
         <location line="+18"/>
-        <source>Encrypt the private key for this FLS address</source>
+        <source>Encrypt the private key for this DEV address</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -557,7 +557,7 @@
     </message>
     <message>
         <location line="+11"/>
-        <source>Privacy Actions for zFLS</source>
+        <source>Privacy Actions for zDEV</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -841,17 +841,17 @@
     <message>
         <location line="-448"/>
         <location line="+938"/>
-        <source>FLS Core</source>
+        <source>DEV Core</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="-742"/>
-        <source>Send coins to a FLS address</source>
+        <source>Send coins to a DEV address</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+11"/>
-        <source>Request payments (generates QR codes and fls: URIs)</source>
+        <source>Request payments (generates QR codes and DEV: URIs)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -871,27 +871,27 @@
     </message>
     <message>
         <location line="+43"/>
-        <source>&amp;About FLS Core</source>
+        <source>&amp;About DEV Core</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+1"/>
-        <source>Show information about FLS Core</source>
+        <source>Show information about DEV Core</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+6"/>
-        <source>Modify configuration options for FLS</source>
+        <source>Modify configuration options for DEV</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+16"/>
-        <source>Sign messages with your FLS addresses to prove you own them</source>
+        <source>Sign messages with your DEV addresses to prove you own them</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+2"/>
-        <source>Verify messages to ensure they were signed with specified FLS addresses</source>
+        <source>Verify messages to ensure they were signed with specified DEV addresses</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -931,7 +931,7 @@
     </message>
     <message>
         <location line="+17"/>
-        <source>Open a FLS: URI or payment request</source>
+        <source>Open a DEV: URI or payment request</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -946,17 +946,17 @@
     </message>
     <message>
         <location line="+4"/>
-        <source>Show the FLS Core help message to get a list with possible FLS command-line options</source>
+        <source>Show the DEV Core help message to get a list with possible DEV command-line options</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+234"/>
-        <source>FLS Core client</source>
+        <source>DEV Core client</source>
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
         <location line="+219"/>
-        <source>%n active connection(s) to FLS network</source>
+        <source>%n active connection(s) to DEV network</source>
         <translation type="unfinished">
             <numerusform></numerusform>
             <numerusform></numerusform>
@@ -1128,8 +1128,8 @@ Address: %4
         <translation>Wallet is &lt;b&gt;encrypted&lt;/b&gt; and currently &lt;b&gt;locked&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../fls.cpp" line="+478"/>
-        <source>A fatal error occurred. FLS can no longer continue safely and will quit.</source>
+        <location filename="../DEV.cpp" line="+478"/>
+        <source>A fatal error occurred. DEV can no longer continue safely and will quit.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1167,7 +1167,7 @@ Address: %4
     </message>
     <message>
         <location filename="../blockexplorer.cpp" line="+480"/>
-        <source>Not all transactions will be shown. To view all transactions you need to set txindex=1 in the configuration file (fls.conf).</source>
+        <source>Not all transactions will be shown. To view all transactions you need to set txindex=1 in the configuration file (DEV.conf).</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1467,7 +1467,7 @@ Address: %4
     </message>
     <message>
         <location line="+8"/>
-        <source>Can vary +/- %1 ufls per input.</source>
+        <source>Can vary +/- %1 uDEV per input.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1536,7 +1536,7 @@ Address: %4
     </message>
     <message>
         <location line="+67"/>
-        <source>The entered address &quot;%1&quot; is not a valid FLS address.</source>
+        <source>The entered address &quot;%1&quot; is not a valid DEV address.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1650,7 +1650,7 @@ Address: %4
     </message>
     <message>
         <location line="+0"/>
-        <source>FLS Core</source>
+        <source>DEV Core</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1661,7 +1661,7 @@ Address: %4
     </message>
     <message>
         <location line="+4"/>
-        <source>About FLS Core</source>
+        <source>About DEV Core</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1719,17 +1719,17 @@ Address: %4
     </message>
     <message>
         <location line="+9"/>
-        <source>Welcome to FLS Core.</source>
+        <source>Welcome to DEV Core.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+26"/>
-        <source>As this is the first time the program is launched, you can choose where FLS Core will store its data.</source>
+        <source>As this is the first time the program is launched, you can choose where DEV Core will store its data.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+10"/>
-        <source>FLS Core will download and store a copy of the FLS block chain. At least %1GB of data will be stored in this directory, and it will grow over time. The wallet will also be stored in this directory.</source>
+        <source>DEV Core will download and store a copy of the DEV block chain. At least %1GB of data will be stored in this directory, and it will grow over time. The wallet will also be stored in this directory.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1744,7 +1744,7 @@ Address: %4
     </message>
     <message>
         <location filename="../intro.cpp" line="+77"/>
-        <source>FLS Core</source>
+        <source>DEV Core</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1920,8 +1920,8 @@ Address: %4
     </message>
     <message>
         <location line="-106"/>
-        <source>MultiSend allows you to automatically send up to 100% of your stake or masternode reward to a list of other FLS addresses after it matures.
-To Add: enter percentage to give and FLS address to add to the MultiSend vector.
+        <source>MultiSend allows you to automatically send up to 100% of your stake or masternode reward to a list of other DEV addresses after it matures.
+To Add: enter percentage to give and DEV address to add to the MultiSend vector.
 To Delete: Enter address to delete and press delete.
 MultiSend will not be activated unless you have clicked Activate</source>
         <translation type="unfinished"></translation>
@@ -2242,7 +2242,7 @@ Please be patient after clicking import.</source>
     </message>
     <message>
         <location line="+13"/>
-        <source>Add destinations to send FLS to</source>
+        <source>Add destinations to send DEV to</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2408,7 +2408,7 @@ Please be patient after clicking import.</source>
     </message>
     <message>
         <location line="+33"/>
-        <source>Automatically open the FLS client port on the router. This only works when your router supports UPnP and it is enabled.</source>
+        <source>Automatically open the DEV client port on the router. This only works when your router supports UPnP and it is enabled.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2433,12 +2433,12 @@ Please be patient after clicking import.</source>
     </message>
     <message>
         <location line="-236"/>
-        <source>Automatically start FLS after logging in to the system.</source>
+        <source>Automatically start DEV after logging in to the system.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+3"/>
-        <source>&amp;Start FLS on system login</source>
+        <source>&amp;Start DEV on system login</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2473,7 +2473,7 @@ Please be patient after clicking import.</source>
     </message>
     <message>
         <location line="+192"/>
-        <source>The user interface language can be set here. This setting will take effect after restarting FLS.</source>
+        <source>The user interface language can be set here. This setting will take effect after restarting DEV.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2489,17 +2489,17 @@ https://www.transifex.com/CryptoDev-Project/CryptoDev-Project-translations</sour
     </message>
     <message>
         <location line="-187"/>
-        <source>Enable automatic minting of FLS units to zFLS</source>
+        <source>Enable automatic minting of DEV units to zDEV</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+6"/>
-        <source>Enable zFLS Automint</source>
+        <source>Enable zDEV Automint</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+7"/>
-        <source>Enable automatic zFLS minting from specific addresses</source>
+        <source>Enable automatic zDEV minting from specific addresses</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2509,23 +2509,23 @@ https://www.transifex.com/CryptoDev-Project/CryptoDev-Project-translations</sour
     </message>
     <message>
         <location line="+11"/>
-        <source>Percentage of incoming FLS which get automatically converted to zFLS via Zerocoin Protocol (min: 10%)</source>
+        <source>Percentage of incoming DEV which get automatically converted to zDEV via Zerocoin Protocol (min: 10%)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+3"/>
-        <source>Percentage of autominted zFLS</source>
+        <source>Percentage of autominted zDEV</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+30"/>
         <location line="+16"/>
-        <source>Wait with automatic conversion to Zerocoin until enough FLS for this denomination is available</source>
+        <source>Wait with automatic conversion to Zerocoin until enough DEV for this denomination is available</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="-13"/>
-        <source>Preferred Automint zFLS Denomination</source>
+        <source>Preferred Automint zDEV Denomination</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2535,7 +2535,7 @@ https://www.transifex.com/CryptoDev-Project/CryptoDev-Project-translations</sour
     </message>
     <message>
         <location line="+98"/>
-        <source>Connect to the FLS network through a SOCKS5 proxy.</source>
+        <source>Connect to the DEV network through a SOCKS5 proxy.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2744,7 +2744,7 @@ https://www.transifex.com/CryptoDev-Project/CryptoDev-Project-translations</sour
     </message>
     <message>
         <location line="+71"/>
-        <source>FLS Balance</source>
+        <source>DEV Balance</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2776,19 +2776,19 @@ https://www.transifex.com/CryptoDev-Project/CryptoDev-Project-translations</sour
     <message>
         <location line="+16"/>
         <location line="+19"/>
-        <source>Your current FLS balance, unconfirmed and immature transactions included</source>
+        <source>Your current DEV balance, unconfirmed and immature transactions included</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+96"/>
-        <source>zFLS Balance</source>
+        <source>zDEV Balance</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+53"/>
         <location line="+17"/>
         <source>Mature: more than 20 confirmation and more than 1 mint of the same denomination after it was minted.
-These zFLS are spendable.</source>
+These zDEV are spendable.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2803,7 +2803,7 @@ Immature: confirmed, but less than 1 mint of the same denomination after it was 
     <message>
         <location line="-725"/>
         <location line="+852"/>
-        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the FLS network after a connection is established, but this process has not completed yet.</source>
+        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the DEV network after a connection is established, but this process has not completed yet.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2861,7 +2861,7 @@ Immature: confirmed, but less than 1 mint of the same denomination after it was 
     <message>
         <location line="+191"/>
         <location line="+19"/>
-        <source>Locked FLS or Masternode collaterals. These are excluded from zFLS minting.</source>
+        <source>Locked DEV or Masternode collaterals. These are excluded from zDEV minting.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2877,7 +2877,7 @@ Immature: confirmed, but less than 1 mint of the same denomination after it was 
     <message>
         <location line="+58"/>
         <location line="+19"/>
-        <source>Your current zFLS balance, unconfirmed and immature zFLS included.</source>
+        <source>Your current zDEV balance, unconfirmed and immature zDEV included.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2893,7 +2893,7 @@ Immature: confirmed, but less than 1 mint of the same denomination after it was 
     </message>
     <message>
         <location line="+111"/>
-        <source>Current percentage of zFLS.
+        <source>Current percentage of zDEV.
 If AutoMint is enabled this percentage will settle around the configured AutoMint percentage (default = 10%).
 </source>
         <translation type="unfinished"></translation>
@@ -2905,13 +2905,13 @@ If AutoMint is enabled this percentage will settle around the configured AutoMin
     </message>
     <message>
         <location line="+1"/>
-        <source>To disable AutoMint add &apos;enablezeromint=0&apos; in fls.conf.</source>
+        <source>To disable AutoMint add &apos;enablezeromint=0&apos; in DEV.conf.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+3"/>
         <source>AutoMint is currently disabled.
-To enable AutoMint change &apos;enablezeromint=0&apos; to &apos;enablezeromint=1&apos; in fls.conf</source>
+To enable AutoMint change &apos;enablezeromint=0&apos; to &apos;enablezeromint=1&apos; in DEV.conf</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2951,12 +2951,12 @@ To enable AutoMint change &apos;enablezeromint=0&apos; to &apos;enablezeromint=1
     </message>
     <message>
         <location line="-104"/>
-        <source>Cannot start fls: click-to-pay handler</source>
+        <source>Cannot start DEV: click-to-pay handler</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+110"/>
-        <source>URI cannot be parsed! This can be caused by an invalid FLS address or malformed URI parameters.</source>
+        <source>URI cannot be parsed! This can be caused by an invalid DEV address or malformed URI parameters.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3064,7 +3064,7 @@ To enable AutoMint change &apos;enablezeromint=0&apos; to &apos;enablezeromint=1
     </message>
     <message>
         <location line="+10"/>
-        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the FLS network after a connection is established, but this process has not completed yet.</source>
+        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the DEV network after a connection is established, but this process has not completed yet.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3080,7 +3080,7 @@ To enable AutoMint change &apos;enablezeromint=0&apos; to &apos;enablezeromint=1
     </message>
     <message>
         <location line="+229"/>
-        <source>zFLS</source>
+        <source>zDEV</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3115,12 +3115,12 @@ To enable AutoMint change &apos;enablezeromint=0&apos; to &apos;enablezeromint=1
     </message>
     <message>
         <location line="+462"/>
-        <source>zFLS Control</source>
+        <source>zDEV Control</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+7"/>
-        <source>zFLS Selected:</source>
+        <source>zDEV Selected:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3145,7 +3145,7 @@ To enable AutoMint change &apos;enablezeromint=0&apos; to &apos;enablezeromint=1
     </message>
     <message>
         <location line="+7"/>
-        <source>Available (mature and spendable) zFLS for spending</source>
+        <source>Available (mature and spendable) zDEV for spending</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3155,9 +3155,9 @@ To enable AutoMint change &apos;enablezeromint=0&apos; to &apos;enablezeromint=1
     </message>
     <message>
         <location line="+16"/>
-        <source>Available (mature and spendable) zFLS for spending
+        <source>Available (mature and spendable) zDEV for spending
 
-zFLS are mature when they have more than 20 confirmations AND more than 2 mints of the same denomination after them were minted</source>
+zDEV are mature when they have more than 20 confirmations AND more than 2 mints of the same denomination after them were minted</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3174,7 +3174,7 @@ zFLS are mature when they have more than 20 confirmations AND more than 2 mints 
         <location line="+31"/>
         <location line="+31"/>
         <location line="+31"/>
-        <source>0 zFLS</source>
+        <source>0 zDEV</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3184,7 +3184,7 @@ zFLS are mature when they have more than 20 confirmations AND more than 2 mints 
     </message>
     <message>
         <location line="+27"/>
-        <source>The FLS address to send the payment to. Creates local payment to yourself when empty.</source>
+        <source>The DEV address to send the payment to. Creates local payment to yourself when empty.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3252,7 +3252,7 @@ zFLS are mature when they have more than 20 confirmations AND more than 2 mints 
         <location line="+25"/>
         <location line="+704"/>
         <location line="+38"/>
-        <source>Total Balance including unconfirmed and immature zFLS</source>
+        <source>Total Balance including unconfirmed and immature zDEV</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3286,14 +3286,14 @@ Immature: confirmed, but less than 1 mint of the same denomination after it was 
     </message>
     <message>
         <location line="+40"/>
-        <source>Show the current status of automatic zFLS minting.
+        <source>Show the current status of automatic zDEV minting.
 
 To change the status (restart required):
-- enable: add &apos;enablezeromint=1&apos; to fls.conf
-- disable: add &apos;enablezeromint=0&apos; to fls.conf
+- enable: add &apos;enablezeromint=1&apos; to DEV.conf
+- disable: add &apos;enablezeromint=0&apos; to DEV.conf
 
 To change the percentage (no restart required):
-- menu Settings-&gt;Options-&gt;Percentage of autominted zFLS
+- menu Settings-&gt;Options-&gt;Percentage of autominted zDEV
 
 </source>
         <translation type="unfinished"></translation>
@@ -3363,7 +3363,7 @@ To change the percentage (no restart required):
     </message>
     <message>
         <location line="-1092"/>
-        <source>Show zFLS denominations list</source>
+        <source>Show zDEV denominations list</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3373,12 +3373,12 @@ To change the percentage (no restart required):
     </message>
     <message>
         <location line="+29"/>
-        <source>zFLS minting is DISABLED</source>
+        <source>zDEV minting is DISABLED</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+131"/>
-        <source>zFLS spending is NOT private (links back to the mint transaction)</source>
+        <source>zDEV spending is NOT private (links back to the mint transaction)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3544,12 +3544,12 @@ Please be patient...</source>
     </message>
     <message>
         <location line="+240"/>
-        <source>zFLS Spend #: </source>
+        <source>zDEV Spend #: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+16"/>
-        <source>zFLS Mint</source>
+        <source>zDEV Mint</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3569,12 +3569,12 @@ Please be patient...</source>
     </message>
     <message>
         <location line="+17"/>
-        <source>zFLS is currently disabled due to maintenance.</source>
+        <source>zDEV is currently disabled due to maintenance.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="-537"/>
-        <source>zFLS is currently undergoing maintenance.</source>
+        <source>zDEV is currently undergoing maintenance.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3690,7 +3690,7 @@ Please be patient...</source>
     </message>
     <message>
         <location line="+4"/>
-        <source>Invalid Fls Address</source>
+        <source>Invalid DEV Address</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3874,7 +3874,7 @@ Please be patient...</source>
     </message>
     <message>
         <location filename="../guiutil.cpp" line="+105"/>
-        <source>Enter a FLS address (e.g. %1)</source>
+        <source>Enter a DEV address (e.g. %1)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3934,11 +3934,11 @@ Please be patient...</source>
         <translation>%1 ms</translation>
     </message>
     <message>
-        <location filename="../fls.cpp" line="+75"/>
+        <location filename="../DEV.cpp" line="+75"/>
         <location line="+7"/>
         <location line="+13"/>
         <location line="+19"/>
-        <source>FLS Core</source>
+        <source>DEV Core</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3963,7 +3963,7 @@ Please be patient...</source>
     </message>
     <message>
         <location line="+40"/>
-        <source>FLS Core didn&apos;t yet exit safely...</source>
+        <source>DEV Core didn&apos;t yet exit safely...</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -4115,7 +4115,7 @@ Please be patient...</source>
     </message>
     <message>
         <location line="+79"/>
-        <source>Open the FLS debug log file from the current data directory. This can take a few seconds for large log files.</source>
+        <source>Open the DEV debug log file from the current data directory. This can take a few seconds for large log files.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -4287,7 +4287,7 @@ Please be patient...</source>
     </message>
     <message>
         <location line="+29"/>
-        <source>Custom zFLS Backup Path:</source>
+        <source>Custom zDEV Backup Path:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -4387,7 +4387,7 @@ Please be patient...</source>
     </message>
     <message>
         <location line="-39"/>
-        <source>Welcome to the FLS RPC console.</source>
+        <source>Welcome to the DEV RPC console.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -4572,7 +4572,7 @@ Please be patient...</source>
     </message>
     <message>
         <location line="+26"/>
-        <source>An optional message to attach to the payment request, which will be displayed when the request is opened. Note: The message will not be sent with the payment over the FLS network.</source>
+        <source>An optional message to attach to the payment request, which will be displayed when the request is opened. Note: The message will not be sent with the payment over the DEV network.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -4582,7 +4582,7 @@ Please be patient...</source>
     </message>
     <message>
         <location line="+182"/>
-        <source>An optional message to attach to the payment request, which will be displayed when the request is opened.&lt;br&gt;Note: The message will not be sent with the payment over the FLS network.</source>
+        <source>An optional message to attach to the payment request, which will be displayed when the request is opened.&lt;br&gt;Note: The message will not be sent with the payment over the DEV network.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -4880,12 +4880,12 @@ Please be patient...</source>
     </message>
     <message>
         <location line="+7"/>
-        <source>0 FLS</source>
+        <source>0 DEV</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+149"/>
-        <source>SwiftX technology allows for near instant transactions - A flat fee of 0.01 FLS applies</source>
+        <source>SwiftX technology allows for near instant transactions - A flat fee of 0.01 DEV applies</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -4955,18 +4955,18 @@ Please be patient...</source>
     </message>
     <message>
         <location line="+1026"/>
-        <source>If the custom fee is set to 1000 uFLSs and the transaction is only 250 bytes, then &quot;per kilobyte&quot; only pays 250 uFLSs in fee,&lt;br /&gt;while &quot;at least&quot; pays 1000 uFLSs. For transactions bigger than a kilobyte both pay by kilobyte.</source>
+        <source>If the custom fee is set to 1000 uDEVs and the transaction is only 250 bytes, then &quot;per kilobyte&quot; only pays 250 uDEVs in fee,&lt;br /&gt;while &quot;at least&quot; pays 1000 uDEVs. For transactions bigger than a kilobyte both pay by kilobyte.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+16"/>
-        <source>If the custom fee is set to 1000 uFLSs and the transaction is only 250 bytes, then &quot;per kilobyte&quot; only pays 250 uFLSs in fee,&lt;br /&gt;while &quot;total at least&quot; pays 1000 uFLSs. For transactions bigger than a kilobyte both pay by kilobyte.</source>
+        <source>If the custom fee is set to 1000 uDEVs and the transaction is only 250 bytes, then &quot;per kilobyte&quot; only pays 250 uDEVs in fee,&lt;br /&gt;while &quot;total at least&quot; pays 1000 uDEVs. For transactions bigger than a kilobyte both pay by kilobyte.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+33"/>
         <location line="+13"/>
-        <source>Paying only the minimum fee is just fine as long as there is less transaction volume than space in the blocks.&lt;br /&gt;But be aware that this can end up in a never confirming transaction once there is more demand for FLS transactions than the network can process.</source>
+        <source>Paying only the minimum fee is just fine as long as there is less transaction volume than space in the blocks.&lt;br /&gt;But be aware that this can end up in a never confirming transaction once there is more demand for DEV transactions than the network can process.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -5026,7 +5026,7 @@ Please be patient...</source>
     </message>
     <message>
         <location line="+35"/>
-        <source>Anonymized FLS</source>
+        <source>Anonymized DEV</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -5086,7 +5086,7 @@ Please be patient...</source>
     </message>
     <message>
         <location line="+653"/>
-        <source>Warning: Invalid FLS address</source>
+        <source>Warning: Invalid DEV address</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -5225,7 +5225,7 @@ Please be patient...</source>
     </message>
     <message>
         <location line="+18"/>
-        <source>The FLS address to send the payment to</source>
+        <source>The DEV address to send the payment to</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -5279,7 +5279,7 @@ Please be patient...</source>
     </message>
     <message>
         <location line="+10"/>
-        <source>A message that was attached to the FLS: URI which will be stored with the transaction for your reference. Note: This message will not be sent over the FLS network.</source>
+        <source>A message that was attached to the DEV: URI which will be stored with the transaction for your reference. Note: This message will not be sent over the DEV network.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -5314,7 +5314,7 @@ Please be patient...</source>
     <name>ShutdownWindow</name>
     <message>
         <location filename="../utilitydialog.cpp" line="+75"/>
-        <source>FLS Core is shutting down...</source>
+        <source>DEV Core is shutting down...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -5342,7 +5342,7 @@ Please be patient...</source>
     </message>
     <message>
         <location line="+15"/>
-        <source>The FLS address to sign the message with</source>
+        <source>The DEV address to sign the message with</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -5384,17 +5384,17 @@ Please be patient...</source>
     </message>
     <message>
         <location line="+18"/>
-        <source>Sign the message to prove you own this FLS address</source>
+        <source>Sign the message to prove you own this DEV address</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+103"/>
-        <source>The FLS address the message was signed with</source>
+        <source>The DEV address the message was signed with</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+34"/>
-        <source>Verify the message to ensure it was signed with the specified FLS address</source>
+        <source>Verify the message to ensure it was signed with the specified DEV address</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -5509,7 +5509,7 @@ Please be patient...</source>
     <name>SplashScreen</name>
     <message>
         <location filename="../splashscreen.cpp" line="+36"/>
-        <source>FLS Core</source>
+        <source>DEV Core</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -5529,7 +5529,7 @@ Please be patient...</source>
     </message>
     <message>
         <location line="+1"/>
-        <source>The FLS Core developers</source>
+        <source>The DEV Core developers</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -5906,12 +5906,12 @@ Please be patient...</source>
     </message>
     <message>
         <location line="+7"/>
-        <source>FLS Stake</source>
+        <source>DEV Stake</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+2"/>
-        <source>zFLS Stake</source>
+        <source>zDEV Stake</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -5936,37 +5936,37 @@ Please be patient...</source>
     </message>
     <message>
         <location line="+4"/>
-        <source>Converted FLS to zFLS</source>
+        <source>Converted DEV to zDEV</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+2"/>
-        <source>Spent zFLS</source>
+        <source>Spent zDEV</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+2"/>
-        <source>Received FLS from zFLS</source>
+        <source>Received DEV from zDEV</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+2"/>
-        <source>Minted Change as zFLS from zFLS Spend</source>
+        <source>Minted Change as zDEV from zDEV Spend</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+2"/>
-        <source>Converted zFLS to FLS</source>
+        <source>Converted zDEV to DEV</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+56"/>
-        <source>Anonymous (zFLS Transaction)</source>
+        <source>Anonymous (zDEV Transaction)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+2"/>
-        <source>Anonymous (zFLS Stake)</source>
+        <source>Anonymous (zDEV Stake)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -6235,12 +6235,12 @@ Please be patient...</source>
     </message>
     <message>
         <location line="-310"/>
-        <source>Received FLS from zFLS</source>
+        <source>Received DEV from zDEV</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+3"/>
-        <source>Zerocoin Spend, Change in zFLS</source>
+        <source>Zerocoin Spend, Change in zDEV</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -6287,7 +6287,7 @@ Please be patient...</source>
     <message>
         <location line="-18"/>
         <location line="+9"/>
-        <source>SwiftX doesn&apos;t support sending values that high yet. Transactions are currently limited to %1 FLS.</source>
+        <source>SwiftX doesn&apos;t support sending values that high yet. Transactions are currently limited to %1 DEV.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -6325,10 +6325,10 @@ Please be patient...</source>
     </message>
 </context>
 <context>
-    <name>ZFlsControlDialog</name>
+    <name>ZDEVControlDialog</name>
     <message>
-        <location filename="../forms/zflscontroldialog.ui" line="+20"/>
-        <source>Select zFLS to Spend</source>
+        <location filename="../forms/zDEVcontroldialog.ui" line="+20"/>
+        <source>Select zDEV to Spend</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -6344,7 +6344,7 @@ Please be patient...</source>
     </message>
     <message>
         <location line="-7"/>
-        <source>zFLS</source>
+        <source>zDEV</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -6361,7 +6361,7 @@ Please be patient...</source>
 <context>
     <name>flits-core</name>
     <message>
-        <location filename="../flsstrings.cpp" line="+15"/>
+        <location filename="../DEVstrings.cpp" line="+15"/>
         <source>(1 = keep tx meta data e.g. account owner and payment request information, 2 = drop tx meta data)</source>
         <translation type="unfinished">(1 = keep tx meta data e.g. account owner and payment request information, 2 = drop tx meta data)</translation>
     </message>
@@ -6392,7 +6392,7 @@ Please be patient...</source>
     </message>
     <message>
         <location line="+2"/>
-        <source>Cannot obtain a lock on data directory %s. FLS Core is probably already running.</source>
+        <source>Cannot obtain a lock on data directory %s. DEV Core is probably already running.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -6432,17 +6432,17 @@ Please be patient...</source>
     </message>
     <message>
         <location line="+2"/>
-        <source>Enable automatic wallet backups triggered after each zFLS minting (0-1, default: %u)</source>
+        <source>Enable automatic wallet backups triggered after each zDEV minting (0-1, default: %u)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+3"/>
-        <source>Enable or disable staking functionality for FLS inputs (0-1, default: %u)</source>
+        <source>Enable or disable staking functionality for DEV inputs (0-1, default: %u)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+2"/>
-        <source>Enable or disable staking functionality for zFLS inputs (0-1, default: %u)</source>
+        <source>Enable or disable staking functionality for zDEV inputs (0-1, default: %u)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -6487,12 +6487,12 @@ Please be patient...</source>
     </message>
     <message>
         <location line="+8"/>
-        <source>Fees (in FLS/Kb) smaller than this are considered zero fee for relaying (default: %s)</source>
+        <source>Fees (in DEV/Kb) smaller than this are considered zero fee for relaying (default: %s)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+3"/>
-        <source>Fees (in FLS/Kb) smaller than this are considered zero fee for transaction creation (default: %s)</source>
+        <source>Fees (in DEV/Kb) smaller than this are considered zero fee for transaction creation (default: %s)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -6637,7 +6637,7 @@ Please be patient...</source>
     </message>
     <message>
         <location line="+3"/>
-        <source>Unable to bind to %s on this computer. FLS Core is probably already running.</source>
+        <source>Unable to bind to %s on this computer. DEV Core is probably already running.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -6647,12 +6647,12 @@ Please be patient...</source>
     </message>
     <message>
         <location line="+2"/>
-        <source>Unable to locate enough Obfuscation non-denominated funds for this transaction that are not equal 1000 FLS.</source>
+        <source>Unable to locate enough Obfuscation non-denominated funds for this transaction that are not equal 1000 DEV.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+3"/>
-        <source>Unable to locate enough funds for this transaction that are not equal 1000 FLS.</source>
+        <source>Unable to locate enough funds for this transaction that are not equal 1000 DEV.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -6672,7 +6672,7 @@ Please be patient...</source>
     </message>
     <message>
         <location line="+3"/>
-        <source>Warning: Please check that your computer&apos;s date and time are correct! If your clock is wrong FLS Core will not work properly.</source>
+        <source>Warning: Please check that your computer&apos;s date and time are correct! If your clock is wrong DEV Core will not work properly.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -6852,7 +6852,7 @@ Please be patient...</source>
     </message>
     <message>
         <location line="+1"/>
-        <source>Copyright (C) %i The FLS Core Developers</source>
+        <source>Copyright (C) %i The DEV Core Developers</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -6917,7 +6917,7 @@ Please be patient...</source>
     </message>
     <message>
         <location line="+1"/>
-        <source>Enable precomputation of zFLS spends and stakes (0-1, default %u)</source>
+        <source>Enable precomputation of zDEV spends and stakes (0-1, default %u)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -6962,7 +6962,7 @@ Please be patient...</source>
     </message>
     <message>
         <location line="+1"/>
-        <source>Error loading wallet.dat: Wallet requires newer version of FLS Core</source>
+        <source>Error loading wallet.dat: Wallet requires newer version of DEV Core</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -7032,7 +7032,7 @@ Please be patient...</source>
     </message>
     <message>
         <location line="+4"/>
-        <source>Fee (in FLS/kB) to add to transactions you send (default: %s)</source>
+        <source>Fee (in DEV/kB) to add to transactions you send (default: %s)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -7082,7 +7082,7 @@ Please be patient...</source>
     </message>
     <message>
         <location line="+1"/>
-        <source>Initialization sanity check failed. FLS Core is shutting down.</source>
+        <source>Initialization sanity check failed. DEV Core is shutting down.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -7162,22 +7162,22 @@ Please be patient...</source>
     </message>
     <message>
         <location line="+9"/>
-        <source>Recalculating FLS supply...</source>
+        <source>Recalculating DEV supply...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+1"/>
-        <source>Recalculating minted ZFLS...</source>
+        <source>Recalculating minted ZDEV...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+1"/>
-        <source>Recalculating spent ZFLS...</source>
+        <source>Recalculating spent ZDEV...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+2"/>
-        <source>Reindex the FLS and zFLS money supply statistics</source>
+        <source>Reindex the DEV and zDEV money supply statistics</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -7229,7 +7229,7 @@ Please be patient...</source>
     </message>
     <message>
         <location line="+38"/>
-        <source>Disable all FLS specific functionality (Masternodes, Zerocoin, SwiftX, Budgeting) (0-1, default: %u)</source>
+        <source>Disable all DEV specific functionality (Masternodes, Zerocoin, SwiftX, Budgeting) (0-1, default: %u)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -7274,7 +7274,7 @@ Please be patient...</source>
     </message>
     <message>
         <location line="+27"/>
-        <source>Specify custom backup path to add a copy of any automatic zFLS backup. If set as dir, every backup generates a timestamped file. If set as file, will rewrite to that file every backup. If backuppath is set as well, 4 backups will happen</source>
+        <source>Specify custom backup path to add a copy of any automatic zDEV backup. If set as dir, every backup generates a timestamped file. If set as file, will rewrite to that file every backup. If backuppath is set as well, 4 backups will happen</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -7824,7 +7824,7 @@ Please be patient...</source>
     </message>
     <message>
         <location line="+1"/>
-        <source>Syncing zFLS wallet...</source>
+        <source>Syncing zDEV wallet...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -7964,7 +7964,7 @@ Please be patient...</source>
     </message>
     <message>
         <location line="+1"/>
-        <source>Value is below the smallest available denomination (= 1) of zFLS</source>
+        <source>Value is below the smallest available denomination (= 1) of zDEV</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -7984,7 +7984,7 @@ Please be patient...</source>
     </message>
     <message>
         <location line="+1"/>
-        <source>Wallet needed to be rewritten: restart FLS Core to complete</source>
+        <source>Wallet needed to be rewritten: restart DEV Core to complete</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

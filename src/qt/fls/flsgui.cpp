@@ -497,8 +497,19 @@ void FLSGUI::goToSettings(){
     showTop(settingsWidget);
 }
 
+void FLSGUI::goToSettingsInfo(){
+	navMenu->selectSettings();
+    settingsWidget->showInformation();
+    goToSettings();
+}
+
 void FLSGUI::goToReceive(){
     showTop(receiveWidget);
+}
+
+void FLSGUI::openNetworkMonitor()
+{
+    settingsWidget->openNetworkMonitor();
 }
 
 void FLSGUI::showTop(QWidget* view){

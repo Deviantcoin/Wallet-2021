@@ -72,6 +72,9 @@ public Q_SLOTS:
     void goToColdStaking();
     void goToGovernance();
     void goToSettings();
+    void goToSettingsInfo();
+    
+    void openNetworkMonitor();
 
     void connectActions();
 

@@ -3,14 +3,14 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include "qt/fls/settings/settingsfaqwidget.h"
-#include "qt/fls/settings/forms/ui_settingsfaqwidget.h"
-#include <QScrollBar>
-#include <QMetaObject>
 #include "qt/fls/qtutils.h"
+#include "qt/fls/settings/forms/ui_settingsfaqwidget.h"
+#include <QDesktopServices>
+#include <QMetaObject>
+#include <QScrollBar>
 
-SettingsFaqWidget::SettingsFaqWidget(FLSGUI *parent) :
-    QDialog(parent),
-    ui(new Ui::SettingsFaqWidget)
+SettingsFaqWidget::SettingsFaqWidget(FLSGUI* parent) : QDialog(parent),
+                                                       ui(new Ui::SettingsFaqWidget)
 {
     ui->setupUi(this);
 
@@ -29,69 +29,60 @@ SettingsFaqWidget::SettingsFaqWidget(FLSGUI *parent) :
 
     // Content
     setCssProperty({
-           ui->labelNumber1,
-           ui->labelNumber2,
-           ui->labelNumber3,
-           ui->labelNumber4,
-           ui->labelNumber5,
-           ui->labelNumber6,
-           ui->labelNumber7,
-           ui->labelNumber8,
-           ui->labelNumber9,
-           ui->labelNumber10
-        }, "container-number-faq");
+                       ui->labelNumber1,
+                       ui->labelNumber2,
+                       ui->labelNumber3,
+                       ui->labelNumber4,
+                       ui->labelNumber5,
+                       ui->labelNumber6,
+                   },
+        "container-number-faq");
 
     setCssProperty({
-              ui->labelSubtitle1,
-              ui->labelSubtitle2,
-              ui->labelSubtitle3,
-              ui->labelSubtitle4,
-              ui->labelSubtitle5,
-              ui->labelSubtitle6,
-              ui->labelSubtitle7,
-              ui->labelSubtitle8,
-              ui->labelSubtitle9,
-              ui->labelSubtitle10
-            }, "text-subtitle-faq");
+                       ui->labelSubtitle1,
+                       ui->labelSubtitle2,
+                       ui->labelSubtitle3,
+                       ui->labelSubtitle4,
+                       ui->labelSubtitle5,
+                       ui->labelSubtitle6,
+                   },
+        "text-subtitle-faq");
 
 
     setCssProperty({
-              ui->labelContent1,
-              ui->labelContent2,
-              ui->labelContent3,
-              ui->labelContent4,
-              ui->labelContent5,
-              ui->labelContent6,
-              ui->labelContent7,
-              ui->labelContent8,
-              ui->labelContent9,
-              ui->labelContent10
-            }, "text-content-faq");
+                       ui->labelContent1,
+                       ui->labelContent2,
+                       ui->labelContent3,
+                       ui->labelContent4,
+                       ui->labelContent5,
+                       ui->labelContent6,
+                   },
+        "text-content-faq");
 
 
     setCssProperty({
-              ui->pushButtonFaq1,
-              ui->pushButtonFaq2,
-              ui->pushButtonFaq3,
-              ui->pushButtonFaq4,
-              ui->pushButtonFaq5,
-              ui->pushButtonFaq6,
-              ui->pushButtonFaq7,
-              ui->pushButtonFaq8,
-              ui->pushButtonFaq9,
-              ui->pushButtonFaq10
-            }, "btn-faq-options");
+                       ui->pushButtonFaq1,
+                       ui->pushButtonFaq2,
+                       ui->pushButtonFaq3,
+                       ui->pushButtonFaq4,
+                       ui->pushButtonFaq5,
+                       ui->pushButtonFaq6,
+                   },
+        "btn-faq-options");
 
+    ui->labelContent1->setOpenExternalLinks(true);
+    ui->labelContent1->setOpenExternalLinks(true);
     ui->labelContent3->setOpenExternalLinks(true);
+    ui->labelContent4->setOpenExternalLinks(true);
     ui->labelContent5->setOpenExternalLinks(true);
-    ui->labelContent8->setOpenExternalLinks(true);
+    ui->labelContent6->setOpenExternalLinks(true);
 
     // Exit button
     ui->pushButtonExit->setText(tr("Exit"));
     setCssProperty(ui->pushButtonExit, "btn-faq-exit");
 
     // Web Link
-    ui->pushButtonWebLink->setText("https://flitsnode.app/");
+    // ui->pushButtonWebLink->setText("https://flitsnode.app/");
     setCssProperty(ui->pushButtonWebLink, "btn-faq-web");
     setCssProperty(ui->containerButtons, "container-faq-buttons");
 
@@ -103,67 +94,62 @@ SettingsFaqWidget::SettingsFaqWidget(FLSGUI *parent) :
     connect(ui->pushButtonFaq4, &QPushButton::clicked, this, &SettingsFaqWidget::onFaq4Clicked);
     connect(ui->pushButtonFaq5, &QPushButton::clicked, this, &SettingsFaqWidget::onFaq5Clicked);
     connect(ui->pushButtonFaq6, &QPushButton::clicked, this, &SettingsFaqWidget::onFaq6Clicked);
-    connect(ui->pushButtonFaq7, &QPushButton::clicked, this, &SettingsFaqWidget::onFaq7Clicked);
-    connect(ui->pushButtonFaq8, &QPushButton::clicked, this, &SettingsFaqWidget::onFaq8Clicked);
-    connect(ui->pushButtonFaq9, &QPushButton::clicked, this, &SettingsFaqWidget::onFaq9Clicked);
-    connect(ui->pushButtonFaq10, &QPushButton::clicked, this, &SettingsFaqWidget::onFaq10Clicked);
+    connect(ui->pushButtonWebLink, &QPushButton::clicked, this, &SettingsFaqWidget::onButtonWebLinkClicked);
 
     if (parent)
         connect(parent, &FLSGUI::windowResizeEvent, this, &SettingsFaqWidget::windowResizeEvent);
 }
 
-void SettingsFaqWidget::showEvent(QShowEvent *event){
-    if(pos != 0){
+void SettingsFaqWidget::showEvent(QShowEvent* event)
+{
+    if (pos != 0) {
         QPushButton* btn = getButtons()[pos - 1];
         QMetaObject::invokeMethod(btn, "setChecked", Qt::QueuedConnection, Q_ARG(bool, true));
         QMetaObject::invokeMethod(btn, "clicked", Qt::QueuedConnection);
     }
 }
 
-void SettingsFaqWidget::setSection(int num){
+void SettingsFaqWidget::setSection(int num)
+{
     if (num < 1 || num > 10)
         return;
     pos = num;
 }
 
-void SettingsFaqWidget::onFaq1Clicked(){
+void SettingsFaqWidget::onFaq1Clicked()
+{
     ui->scrollAreaFaq->verticalScrollBar()->setValue(ui->widgetFaq1->y());
 }
 
-void SettingsFaqWidget::onFaq2Clicked(){
-   ui->scrollAreaFaq->verticalScrollBar()->setValue(ui->widgetFaq2->y());
+void SettingsFaqWidget::onFaq2Clicked()
+{
+    ui->scrollAreaFaq->verticalScrollBar()->setValue(ui->widgetFaq2->y());
 }
 
-void SettingsFaqWidget::onFaq3Clicked(){
-   ui->scrollAreaFaq->verticalScrollBar()->setValue(ui->widgetFaq3->y());
+void SettingsFaqWidget::onFaq3Clicked()
+{
+    ui->scrollAreaFaq->verticalScrollBar()->setValue(ui->widgetFaq3->y());
 }
 
-void SettingsFaqWidget::onFaq4Clicked(){
+void SettingsFaqWidget::onFaq4Clicked()
+{
     ui->scrollAreaFaq->verticalScrollBar()->setValue(ui->widgetFaq4->y());
 }
 
-void SettingsFaqWidget::onFaq5Clicked(){
+void SettingsFaqWidget::onFaq5Clicked()
+{
     ui->scrollAreaFaq->verticalScrollBar()->setValue(ui->widgetFaq5->y());
 }
 
-void SettingsFaqWidget::onFaq6Clicked(){
+void SettingsFaqWidget::onFaq6Clicked()
+{
     ui->scrollAreaFaq->verticalScrollBar()->setValue(ui->widgetFaq6->y());
 }
 
-void SettingsFaqWidget::onFaq7Clicked(){
-    ui->scrollAreaFaq->verticalScrollBar()->setValue(ui->widgetFaq7->y());
-}
-
-void SettingsFaqWidget::onFaq8Clicked(){
-    ui->scrollAreaFaq->verticalScrollBar()->setValue(ui->widgetFaq8->y());
-}
-
-void SettingsFaqWidget::onFaq9Clicked(){
-    ui->scrollAreaFaq->verticalScrollBar()->setValue(ui->widgetFaq9->y());
-}
-
-void SettingsFaqWidget::onFaq10Clicked(){
-    ui->scrollAreaFaq->verticalScrollBar()->setValue(ui->widgetFaq10->y());
+void SettingsFaqWidget::onButtonWebLinkClicked()
+{
+    QUrl url(ui->pushButtonWebLink->text());
+    QDesktopServices::openUrl(url);
 }
 
 void SettingsFaqWidget::windowResizeEvent(QResizeEvent* event)
@@ -173,23 +159,18 @@ void SettingsFaqWidget::windowResizeEvent(QResizeEvent* event)
     this->move(QPoint(0, 0));
 }
 
-std::vector<QPushButton*> SettingsFaqWidget::getButtons(){
+std::vector<QPushButton*> SettingsFaqWidget::getButtons()
+{
     return {
-            ui->pushButtonFaq1,
-            ui->pushButtonFaq2,
-            ui->pushButtonFaq3,
-            ui->pushButtonFaq4,
-            ui->pushButtonFaq5,
-            ui->pushButtonFaq6,
-            ui->pushButtonFaq7,
-            ui->pushButtonFaq8,
-            ui->pushButtonFaq9,
-            ui->pushButtonFaq10
-    };
+        ui->pushButtonFaq1,
+        ui->pushButtonFaq2,
+        ui->pushButtonFaq3,
+        ui->pushButtonFaq4,
+        ui->pushButtonFaq5,
+        ui->pushButtonFaq6};
 }
 
-SettingsFaqWidget::~SettingsFaqWidget(){
+SettingsFaqWidget::~SettingsFaqWidget()
+{
     delete ui;
 }
-
-

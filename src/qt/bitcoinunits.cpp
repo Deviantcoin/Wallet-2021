@@ -42,16 +42,16 @@ bool BitcoinUnits::valid(int unit)
 
 QString BitcoinUnits::id(int unit)
 {
-    switch (unit) {
-    case FLS:
-        return QString("fls");
-    case mFLS:
-        return QString("mfls");
-    case uFLS:
-        return QString::fromUtf8("ufls");
-    default:
-        return QString("???");
-    }
+	switch (unit) {
+	    case FLS:
+	        return QString("deviant");
+	    case mFLS:
+	        return QString("mdeviant");
+	    case uFLS:
+	        return QString::fromUtf8("udeviant");
+	    default:
+	        return QString("???");
+	    }
 }
 
 QString BitcoinUnits::name(int unit, bool iszFLS)
@@ -61,22 +61,22 @@ QString BitcoinUnits::name(int unit, bool iszFLS)
     if (Params().NetworkID() == CBaseChainParams::MAIN) {
         switch (unit) {
         case FLS:
-            return z + QString("FLS");
+            return z + QString("DEV");
         case mFLS:
-            return z + QString("mFLS");
+            return z + QString("mDEV");
         case uFLS:
-            return z + QString::fromUtf8("μFLS");
+            return z + QString::fromUtf8("μDEV");
         default:
             return QString("???");
         }
     } else {
         switch (unit) {
         case FLS:
-            return z + QString("tFLS");
+            return z + QString("tDEV");
         case mFLS:
-            return z + QString("mtFLS");
+            return z + QString("mtDEV");
         case uFLS:
-            return z + QString::fromUtf8("μtFLS");
+            return z + QString::fromUtf8("μtDEV");
         default:
             return QString("???");
         }
@@ -88,22 +88,22 @@ QString BitcoinUnits::description(int unit)
     if (Params().NetworkID() == CBaseChainParams::MAIN) {
         switch (unit) {
         case FLS:
-            return QString("FLS");
+            return QString("DEV");
         case mFLS:
-            return QString("Milli-FLS (1 / 1" THIN_SP_UTF8 "000)");
+            return QString("Milli-DEV (1 / 1" THIN_SP_UTF8 "000)");
         case uFLS:
-            return QString("Micro-FLS (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
+            return QString("Micro-DEV (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
         default:
             return QString("???");
         }
     } else {
         switch (unit) {
         case FLS:
-            return QString("TestFLSs");
+            return QString("TestDEVs");
         case mFLS:
-            return QString("Milli-TestFLS (1 / 1" THIN_SP_UTF8 "000)");
+            return QString("Milli-TestDEV (1 / 1" THIN_SP_UTF8 "000)");
         case uFLS:
-            return QString("Micro-TestFLS (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
+            return QString("Micro-TestDEV (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
         default:
             return QString("???");
         }

@@ -9,7 +9,8 @@
 
 class FLSGUI;
 
-namespace Ui {
+namespace Ui
+{
 class SettingsFaqWidget;
 }
 
@@ -18,14 +19,14 @@ class SettingsFaqWidget : public QDialog
     Q_OBJECT
 
 public:
-    explicit SettingsFaqWidget(FLSGUI *parent = nullptr);
+    explicit SettingsFaqWidget(FLSGUI* parent = nullptr);
     ~SettingsFaqWidget();
 
-    void showEvent(QShowEvent *event) override;
+    void showEvent(QShowEvent* event) override;
 
 public Q_SLOTS:
-   void windowResizeEvent(QResizeEvent* event);
-   void setSection(int num);
+    void windowResizeEvent(QResizeEvent* event);
+    void setSection(int num);
 private Q_SLOTS:
     void onFaq1Clicked();
     void onFaq2Clicked();
@@ -33,12 +34,11 @@ private Q_SLOTS:
     void onFaq4Clicked();
     void onFaq5Clicked();
     void onFaq6Clicked();
-    void onFaq7Clicked();
-    void onFaq8Clicked();
-    void onFaq9Clicked();
-    void onFaq10Clicked();
+
+    void onButtonWebLinkClicked();
+
 private:
-    Ui::SettingsFaqWidget *ui;
+    Ui::SettingsFaqWidget* ui;
     int pos = 0;
 
     std::vector<QPushButton*> getButtons();

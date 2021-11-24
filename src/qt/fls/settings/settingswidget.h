@@ -41,6 +41,8 @@ public:
     void loadWalletModel() override;
     void setMapper();
     void showDebugConsole();
+    void showInformation();
+    void openNetworkMonitor();
 
 Q_SIGNALS:
     /** Get restart command-line parameters and handle restart */

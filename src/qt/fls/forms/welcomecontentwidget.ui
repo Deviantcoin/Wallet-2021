@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string></string>
+   <string/>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <property name="spacing">
@@ -30,7 +30,7 @@
     <number>0</number>
    </property>
    <item>
-    <widget class="PFBorderImage" name="frame_2" native="true">
+    <widget class="PFBorderImage" name="frame_2">
      <layout class="QVBoxLayout" name="verticalLayout_1">
       <property name="spacing">
        <number>0</number>
@@ -773,6 +773,9 @@
             </item>
             <item>
              <widget class="QStackedWidget" name="stackedWidget">
+              <property name="currentIndex">
+               <number>2</number>
+              </property>
               <widget class="QWidget" name="page_0">
                <layout class="QVBoxLayout" name="verticalLayout_4">
                 <property name="leftMargin">
@@ -937,7 +940,7 @@
                      </property>
                      <property name="text">
                       <string>Welcome to
-Flits Core Wallet</string>
+Deviant Core Wallet</string>
                      </property>
                      <property name="alignment">
                       <set>Qt::AlignCenter</set>
@@ -963,7 +966,7 @@ Flits Core Wallet</string>
                    <item alignment="Qt::AlignHCenter">
                     <widget class="QLabel" name="labelMessage2">
                      <property name="text">
-                      <string>FLS is the world’s most innovative Proof of Stake blockchain based technology. Developed by a team of highly experienced developers and cryptographers.</string>
+                      <string>DEV is the world’s most innovative Proof of Stake blockchain based technology. Developed by a team of highly experienced developers and cryptographers.</string>
                      </property>
                      <property name="alignment">
                       <set>Qt::AlignHCenter|Qt::AlignTop</set>

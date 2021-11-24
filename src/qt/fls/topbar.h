@@ -5,18 +5,19 @@
 #ifndef TOPBAR_H
 #define TOPBAR_H
 
-#include <QWidget>
-#include "qt/fls/pwidget.h"
-#include "qt/fls/lockunlock.h"
 #include "amount.h"
-#include <QTimer>
+#include "qt/fls/lockunlock.h"
+#include "qt/fls/pwidget.h"
 #include <QProgressBar>
+#include <QTimer>
+#include <QWidget>
 
 class FLSGUI;
 class WalletModel;
 class ClientModel;
 
-namespace Ui {
+namespace Ui
+{
 class TopBar;
 }
 
@@ -25,7 +26,7 @@ class TopBar : public PWidget
     Q_OBJECT
 
 public:
-    explicit TopBar(FLSGUI* _mainWindow, QWidget *parent = nullptr);
+    explicit TopBar(FLSGUI* _mainWindow, QWidget* parent = nullptr);
     ~TopBar();
 
     void showTop();
@@ -43,10 +44,7 @@ public:
     void unlockWallet();
 
 public Q_SLOTS:
-    void updateBalances(const CAmount& balance, const CAmount& unconfirmedBalance, const CAmount& immatureBalance,
-                        const CAmount& zerocoinBalance, const CAmount& unconfirmedZerocoinBalance, const CAmount& immatureZerocoinBalance,
-                        const CAmount& watchOnlyBalance, const CAmount& watchUnconfBalance, const CAmount& watchImmatureBalance,
-                        const CAmount& delegatedBalance, const CAmount& coldStakedBalance);
+    void updateBalances(const CAmount& balance, const CAmount& unconfirmedBalance, const CAmount& immatureBalance, const CAmount& zerocoinBalance, const CAmount& unconfirmedZerocoinBalance, const CAmount& immatureZerocoinBalance, const CAmount& watchOnlyBalance, const CAmount& watchUnconfBalance, const CAmount& watchImmatureBalance, const CAmount& delegatedBalance, const CAmount& coldStakedBalance);
     void updateDisplayUnit();
 
     void setNumConnections(int count);
@@ -61,7 +59,7 @@ Q_SIGNALS:
     void onShowHideColdStakingChanged(bool show);
 
 protected:
-    void resizeEvent(QResizeEvent *event) override;
+    void resizeEvent(QResizeEvent* event) override;
 private Q_SLOTS:
     void onBtnReceiveClicked();
     void onThemeClicked();
@@ -73,9 +71,10 @@ private Q_SLOTS:
     void onColdStakingClicked();
     void refreshProgressBarSize();
     void expandSync();
+
 private:
-    Ui::TopBar *ui;
-    LockUnlock *lockUnlockWidget = nullptr;
+    Ui::TopBar* ui;
+    LockUnlock* lockUnlockWidget = nullptr;
     QProgressBar* progressBar = nullptr;
 
     int nDisplayUnit = -1;
