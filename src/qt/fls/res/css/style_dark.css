@@ -871,6 +871,15 @@ QProgressBar[cssClass="progress-sync"]::chunk:horizontal {
 /*HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
 HH       LISTS ELEMENTS
 HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH*/
+*[cssClass="text-text"] {
+    color: white;
+    font-size:14px;
+}
+
+*[cssClass="text-text2"] {
+    color: white;
+}
+
 *[cssClass="text-list-title-purple"] {
 	color: #FBB03B;
 	font-size: 20px;
