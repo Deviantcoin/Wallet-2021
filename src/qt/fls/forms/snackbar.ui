@@ -46,13 +46,20 @@
      <property name="styleSheet">
       <string notr="true"/>
      </property>
-     <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="0,2,0">
+     <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="0,0,2,0">
       <property name="spacing">
        <number>0</number>
       </property>
       <property name="rightMargin">
        <number>20</number>
       </property>
+      <item>
+       <widget class="QPushButton" name="pushButton_2">
+        <property name="text">
+         <string>PushButton</string>
+        </property>
+       </widget>
+      </item>
       <item>
        <spacer name="horizontalSpacer">
         <property name="orientation">
