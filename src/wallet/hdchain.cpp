@@ -1,4 +1,4 @@
-// Copyright (c) 2020 The Flits Core developers
+// Copyright (c) 2020 The Deviant Core developers
 // Distributed under the MIT software license, see the accompanying
 #include "wallet/hdchain.h"
 
@@ -23,7 +23,7 @@ bool CHDChain::IsNull() const
     return seed_id.IsNull();
 }
 
-bool CHDChain::SetSeed( const CKeyID& seedId)
+bool CHDChain::SetSeed(const CKeyID& seedId)
 {
     // Cannot be initialized twice
     if (!IsNull())

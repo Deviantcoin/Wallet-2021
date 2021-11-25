@@ -3,25 +3,24 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include "qt/fls/settings/settingssignmessagewidgets.h"
-#include "qt/fls/settings/forms/ui_settingssignmessagewidgets.h"
-#include "qt/fls/qtutils.h"
 #include "guiutil.h"
+#include "qt/fls/qtutils.h"
+#include "qt/fls/settings/forms/ui_settingssignmessagewidgets.h"
 #include "walletmodel.h"
 
+#include "addressbookpage.h"
+#include "askpassphrasedialog.h"
 #include "base58.h"
 #include "init.h"
 #include "wallet/wallet.h"
-#include "askpassphrasedialog.h"
-#include "addressbookpage.h"
 
 #include <string>
 #include <vector>
 
 #include <QClipboard>
 
-SettingsSignMessageWidgets::SettingsSignMessageWidgets(FLSGUI* _window, QWidget *parent) :
-    PWidget(_window, parent),
-    ui(new Ui::SettingsSignMessageWidgets)
+SettingsSignMessageWidgets::SettingsSignMessageWidgets(FLSGUI* _window, QWidget* parent) : PWidget(_window, parent),
+                                                                                           ui(new Ui::SettingsSignMessageWidgets)
 {
     ui->setupUi(this);
 
@@ -29,7 +28,7 @@ SettingsSignMessageWidgets::SettingsSignMessageWidgets(FLSGUI* _window, QWidget 
 
     // Containers
     ui->left->setProperty("cssClass", "container");
-    ui->left->setContentsMargins(10,10,10,10);
+    ui->left->setContentsMargins(10, 10, 10, 10);
 
     // Title
     ui->labelTitle->setText(tr("Sign/Verify Message"));
@@ -39,7 +38,7 @@ SettingsSignMessageWidgets::SettingsSignMessageWidgets(FLSGUI* _window, QWidget 
     ui->labelSubtitle1->setProperty("cssClass", "text-subtitle");
 
     // Address
-    ui->labelSubtitleAddress->setText(tr("FLS address or contact label"));
+    ui->labelSubtitleAddress->setText(tr("DEV address or contact label"));
     ui->labelSubtitleAddress->setProperty("cssClass", "text-title");
 
     ui->addressIn_SM->setPlaceholderText(tr("Enter address"));
@@ -62,7 +61,7 @@ SettingsSignMessageWidgets::SettingsSignMessageWidgets(FLSGUI* _window, QWidget 
     ui->labelSubtitleMessage->setProperty("cssClass", "text-title");
 
     ui->messageIn_SM->setPlaceholderText(tr("Write message"));
-    ui->messageIn_SM->setProperty("cssClass","edit-primary");
+    ui->messageIn_SM->setProperty("cssClass", "edit-primary");
     setShadow(ui->messageIn_SM);
     ui->messageIn_SM->setAttribute(Qt::WA_MacShowFocusRect, 0);
 
@@ -87,8 +86,8 @@ SettingsSignMessageWidgets::SettingsSignMessageWidgets(FLSGUI* _window, QWidget 
     connect(ui->pushButtonSave, &QPushButton::clicked, this, &SettingsSignMessageWidgets::onGoClicked);
     connect(btnContact, &QAction::triggered, this, &SettingsSignMessageWidgets::onAddressesClicked);
     connect(ui->pushButtonClear, &QPushButton::clicked, this, &SettingsSignMessageWidgets::onClearAll);
-    connect(ui->pushSign, &QPushButton::clicked, [this](){onModeSelected(true);});
-    connect(ui->pushVerify,  &QPushButton::clicked, [this](){onModeSelected(false);});
+    connect(ui->pushSign, &QPushButton::clicked, [this]() { onModeSelected(true); });
+    connect(ui->pushVerify, &QPushButton::clicked, [this]() { onModeSelected(false); });
 }
 
 SettingsSignMessageWidgets::~SettingsSignMessageWidgets()
@@ -96,7 +95,7 @@ SettingsSignMessageWidgets::~SettingsSignMessageWidgets()
     delete ui;
 }
 
-void SettingsSignMessageWidgets::showEvent(QShowEvent *event)
+void SettingsSignMessageWidgets::showEvent(QShowEvent* event)
 {
     if (ui->addressIn_SM) ui->addressIn_SM->setFocus();
 }
@@ -281,20 +280,18 @@ void SettingsSignMessageWidgets::onAddressesClicked()
         return;
     }
 
-    int height = (addreFLSize <= 2) ? ui->addressIn_SM->height() * ( 2 * (addreFLSize + 1 )) : ui->addressIn_SM->height() * 4;
+    int height = (addreFLSize <= 2) ? ui->addressIn_SM->height() * (2 * (addreFLSize + 1)) : ui->addressIn_SM->height() * 4;
     int width = ui->containerAddress->width();
 
     if (!menuContacts) {
         menuContacts = new ContactsDropdown(
-                width,
-                height,
-                this
-        );
+            width,
+            height,
+            this);
         menuContacts->setWalletModel(walletModel, AddressTableModel::Receive);
-        connect(menuContacts, &ContactsDropdown::contactSelected, [this](QString address, QString label){
+        connect(menuContacts, &ContactsDropdown::contactSelected, [this](QString address, QString label) {
             setAddress_SM(address);
         });
-
     }
 
     if (menuContacts->isVisible()) {
@@ -324,7 +321,7 @@ void SettingsSignMessageWidgets::resizeMenu()
     }
 }
 
-void SettingsSignMessageWidgets::resizeEvent(QResizeEvent *event)
+void SettingsSignMessageWidgets::resizeEvent(QResizeEvent* event)
 {
     resizeMenu();
     QWidget::resizeEvent(event);

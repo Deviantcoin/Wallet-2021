@@ -5,15 +5,16 @@
 #include "zflscontroldialog.h"
 #include "ui_zflscontroldialog.h"
 
+#include "guiutil.h"
 #include "main.h"
 #include "walletmodel.h"
-#include "guiutil.h"
 
 
 std::set<std::string> zFLSControlDialog::setSelectedMints;
 std::set<CMintMeta> zFLSControlDialog::setMints;
 
-bool CzFLSControlWidgetItem::operator<(const QTreeWidgetItem &other) const {
+bool CzFLSControlWidgetItem::operator<(const QTreeWidgetItem& other) const
+{
     int column = treeWidget()->sortColumn();
     if (column == zFLSControlDialog::COLUMN_DENOMINATION || column == zFLSControlDialog::COLUMN_VERSION || column == zFLSControlDialog::COLUMN_CONFIRMATIONS)
         return data(column, Qt::UserRole).toLongLong() < other.data(column, Qt::UserRole).toLongLong();
@@ -21,10 +22,9 @@ bool CzFLSControlWidgetItem::operator<(const QTreeWidgetItem &other) const {
 }
 
 
-zFLSControlDialog::zFLSControlDialog(QWidget *parent) :
-    QDialog(parent, Qt::WindowSystemMenuHint | Qt::WindowTitleHint | Qt::WindowCloseButtonHint),
-    ui(new Ui::zFLSControlDialog),
-    model(0)
+zFLSControlDialog::zFLSControlDialog(QWidget* parent) : QDialog(parent, Qt::WindowSystemMenuHint | Qt::WindowTitleHint | Qt::WindowCloseButtonHint),
+                                                        ui(new Ui::zFLSControlDialog),
+                                                        model(0)
 {
     ui->setupUi(this);
     setMints.clear();
@@ -35,7 +35,7 @@ zFLSControlDialog::zFLSControlDialog(QWidget *parent) :
     ui->frame->setProperty("cssClass", "container-dialog");
 
     // Title
-    ui->labelTitle->setText(tr("Select zFLS Denominations to Spend"));
+    ui->labelTitle->setText(tr("Select zDEV Denominations to Spend"));
     ui->labelTitle->setProperty("cssClass", "text-title-dialog");
 
 
@@ -65,7 +65,7 @@ zFLSControlDialog::~zFLSControlDialog()
     delete ui;
 }
 
-void zFLSControlDialog::setModel(WalletModel *model)
+void zFLSControlDialog::setModel(WalletModel* model)
 {
     this->model = model;
     updateList();
@@ -91,7 +91,7 @@ void zFLSControlDialog::updateList()
 
         itemDenom->setFlags(flgTristate);
         itemDenom->setText(COLUMN_DENOMINATION, QString::number(denom));
-        itemDenom->setData(COLUMN_DENOMINATION, Qt::UserRole, QVariant((qlonglong) denom));
+        itemDenom->setData(COLUMN_DENOMINATION, Qt::UserRole, QVariant((qlonglong)denom));
     }
 
     // select all unused coins - including not mature and mismatching seed. Update status of coins too.
@@ -104,7 +104,7 @@ void zFLSControlDialog::updateList()
     for (const CMintMeta& mint : setMints) {
         // assign this mint to the correct denomination in the tree view
         libzerocoin::CoinDenomination denom = mint.denom;
-        CzFLSControlWidgetItem *itemMint = new CzFLSControlWidgetItem(ui->treeWidget->topLevelItem(mapDenomPosition.at(denom)));
+        CzFLSControlWidgetItem* itemMint = new CzFLSControlWidgetItem(ui->treeWidget->topLevelItem(mapDenomPosition.at(denom)));
 
         // if the mint is already selected, then it needs to have the checkbox checked
         std::string strPubCoinHash = mint.hashPubcoin.GetHex();
@@ -115,10 +115,10 @@ void zFLSControlDialog::updateList()
             itemMint->setCheckState(COLUMN_CHECKBOX, Qt::Unchecked);
 
         itemMint->setText(COLUMN_DENOMINATION, QString::number(mint.denom));
-        itemMint->setData(COLUMN_DENOMINATION, Qt::UserRole, QVariant((qlonglong) denom));
+        itemMint->setData(COLUMN_DENOMINATION, Qt::UserRole, QVariant((qlonglong)denom));
         itemMint->setText(COLUMN_PUBCOIN, QString::fromStdString(strPubCoinHash));
         itemMint->setText(COLUMN_VERSION, QString::number(mint.nVersion));
-        itemMint->setData(COLUMN_VERSION, Qt::UserRole, QVariant((qlonglong) mint.nVersion));
+        itemMint->setData(COLUMN_VERSION, Qt::UserRole, QVariant((qlonglong)mint.nVersion));
 
         int nConfirmations = (mint.nHeight ? nBestHeight - mint.nHeight : 0);
         if (nConfirmations < 0) {
@@ -127,7 +127,7 @@ void zFLSControlDialog::updateList()
         }
 
         itemMint->setText(COLUMN_CONFIRMATIONS, QString::number(nConfirmations));
-        itemMint->setData(COLUMN_CONFIRMATIONS, Qt::UserRole, QVariant((qlonglong) nConfirmations));
+        itemMint->setData(COLUMN_CONFIRMATIONS, Qt::UserRole, QVariant((qlonglong)nConfirmations));
 
         // check for maturity
         // Always mature, public spends doesn't require any new accumulation.
@@ -138,7 +138,7 @@ void zFLSControlDialog::updateList()
         // disable selecting this mint if it is not spendable - also display a reason why
         const int nRequiredConfs = Params().GetConsensus().ZC_MinMintConfirmations;
         bool fSpendable = isMature && nConfirmations >= nRequiredConfs && mint.isSeedCorrect;
-        if(!fSpendable) {
+        if (!fSpendable) {
             itemMint->setDisabled(true);
             itemMint->setCheckState(COLUMN_CHECKBOX, Qt::Unchecked);
 
@@ -147,12 +147,12 @@ void zFLSControlDialog::updateList()
                 setSelectedMints.erase(strPubCoinHash);
 
             std::string strReason = "";
-            if(nConfirmations < nRequiredConfs)
+            if (nConfirmations < nRequiredConfs)
                 strReason = strprintf("Needs %d more confirmations", nRequiredConfs - nConfirmations);
             else if (model->getEncryptionStatus() == WalletModel::EncryptionStatus::Locked)
-                strReason = "Your wallet is locked. Impossible to spend zFLS.";
+                strReason = "Your wallet is locked. Impossible to spend zDEV.";
             else if (!mint.isSeedCorrect)
-                strReason = "The zFLS seed used to mint this zFLS is not the same as currently hold in the wallet";
+                strReason = "The zDEV seed used to mint this zDEV is not the same as currently hold in the wallet";
             else
                 strReason = "Needs 1 more mint added to network";
 
@@ -170,8 +170,7 @@ void zFLSControlDialog::updateList()
 void zFLSControlDialog::updateSelection(QTreeWidgetItem* item, int column)
 {
     // only want updates from non top level items that are available to spend
-    if (item->parent() && column == COLUMN_CHECKBOX && !item->isDisabled()){
-
+    if (item->parent() && column == COLUMN_CHECKBOX && !item->isDisabled()) {
         // see if this mint is already selected in the selection list
         std::string strPubcoin = item->text(COLUMN_PUBCOIN).toStdString();
         bool fSelected = setSelectedMints.count(strPubcoin);
@@ -222,7 +221,7 @@ void zFLSControlDialog::ButtonAllClicked()
     ui->treeWidget->blockSignals(true);
     Qt::CheckState state = Qt::Checked;
     for (int i = 0; i < ui->treeWidget->topLevelItemCount(); i++) {
-        if(ui->treeWidget->topLevelItem(i)->checkState(COLUMN_CHECKBOX) != Qt::Unchecked) {
+        if (ui->treeWidget->topLevelItem(i)->checkState(COLUMN_CHECKBOX) != Qt::Unchecked) {
             state = Qt::Unchecked;
             break;
         }
@@ -232,7 +231,7 @@ void zFLSControlDialog::ButtonAllClicked()
     ui->treeWidget->clear();
 
     if (state == Qt::Checked) {
-        for(const CMintMeta& mint : setMints)
+        for (const CMintMeta& mint : setMints)
             setSelectedMints.insert(mint.hashPubcoin.GetHex());
     } else {
         setSelectedMints.clear();

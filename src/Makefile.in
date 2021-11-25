@@ -2620,7 +2620,7 @@ LIBSECP256K1 = secp256k1/libsecp256k1.la
 @ENABLE_WALLET_TRUE@LIBBITCOIN_WALLET = libbitcoin_wallet.a
 lib_LTLIBRARIES = $(LIBBITCOINCONSENSUS)
 BENCHMARKS = 
-# Flits Core #
+# Deviant Core #
 BITCOIN_CORE_H = \
   activemasternode.h \
   addrman.h \

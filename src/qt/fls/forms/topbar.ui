@@ -42,7 +42,7 @@
     <number>0</number>
    </property>
    <item>
-    <widget class="PFBorderImage" name="containerTop" native="true">
+    <widget class="PFBorderImage" name="containerTop">
      <layout class="QVBoxLayout" name="verticalLayout_11">
       <property name="spacing">
        <number>0</number>
@@ -119,7 +119,7 @@
                <string notr="true">padding:0px;margin:0px;</string>
               </property>
               <property name="text">
-               <string notr="true">480.0685 FLS</string>
+               <string notr="true">480.0685 DEV</string>
               </property>
              </widget>
             </item>
@@ -188,7 +188,7 @@ border:none;</string>
                </size>
               </property>
               <property name="text">
-               <string notr="true">1,000 zFLS</string>
+               <string notr="true">1,000 zDEV</string>
               </property>
              </widget>
             </item>
@@ -408,7 +408,7 @@ border:none;</string>
                <item>
                 <widget class="QLabel" name="labelAmountFLS">
                  <property name="text">
-                  <string notr="true">480.0685 FLS</string>
+                  <string notr="true">480.0685 DEV</string>
                  </property>
                 </widget>
                </item>
@@ -431,7 +431,7 @@ border:none;</string>
                  <item>
                   <widget class="QLabel" name="labelPendingFLS">
                    <property name="text">
-                    <string notr="true">6.943 FLS</string>
+                    <string notr="true">6.943 DEV</string>
                    </property>
                   </widget>
                  </item>
@@ -465,7 +465,7 @@ border:none;</string>
                  <item>
                   <widget class="QLabel" name="labelImmatureFLS">
                    <property name="text">
-                    <string notr="true">10 FLS</string>
+                    <string notr="true">10 DEV</string>
                    </property>
                   </widget>
                  </item>
@@ -529,7 +529,7 @@ border:none;</string>
                 <item>
                  <widget class="QLabel" name="labelAvailablezFLS">
                   <property name="text">
-                   <string notr="true">1,000 zFLS</string>
+                   <string notr="true">1,000 zDEV</string>
                   </property>
                  </widget>
                 </item>
@@ -552,7 +552,7 @@ border:none;</string>
                   <item>
                    <widget class="QLabel" name="labelPendingzFLS">
                     <property name="text">
-                     <string notr="true">60 zFLS</string>
+                     <string notr="true">60 zDEV</string>
                     </property>
                    </widget>
                   </item>
@@ -586,7 +586,7 @@ border:none;</string>
                   <item>
                    <widget class="QLabel" name="labelImmaturezFLS">
                     <property name="text">
-                     <string notr="true">10 zFLS</string>
+                     <string notr="true">10 zDEV</string>
                     </property>
                    </widget>
                   </item>

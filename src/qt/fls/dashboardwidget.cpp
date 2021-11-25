@@ -3,19 +3,19 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include "qt/fls/dashboardwidget.h"
+#include "clientmodel.h"
+#include "guiutil.h"
+#include "optionsmodel.h"
 #include "qt/fls/forms/ui_dashboardwidget.h"
+#include "qt/fls/qtutils.h"
 #include "qt/fls/sendconfirmdialog.h"
 #include "qt/fls/txrow.h"
-#include "qt/fls/qtutils.h"
-#include "guiutil.h"
-#include "walletmodel.h"
-#include "clientmodel.h"
-#include "optionsmodel.h"
 #include "utiltime.h"
-#include <QPainter>
-#include <QModelIndex>
-#include <QList>
+#include "walletmodel.h"
 #include <QGraphicsLayout>
+#include <QList>
+#include <QModelIndex>
+#include <QPainter>
 
 #define DECORATION_SIZE 65
 #define NUM_ITEMS 3
@@ -23,9 +23,8 @@
 #define REQUEST_LOAD_TASK 1
 #define CHART_LOAD_MIN_TIME_INTERVAL 15
 
-DashboardWidget::DashboardWidget(FLSGUI* parent) :
-    PWidget(parent),
-    ui(new Ui::DashboardWidget)
+DashboardWidget::DashboardWidget(FLSGUI* parent) : PWidget(parent),
+                                                   ui(new Ui::DashboardWidget)
 {
     ui->setupUi(this);
 
@@ -33,15 +32,14 @@ DashboardWidget::DashboardWidget(FLSGUI* parent) :
     txViewDelegate = new FurAbstractListItemDelegate(
         DECORATION_SIZE,
         txHolder,
-        this
-    );
+        this);
 
     this->setStyleSheet(parent->styleSheet());
-    this->setContentsMargins(0,0,0,0);
+    this->setContentsMargins(0, 0, 0, 0);
 
     // Containers
     setCssProperty({this, ui->left}, "container");
-    ui->left->setContentsMargins(0,0,0,0);
+    ui->left->setContentsMargins(0, 0, 0, 0);
 
     // Title
     ui->labelTitle2->setText(tr("Staking Rewards"));
@@ -53,7 +51,7 @@ DashboardWidget::DashboardWidget(FLSGUI* parent) :
     setCFLSubtitleScreen(ui->labelSubtitle);
 
     // Staking Information
-    ui->labelMessage->setText(tr("Amount of FLS staked."));
+    ui->labelMessage->setText(tr("Amount of DEV staked."));
     setCFLSubtitleScreen(ui->labelMessage);
     setCssProperty(ui->labelSquareFLS, "square-chart-FLS");
     ui->labelSquarezFLS->setVisible(false);
@@ -68,14 +66,14 @@ DashboardWidget::DashboardWidget(FLSGUI* parent) :
 
     setCssProperty(ui->labelChart, "legend-chart");
 
-    ui->labelAmountzFLS->setText("0 zFLS");
+    ui->labelAmountzFLS->setText("0 zDEV");
     ui->labelAmountzFLS->setVisible(false);
-    ui->labelAmountFLS->setText("0 FLS");
+    ui->labelAmountFLS->setText("0 DEV");
     setCssProperty(ui->labelAmountFLS, "text-stake-flits-disable");
     setCssProperty(ui->labelAmountzFLS, "text-stake-zfls-disable");
 
-    setCssProperty({ui->pushButtonAll,  ui->pushButtonMonth, ui->pushButtonYear}, "btn-check-time");
-    setCssProperty({ui->comboBoxMonths,  ui->comboBoxYears}, "btn-combo-chart-selected");
+    setCssProperty({ui->pushButtonAll, ui->pushButtonMonth, ui->pushButtonYear}, "btn-check-time");
+    setCssProperty({ui->comboBoxMonths, ui->comboBoxYears}, "btn-combo-chart-selected");
 
     ui->comboBoxMonths->setView(new QListView());
     ui->comboBoxMonths->setStyleSheet("selection-background-color:transparent; selection-color:transparent;");
@@ -88,7 +86,7 @@ DashboardWidget::DashboardWidget(FLSGUI* parent) :
 
 #ifdef USE_QTCHARTS
     setCssProperty(ui->right, "container-right");
-    ui->right->setContentsMargins(20,20,20,0);
+    ui->right->setContentsMargins(20, 20, 20, 0);
     connect(ui->comboBoxYears, static_cast<void (QComboBox::*)(const QString&)>(&QComboBox::currentIndexChanged),
         this, &DashboardWidget::onChartYearChanged);
 #else
@@ -98,13 +96,13 @@ DashboardWidget::DashboardWidget(FLSGUI* parent) :
 
     // Sort Transactions
     SortEdit* lineEdit = new SortEdit(ui->comboBoxSort);
-    connect(lineEdit, &SortEdit::Mouse_Pressed, [this](){ui->comboBoxSort->showPopup();});
+    connect(lineEdit, &SortEdit::Mouse_Pressed, [this]() { ui->comboBoxSort->showPopup(); });
     setSortTx(ui->comboBoxSort, lineEdit);
     connect(ui->comboBoxSort, static_cast<void (QComboBox::*)(const QString&)>(&QComboBox::currentIndexChanged), this, &DashboardWidget::onSortChanged);
 
     // Sort type
     SortEdit* lineEditType = new SortEdit(ui->comboBoxSortType);
-    connect(lineEditType, &SortEdit::Mouse_Pressed, [this](){ui->comboBoxSortType->showPopup();});
+    connect(lineEditType, &SortEdit::Mouse_Pressed, [this]() { ui->comboBoxSortType->showPopup(); });
     setSortTxTypeFilter(ui->comboBoxSortType, lineEditType);
     ui->comboBoxSortType->setCurrentIndex(0);
     connect(ui->comboBoxSortType, static_cast<void (QComboBox::*)(const QString&)>(&QComboBox::currentIndexChanged),
@@ -136,7 +134,7 @@ DashboardWidget::DashboardWidget(FLSGUI* parent) :
     setCssProperty(ui->chartContainer, "container-chart");
     setCssProperty(ui->pushImgEmptyChart, "img-empty-staking-on");
 
-    ui->btnHowTo->setText(tr("How to get FLS"));
+    ui->btnHowTo->setText(tr("How to get DEV"));
     setCssBtnSecondary(ui->btnHowTo);
 
 
@@ -151,14 +149,14 @@ DashboardWidget::DashboardWidget(FLSGUI* parent) :
 
     connect(ui->listTransactions, &QListView::clicked, this, &DashboardWidget::handleTransactionClicked);
 
-bool hasCharts = false;
+    bool hasCharts = false;
 #ifdef USE_QTCHARTS
     hasCharts = true;
     isLoading = false;
     setChartShow(YEAR);
-    connect(ui->pushButtonYear, &QPushButton::clicked, [this](){setChartShow(YEAR);});
-    connect(ui->pushButtonMonth, &QPushButton::clicked, [this](){setChartShow(MONTH);});
-    connect(ui->pushButtonAll, &QPushButton::clicked, [this](){setChartShow(ALL);});
+    connect(ui->pushButtonYear, &QPushButton::clicked, [this]() { setChartShow(YEAR); });
+    connect(ui->pushButtonMonth, &QPushButton::clicked, [this]() { setChartShow(MONTH); });
+    connect(ui->pushButtonAll, &QPushButton::clicked, [this]() { setChartShow(ALL); });
     if (window)
         connect(window, &FLSGUI::windowResizeEvent, this, &DashboardWidget::windowResizeEvent);
 #endif
@@ -170,13 +168,13 @@ bool hasCharts = false;
     }
 }
 
-void DashboardWidget::handleTransactionClicked(const QModelIndex &index)
+void DashboardWidget::handleTransactionClicked(const QModelIndex& index)
 {
     ui->listTransactions->setCurrentIndex(index);
     QModelIndex rIndex = filter->mapToSource(index);
 
     window->showHide(true);
-    TxDetailDialog *dialog = new TxDetailDialog(window, false);
+    TxDetailDialog* dialog = new TxDetailDialog(window, false);
     dialog->setData(walletModel, rIndex);
     openDialogWithOpaqueBackgroundY(dialog, window, 3, 17);
 
@@ -276,25 +274,24 @@ void DashboardWidget::onSortChanged(const QString& value)
     Qt::SortOrder order = Qt::DescendingOrder;
     if (!value.isNull()) {
         switch (ui->comboBoxSort->itemData(ui->comboBoxSort->currentIndex()).toInt()) {
-            case SortTx::DATE_ASC:{
-                columnIndex = TransactionTableModel::Date;
-                order = Qt::AscendingOrder;
-                break;
-            }
-            case SortTx::DATE_DESC:{
-                columnIndex = TransactionTableModel::Date;
-                break;
-            }
-            case SortTx::AMOUNT_ASC:{
-                columnIndex = TransactionTableModel::Amount;
-                order = Qt::AscendingOrder;
-                break;
-            }
-            case SortTx::AMOUNT_DESC:{
-                columnIndex = TransactionTableModel::Amount;
-                break;
-            }
-
+        case SortTx::DATE_ASC: {
+            columnIndex = TransactionTableModel::Date;
+            order = Qt::AscendingOrder;
+            break;
+        }
+        case SortTx::DATE_DESC: {
+            columnIndex = TransactionTableModel::Date;
+            break;
+        }
+        case SortTx::AMOUNT_ASC: {
+            columnIndex = TransactionTableModel::Amount;
+            order = Qt::AscendingOrder;
+            break;
+        }
+        case SortTx::AMOUNT_DESC: {
+            columnIndex = TransactionTableModel::Amount;
+            break;
+        }
         }
     }
     filter->sort(columnIndex, order);
@@ -382,12 +379,13 @@ void DashboardWidget::loadChart()
             QDate currentDate = QDate::currentDate();
             monthFilter = currentDate.month();
             yearFilter = currentDate.year();
-            for (int i = 1; i < 13; ++i) ui->comboBoxMonths->addItem(QString(monthsNames[i-1]), QVariant(i));
+            for (int i = 1; i < 13; ++i)
+                ui->comboBoxMonths->addItem(QString(monthsNames[i - 1]), QVariant(i));
             ui->comboBoxMonths->setCurrentIndex(monthFilter - 1);
             connect(ui->comboBoxMonths, static_cast<void (QComboBox::*)(const QString&)>(&QComboBox::currentIndexChanged),
                 this, &DashboardWidget::onChartMonthChanged);
-            connect(ui->pushButtonChartArrow, &QPushButton::clicked, [this](){ onChartArrowClicked(true); });
-            connect(ui->pushButtonChartRight, &QPushButton::clicked, [this](){ onChartArrowClicked(false); });
+            connect(ui->pushButtonChartArrow, &QPushButton::clicked, [this]() { onChartArrowClicked(true); });
+            connect(ui->pushButtonChartRight, &QPushButton::clicked, [this]() { onChartArrowClicked(false); });
         }
         refreshChart();
         changeChartColors();
@@ -431,14 +429,14 @@ void DashboardWidget::initChart()
 
     chartView = new QChartView(chart);
     chartView->setRenderHint(QPainter::Antialiasing);
-    chartView->setRubberBand( QChartView::HorizontalRubberBand );
-    chartView->setContentsMargins(0,0,0,0);
+    chartView->setRubberBand(QChartView::HorizontalRubberBand);
+    chartView->setContentsMargins(0, 0, 0, 0);
 
-    QHBoxLayout *baseScreensContainer = new QHBoxLayout(this);
+    QHBoxLayout* baseScreensContainer = new QHBoxLayout(this);
     baseScreensContainer->setMargin(0);
     baseScreensContainer->addWidget(chartView);
     ui->chartContainer->setLayout(baseScreensContainer);
-    ui->chartContainer->setContentsMargins(0,0,0,0);
+    ui->chartContainer->setContentsMargins(0, 0, 0, 0);
     setCssProperty(ui->chartContainer, "container-chart");
 }
 
@@ -449,15 +447,15 @@ void DashboardWidget::changeChartColors()
     QColor backgroundColor;
     QColor gridY;
     if (isLightTheme()) {
-        gridLineColorX = QColor(255,255,255);
+        gridLineColorX = QColor(255, 255, 255);
         linePenColorY = gridLineColorX;
         backgroundColor = linePenColorY;
         axisY->setGridLineColor(QColor("#1a000000"));
     } else {
         gridY = QColor("#40ffffff");
         axisY->setGridLineColor(gridY);
-        gridLineColorX = QColor(15,11,22);
-        linePenColorY =  gridLineColorX;
+        gridLineColorX = QColor(15, 11, 22);
+        linePenColorY = gridLineColorX;
         backgroundColor = linePenColorY;
     }
 
@@ -479,22 +477,19 @@ void DashboardWidget::updateStakeFilter()
             if (filterByMonth) {
                 QDate monthFirst = QDate(yearFilter, monthFilter, 1);
                 stakesFilter->setDateRange(
-                        QDateTime(monthFirst),
-                        QDateTime(QDate(yearFilter, monthFilter, monthFirst.daysInMonth()))
-                );
+                    QDateTime(monthFirst),
+                    QDateTime(QDate(yearFilter, monthFilter, monthFirst.daysInMonth())));
             } else {
                 stakesFilter->setDateRange(
-                        QDateTime(QDate(yearFilter, 1, 1)),
-                        QDateTime(QDate(yearFilter, 12, 31))
-                );
+                    QDateTime(QDate(yearFilter, 1, 1)),
+                    QDateTime(QDate(yearFilter, 12, 31)));
             }
         } else if (filterByMonth) {
             QDate currentDate = QDate::currentDate();
             QDate monthFirst = QDate(currentDate.year(), monthFilter, 1);
             stakesFilter->setDateRange(
-                    QDateTime(monthFirst),
-                    QDateTime(QDate(currentDate.year(), monthFilter, monthFirst.daysInMonth()))
-            );
+                QDateTime(monthFirst),
+                QDateTime(QDate(currentDate.year(), monthFilter, monthFirst.daysInMonth())));
             ui->comboBoxYears->setCurrentText(QString::number(currentDate.year()));
         } else {
             stakesFilter->clearDateRange();
@@ -505,11 +500,11 @@ void DashboardWidget::updateStakeFilter()
 }
 
 // pair FLS, zFLS
-const QMap<int, std::pair<qint64, qint64>> DashboardWidget::getAmountBy()
+const QMap<int, std::pair<qint64, qint64> > DashboardWidget::getAmountBy()
 {
     updateStakeFilter();
     const int size = stakesFilter->rowCount();
-    QMap<int, std::pair<qint64, qint64>> amountBy;
+    QMap<int, std::pair<qint64, qint64> > amountBy;
     // Get all of the stakes
     for (int i = 0; i < size; ++i) {
         QModelIndex modelIndex = stakesFilter->index(i, TransactionTableModel::ToAddress);
@@ -519,21 +514,21 @@ const QMap<int, std::pair<qint64, qint64>> DashboardWidget::getAmountBy()
 
         int time = 0;
         switch (chartShow) {
-            case YEAR: {
-                time = date.month();
-                break;
-            }
-            case ALL: {
-                time = date.year();
-                break;
-            }
-            case MONTH: {
-                time = date.day();
-                break;
-            }
-            default:
-                inform(tr("Error loading chart, invalid show option"));
-                return amountBy;
+        case YEAR: {
+            time = date.month();
+            break;
+        }
+        case ALL: {
+            time = date.year();
+            break;
+        }
+        case MONTH: {
+            time = date.day();
+            break;
+        }
+        default:
+            inform(tr("Error loading chart, invalid show option"));
+            return amountBy;
         }
         if (amountBy.contains(time)) {
             if (isFLS) {
@@ -562,7 +557,7 @@ bool DashboardWidget::loadChartData(bool withMonthNames)
     chartData = new ChartData();
     chartData->amountsByCache = getAmountBy(); // pair FLS, zFLS
 
-    std::pair<int,int> range = getChartRange(chartData->amountsByCache);
+    std::pair<int, int> range = getChartRange(chartData->amountsByCache);
     if (range.first == 0 && range.second == 0) {
         // Problem loading the chart.
         return false;
@@ -576,7 +571,7 @@ bool DashboardWidget::loadChartData(bool withMonthNames)
         qreal FLS = 0;
         qreal zfls = 0;
         if (chartData->amountsByCache.contains(num)) {
-            std::pair <qint64, qint64> pair = chartData->amountsByCache[num];
+            std::pair<qint64, qint64> pair = chartData->amountsByCache[num];
             FLS = (pair.first != 0) ? pair.first / 100000000 : 0;
             zfls = (pair.second != 0) ? pair.second / 100000000 : 0;
             chartData->totalFLS += pair.first;
@@ -616,9 +611,9 @@ void DashboardWidget::onChartMonthChanged(const QString& monthStr)
             monthFilter = newMonth;
             refreshChart();
 #ifndef Q_OS_MAC
-        // quick hack to re paint the chart view.
-        chart->removeSeries(series);
-        chart->addSeries(series);
+            // quick hack to re paint the chart view.
+            chart->removeSeries(series);
+            chart->addSeries(series);
 #endif
         }
     }
@@ -645,10 +640,10 @@ void DashboardWidget::onChartRefreshed()
         axisX->clear();
     }
     // init sets
-    set0 = new QBarSet("FLS");
-    set1 = new QBarSet("zFLS");
-    set0->setColor(QColor(92,75,125));
-    set1->setColor(QColor(176,136,255));
+    set0 = new QBarSet("DEV");
+    set1 = new QBarSet("zDEV");
+    set0->setColor(QColor(92, 75, 125));
+    set1->setColor(QColor(176, 136, 255));
 
     if (!series) {
         series = new QBarSeries();
@@ -688,21 +683,22 @@ void DashboardWidget::onChartRefreshed()
 
     // Controllers
     switch (chartShow) {
-        case ALL: {
-            ui->container_chart_dropboxes->setVisible(false);
-            break;
-        }
-        case YEAR: {
-            ui->container_chart_dropboxes->setVisible(true);
-            ui->containerBoxMonths->setVisible(false);
-            break;
-        }
-        case MONTH: {
-            ui->container_chart_dropboxes->setVisible(true);
-            ui->containerBoxMonths->setVisible(true);
-            break;
-        }
-        default: break;
+    case ALL: {
+        ui->container_chart_dropboxes->setVisible(false);
+        break;
+    }
+    case YEAR: {
+        ui->container_chart_dropboxes->setVisible(true);
+        ui->containerBoxMonths->setVisible(false);
+        break;
+    }
+    case MONTH: {
+        ui->container_chart_dropboxes->setVisible(true);
+        ui->containerBoxMonths->setVisible(true);
+        break;
+    }
+    default:
+        break;
     }
 
     // Refresh years filter, first address created is the start
@@ -718,7 +714,8 @@ void DashboardWidget::onChartRefreshed()
     if (yearStart == currentYear) {
         ui->comboBoxYears->addItem(QString::number(currentYear));
     } else {
-        for (int i = yearStart; i < (currentYear + 1); ++i)ui->comboBoxYears->addItem(QString::number(i));
+        for (int i = yearStart; i < (currentYear + 1); ++i)
+            ui->comboBoxYears->addItem(QString::number(i));
     }
 
     if (!selection.isEmpty()) {
@@ -734,26 +731,26 @@ void DashboardWidget::onChartRefreshed()
     isLoading = false;
 }
 
-std::pair<int, int> DashboardWidget::getChartRange(QMap<int, std::pair<qint64, qint64>> amountsBy)
+std::pair<int, int> DashboardWidget::getChartRange(QMap<int, std::pair<qint64, qint64> > amountsBy)
 {
     switch (chartShow) {
-        case YEAR:
-            return std::make_pair(1, 13);
-        case ALL: {
-            QList<int> keys = amountsBy.uniqueKeys();
-            if (keys.isEmpty()) {
-                // This should never happen, ALL means from the beginning of time and if this is called then it must have at least one stake..
-                inform(tr("Error loading chart, invalid data"));
-                return std::make_pair(0, 0);
-            }
-            qSort(keys);
-            return std::make_pair(keys.first(), keys.last() + 1);
-        }
-        case MONTH:
-            return std::make_pair(dayStart, dayStart + 9);
-        default:
-            inform(tr("Error loading chart, invalid show option"));
+    case YEAR:
+        return std::make_pair(1, 13);
+    case ALL: {
+        QList<int> keys = amountsBy.uniqueKeys();
+        if (keys.isEmpty()) {
+            // This should never happen, ALL means from the beginning of time and if this is called then it must have at least one stake..
+            inform(tr("Error loading chart, invalid data"));
             return std::make_pair(0, 0);
+        }
+        qSort(keys);
+        return std::make_pair(keys.first(), keys.last() + 1);
+    }
+    case MONTH:
+        return std::make_pair(dayStart, dayStart + 9);
+    default:
+        inform(tr("Error loading chart, invalid show option"));
+        return std::make_pair(0, 0);
     }
 }
 
@@ -761,11 +758,12 @@ void DashboardWidget::updateAxisX(const QStringList* args)
 {
     axisX->clear();
     QStringList months;
-    std::pair<int,int> range = getChartRange(chartData->amountsByCache);
+    std::pair<int, int> range = getChartRange(chartData->amountsByCache);
     if (args) {
         months = *args;
     } else {
-        for (int i = range.first; i < range.second; i++) months << QString::number(i);
+        for (int i = range.first; i < range.second; i++)
+            months << QString::number(i);
     }
     axisX->append(months);
 }
@@ -794,18 +792,19 @@ void DashboardWidget::windowResizeEvent(QResizeEvent* event)
             if (isChartMin) {
                 isChartMin = false;
                 switch (chartShow) {
-                    case YEAR: {
-                        updateAxisX(&monthsNames);
-                        break;
-                    }
-                    case ALL: break;
-                    case MONTH: {
-                        updateAxisX();
-                        break;
-                    }
-                    default:
-                        inform(tr("Error loading chart, invalid show option"));
-                        return;
+                case YEAR: {
+                    updateAxisX(&monthsNames);
+                    break;
+                }
+                case ALL:
+                    break;
+                case MONTH: {
+                    updateAxisX();
+                    break;
+                }
+                default:
+                    inform(tr("Error loading chart, invalid show option"));
+                    return;
                 }
                 chartView->repaint();
             }

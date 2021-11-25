@@ -75,7 +75,7 @@ if BUILD_BITCOIN_UTILS
 endif
 
 .PHONY: FORCE check-symbols check-security
-# Flits Core #
+# Deviant Core #
 BITCOIN_CORE_H = \
   activemasternode.h \
   addrman.h \

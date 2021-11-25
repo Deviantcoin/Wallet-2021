@@ -12,17 +12,17 @@
 #include <string>
 
 #include "base58.h"
+#include "qt/fls/forms/ui_proposaldialog.h"
+#include "qt/fls/proposaldialog.h"
+#include "qt/fls/qtutils.h"
 #include "rpc/server.h"
+#include "wallet/wallet.h"
 #include <boost/tokenizer.hpp>
 #include <main.h>
 #include <masternode-budget.h>
 #include <masternode-sync.h>
-#include "qt/fls/proposaldialog.h"
-#include "qt/fls/forms/ui_proposaldialog.h"
-#include "qt/fls/qtutils.h"
 #include <univalue.h>
 #include <utilstrencodings.h>
-#include "wallet/wallet.h"
 
 #include <QMessageBox>
 #include <QString>
@@ -33,18 +33,18 @@ ProposalDialog::ProposalDialog(Mode mode, QWidget* parent) : QDialog(parent), ui
     ui->setupUi(this);
 
     switch (mode) {
-        case PrepareProposal:
-            setWindowTitle(tr("Prepare Proposal"));
-            ui->confirmLabel->setVisible(false);
-            ui->hashEdit->setVisible(false);
-            ui->hashLabel->setVisible(false); 
-            break;
-        case SubmitProposal:
-            setWindowTitle(tr("Submit Proposal"));
-            ui->confirmLabel->setVisible(true);
-            ui->hashEdit->setVisible(true);
-            ui->hashLabel->setVisible(true);
-            break;
+    case PrepareProposal:
+        setWindowTitle(tr("Prepare Proposal"));
+        ui->confirmLabel->setVisible(false);
+        ui->hashEdit->setVisible(false);
+        ui->hashLabel->setVisible(false);
+        break;
+    case SubmitProposal:
+        setWindowTitle(tr("Submit Proposal"));
+        ui->confirmLabel->setVisible(true);
+        ui->hashEdit->setVisible(true);
+        ui->hashLabel->setVisible(true);
+        break;
     }
 
     /* Open CSS when configured */
@@ -79,8 +79,8 @@ ProposalDialog::ProposalDialog(Mode mode, QWidget* parent) : QDialog(parent), ui
     initCssEditLine(ui->blockEdit);
 
     ui->addressEdit->setFont(GUIUtil::bitcoinAddressFont());
-    ui->addressEdit->setPlaceholderText(tr("The FLS public address that will receive the funds"));
-    ui->addressEdit->setToolTip(tr("The FLS public address that will receive the funds"));
+    ui->addressEdit->setPlaceholderText(tr("The DEV public address that will receive the funds"));
+    ui->addressEdit->setToolTip(tr("The DEV public address that will receive the funds"));
     initCssEditLine(ui->addressEdit);
 
     ui->amountEdit->setFont(GUIUtil::bitcoinAddressFont());
@@ -125,8 +125,7 @@ void ProposalDialog::prepareProposal()
 {
     std::string strError = "";
 
-    if (pwalletMain->IsLocked())
-    {
+    if (pwalletMain->IsLocked()) {
         strError = "Error: Please enter the wallet passphrase with walletpassphrase first.";
         QMessageBox::critical(this, "Prepare Proposal Error", QString::fromStdString(strError));
         return;
@@ -148,21 +147,18 @@ void ProposalDialog::prepareProposal()
     if (!budgetProposalBroadcast.IsValid(err, false)) strError = "Proposal is not valid - " + budgetProposalBroadcast.GetHash().ToString() + " - " + err;
 
     bool useIX = false;
-    if (strError.empty() && !pwalletMain->GetBudgetSystemCollateralTX(wtx, budgetProposalBroadcast.GetHash(), useIX)) 
-    {
+    if (strError.empty() && !pwalletMain->GetBudgetSystemCollateralTX(wtx, budgetProposalBroadcast.GetHash(), useIX)) {
         strError = "Error making collateral transaction for proposal. Please check your wallet balance.";
     }
 
     // make our change address
     CReserveKey reservekey(pwalletMain);
     // send the tx to the network
-    if (strError.empty() && !pwalletMain->CommitTransaction(wtx, reservekey, useIX ? "ix" : "tx"))
-    {
+    if (strError.empty() && !pwalletMain->CommitTransaction(wtx, reservekey, useIX ? "ix" : "tx")) {
         strError = "Unable to commit proposal transaction.";
     }
 
-    if (!strError.empty()) 
-    {
+    if (!strError.empty()) {
         std::cout << strError << std::endl;
         QMessageBox::critical(this, "Prepare Proposal Error", QString::fromStdString(strError));
         return;
@@ -214,15 +210,13 @@ void ProposalDialog::submitProposal()
     int nConf = 0;
     std::string err = "";
     CBudgetProposalBroadcast budgetProposalBroadcast(strProposalName, strURL, nPaymentCount, scriptPubKey, nAmount, nBlockStart, hash);
-    if (!IsBudgetCollateralValid(hash, budgetProposalBroadcast.GetHash(), err, budgetProposalBroadcast.nTime, nConf))
-    {
+    if (!IsBudgetCollateralValid(hash, budgetProposalBroadcast.GetHash(), err, budgetProposalBroadcast.nTime, nConf)) {
         strError = "Proposal FeeTX is not valid - " + hash.ToString() + " - " + err;
     }
 
     if (strError.empty() && !budget.AddProposal(budgetProposalBroadcast)) strError = "Invalid proposal, see debug.log for details.";
 
-    if (!strError.empty()) 
-    {
+    if (!strError.empty()) {
         std::cout << strError << std::endl;
         QMessageBox::critical(this, tr("Submit Proposal Error"), QString::fromStdString(strError));
         return;
@@ -256,8 +250,7 @@ bool ProposalDialog::validateProposal()
 
     int nBlockStart = ui->blockEdit->text().toInt();
     if (nBlockStart < nBlockMin) strError = "Invalid block start, must be more than current height.";
-    if (nBlockStart % (GetBudgetCycleBlocks() + 1) != 0)
-    {
+    if (nBlockStart % (GetBudgetCycleBlocks() + 1) != 0) {
         int nNext = pindexPrev->nHeight - pindexPrev->nHeight % GetBudgetCycleBlocks() + GetBudgetCycleBlocks();
         strError = strprintf("Invalid block start - must be a budget cycle block. Next valid block: %d", nNext);
     }
@@ -266,10 +259,9 @@ bool ProposalDialog::validateProposal()
     if (nBlockEnd < pindexPrev->nHeight) strError = "Invalid ending block, starting block + (payment_cycle*payments) must be more than current height.";
 
     CBitcoinAddress address(ui->addressEdit->text().toStdString());
-    if (!address.IsValid()) strError = "Invalid FLS address";
+    if (!address.IsValid()) strError = "Invalid DEV address";
 
-    if (!strError.empty()) 
-    {
+    if (!strError.empty()) {
         QMessageBox::critical(this, tr("Submit Proposal Error"), QString::fromStdString(strError));
         return false;
     }
@@ -283,20 +275,15 @@ void ProposalDialog::checkProposalTX()
 
     int nConf = Params().GetConsensus().nBudgetFeeConfirmations;
     int nDepth = (chainActive.Tip()->nHeight + 1) - counter;
-    if (nDepth > nConf) 
-    {
+    if (nDepth > nConf) {
         ui->acceptButton->setDisabled(false);
         ui->acceptButton->setText("Finish Proposal");
         ui->confirmLabel->setText(tr("Click on Finish Proposal to complete the proposal and start voting."));
 
         timer->stop();
-    }
-    else if (nDepth == nConf)
-    {
+    } else if (nDepth == nConf) {
         ui->confirmLabel->setText(QString::fromStdString("Waiting for final confirmation..."));
-    }
-    else if (nDepth > 0)
-    {
+    } else if (nDepth > 0) {
         ui->confirmLabel->setText(QString::fromStdString(strprintf("Currently %d of %d confirmations...", nDepth, (nConf + 1)).c_str()));
     }
 }
@@ -305,12 +292,9 @@ void ProposalDialog::on_acceptButton_clicked()
 {
     if (!validateProposal()) return;
 
-    if (mode == PrepareProposal) 
-    {
+    if (mode == PrepareProposal) {
         prepareProposal();
-    }
-	else if (mode == SubmitProposal) 
-    {
+    } else if (mode == SubmitProposal) {
         submitProposal();
     }
 }

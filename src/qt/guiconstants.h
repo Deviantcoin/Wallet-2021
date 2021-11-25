@@ -38,7 +38,7 @@ static const bool DEFAULT_SPLASHSCREEN = true;
 /* Transaction list -- TX status decoration - orphan (Light Gray #D3D3D3) */
 #define COLOR_ORPHAN QColor(211, 211, 211)
 /* Transaction list -- TX status decoration - stake (BlueViolet #8A2BE2) */
-#define COLOR_STAKE QColor(138,43,226)
+#define COLOR_STAKE QColor(138, 43, 226)
 /* Tooltips longer than this (in characters) are converted into rich text,
    so that they can be word-wrapped.
  */
@@ -53,8 +53,8 @@ static const int MAX_URI_LENGTH = 255;
 /* Number of frames in spinner animation */
 #define SPINNER_FRAMES 35
 
-#define QAPP_ORG_NAME "FLS"
-#define QAPP_ORG_DOMAIN "fls.org"
+#define QAPP_ORG_NAME "DEV"
+#define QAPP_ORG_DOMAIN "deviant.io"
 #define QAPP_APP_NAME_DEFAULT "flits-qt"
 #define QAPP_APP_NAME_TESTNET "flits-qt-testnet"
 

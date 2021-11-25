@@ -10,8 +10,8 @@
 
 #include "guiutil.h"
 
-#include "util.h"
 #include "qt/fls/qtutils.h"
+#include "util.h"
 
 #include <boost/filesystem.hpp>
 
@@ -200,7 +200,7 @@ bool Intro::pickDataDirectory()
                 TryCreateDirectory(GUIUtil::qstringToBoostPath(dataDir));
                 break;
             } catch (const fs::filesystem_error& e) {
-                QMessageBox::critical(0, tr("Flits Core"),
+                QMessageBox::critical(0, tr("Deviant Core"),
                     tr("Error: Specified data directory \"%1\" cannot be created.").arg(dataDir));
                 // fall through, back to choosing screen
             }
@@ -248,12 +248,12 @@ void Intro::setStatus(int status, const QString& message, quint64 bytesAvailable
     ui->pushButtonOk->setEnabled(status != FreespaceChecker::ST_ERROR);
 }
 
-void Intro::updateDataDirStatus(bool enabled){
-    if(enabled){
+void Intro::updateDataDirStatus(bool enabled)
+{
+    if (enabled) {
         setCssProperty(ui->dataDirectory, "edit-primary-welcome", true);
     } else {
         setCssProperty(ui->dataDirectory, "edit-primary-welcome-disabled", true);
-
     }
 }
 

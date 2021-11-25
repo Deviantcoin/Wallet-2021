@@ -29,10 +29,10 @@
 #endif
 #include "masternodeconfig.h"
 
+#include "guiinterface.h"
 #include "init.h"
 #include "main.h"
 #include "rpc/server.h"
-#include "guiinterface.h"
 #include "util.h"
 
 #ifdef ENABLE_WALLET
@@ -150,7 +150,7 @@ void DebugMessageHandler(QtMsgType type, const QMessageLogContext& context, cons
     }
 }
 
-/** Class encapsulating Flits Core startup and shutdown.
+/** Class encapsulating Deviant Core startup and shutdown.
  * Allows running startup and shutdown in a different thread from the UI thread.
  */
 class BitcoinCore : public QObject
@@ -382,7 +382,7 @@ bool BitcoinApplication::createTutorialScreen()
 {
     WelcomeContentWidget* widget = new WelcomeContentWidget();
 
-    connect(widget, &WelcomeContentWidget::onLanguageSelected, [this](){
+    connect(widget, &WelcomeContentWidget::onLanguageSelected, [this]() {
         updateTranslation();
     });
 
@@ -392,7 +392,8 @@ bool BitcoinApplication::createTutorialScreen()
     return ret;
 }
 
-void BitcoinApplication::updateTranslation(){
+void BitcoinApplication::updateTranslation()
+{
     // Re-initialize translations after change them
     initTranslations(this->qtTranslatorBase, this->qtTranslator, this->translatorBase, this->translator);
 }
@@ -477,7 +478,7 @@ void BitcoinApplication::initializeResult(int retval)
             window->setCurrentWallet(FLSGUI::DEFAULT_WALLET);
 
             connect(walletModel, &WalletModel::coinsSent,
-                    paymentServer, &PaymentServer::fetchPaymentACK);
+                paymentServer, &PaymentServer::fetchPaymentACK);
         }
 #endif
 
@@ -495,7 +496,7 @@ void BitcoinApplication::initializeResult(int retval)
         //connect(paymentServer, &PaymentServer::receivedPaymentRequest, window, &FLSGUI::handlePaymentRequest);
         connect(window, &FLSGUI::receivedURI, paymentServer, &PaymentServer::handleURIOrFile);
         connect(paymentServer, &PaymentServer::message, [this](const QString& title, const QString& message, unsigned int style) {
-          window->message(title, message, style);
+            window->message(title, message, style);
         });
         QTimer::singleShot(100, paymentServer, &PaymentServer::uiReady);
 #endif
@@ -512,7 +513,7 @@ void BitcoinApplication::shutdownResult(int retval)
 
 void BitcoinApplication::handleRunawayException(const QString& message)
 {
-    QMessageBox::critical(0, "Runaway exception", FLSGUI::tr("A fatal error occurred. FLS can no longer continue safely and will quit.") + QString("\n\n") + message);
+    QMessageBox::critical(0, "Runaway exception", FLSGUI::tr("A fatal error occurred. DEV can no longer continue safely and will quit.") + QString("\n\n") + message);
     ::exit(1);
 }
 
@@ -533,9 +534,9 @@ int main(int argc, char* argv[])
     // Command-line options take precedence:
     ParseParameters(argc, argv);
 
-// Do not refer to data directory yet, this can be overridden by Intro::pickDataDirectory
+    // Do not refer to data directory yet, this can be overridden by Intro::pickDataDirectory
 
-/// 2. Basic Qt initialization (not dependent on parameters or configuration)
+    /// 2. Basic Qt initialization (not dependent on parameters or configuration)
     Q_INIT_RESOURCE(fls_locale);
     Q_INIT_RESOURCE(fls);
 
@@ -585,14 +586,14 @@ int main(int argc, char* argv[])
     /// 6. Determine availability of data directory and parse fls.conf
     /// - Do not call GetDataDir(true) before this step finishes
     if (!boost::filesystem::is_directory(GetDataDir(false))) {
-        QMessageBox::critical(0, QObject::tr("Flits Core"),
+        QMessageBox::critical(0, QObject::tr("Deviant Core"),
             QObject::tr("Error: Specified data directory \"%1\" does not exist.").arg(QString::fromStdString(mapArgs["-datadir"])));
         return 1;
     }
     try {
         ReadConfigFile(mapArgs, mapMultiArgs);
     } catch (const std::exception& e) {
-        QMessageBox::critical(0, QObject::tr("Flits Core"),
+        QMessageBox::critical(0, QObject::tr("Deviant Core"),
             QObject::tr("Error: Cannot parse configuration file: %1. Only use key=value syntax.").arg(e.what()));
         return 0;
     }
@@ -605,7 +606,7 @@ int main(int argc, char* argv[])
 
     // Check for -testnet or -regtest parameter (Params() calls are only valid after this clause)
     if (!SelectParamsFromCommandLine()) {
-        QMessageBox::critical(0, QObject::tr("Flits Core"), QObject::tr("Error: Invalid combination of -regtest and -testnet."));
+        QMessageBox::critical(0, QObject::tr("Deviant Core"), QObject::tr("Error: Invalid combination of -regtest and -testnet."));
         return 1;
     }
 #ifdef ENABLE_WALLET
@@ -624,7 +625,7 @@ int main(int argc, char* argv[])
     /// 7a. parse masternode.conf
     std::string strErr;
     if (!masternodeConfig.read(strErr)) {
-        QMessageBox::critical(0, QObject::tr("Flits Core"),
+        QMessageBox::critical(0, QObject::tr("Deviant Core"),
             QObject::tr("Error reading masternode configuration file: %1").arg(strErr.c_str()));
         return 0;
     }
@@ -666,7 +667,7 @@ int main(int argc, char* argv[])
     std::string strWalletFile = GetArg("-wallet", "wallet.dat");
     std::string strDataDir = GetDataDir().string();
     // Wallet file must be a plain filename without a directory
-    if (strWalletFile != boost::filesystem::basename(strWalletFile) + boost::filesystem::extension(strWalletFile)){
+    if (strWalletFile != boost::filesystem::basename(strWalletFile) + boost::filesystem::extension(strWalletFile)) {
         throw std::runtime_error(strprintf(_("Wallet %s resides outside data directory %s"), strWalletFile, strDataDir));
     }
 
@@ -676,7 +677,7 @@ int main(int argc, char* argv[])
         ret = app.createTutorialScreen();
     }
 #endif
-    if(!ret){
+    if (!ret) {
         // wallet not loaded.
         return 0;
     }
@@ -688,7 +689,7 @@ int main(int argc, char* argv[])
         app.createWindow(networkStyle.data());
         app.requestInitialize();
 #if defined(Q_OS_WIN)
-        WinShutdownMonitor::registerShutdownBlockReason(QObject::tr("Flits Core didn't yet exit safely..."), (HWND)app.getMainWinId());
+        WinShutdownMonitor::registerShutdownBlockReason(QObject::tr("Deviant Core didn't yet exit safely..."), (HWND)app.getMainWinId());
 #endif
         app.exec();
         app.requestShutdown();

@@ -8,16 +8,16 @@
 #include "clientversion.h"
 #include "coins.h"
 #include "core_io.h"
+#include "guiinterface.h" // for _(...)
 #include "keystore.h"
 #include "primitives/block.h" // for MAX_BLOCK_SIZE
 #include "primitives/transaction.h"
 #include "script/script.h"
 #include "script/sign.h"
-#include "guiinterface.h" // for _(...)
-#include <univalue.h>
 #include "util.h"
 #include "utilmoneystr.h"
 #include "utilstrencodings.h"
+#include <univalue.h>
 
 #include <stdio.h>
 
@@ -46,7 +46,7 @@ static bool AppInitRawTx(int argc, char* argv[])
 
     if (argc < 2 || mapArgs.count("-?") || mapArgs.count("-help")) {
         // First part of help message is specific to this utility
-        std::string strUsage = _("Flits Core flits-tx utility version") + " " + FormatFullVersion() + "\n\n" +
+        std::string strUsage = _("Deviant Core flits-tx utility version") + " " + FormatFullVersion() + "\n\n" +
                                _("Usage:") + "\n" +
                                "  flits-tx [options] <hex-tx> [commands]  " + _("Update hex-encoded fls transaction") + "\n" +
                                "  flits-tx [options] -create [commands]   " + _("Create hex-encoded fls transaction") + "\n" +
@@ -74,10 +74,10 @@ static bool AppInitRawTx(int argc, char* argv[])
         strUsage += HelpMessageOpt("outaddr=VALUE:ADDRESS", _("Add address-based output to TX"));
         strUsage += HelpMessageOpt("outscript=VALUE:SCRIPT", _("Add raw script output to TX"));
         strUsage += HelpMessageOpt("sign=SIGHASH-FLAGS", _("Add zero or more signatures to transaction") + ". " +
-            _("This command requires JSON registers:") +
-            _("prevtxs=JSON object") + ", " +
-            _("privatekeys=JSON object") + ". " +
-            _("See signrawtransaction docs for format of sighash flags, JSON objects."));
+                                                             _("This command requires JSON registers:") +
+                                                             _("prevtxs=JSON object") + ", " +
+                                                             _("privatekeys=JSON object") + ". " +
+                                                             _("See signrawtransaction docs for format of sighash flags, JSON objects."));
         fprintf(stdout, "%s", strUsage.c_str());
 
         strUsage = HelpMessageGroup(_("Register Commands:"));
@@ -451,10 +451,12 @@ class Secp256k1Init
     ECCVerifyHandle globalVerifyHandle;
 
 public:
-    Secp256k1Init() {
+    Secp256k1Init()
+    {
         ECC_Start();
     }
-    ~Secp256k1Init() {
+    ~Secp256k1Init()
+    {
         ECC_Stop();
     }
 };
@@ -479,8 +481,10 @@ static void MutateTx(CMutableTransaction& tx, const std::string& command, const 
     else if (command == "outscript")
         MutateTxAddOutScript(tx, commandVal);
 
-    else if (command == "sign"){
-        if (!ecc) { ecc.reset(new Secp256k1Init()); }
+    else if (command == "sign") {
+        if (!ecc) {
+            ecc.reset(new Secp256k1Init());
+        }
         MutateTxSign(tx, commandVal);
     }
 

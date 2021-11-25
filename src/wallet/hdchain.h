@@ -1,17 +1,19 @@
-// Copyright (c) 2020 The Flits Core developers
+// Copyright (c) 2020 The Deviant Core developers
 // Distributed under the MIT software license, see the accompanying
 #ifndef FLS_HDCHAIN_H
 #define FLS_HDCHAIN_H
 
 #include "key.h"
 
-namespace HDChain {
-    namespace ChangeType {
-        static const uint8_t EXTERNAL = 0;
-        static const uint8_t INTERNAL = 1;
-        static const uint8_t STAKING = 2;
-    };
-}
+namespace HDChain
+{
+namespace ChangeType
+{
+static const uint8_t EXTERNAL = 0;
+static const uint8_t INTERNAL = 1;
+static const uint8_t STAKING = 2;
+}; // namespace ChangeType
+} // namespace HDChain
 
 /* Simple HD chain data model */
 class CHDChain
@@ -47,16 +49,17 @@ public:
     bool SetSeed(const CKeyID& seedId);
     CKeyID GetID() const { return seed_id; }
 
-    uint32_t& GetChainCounter(const uint8_t& type = HDChain::ChangeType::EXTERNAL) {
+    uint32_t& GetChainCounter(const uint8_t& type = HDChain::ChangeType::EXTERNAL)
+    {
         switch (type) {
-            case HDChain::ChangeType::EXTERNAL:
-                return nExternalChainCounter;
-            case HDChain::ChangeType::INTERNAL:
-                return nInternalChainCounter;
-            case HDChain::ChangeType::STAKING:
-                return nStakingChainCounter;
-            default:
-                throw std::runtime_error("HD chain type doesn't exist.");
+        case HDChain::ChangeType::EXTERNAL:
+            return nExternalChainCounter;
+        case HDChain::ChangeType::INTERNAL:
+            return nInternalChainCounter;
+        case HDChain::ChangeType::STAKING:
+            return nStakingChainCounter;
+        default:
+            throw std::runtime_error("HD chain type doesn't exist.");
         }
     }
 };

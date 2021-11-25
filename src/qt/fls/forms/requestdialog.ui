@@ -324,7 +324,7 @@
                    <item>
                     <widget class="QLabel" name="comboBoxCoin">
                      <property name="text">
-                      <string>FLS</string>
+                      <string>DEV</string>
                      </property>
                      <property name="alignment">
                       <set>Qt::AlignCenter</set>

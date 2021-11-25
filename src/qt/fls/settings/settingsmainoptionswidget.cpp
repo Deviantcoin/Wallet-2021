@@ -3,17 +3,17 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include "qt/fls/settings/settingsmainoptionswidget.h"
-#include "qt/fls/settings/forms/ui_settingsmainoptionswidget.h"
 #include "QListView"
+#include "qt/fls/settings/forms/ui_settingsmainoptionswidget.h"
 
 #if defined(HAVE_CONFIG_H)
 #include "config/flits-config.h"
 #endif
 
 #include "bitcoinunits.h"
+#include "clientmodel.h"
 #include "guiutil.h"
 #include "optionsmodel.h"
-#include "clientmodel.h"
 #include "qt/fls/qtutils.h"
 
 #include "main.h" // for MAX_SCRIPTCHECK_THREADS
@@ -32,9 +32,8 @@
 #include <QTimer>
 
 
-SettingsMainOptionsWidget::SettingsMainOptionsWidget(FLSGUI* _window, QWidget *parent) :
-    PWidget(_window, parent),
-    ui(new Ui::SettingsMainOptionsWidget)
+SettingsMainOptionsWidget::SettingsMainOptionsWidget(FLSGUI* _window, QWidget* parent) : PWidget(_window, parent),
+                                                                                         ui(new Ui::SettingsMainOptionsWidget)
 {
     ui->setupUi(this);
 
@@ -42,7 +41,7 @@ SettingsMainOptionsWidget::SettingsMainOptionsWidget(FLSGUI* _window, QWidget *p
 
     // Containers
     ui->left->setProperty("cssClass", "container");
-    ui->left->setContentsMargins(10,10,10,10);
+    ui->left->setContentsMargins(10, 10, 10, 10);
     ui->labelDivider->setProperty("cssClass", "container-divider");
 
     // Title
@@ -61,7 +60,7 @@ SettingsMainOptionsWidget::SettingsMainOptionsWidget(FLSGUI* _window, QWidget *p
     ui->labelTitleThreads->setProperty("cssClass", "text-main-settings");
 
     // Switch
-    ui->pushSwitchStart->setText(tr("Start FLS on system login"));
+    ui->pushSwitchStart->setText(tr("Start DEV on system login"));
     ui->pushSwitchStart->setProperty("cssClass", "btn-switch");
 
     // Combobox
@@ -94,11 +93,12 @@ SettingsMainOptionsWidget::SettingsMainOptionsWidget(FLSGUI* _window, QWidget *p
     connect(ui->pushButtonClean, &QPushButton::clicked, [this] { Q_EMIT discardSettings(); });
 }
 
-void SettingsMainOptionsWidget::onResetClicked(){
-    if(clientModel) {
+void SettingsMainOptionsWidget::onResetClicked()
+{
+    if (clientModel) {
         if (!ask(tr("Reset Options"), tr("You are just about to reset the app\'s options to the default values.\n\nAre you sure?\n")))
             return;
-        OptionsModel *optionsModel = clientModel->getOptionsModel();
+        OptionsModel* optionsModel = clientModel->getOptionsModel();
         QSettings settings;
         // default setting for OptionsModel::StartAtStartup - disabled
         if (GUIUtil::GetStartOnSystemStartup())
@@ -109,7 +109,8 @@ void SettingsMainOptionsWidget::onResetClicked(){
     }
 }
 
-void SettingsMainOptionsWidget::setMapper(QDataWidgetMapper *mapper){
+void SettingsMainOptionsWidget::setMapper(QDataWidgetMapper* mapper)
+{
     mapper->addMapping(ui->pushSwitchStart, OptionsModel::StartAtStartup);
     mapper->addMapping(ui->threadsScriptVerif, OptionsModel::ThreadsScriptVerif);
     mapper->addMapping(ui->databaseCache, OptionsModel::DatabaseCache);
@@ -120,6 +121,7 @@ void SettingsMainOptionsWidget::setMapper(QDataWidgetMapper *mapper){
 #endif
 }
 
-SettingsMainOptionsWidget::~SettingsMainOptionsWidget(){
+SettingsMainOptionsWidget::~SettingsMainOptionsWidget()
+{
     delete ui;
 }

@@ -3,24 +3,23 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include "qt/fls/welcomecontentwidget.h"
+#include "guiutil.h"
 #include "qt/fls/forms/ui_welcomecontentwidget.h"
+#include <QDesktopWidget>
+#include <QDir>
 #include <QFile>
 #include <QListView>
-#include <QDir>
-#include "guiutil.h"
 #include <QSettings>
 #include <iostream>
-#include <QDesktopWidget>
 
-WelcomeContentWidget::WelcomeContentWidget(QWidget *parent) :
-    QDialog(parent, Qt::FramelessWindowHint | Qt::WindowSystemMenuHint),
-    ui(new Ui::WelcomeContentWidget),
-    icConfirm1(new QPushButton()),
-    icConfirm2(new QPushButton()),
-    icConfirm3(new QPushButton()),
-    icConfirm4(new QPushButton()),
-    backButton(new QPushButton()),
-    nextButton(new QPushButton())
+WelcomeContentWidget::WelcomeContentWidget(QWidget* parent) : QDialog(parent, Qt::FramelessWindowHint | Qt::WindowSystemMenuHint),
+                                                              ui(new Ui::WelcomeContentWidget),
+                                                              icConfirm1(new QPushButton()),
+                                                              icConfirm2(new QPushButton()),
+                                                              icConfirm3(new QPushButton()),
+                                                              icConfirm4(new QPushButton()),
+                                                              backButton(new QPushButton()),
+                                                              nextButton(new QPushButton())
 {
     ui->setupUi(this);
 
@@ -172,7 +171,8 @@ WelcomeContentWidget::WelcomeContentWidget(QWidget *parent) :
     move(QApplication::desktop()->screenGeometry().center() - r.center());
 }
 
-void WelcomeContentWidget::initLanguages(){
+void WelcomeContentWidget::initLanguages()
+{
     /* Language selector */
     QDir translations(":translations");
     ui->comboBoxLanguage->addItem(QString("(") + tr("default") + QString(")"), QVariant(""));
@@ -180,125 +180,125 @@ void WelcomeContentWidget::initLanguages(){
         QLocale locale(langStr);
 
         /** check if the locale name consists of 2 parts (language_country) */
-        if(langStr.contains("_")){
+        if (langStr.contains("_")) {
             /** display language strings as "native language - native country (locale name)", e.g. "Deutsch - Deutschland (de)" */
             ui->comboBoxLanguage->addItem(locale.nativeLanguageName() + QString(" - ") + locale.nativeCountryName() + QString(" (") + langStr + QString(")"), QVariant(langStr));
-        }
-        else{
+        } else {
             /** display language strings as "native language (locale name)", e.g. "Deutsch (de)" */
             ui->comboBoxLanguage->addItem(locale.nativeLanguageName() + QString(" (") + langStr + QString(")"), QVariant(langStr));
         }
     }
 }
 
-void WelcomeContentWidget::setModel(OptionsModel *model){
+void WelcomeContentWidget::setModel(OptionsModel* model)
+{
     this->model = model;
 }
 
-void WelcomeContentWidget::checkLanguage(){
+void WelcomeContentWidget::checkLanguage()
+{
     QString sel = ui->comboBoxLanguage->currentData().toString();
     QSettings settings;
-    if (settings.value("language") != sel){
+    if (settings.value("language") != sel) {
         settings.setValue("language", sel);
         Q_EMIT onLanguageSelected();
     }
 }
 
-void WelcomeContentWidget::onNextClicked(){
-
-    switch(pos){
-        case 0:{
-            ui->stackedWidget->setCurrentIndex(1);
-            break;
-        }
-        case 1:{
-            backButton->setVisible(true);
-            ui->stackedWidget->setCurrentIndex(2);
-            ui->pushNumber2->setChecked(true);
-            ui->pushName4->setChecked(false);
-            ui->pushName3->setChecked(false);
-            ui->pushName2->setChecked(true);
-            ui->pushName1->setChecked(true);
-            icConfirm1->setVisible(true);
-            break;
-        }
-        case 2:{
-            ui->stackedWidget->setCurrentIndex(3);
-            ui->pushNumber3->setChecked(true);
-            ui->pushName4->setChecked(false);
-            ui->pushName3->setChecked(true);
-            ui->pushName2->setChecked(true);
-            ui->pushName1->setChecked(true);
-            icConfirm2->setVisible(true);
-            break;
-        }
-        case 3:{
-            ui->stackedWidget->setCurrentIndex(4);
-            ui->pushNumber4->setChecked(true);
-            ui->pushName4->setChecked(true);
-            ui->pushName3->setChecked(true);
-            ui->pushName2->setChecked(true);
-            ui->pushName1->setChecked(true);
-            icConfirm3->setVisible(true);
-            break;
-        }
-        case 4:{
-            isOk = true;
-            accept();
-            break;
-        }
+void WelcomeContentWidget::onNextClicked()
+{
+    switch (pos) {
+    case 0: {
+        ui->stackedWidget->setCurrentIndex(1);
+        break;
+    }
+    case 1: {
+        backButton->setVisible(true);
+        ui->stackedWidget->setCurrentIndex(2);
+        ui->pushNumber2->setChecked(true);
+        ui->pushName4->setChecked(false);
+        ui->pushName3->setChecked(false);
+        ui->pushName2->setChecked(true);
+        ui->pushName1->setChecked(true);
+        icConfirm1->setVisible(true);
+        break;
+    }
+    case 2: {
+        ui->stackedWidget->setCurrentIndex(3);
+        ui->pushNumber3->setChecked(true);
+        ui->pushName4->setChecked(false);
+        ui->pushName3->setChecked(true);
+        ui->pushName2->setChecked(true);
+        ui->pushName1->setChecked(true);
+        icConfirm2->setVisible(true);
+        break;
+    }
+    case 3: {
+        ui->stackedWidget->setCurrentIndex(4);
+        ui->pushNumber4->setChecked(true);
+        ui->pushName4->setChecked(true);
+        ui->pushName3->setChecked(true);
+        ui->pushName2->setChecked(true);
+        ui->pushName1->setChecked(true);
+        icConfirm3->setVisible(true);
+        break;
+    }
+    case 4: {
+        isOk = true;
+        accept();
+        break;
+    }
     }
     pos++;
-
 }
 
-void WelcomeContentWidget::onBackClicked(){
+void WelcomeContentWidget::onBackClicked()
+{
     if (pos == 0) return;
     pos--;
-    switch(pos){
-        case 0:{
-            ui->stackedWidget->setCurrentIndex(0);
-            break;
-        }
-        case 1:{
-            ui->stackedWidget->setCurrentIndex(1);
-            ui->pushNumber1->setChecked(true);
-            ui->pushNumber4->setChecked(false);
-            ui->pushNumber3->setChecked(false);
-            ui->pushNumber2->setChecked(false);
-            ui->pushName4->setChecked(false);
-            ui->pushName3->setChecked(false);
-            ui->pushName2->setChecked(false);
-            ui->pushName1->setChecked(true);
-            icConfirm1->setVisible(false);
-            backButton->setVisible(false);
+    switch (pos) {
+    case 0: {
+        ui->stackedWidget->setCurrentIndex(0);
+        break;
+    }
+    case 1: {
+        ui->stackedWidget->setCurrentIndex(1);
+        ui->pushNumber1->setChecked(true);
+        ui->pushNumber4->setChecked(false);
+        ui->pushNumber3->setChecked(false);
+        ui->pushNumber2->setChecked(false);
+        ui->pushName4->setChecked(false);
+        ui->pushName3->setChecked(false);
+        ui->pushName2->setChecked(false);
+        ui->pushName1->setChecked(true);
+        icConfirm1->setVisible(false);
+        backButton->setVisible(false);
 
-            break;
-        }
-        case 2:{
-            ui->stackedWidget->setCurrentIndex(2);
-            ui->pushNumber2->setChecked(true);
-            ui->pushNumber4->setChecked(false);
-            ui->pushNumber3->setChecked(false);
-            ui->pushName4->setChecked(false);
-            ui->pushName3->setChecked(false);
-            ui->pushName2->setChecked(true);
-            ui->pushName1->setChecked(true);
-            icConfirm2->setVisible(false);
-            break;
-        }
-        case 3:{
-            ui->stackedWidget->setCurrentIndex(3);
-            ui->pushNumber3->setChecked(true);
-            ui->pushNumber4->setChecked(false);
-            ui->pushName4->setChecked(false);
-            ui->pushName3->setChecked(true);
-            ui->pushName2->setChecked(true);
-            ui->pushName1->setChecked(true);
-            icConfirm3->setVisible(false);
-            break;
-        }
-
+        break;
+    }
+    case 2: {
+        ui->stackedWidget->setCurrentIndex(2);
+        ui->pushNumber2->setChecked(true);
+        ui->pushNumber4->setChecked(false);
+        ui->pushNumber3->setChecked(false);
+        ui->pushName4->setChecked(false);
+        ui->pushName3->setChecked(false);
+        ui->pushName2->setChecked(true);
+        ui->pushName1->setChecked(true);
+        icConfirm2->setVisible(false);
+        break;
+    }
+    case 3: {
+        ui->stackedWidget->setCurrentIndex(3);
+        ui->pushNumber3->setChecked(true);
+        ui->pushNumber4->setChecked(false);
+        ui->pushName4->setChecked(false);
+        ui->pushName3->setChecked(true);
+        ui->pushName2->setChecked(true);
+        ui->pushName1->setChecked(true);
+        icConfirm3->setVisible(false);
+        break;
+    }
     }
 
     if (pos == 0) {
@@ -306,7 +306,8 @@ void WelcomeContentWidget::onBackClicked(){
     }
 }
 
-void WelcomeContentWidget::onSkipClicked(){
+void WelcomeContentWidget::onSkipClicked()
+{
     isOk = true;
     accept();
 }

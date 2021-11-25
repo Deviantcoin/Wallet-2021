@@ -1,5 +1,5 @@
 // Copyright (c) 2019 The Bitcoin Core developers
-// Copyright (c) 2020 The Flits Core developers
+// Copyright (c) 2020 The Deviant Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -21,11 +21,11 @@ static const uint32_t BIP32_HARDENED_KEY_LIMIT = 0x80000000;
  * when a scriptPubKey has been used. It also handles when and how to store a scriptPubKey
  * and its related scripts and keys, including encryption.
  */
-class ScriptPubKeyMan {
-
+class ScriptPubKeyMan
+{
 public:
     ScriptPubKeyMan(CWallet* parent) : wallet(parent) {}
-    ~ScriptPubKeyMan() {};
+    ~ScriptPubKeyMan(){};
 
     /* Set the HD chain model (chain child index counters) */
     void SetHDChain(CHDChain& chain, bool memonly);
@@ -74,7 +74,7 @@ public:
     void SetHDSeed(const CPubKey& key, bool force = false);
 
     //! Load a keypool entry
-    void LoadKeyPool(int64_t nIndex, const CKeyPool &keypool);
+    void LoadKeyPool(int64_t nIndex, const CKeyPool& keypool);
     //! Key pool
     bool NewKeyPool();
     //! Update pre HD keys in db with the pre-split flag enabled.
@@ -96,7 +96,7 @@ public:
 
 
     //! Fetches a key from the keypool
-    bool GetKeyFromPool(CPubKey &key, const uint8_t& changeType = HDChain::ChangeType::EXTERNAL);
+    bool GetKeyFromPool(CPubKey& key, const uint8_t& changeType = HDChain::ChangeType::EXTERNAL);
     //! Reserve + fetch a key from the keypool
     bool GetReservedKey(const uint8_t& changeType, int64_t& index, CKeyPool& keypool);
 
@@ -130,7 +130,7 @@ private:
     CHDChain hdChain;
 
     /* TODO: This has not been implemented yet.. */
-    CWalletDB *encrypted_batch = nullptr;
+    CWalletDB* encrypted_batch = nullptr;
 
     // Key pool maps
     std::set<int64_t> setInternalKeyPool;
@@ -142,16 +142,16 @@ private:
     std::map<int64_t, CKeyID> m_index_to_reserved_key;
 
     /* */
-    bool AddKeyPubKeyInner(const CKey& key, const CPubKey &pubkey);
+    bool AddKeyPubKeyInner(const CKey& key, const CPubKey& pubkey);
 
     //! Adds a key to the store, and saves it to disk.
-    bool AddKeyPubKeyWithDB(CWalletDB &batch,const CKey& key, const CPubKey &pubkey);
+    bool AddKeyPubKeyWithDB(CWalletDB& batch, const CKey& key, const CPubKey& pubkey);
     /* Complete me */
     void AddKeypoolPubkeyWithDB(const CPubKey& pubkey, const uint8_t& type, CWalletDB& batch);
     void GeneratePool(CWalletDB& batch, int64_t targetSize, const uint8_t& type);
 
     /* HD derive new child key (on internal or external chain) */
-    void DeriveNewChildKey(CWalletDB &batch, CKeyMetadata& metadata, CKey& secret, const uint8_t& type = HDChain::ChangeType::EXTERNAL);
+    void DeriveNewChildKey(CWalletDB& batch, CKeyMetadata& metadata, CKey& secret, const uint8_t& type = HDChain::ChangeType::EXTERNAL);
 
     /**
      * Marks all keys in the keypool up to and including reserve_key as used.

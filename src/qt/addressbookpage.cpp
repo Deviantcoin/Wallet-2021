@@ -13,10 +13,10 @@
 #include "ui_addressbookpage.h"
 
 #include "addresstablemodel.h"
-#include "qt/fls/flsgui.h"
 #include "csvmodelwriter.h"
 #include "editaddressdialog.h"
 #include "guiutil.h"
+#include "qt/fls/flsgui.h"
 
 #include <QIcon>
 #include <QMenu>
@@ -67,11 +67,11 @@ AddressBookPage::AddressBookPage(Mode mode, Tabs tab, QWidget* parent) : QDialog
     }
     switch (tab) {
     case SendingTab:
-        ui->labelExplanation->setText(tr("These are your FLS addresses for sending payments. Always check the amount and the receiving address before sending coins."));
+        ui->labelExplanation->setText(tr("These are your DEV addresses for sending payments. Always check the amount and the receiving address before sending coins."));
         ui->deleteAddress->setVisible(true);
         break;
     case ReceivingTab:
-        ui->labelExplanation->setText(tr("These are your FLS addresses for receiving payments. It is recommended to use a new receiving address for each transaction."));
+        ui->labelExplanation->setText(tr("These are your DEV addresses for receiving payments. It is recommended to use a new receiving address for each transaction."));
         ui->deleteAddress->setVisible(false);
         break;
     }
@@ -138,7 +138,7 @@ void AddressBookPage::setModel(AddressTableModel* model)
     ui->tableView->horizontalHeader()->setSectionResizeMode(AddressTableModel::Address, QHeaderView::ResizeToContents);
 
     connect(ui->tableView->selectionModel(), &QItemSelectionModel::selectionChanged,
-            this, &AddressBookPage::selectionChanged);
+        this, &AddressBookPage::selectionChanged);
 
     // Select row for newly created address
     connect(model, &AddressTableModel::rowsInserted, this, &AddressBookPage::selectNewAddress);

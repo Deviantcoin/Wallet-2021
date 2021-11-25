@@ -3,13 +3,12 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include "qt/fls/settings/settingsnetworkwidget.h"
-#include "qt/fls/settings/forms/ui_settingsnetworkwidget.h"
 #include "optionsmodel.h"
 #include "qt/fls/qtutils.h"
+#include "qt/fls/settings/forms/ui_settingsnetworkwidget.h"
 
-SettingsNetworkWidget::SettingsNetworkWidget(FLSGUI* _window, QWidget *parent) :
-    PWidget(_window, parent),
-    ui(new Ui::SettingsNetworkWidget)
+SettingsNetworkWidget::SettingsNetworkWidget(FLSGUI* _window, QWidget* parent) : PWidget(_window, parent),
+                                                                                 ui(new Ui::SettingsNetworkWidget)
 {
     ui->setupUi(this);
 
@@ -17,7 +16,7 @@ SettingsNetworkWidget::SettingsNetworkWidget(FLSGUI* _window, QWidget *parent) :
 
     // Containers
     ui->left->setProperty("cssClass", "container");
-    ui->left->setContentsMargins(10,10,10,10);
+    ui->left->setContentsMargins(10, 10, 10, 10);
 
     // Buttons
     ui->pushButtonSave->setText(tr("SAVE"));
@@ -28,7 +27,8 @@ SettingsNetworkWidget::SettingsNetworkWidget(FLSGUI* _window, QWidget *parent) :
     connect(ui->pushButtonSave, &QPushButton::clicked, [this] { Q_EMIT saveSettings(); });
 }
 
-void SettingsNetworkWidget::setMapper(QDataWidgetMapper *mapper){
+void SettingsNetworkWidget::setMapper(QDataWidgetMapper* mapper)
+{
 }
 
 SettingsNetworkWidget::~SettingsNetworkWidget()

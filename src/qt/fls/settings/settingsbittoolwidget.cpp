@@ -3,25 +3,24 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include "qt/fls/settings/settingsbittoolwidget.h"
-#include "qt/fls/settings/forms/ui_settingsbittoolwidget.h"
 #include "qt/fls/qtutils.h"
+#include "qt/fls/settings/forms/ui_settingsbittoolwidget.h"
 
 #include "guiutil.h"
 #include "walletmodel.h"
 
+#include "askpassphrasedialog.h"
 #include "base58.h"
 #include "bip38.h"
 #include "init.h"
 #include "wallet/wallet.h"
-#include "askpassphrasedialog.h"
 
 #include <string>
 #include <vector>
 
 
-SettingsBitToolWidget::SettingsBitToolWidget(FLSGUI* _window, QWidget *parent) :
-    PWidget(_window, parent),
-    ui(new Ui::SettingsBitToolWidget)
+SettingsBitToolWidget::SettingsBitToolWidget(FLSGUI* _window, QWidget* parent) : PWidget(_window, parent),
+                                                                                 ui(new Ui::SettingsBitToolWidget)
 {
     ui->setupUi(this);
 
@@ -29,7 +28,7 @@ SettingsBitToolWidget::SettingsBitToolWidget(FLSGUI* _window, QWidget *parent) :
 
     /* Containers */
     setCssProperty(ui->left, "container");
-    ui->left->setContentsMargins(10,10,10,10);
+    ui->left->setContentsMargins(10, 10, 10, 10);
 
     /* Title */
     ui->labelTitle->setText(tr("BIP38 Tool"));
@@ -43,7 +42,7 @@ SettingsBitToolWidget::SettingsBitToolWidget(FLSGUI* _window, QWidget *parent) :
     ui->pushLeft->setChecked(true);
 
     // Subtitle
-    ui->labelSubtitle1->setText("Encrypt your FLS addresses (key pair actually) using BIP38 encryption.\nUsing this mechanism you can share your keys without middle-man risk, only need to store your passphrase safely.");
+    ui->labelSubtitle1->setText("Encrypt your DEV addresses (key pair actually) using BIP38 encryption.\nUsing this mechanism you can share your keys without middle-man risk, only need to store your passphrase safely.");
     setCFLSubtitleScreen(ui->labelSubtitle1);
 
     // Key
@@ -75,14 +74,14 @@ SettingsBitToolWidget::SettingsBitToolWidget(FLSGUI* _window, QWidget *parent) :
     setCssProperty(ui->pushButtonImport, "btn-text-primary");
     ui->pushButtonImport->setVisible(false);
 
-    connect(ui->pushLeft, &QPushButton::clicked, [this](){onEncryptSelected(true);});
-    connect(ui->pushRight,  &QPushButton::clicked, [this](){onEncryptSelected(false);});
+    connect(ui->pushLeft, &QPushButton::clicked, [this]() { onEncryptSelected(true); });
+    connect(ui->pushRight, &QPushButton::clicked, [this]() { onEncryptSelected(false); });
 
 
     // Encrypt
 
     // Address
-    ui->labelSubtitleAddress->setText(tr("FLS address"));
+    ui->labelSubtitleAddress->setText(tr("DEV address"));
     setCssProperty(ui->labelSubtitleAddress, "text-title");
 
     ui->addressIn_ENC->setPlaceholderText(tr("Enter address"));
@@ -96,7 +95,7 @@ SettingsBitToolWidget::SettingsBitToolWidget(FLSGUI* _window, QWidget *parent) :
 
     setCssProperty(ui->passphraseIn_ENC, "edit-primary");
     ui->passphraseIn_ENC->setPlaceholderText(tr("Enter passphrase"));
-    setCssProperty(ui->passphraseIn_ENC,"edit-primary");
+    setCssProperty(ui->passphraseIn_ENC, "edit-primary");
     setShadow(ui->passphraseIn_ENC);
     ui->passphraseIn_ENC->setAttribute(Qt::WA_MacShowFocusRect, 0);
 
@@ -221,20 +220,18 @@ void SettingsBitToolWidget::onAddressesClicked()
         return;
     }
 
-    int height = (addreFLSize <= 2) ? ui->addressIn_ENC->height() * ( 2 * (addreFLSize + 1 )) : ui->addressIn_ENC->height() * 4;
+    int height = (addreFLSize <= 2) ? ui->addressIn_ENC->height() * (2 * (addreFLSize + 1)) : ui->addressIn_ENC->height() * 4;
     int width = ui->containerAddressEnc->width();
 
     if (!menuContacts) {
         menuContacts = new ContactsDropdown(
-                width,
-                height,
-                this
-        );
+            width,
+            height,
+            this);
         menuContacts->setWalletModel(walletModel, AddressTableModel::Receive);
-        connect(menuContacts, &ContactsDropdown::contactSelected, [this](QString address, QString label){
+        connect(menuContacts, &ContactsDropdown::contactSelected, [this](QString address, QString label) {
             setAddress_ENC(address);
         });
-
     }
 
     if (menuContacts->isVisible()) {
@@ -345,7 +342,7 @@ void SettingsBitToolWidget::importAddressFromDecKey()
     ui->statusLabel_DEC->setText(tr("Successfully added private key to the wallet"));
 }
 
-void SettingsBitToolWidget::resizeEvent(QResizeEvent *event)
+void SettingsBitToolWidget::resizeEvent(QResizeEvent* event)
 {
     resizeMenu();
     QWidget::resizeEvent(event);

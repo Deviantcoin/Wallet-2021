@@ -4,12 +4,11 @@
 
 #include "qt/fls/sendchangeaddressdialog.h"
 #include "qt/fls/forms/ui_sendchangeaddressdialog.h"
-#include "walletmodel.h"
 #include "qt/fls/qtutils.h"
+#include "walletmodel.h"
 
-SendChangeAddressDialog::SendChangeAddressDialog(QWidget *parent) :
-    QDialog(parent),
-    ui(new Ui::SendChangeAddressDialog)
+SendChangeAddressDialog::SendChangeAddressDialog(QWidget* parent) : QDialog(parent),
+                                                                    ui(new Ui::SendChangeAddressDialog)
 {
     ui->setupUi(this);
     this->setStyleSheet(parent->styleSheet());
@@ -21,10 +20,10 @@ SendChangeAddressDialog::SendChangeAddressDialog(QWidget *parent) :
     ui->labelTitle->setText(tr("Custom Change Address"));
     ui->labelTitle->setProperty("cssClass", "text-title-dialog");
 
-    ui->labelMessage->setText(tr("The remainder of the value resultant from the inputs minus the outputs value goes to the \"change\" FLS address"));
+    ui->labelMessage->setText(tr("The remainder of the value resultant from the inputs minus the outputs value goes to the \"change\" DEV address"));
     ui->labelMessage->setProperty("cssClass", "text-main-grey");
 
-    ui->lineEditAddress->setPlaceholderText("Enter FLS address (e.g D7VFR83SQbiezrW72hjc… ");
+    ui->lineEditAddress->setPlaceholderText("Enter DEV address (e.g D7VFR83SQbiezrW72hjc… ");
     initCssEditLine(ui->lineEditAddress, true);
 
     // Buttons
@@ -37,27 +36,30 @@ SendChangeAddressDialog::SendChangeAddressDialog(QWidget *parent) :
 
     connect(ui->btnEsc, &QPushButton::clicked, this, &SendChangeAddressDialog::close);
     connect(ui->btnCancel, &QPushButton::clicked, this, &SendChangeAddressDialog::close);
-    connect(ui->btnSave, &QPushButton::clicked, [this](){ selected = true; accept(); });
+    connect(ui->btnSave, &QPushButton::clicked, [this]() { selected = true; accept(); });
 }
 
-void SendChangeAddressDialog::setAddress(QString address){
+void SendChangeAddressDialog::setAddress(QString address)
+{
     ui->lineEditAddress->setText(address);
 }
 
-bool SendChangeAddressDialog::getAddress(WalletModel *model, QString *retAddress){
+bool SendChangeAddressDialog::getAddress(WalletModel* model, QString* retAddress)
+{
     QString address = ui->lineEditAddress->text();
-    if(!address.isEmpty() && model->validateAddress(address)){
+    if (!address.isEmpty() && model->validateAddress(address)) {
         *retAddress = address;
         return true;
     }
     return false;
 }
 
-void SendChangeAddressDialog::showEvent(QShowEvent *event)
+void SendChangeAddressDialog::showEvent(QShowEvent* event)
 {
     if (ui->lineEditAddress) ui->lineEditAddress->setFocus();
 }
 
-SendChangeAddressDialog::~SendChangeAddressDialog(){
+SendChangeAddressDialog::~SendChangeAddressDialog()
+{
     delete ui;
 }

@@ -5,26 +5,26 @@
 #include "qt/fls/masternodeswidget.h"
 #include "qt/fls/forms/ui_masternodeswidget.h"
 
-#include "qt/fls/qtutils.h"
-#include "qt/fls/mnrow.h"
-#include "qt/fls/mninfodialog.h"
 #include "qt/fls/masternodewizarddialog.h"
+#include "qt/fls/mninfodialog.h"
+#include "qt/fls/mnrow.h"
+#include "qt/fls/qtutils.h"
 
 #include "activemasternode.h"
+#include "askpassphrasedialog.h"
 #include "clientmodel.h"
 #include "guiutil.h"
 #include "init.h"
 #include "masternode-sync.h"
 #include "masternodeconfig.h"
 #include "masternodeman.h"
-#include "sync.h"
-#include "wallet/wallet.h"
-#include "askpassphrasedialog.h"
-#include "util.h"
 #include "qt/fls/optionbutton.h"
+#include "sync.h"
+#include "util.h"
+#include "wallet/wallet.h"
 #include <boost/filesystem.hpp>
-#include <iostream>
 #include <fstream>
+#include <iostream>
 
 #define DECORATION_SIZE 65
 #define NUM_ITEMS 3
@@ -44,7 +44,7 @@ public:
         return cachedRow;
     }
 
-    void init(QWidget* holder,const QModelIndex &index, bool isHovered, bool isSelected) const override
+    void init(QWidget* holder, const QModelIndex& index, bool isHovered, bool isSelected) const override
     {
         MNRow* row = static_cast<MNRow*>(holder);
         QString label = index.data(Qt::DisplayRole).toString();
@@ -59,33 +59,31 @@ public:
         return getRowColor(isLightTheme, isHovered, isSelected);
     }
 
-    ~MNHolder() override{}
+    ~MNHolder() override {}
 
     bool isLightTheme;
     MNRow* cachedRow = nullptr;
 };
 
-MasterNodesWidget::MasterNodesWidget(FLSGUI *parent) :
-    PWidget(parent),
-    ui(new Ui::MasterNodesWidget),
-    isLoading(false)
+MasterNodesWidget::MasterNodesWidget(FLSGUI* parent) : PWidget(parent),
+                                                       ui(new Ui::MasterNodesWidget),
+                                                       isLoading(false)
 {
     ui->setupUi(this);
 
     delegate = new FurAbstractListItemDelegate(
-            DECORATION_SIZE,
-            new MNHolder(isLightTheme()),
-            this
-    );
+        DECORATION_SIZE,
+        new MNHolder(isLightTheme()),
+        this);
     mnModel = new MNModel(this);
 
     this->setStyleSheet(parent->styleSheet());
 
     /* Containers */
     setCssProperty(ui->left, "container");
-    ui->left->setContentsMargins(0,20,0,20);
+    ui->left->setContentsMargins(0, 20, 0, 20);
     setCssProperty(ui->right, "container-right");
-    ui->right->setContentsMargins(20,20,20,20);
+    ui->right->setContentsMargins(20, 20, 20, 20);
 
     /* Light Font */
     QFont fontLight;
@@ -131,21 +129,21 @@ MasterNodesWidget::MasterNodesWidget(FLSGUI *parent) :
         onStartAllClicked(REQUEST_START_MISSING);
     });
     connect(ui->listMn, &QListView::clicked, this, &MasterNodesWidget::onMNClicked);
-    connect(ui->btnAbout, &OptionButton::clicked, [this](){window->openFAQ(9);});
-    connect(ui->btnAboutController, &OptionButton::clicked, [this](){window->openFAQ(10);});
+    connect(ui->btnAbout, &OptionButton::clicked, [this]() { window->openFAQ(9); });
+    connect(ui->btnAboutController, &OptionButton::clicked, [this]() { window->openFAQ(10); });
 }
 
-void MasterNodesWidget::showEvent(QShowEvent *event)
+void MasterNodesWidget::showEvent(QShowEvent* event)
 {
     if (mnModel) mnModel->updateMNList();
     if (!timer) {
         timer = new QTimer(this);
-        connect(timer, &QTimer::timeout, [this]() {mnModel->updateMNList();});
+        connect(timer, &QTimer::timeout, [this]() { mnModel->updateMNList(); });
     }
     timer->start(30000);
 }
 
-void MasterNodesWidget::hideEvent(QHideEvent *event)
+void MasterNodesWidget::hideEvent(QHideEvent* event)
 {
     if (timer) timer->stop();
 }
@@ -167,7 +165,7 @@ void MasterNodesWidget::updateListState()
     ui->pushButtonStartAll->setVisible(show);
 }
 
-void MasterNodesWidget::onMNClicked(const QModelIndex &index)
+void MasterNodesWidget::onMNClicked(const QModelIndex& index)
 {
     ui->listMn->setCurrentIndex(index);
     QRect rect = ui->listMn->visualRect(index);
@@ -222,7 +220,8 @@ void MasterNodesWidget::onEditMNClicked()
             }
         } else {
             inform(tr("Cannot start masternode, the collateral transaction has not been confirmed by the network yet.\n"
-                    "Please wait few more minutes (masternode collaterals require %1 confirmations).").arg(MASTERNODE_MIN_CONFIRMATIONS));
+                      "Please wait few more minutes (masternode collaterals require %1 confirmations).")
+                       .arg(MASTERNODE_MIN_CONFIRMATIONS));
         }
     }
 }
@@ -262,7 +261,7 @@ bool MasterNodesWidget::startMN(CMasternodeConfig::CMasternodeEntry mne, std::st
 
 void MasterNodesWidget::onStartAllClicked(int type)
 {
-    if (!Params().IsRegTestNet() && !checkMNsNetwork()) return;     // skip on RegNet: so we can test even if tier two not synced
+    if (!Params().IsRegTestNet() && !checkMNsNetwork()) return; // skip on RegNet: so we can test even if tier two not synced
 
     if (isLoading) {
         inform(tr("Background task is being executed, please wait"));
@@ -293,7 +292,7 @@ bool MasterNodesWidget::startAll(QString& failText, bool onlyMissing)
             continue;
         }
 
-        if(!mnModel->isMNCollateralMature(mnAlias)) {
+        if (!mnModel->isMNCollateralMature(mnAlias)) {
             amountOfMnFailed++;
             continue;
         }
@@ -319,7 +318,7 @@ void MasterNodesWidget::run(int type)
         QString failText;
         QString inform = startAll(failText, isStartMissing) ? tr("All Masternodes started!") : failText;
         QMetaObject::invokeMethod(this, "updateModelAndInform", Qt::QueuedConnection,
-                                  Q_ARG(QString, inform));
+            Q_ARG(QString, inform));
     }
 
     isLoading = false;
@@ -329,7 +328,7 @@ void MasterNodesWidget::onError(QString error, int type)
 {
     if (type == REQUEST_START_ALL) {
         QMetaObject::invokeMethod(this, "inform", Qt::QueuedConnection,
-                                  Q_ARG(QString, "Error starting all Masternodes"));
+            Q_ARG(QString, "Error starting all Masternodes"));
     }
 }
 
@@ -356,12 +355,12 @@ void MasterNodesWidget::onInfoMNClicked()
         if (ask(tr("Remote Masternode Data"),
                 tr("You are just about to export the required data to run a Masternode\non a remote server to your clipboard.\n\n\n"
                    "You will only have to paste the data in the fls.conf file\nof your remote server and start it, "
-                   "then start the Masternode using\nthis controller wallet (select the Masternode in the list and press \"start\").\n"
-                ))) {
+                   "then start the Masternode using\nthis controller wallet (select the Masternode in the list and press \"start\").\n"))) {
             // export data
             QString exportedMN = "masternode=1\n"
-                                 "externalip=" + address.left(address.lastIndexOf(":")) + "\n" +
-                                 "masternodeaddr=" + address + + "\n" +
+                                 "externalip=" +
+                                 address.left(address.lastIndexOf(":")) + "\n" +
+                                 "masternodeaddr=" + address + +"\n" +
                                  "masternodeprivkey=" + index.sibling(index.row(), MNModel::PRIV_KEY).data(Qt::DisplayRole).toString() + "\n";
             GUIUtil::setClipboard(exportedMN);
             inform(tr("Masternode data copied to the clipboard."));
@@ -426,13 +425,12 @@ void MasterNodesWidget::onDeleteMNClicked()
                 lineNumToRemove = linenumber;
             } else
                 lineCopy += line + "\n";
-
         }
 
         if (lineCopy.size() == 0) {
             lineCopy = "# Masternode config file\n"
-                                    "# Format: alias IP:port masternodeprivkey collateral_output_txid collateral_output_index\n"
-                                    "# Example: mn1 127.0.0.2:6740 93HaYBVUCYjEMeeH1Y4sBGLALQZE1Yc1K64xiqgX37tGBDQL8Xg 2bcd3c84c84f87eaa86e4e56834c92927a07f9e18718810b92e0d0324456a67c 0\n";
+                       "# Format: alias IP:port masternodeprivkey collateral_output_txid collateral_output_index\n"
+                       "# Example: mn1 127.0.0.2:6740 93HaYBVUCYjEMeeH1Y4sBGLALQZE1Yc1K64xiqgX37tGBDQL8Xg 2bcd3c84c84f87eaa86e4e56834c92927a07f9e18718810b92e0d0324456a67c 0\n";
         }
 
         streamConfig.close();
@@ -458,7 +456,7 @@ void MasterNodesWidget::onDeleteMNClicked()
             // Unlock collateral
             bool convertOK = false;
             unsigned int indexOut = outIndex.toUInt(&convertOK);
-            if(convertOK) {
+            if (convertOK) {
                 COutPoint collateralOut(uint256(txId.toStdString()), indexOut);
                 walletModel->unlockCoin(collateralOut);
             }
@@ -469,7 +467,7 @@ void MasterNodesWidget::onDeleteMNClicked()
             mnModel->removeMn(index);
             updateListState();
         }
-    } else{
+    } else {
         inform(tr("masternode.conf file doesn't exists"));
     }
 }
@@ -484,11 +482,11 @@ void MasterNodesWidget::onCreateMNClicked()
     }
 
     if (walletModel->getBalance() <= (COIN * 1000)) {
-        inform(tr("Not enough balance to create a masternode, 1,000 FLS required."));
+        inform(tr("Not enough balance to create a masternode, 1,000 DEV required."));
         return;
     }
     showHideOp(true);
-    MasterNodeWizardDialog *dialog = new MasterNodeWizardDialog(walletModel, window);
+    MasterNodeWizardDialog* dialog = new MasterNodeWizardDialog(walletModel, window);
     if (openDialogWithOpaqueBackgroundY(dialog, window, 5, 7)) {
         if (dialog->isOk) {
             // Update list

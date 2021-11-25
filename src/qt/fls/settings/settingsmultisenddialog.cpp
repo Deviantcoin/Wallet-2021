@@ -3,14 +3,13 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include "qt/fls/settings/settingsmultisenddialog.h"
-#include "qt/fls/settings/forms/ui_settingsmultisenddialog.h"
-#include <QListView>
-#include <QIntValidator>
 #include "qt/fls/qtutils.h"
+#include "qt/fls/settings/forms/ui_settingsmultisenddialog.h"
+#include <QIntValidator>
+#include <QListView>
 
-SettingsMultisendDialog::SettingsMultisendDialog(QWidget *parent) :
-    QDialog(parent),
-    ui(new Ui::SettingsMultisendDialog)
+SettingsMultisendDialog::SettingsMultisendDialog(QWidget* parent) : QDialog(parent),
+                                                                    ui(new Ui::SettingsMultisendDialog)
 {
     ui->setupUi(this);
 
@@ -32,7 +31,7 @@ SettingsMultisendDialog::SettingsMultisendDialog(QWidget *parent) :
     initCssEditLine(ui->lineEditLabel, true);
 
     // Address
-    ui->labelSubtitleAddress->setText("FLS address or contact label");
+    ui->labelSubtitleAddress->setText("DEV address or contact label");
     setCssProperty(ui->labelSubtitleAddress, "text-title2-dialog");
     ui->lineEditAddress->setPlaceholderText("Enter address");
     initCssEditLine(ui->lineEditAddress, true);
@@ -53,24 +52,28 @@ SettingsMultisendDialog::SettingsMultisendDialog(QWidget *parent) :
 
     connect(ui->btnEsc, &QPushButton::clicked, this, &SettingsMultisendDialog::close);
     connect(ui->btnCancel, &QPushButton::clicked, this, &SettingsMultisendDialog::close);
-    connect(ui->btnSave, &QPushButton::clicked, [this](){
+    connect(ui->btnSave, &QPushButton::clicked, [this]() {
         this->isOk = true;
         accept();
     });
 }
 
-QString SettingsMultisendDialog::getAddress(){
+QString SettingsMultisendDialog::getAddress()
+{
     return ui->lineEditAddress->text();
 }
-QString SettingsMultisendDialog::getLabel(){
+QString SettingsMultisendDialog::getLabel()
+{
     return ui->lineEditLabel->text();
 }
-int SettingsMultisendDialog::getPercentage(){
+int SettingsMultisendDialog::getPercentage()
+{
     QString percentage = ui->lineEditPercentage->text();
     if (percentage.isEmpty()) return 0;
     return percentage.toInt();
 }
 
-SettingsMultisendDialog::~SettingsMultisendDialog(){
+SettingsMultisendDialog::~SettingsMultisendDialog()
+{
     delete ui;
 }

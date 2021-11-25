@@ -1,6 +1,6 @@
 // Copyright (c) 2011-2014 The Bitcoin developers
 // Copyright (c) 2014-2015 The Dash developers
-// Copyright (c) 2015-2018 The Flits-Core developers 
+// Copyright (c) 2015-2018 The Flits-Core developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -111,7 +111,7 @@ BitcoinGUI::BitcoinGUI(const NetworkStyle* networkStyle, QWidget* parent) : QMai
 
     GUIUtil::restoreWindowGeometry("nWindow", QSize(850, 550), this);
 
-    QString windowTitle = tr("Flits Core") + " - ";
+    QString windowTitle = tr("Deviant Core") + " - ";
 #ifdef ENABLE_WALLET
     /* if compiled with wallet support, -disablewallet can still disable the wallet */
     enableWallet = !GetBoolArg("-disablewallet", false);
@@ -277,7 +277,7 @@ BitcoinGUI::BitcoinGUI(const NetworkStyle* networkStyle, QWidget* parent) : QMai
     setAutoMintStatus();
 }
 #ifdef Q_OS_MAC
-    CAppNapInhibitor* m_app_nap_inhibitor = new CAppNapInhibitor;
+CAppNapInhibitor* m_app_nap_inhibitor = new CAppNapInhibitor;
 #endif
 BitcoinGUI::~BitcoinGUI()
 {
@@ -342,16 +342,16 @@ void BitcoinGUI::createActions(const NetworkStyle* networkStyle)
 #endif
     tabGroup->addAction(historyAction);
 
-//     privacyAction = new QAction(QIcon(":/icons/privacy"), tr("&Privacy"), this);
-//     privacyAction->setStatusTip(tr("Privacy Actions for zFLS"));
-//     privacyAction->setToolTip(privacyAction->statusTip());
-//     privacyAction->setCheckable(true);
-// #ifdef Q_OS_MAC
-//     privacyAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_5));
-// #else
-//     privacyAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_5));
-// #endif
-//     tabGroup->addAction(privacyAction);
+    //     privacyAction = new QAction(QIcon(":/icons/privacy"), tr("&Privacy"), this);
+    //     privacyAction->setStatusTip(tr("Privacy Actions for zFLS"));
+    //     privacyAction->setToolTip(privacyAction->statusTip());
+    //     privacyAction->setCheckable(true);
+    // #ifdef Q_OS_MAC
+    //     privacyAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_5));
+    // #else
+    //     privacyAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_5));
+    // #endif
+    //     tabGroup->addAction(privacyAction);
 
 #ifdef ENABLE_WALLET
 
@@ -401,8 +401,8 @@ void BitcoinGUI::createActions(const NetworkStyle* networkStyle)
     quitAction->setStatusTip(tr("Quit application"));
     quitAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_Q));
     quitAction->setMenuRole(QAction::QuitRole);
-    aboutAction = new QAction(networkStyle->getAppIcon(), tr("&About Flits Core"), this);
-    aboutAction->setStatusTip(tr("Show information about Flits Core"));
+    aboutAction = new QAction(networkStyle->getAppIcon(), tr("&About Deviant Core"), this);
+    aboutAction->setStatusTip(tr("Show information about Deviant Core"));
     aboutAction->setMenuRole(QAction::AboutRole);
     aboutQtAction = new QAction(QIcon(":/qt-project.org/qmessagebox/images/qtlogo-64.png"), tr("About &Qt"), this);
     aboutQtAction->setStatusTip(tr("Show information about Qt"));
@@ -469,7 +469,7 @@ void BitcoinGUI::createActions(const NetworkStyle* networkStyle)
 
     showHelpMessageAction = new QAction(QApplication::style()->standardIcon(QStyle::SP_MessageBoxInformation), tr("&Command-line options"), this);
     showHelpMessageAction->setMenuRole(QAction::NoRole);
-    showHelpMessageAction->setStatusTip(tr("Show the Flits Core help message to get a list with possible Flits-Core command-line options"));
+    showHelpMessageAction->setStatusTip(tr("Show the Deviant Core help message to get a list with possible Flits-Core command-line options"));
 
     connect(quitAction, SIGNAL(triggered()), qApp, SLOT(quit()));
     connect(aboutAction, SIGNAL(triggered()), this, SLOT(aboutClicked()));
@@ -565,10 +565,10 @@ void BitcoinGUI::createToolBars()
         QToolBar* toolbar = new QToolBar(tr("Tabs toolbar"));
         toolbar->setObjectName("Main-Toolbar"); // Name for CSS addressing
         toolbar->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
-//        // Add some empty space at the top of the toolbars
-//        QAction* spacer = new QAction(this);
-//        toolbar->addAction(spacer);
-//        toolbar->widgetForAction(spacer)->setObjectName("ToolbarSpacer");
+        //        // Add some empty space at the top of the toolbars
+        //        QAction* spacer = new QAction(this);
+        //        toolbar->addAction(spacer);
+        //        toolbar->widgetForAction(spacer)->setObjectName("ToolbarSpacer");
 
         toolbar->addAction(overviewAction);
         toolbar->addAction(sendCoinsAction);
@@ -583,7 +583,7 @@ void BitcoinGUI::createToolBars()
         toolbar->addAction(governanceAction);
         toolbar->setMovable(false); // remove unused icon in upper left corner
         toolbar->setOrientation(Qt::Vertical);
-        toolbar->setIconSize(QSize(40,40));
+        toolbar->setIconSize(QSize(40, 40));
         overviewAction->setChecked(true);
 
         /** Create additional container for toolbar and walletFrame and make it the central widget.
@@ -635,9 +635,8 @@ void BitcoinGUI::setClientModel(ClientModel* clientModel)
         connect(clientModel->getOptionsModel(), SIGNAL(zeromintEnableChanged(bool)), this, SLOT(setAutoMintStatus()));
 
         //Show trayIcon
-        if (trayIcon)
-        {
-          trayIcon->show();
+        if (trayIcon) {
+            trayIcon->show();
         }
     } else {
         // Disable possibility to show main window via action
@@ -703,7 +702,7 @@ void BitcoinGUI::createTrayIcon(const NetworkStyle* networkStyle)
 {
 #ifndef Q_OS_MAC
     trayIcon = new QSystemTrayIcon(this);
-    QString toolTip = tr("Flits Core client") + " " + networkStyle->getTitleAddText();
+    QString toolTip = tr("Deviant Core client") + " " + networkStyle->getTitleAddText();
     trayIcon->setToolTip(toolTip);
     trayIcon->setIcon(networkStyle->getAppIcon());
     trayIcon->hide();
@@ -863,17 +862,17 @@ void BitcoinGUI::gotoVerifyMessageTab(QString addr)
 
 void BitcoinGUI::gotoMultisigCreate()
 {
-    if(walletFrame) walletFrame->gotoMultisigDialog(0);
+    if (walletFrame) walletFrame->gotoMultisigDialog(0);
 }
 
 void BitcoinGUI::gotoMultisigSpend()
 {
-    if(walletFrame) walletFrame->gotoMultisigDialog(1);
+    if (walletFrame) walletFrame->gotoMultisigDialog(1);
 }
 
 void BitcoinGUI::gotoMultisigSign()
 {
-    if(walletFrame) walletFrame->gotoMultisigDialog(2);
+    if (walletFrame) walletFrame->gotoMultisigDialog(2);
 }
 
 void BitcoinGUI::gotoBip38Tool()
@@ -927,18 +926,18 @@ void BitcoinGUI::setNumConnections(int count)
 
 void BitcoinGUI::setNumBlocks(int count)
 {
-       // Acquire current block source
+    // Acquire current block source
     enum BlockSource blockSource = clientModel->getBlockSource();
-    #ifdef Q_OS_MAC
-    (IsInitialBlockDownload() || blockSource == BLOCK_SOURCE_REINDEX || blockSource == BLOCK_SOURCE_DISK ) ? m_app_nap_inhibitor->disableAppNap() : m_app_nap_inhibitor->enableAppNap();
-    #endif
+#ifdef Q_OS_MAC
+    (IsInitialBlockDownload() || blockSource == BLOCK_SOURCE_REINDEX || blockSource == BLOCK_SOURCE_DISK) ? m_app_nap_inhibitor->disableAppNap() : m_app_nap_inhibitor->enableAppNap();
+#endif
     if (!clientModel)
         return;
 
     // Prevent orphan statusbar messages (e.g. hover Quit in main menu, wait until chain-sync starts -> garbelled text)
     statusBar()->clearMessage();
 
- 
+
     switch (blockSource) {
     case BLOCK_SOURCE_NETWORK:
         progressBarLabel->setText(tr("Synchronizing with network..."));
@@ -1056,7 +1055,7 @@ void BitcoinGUI::setNumBlocks(int count)
 
 void BitcoinGUI::message(const QString& title, const QString& message, unsigned int style, bool* ret)
 {
-    QString strTitle = tr("Flits Core"); // default title
+    QString strTitle = tr("Deviant Core"); // default title
     // Default to information icon
     int nMBoxIcon = QMessageBox::Information;
     int nNotifyIcon = Notificator::Information;
@@ -1142,7 +1141,7 @@ void BitcoinGUI::closeEvent(QCloseEvent* event)
 void BitcoinGUI::incomingTransaction(const QString& date, int unit, const CAmount& amount, const QString& type, const QString& address)
 {
     // Only send notifications when not disabled
-    if(!bdisableSystemnotifications){
+    if (!bdisableSystemnotifications) {
         // On new transaction, make an info balloon
         message((amount) < 0 ? (pwalletMain->fMultiSendNotify == true ? tr("Sent MultiSend transaction") : tr("Sent transaction")) : tr("Incoming transaction"),
             tr("Date: %1\n"
@@ -1199,13 +1198,13 @@ void BitcoinGUI::setStakingStatus()
             labelStakingIcon->show();
             labelStakingIcon->setPixmap(QIcon(":/icons/staking_active").pixmap(STATUSBAR_ICONSIZE, STATUSBAR_ICONSIZE));
             labelStakingIcon->setToolTip(
-                    tr("Staking is active\n MultiSend: %1").arg(fMultiSend ? tr("Active") : tr("Not Active")));
+                tr("Staking is active\n MultiSend: %1").arg(fMultiSend ? tr("Active") : tr("Not Active")));
         } else {
             labelStakingIcon->show();
             labelStakingIcon->setPixmap(
-                    QIcon(":/icons/staking_inactive").pixmap(STATUSBAR_ICONSIZE, STATUSBAR_ICONSIZE));
+                QIcon(":/icons/staking_inactive").pixmap(STATUSBAR_ICONSIZE, STATUSBAR_ICONSIZE));
             labelStakingIcon->setToolTip(
-                    tr("Staking is not active\n MultiSend: %1").arg(fMultiSend ? tr("Active") : tr("Not Active")));
+                tr("Staking is not active\n MultiSend: %1").arg(fMultiSend ? tr("Active") : tr("Not Active")));
         }
     }
 }
@@ -1217,11 +1216,11 @@ void BitcoinGUI::setAutoMintStatus()
             labelAutoMintIcon->show();
             labelAutoMintIcon->setIcon(QIcon(":/icons/automint_active").pixmap(STATUSBAR_ICONSIZE, STATUSBAR_ICONSIZE));
             labelAutoMintIcon->setToolTip(
-                    tr("AutoMint is currently enabled and set to ") + QString::number(nZeromintPercentage) + "%.\n");
+                tr("AutoMint is currently enabled and set to ") + QString::number(nZeromintPercentage) + "%.\n");
         } else {
             labelAutoMintIcon->show();
             labelAutoMintIcon->setIcon(
-                    QIcon(":/icons/automint_inactive").pixmap(STATUSBAR_ICONSIZE, STATUSBAR_ICONSIZE));
+                QIcon(":/icons/automint_inactive").pixmap(STATUSBAR_ICONSIZE, STATUSBAR_ICONSIZE));
             labelAutoMintIcon->setToolTip(tr("AutoMint is disabled"));
         }
     }

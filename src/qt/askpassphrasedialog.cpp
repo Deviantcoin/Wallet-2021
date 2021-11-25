@@ -11,11 +11,11 @@
 
 #include "guiconstants.h"
 #include "guiutil.h"
-#include "walletmodel.h"
-#include "qt/fls/qtutils.h"
-#include "qt/fls/loadingdialog.h"
 #include "qt/fls/defaultdialog.h"
 #include "qt/fls/flsgui.h"
+#include "qt/fls/loadingdialog.h"
+#include "qt/fls/qtutils.h"
+#include "walletmodel.h"
 #include <QDebug>
 
 #include <QKeyEvent>
@@ -142,9 +142,9 @@ AskPassphraseDialog::AskPassphraseDialog(Mode mode, QWidget* parent, WalletModel
 void AskPassphraseDialog::onWatchClicked()
 {
     int state = btnWatch->checkState();
-    ui->passEdit3->setEchoMode(state == Qt::Checked ? QLineEdit::Normal : QLineEdit::Password );
-    ui->passEdit2->setEchoMode(state== Qt::Checked ? QLineEdit::Normal : QLineEdit::Password );
-    ui->passEdit1->setEchoMode(state == Qt::Checked ? QLineEdit::Normal : QLineEdit::Password );
+    ui->passEdit3->setEchoMode(state == Qt::Checked ? QLineEdit::Normal : QLineEdit::Password);
+    ui->passEdit2->setEchoMode(state == Qt::Checked ? QLineEdit::Normal : QLineEdit::Password);
+    ui->passEdit1->setEchoMode(state == Qt::Checked ? QLineEdit::Normal : QLineEdit::Password);
 }
 
 AskPassphraseDialog::~AskPassphraseDialog()
@@ -156,10 +156,12 @@ AskPassphraseDialog::~AskPassphraseDialog()
     delete ui;
 }
 
-void AskPassphraseDialog::showEvent(QShowEvent *event)
+void AskPassphraseDialog::showEvent(QShowEvent* event)
 {
-    if (mode == Mode::Encrypt && ui->passEdit2) ui->passEdit2->setFocus();
-    else if (ui->passEdit1) ui->passEdit1->setFocus();
+    if (mode == Mode::Encrypt && ui->passEdit2)
+        ui->passEdit2->setFocus();
+    else if (ui->passEdit1)
+        ui->passEdit1->setFocus();
 }
 
 void AskPassphraseDialog::accept()
@@ -184,16 +186,15 @@ void AskPassphraseDialog::accept()
         }
         hide();
         bool ret = openStandardDialog(
-                tr("Confirm wallet encryption"),
-                "<b>" + tr("WARNING") + ":</b> " + tr("If you encrypt your wallet and lose your passphrase, you will") +
-                " <b>" + tr("LOSE ALL OF YOUR FLS") + "</b>!<br><br>" + tr("Are you sure you wish to encrypt your wallet?"),
-                tr("ENCRYPT"), tr("CANCEL")
-        );
+            tr("Confirm wallet encryption"),
+            "<b>" + tr("WARNING") + ":</b> " + tr("If you encrypt your wallet and lose your passphrase, you will") +
+                " <b>" + tr("LOSE ALL OF YOUR DEV") + "</b>!<br><br>" + tr("Are you sure you wish to encrypt your wallet?"),
+            tr("ENCRYPT"), tr("CANCEL"));
         if (ret) {
             if (newpass1 == newpass2) {
                 newpassCache = newpass1;
                 FLSGUI* window = static_cast<FLSGUI*>(parentWidget());
-                LoadingDialog *dialog = new LoadingDialog(window);
+                LoadingDialog* dialog = new LoadingDialog(window);
                 dialog->execute(this, 1);
                 openDialogWithOpaqueBackgroundFullScreen(dialog, window);
             } else {
@@ -207,7 +208,7 @@ void AskPassphraseDialog::accept()
     case Mode::UnlockAnonymize:
         if (!model->setWalletLocked(false, oldpass, true)) {
             QMessageBox::critical(this, tr("Wallet unlock failed"),
-                                  tr("The passphrase entered for the wallet decryption was incorrect."));
+                tr("The passphrase entered for the wallet decryption was incorrect."));
         } else {
             QDialog::accept(); // Success
         }
@@ -232,7 +233,7 @@ void AskPassphraseDialog::accept()
         if (newpass1 == newpass2) {
             if (model->changePassphrase(oldpass, newpass1)) {
                 hide();
-                openStandardDialog(tr("Wallet encrypted"),tr("Wallet passphrase was successfully changed."));
+                openStandardDialog(tr("Wallet encrypted"), tr("Wallet passphrase was successfully changed."));
                 QDialog::accept(); // Success
             } else {
                 QMessageBox::critical(this, tr("Wallet encryption failed"),
@@ -315,7 +316,7 @@ bool AskPassphraseDialog::eventFilter(QObject* object, QEvent* event)
 bool AskPassphraseDialog::openStandardDialog(QString title, QString body, QString okBtn, QString cancelBtn)
 {
     FLSGUI* gui = static_cast<FLSGUI*>(parentWidget());
-    DefaultDialog *confirmDialog = new DefaultDialog(gui);
+    DefaultDialog* confirmDialog = new DefaultDialog(gui);
     confirmDialog->setText(title, body, okBtn, cancelBtn);
     confirmDialog->adjustSize();
     openDialogWithOpaqueBackground(confirmDialog, gui);
@@ -329,26 +330,25 @@ void AskPassphraseDialog::warningMessage()
     hide();
     static_cast<FLSGUI*>(parentWidget())->showHide(true);
     openStandardDialog(
-            tr("Wallet encrypted"),
-            "<qt>" +
-            tr("FLS will close now to finish the encryption process. "
+        tr("Wallet encrypted"),
+        "<qt>" +
+            tr("DEV will close now to finish the encryption process. "
                "Remember that encrypting your wallet cannot fully protect "
-               "your FLSs from being stolen by malware infecting your computer.") +
+               "your DEVs from being stolen by malware infecting your computer.") +
             "<br><br><b>" +
             tr("IMPORTANT: Any previous backups you have made of your wallet file "
                "should be replaced with the newly generated, encrypted wallet file. "
                "For security reasons, previous backups of the unencrypted wallet file "
                "will become useless as soon as you start using the new, encrypted wallet.") +
             "</b></qt>",
-            tr("OK")
-            );
+        tr("OK"));
     QApplication::quit();
 }
 
 void AskPassphraseDialog::errorEncryptingWallet()
 {
     QMessageBox::critical(this, tr("Wallet encryption failed"),
-                          tr("Wallet encryption failed due to an internal error. Your wallet was not encrypted."));
+        tr("Wallet encryption failed due to an internal error. Your wallet was not encrypted."));
 }
 
 void AskPassphraseDialog::run(int type)
@@ -373,7 +373,7 @@ void AskPassphraseDialog::onError(QString error, int type)
     QMetaObject::invokeMethod(this, "errorEncryptingWallet", Qt::QueuedConnection);
 }
 
-void AskPassphraseDialog::initWatch(QWidget *parent)
+void AskPassphraseDialog::initWatch(QWidget* parent)
 {
     btnWatch = new QCheckBox(parent);
     setCssProperty(btnWatch, "btn-watch-password");

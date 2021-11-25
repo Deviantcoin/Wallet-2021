@@ -3,37 +3,37 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include "qt/fls/settings/settingsmultisendwidget.h"
-#include "qt/fls/settings/forms/ui_settingsmultisendwidget.h"
-#include "qt/fls/settings/settingsmultisenddialog.h"
-#include "qt/fls/qtutils.h"
 #include "addresstablemodel.h"
 #include "base58.h"
 #include "init.h"
-#include "walletmodel.h"
+#include "qt/fls/qtutils.h"
+#include "qt/fls/settings/forms/ui_settingsmultisendwidget.h"
+#include "qt/fls/settings/settingsmultisenddialog.h"
 #include "wallet/wallet.h"
+#include "walletmodel.h"
 
 
 #define DECORATION_SIZE 65
 #define NUM_ITEMS 3
 
-MultiSendModel::MultiSendModel(QObject *parent) : QAbstractTableModel(parent)
+MultiSendModel::MultiSendModel(QObject* parent) : QAbstractTableModel(parent)
 {
     updateList();
 }
 
 void MultiSendModel::updateList()
 {
-    Q_EMIT dataChanged(index(0, 0, QModelIndex()), index((int) pwalletMain->vMultiSend.size(), 5, QModelIndex()) );
+    Q_EMIT dataChanged(index(0, 0, QModelIndex()), index((int)pwalletMain->vMultiSend.size(), 5, QModelIndex()));
 }
 
-int MultiSendModel::rowCount(const QModelIndex &parent) const
+int MultiSendModel::rowCount(const QModelIndex& parent) const
 {
     if (parent.isValid())
         return 0;
-    return (int) pwalletMain->vMultiSend.size();
+    return (int)pwalletMain->vMultiSend.size();
 }
 
-QVariant MultiSendModel::data(const QModelIndex &index, int role) const
+QVariant MultiSendModel::data(const QModelIndex& index, int role) const
 {
     if (!index.isValid())
         return QVariant();
@@ -41,11 +41,11 @@ QVariant MultiSendModel::data(const QModelIndex &index, int role) const
     int row = index.row();
     if (role == Qt::DisplayRole || role == Qt::EditRole) {
         switch (index.column()) {
-            case PERCENTAGE:
-                return pwalletMain->vMultiSend[row].second;
-            case ADDRESS: {
-                return QString::fromStdString(pwalletMain->vMultiSend[row].first);
-            }
+        case PERCENTAGE:
+            return pwalletMain->vMultiSend[row].second;
+        case ADDRESS: {
+            return QString::fromStdString(pwalletMain->vMultiSend[row].first);
+        }
         }
     }
     return QVariant();
@@ -68,13 +68,13 @@ public:
     {
         if (!row) {
             row = new QWidget();
-            QVBoxLayout *verticalLayout_2;
-            QFrame *frame_2;
-            QHBoxLayout *horizontalLayout;
-            QLabel *labelName;
-            QSpacerItem *horizontalSpacer;
-            QLabel *labelDate;
-            QLabel *lblDivisory;
+            QVBoxLayout* verticalLayout_2;
+            QFrame* frame_2;
+            QHBoxLayout* horizontalLayout;
+            QLabel* labelName;
+            QSpacerItem* horizontalSpacer;
+            QLabel* labelDate;
+            QLabel* lblDivisory;
 
             if (row->objectName().isEmpty())
                 row->setObjectName(QStringLiteral("multiSendrow"));
@@ -120,12 +120,10 @@ public:
         return row;
     }
 
-    void init(QWidget* holder,const QModelIndex &index, bool isHovered, bool isSelected) const override
+    void init(QWidget* holder, const QModelIndex& index, bool isHovered, bool isSelected) const override
     {
         holder->findChild<QLabel*>("labelAddress")->setText(index.data(Qt::DisplayRole).toString());
-        holder->findChild<QLabel*>("labelPercentage")->setText(
-                QString::number(index.sibling(index.row(), MultiSendModel::PERCENTAGE).data(Qt::DisplayRole).toInt()) + QString("%")
-        );
+        holder->findChild<QLabel*>("labelPercentage")->setText(QString::number(index.sibling(index.row(), MultiSendModel::PERCENTAGE).data(Qt::DisplayRole).toInt()) + QString("%"));
     }
 
     QColor rectColor(bool isHovered, bool isSelected) override
@@ -136,32 +134,30 @@ public:
     ~MultiSendHolder() override {}
 
     bool isLightTheme;
-    QWidget *row = nullptr;
+    QWidget* row = nullptr;
 };
 
 
-SettingsMultisendWidget::SettingsMultisendWidget(PWidget *parent) :
-    PWidget(parent),
-    ui(new Ui::SettingsMultisendWidget)
+SettingsMultisendWidget::SettingsMultisendWidget(PWidget* parent) : PWidget(parent),
+                                                                    ui(new Ui::SettingsMultisendWidget)
 {
     ui->setupUi(this);
 
     this->setStyleSheet(parent->styleSheet());
     delegate = new FurAbstractListItemDelegate(
-            DECORATION_SIZE,
-            new MultiSendHolder(isLightTheme()),
-            this
-    );
+        DECORATION_SIZE,
+        new MultiSendHolder(isLightTheme()),
+        this);
 
     // Containers
     setCssProperty(ui->left, "container");
-    ui->left->setContentsMargins(10,10,10,10);
+    ui->left->setContentsMargins(10, 10, 10, 10);
 
     // Title
     ui->labelTitle->setText("Multisend");
     setCssTitleScreen(ui->labelTitle);
 
-    ui->labelSubtitle1->setText(tr("MultiSend allows you to automatically send up to 100% of your stake or masternode reward to a list of other FLS addresses after it matures."));
+    ui->labelSubtitle1->setText(tr("MultiSend allows you to automatically send up to 100% of your stake or masternode reward to a list of other DEV addresses after it matures."));
     setCFLSubtitleScreen(ui->labelSubtitle1);
 
     //Button Group
@@ -195,7 +191,7 @@ SettingsMultisendWidget::SettingsMultisendWidget(PWidget *parent) :
     connect(ui->pushButtonClear, &QPushButton::clicked, this, &SettingsMultisendWidget::clearAll);
 }
 
-void SettingsMultisendWidget::showEvent(QShowEvent *event)
+void SettingsMultisendWidget::showEvent(QShowEvent* event)
 {
     if (multiSendModel) {
         multiSendModel->updateList();
@@ -276,10 +272,9 @@ void SettingsMultisendWidget::onAddRecipientClicked()
 
     if (dialog->isOk) {
         addMultiSend(
-                dialog->getAddress(),
-                dialog->getPercentage(),
-                dialog->getLabel()
-        );
+            dialog->getAddress(),
+            dialog->getPercentage(),
+            dialog->getLabel());
     }
     dialog->deleteLater();
 }
@@ -314,7 +309,7 @@ void SettingsMultisendWidget::addMultiSend(QString address, int percentage, QStr
         CBitcoinAddress address(strAddress);
         std::string userInputLabel = addressLabel.toStdString();
         walletModel->updateAddressBookLabels(address.Get(), (userInputLabel.empty()) ? "(no label)" : userInputLabel,
-                AddressBook::AddressBookPurpose::SEND);
+            AddressBook::AddressBookPurpose::SEND);
     }
 
     CWalletDB walletdb(pwalletMain->strWalletFile);
@@ -359,9 +354,8 @@ void SettingsMultisendWidget::deactivate()
         pwalletMain->setMultiSendDisabled();
         CWalletDB walletdb(pwalletMain->strWalletFile);
         inform(!walletdb.WriteMSettings(false, false, pwalletMain->nLastMultiSendHeight) ?
-               tr("MultiSend deactivated but writing settings to DB failed") :
-               tr("MultiSend deactivated")
-        );
+                   tr("MultiSend deactivated but writing settings to DB failed") :
+                   tr("MultiSend deactivated"));
     }
 }
 

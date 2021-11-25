@@ -3,21 +3,21 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include "qt/fls/coldstakingwidget.h"
-#include "qt/fls/forms/ui_coldstakingwidget.h"
-#include "qt/fls/qtutils.h"
 #include "amount.h"
-#include "guiutil.h"
-#include "qt/fls/requestdialog.h"
-#include "qt/fls/tooltipmenu.h"
-#include "qt/fls/furlistrow.h"
-#include "qt/fls/sendconfirmdialog.h"
-#include "qt/fls/addnewcontactdialog.h"
-#include "qt/fls/guitransactionsutils.h"
-#include "walletmodel.h"
-#include "optionsmodel.h"
-#include "coincontroldialog.h"
 #include "coincontrol.h"
+#include "coincontroldialog.h"
+#include "guiutil.h"
+#include "optionsmodel.h"
+#include "qt/fls/addnewcontactdialog.h"
 #include "qt/fls/csrow.h"
+#include "qt/fls/forms/ui_coldstakingwidget.h"
+#include "qt/fls/furlistrow.h"
+#include "qt/fls/guitransactionsutils.h"
+#include "qt/fls/qtutils.h"
+#include "qt/fls/requestdialog.h"
+#include "qt/fls/sendconfirmdialog.h"
+#include "qt/fls/tooltipmenu.h"
+#include "walletmodel.h"
 
 #define DECORATION_SIZE 70
 #define NUM_ITEMS 3
@@ -38,9 +38,9 @@ public:
         return cachedRow;
     }
 
-    void init(QWidget* holder,const QModelIndex &index, bool isHovered, bool isSelected) const override
+    void init(QWidget* holder, const QModelIndex& index, bool isHovered, bool isSelected) const override
     {
-        CSRow *row = static_cast<CSRow*>(holder);
+        CSRow* row = static_cast<CSRow*>(holder);
         row->updateState(isLightTheme, isHovered, isSelected);
 
         QString address = index.data(Qt::DisplayRole).toString();
@@ -67,23 +67,23 @@ public:
     }
 
     bool isLightTheme;
+
 private:
-    CSRow *cachedRow = nullptr;
+    CSRow* cachedRow = nullptr;
 };
 
-ColdStakingWidget::ColdStakingWidget(FLSGUI* parent) :
-    PWidget(parent),
-    ui(new Ui::ColdStakingWidget),
-    isLoading(false)
+ColdStakingWidget::ColdStakingWidget(FLSGUI* parent) : PWidget(parent),
+                                                       ui(new Ui::ColdStakingWidget),
+                                                       isLoading(false)
 {
     ui->setupUi(this);
     this->setStyleSheet(parent->styleSheet());
 
     /* Containers */
     setCssProperty(ui->left, "container");
-    ui->left->setContentsMargins(0,20,0,0);
+    ui->left->setContentsMargins(0, 20, 0, 0);
     setCssProperty(ui->right, "container-right");
-    ui->right->setContentsMargins(0,10,0,20);
+    ui->right->setContentsMargins(0, 10, 0, 20);
 
     /* Light Font */
     QFont fontLight;
@@ -101,7 +101,7 @@ ColdStakingWidget::ColdStakingWidget(FLSGUI* parent) :
     setCssProperty(ui->pushRight, "btn-check-right");
 
     /* Subtitle */
-    ui->labelSubtitle1->setText(tr("You can delegate your FLSs, letting a hot node (24/7 online node)\nstake on your behalf, while you keep the keys securely offline."));
+    ui->labelSubtitle1->setText(tr("You can delegate your DEVs, letting a hot node (24/7 online node)\nstake on your behalf, while you keep the keys securely offline."));
     setCFLSubtitleScreen(ui->labelSubtitle1);
     spacerDiv = new QSpacerItem(40, 20, QSizePolicy::Maximum, QSizePolicy::Expanding);
 
@@ -112,9 +112,9 @@ ColdStakingWidget::ColdStakingWidget(FLSGUI* parent) :
     ui->lineEditOwnerAddress->setAttribute(Qt::WA_MacShowFocusRect, 0);
     setShadow(ui->lineEditOwnerAddress);
 
-    ui->labelSubtitle2->setText(tr("Accept FLS delegation / Delegate FLS"));
+    ui->labelSubtitle2->setText(tr("Accept DEV delegation / Delegate DEV"));
     setCFLSubtitleScreen(ui->labelSubtitle2);
-    ui->labelSubtitle2->setContentsMargins(0,2,0,0);
+    ui->labelSubtitle2->setContentsMargins(0, 2, 0, 0);
 
     ui->pushButtonSend->setText(tr("Delegate"));
     ui->pushButtonClear->setText(tr("Clear All"));
@@ -128,7 +128,7 @@ ColdStakingWidget::ColdStakingWidget(FLSGUI* parent) :
     sendMultiRow = new SendMultiRow(this);
     sendMultiRow->setOnlyStakingAddressAccepted(true);
     ((QVBoxLayout*)ui->containerSend->layout())->insertWidget(1, sendMultiRow);
-    connect(sendMultiRow, &SendMultiRow::onContactsClicked, [this](){ onContactsClicked(false); });
+    connect(sendMultiRow, &SendMultiRow::onContactsClicked, [this]() { onContactsClicked(false); });
 
     // List
     ui->labelListHistory->setText(tr("Delegated balance history"));
@@ -139,7 +139,7 @@ ColdStakingWidget::ColdStakingWidget(FLSGUI* parent) :
     setCssProperty(ui->labelEmpty, "text-empty");
 
     ui->btnCoinControl->setTitleClassAndText("btn-title-grey", "Coin Control");
-    ui->btnCoinControl->setSubTitleClassAndText("text-subtitle", "Select FLS outputs to delegate.");
+    ui->btnCoinControl->setSubTitleClassAndText("text-subtitle", "Select DEV outputs to delegate.");
 
     ui->btnColdStaking->setTitleClassAndText("btn-title-grey", "Create Cold Staking Address");
     ui->btnColdStaking->setSubTitleClassAndText("text-subtitle", "Creates an address to receive delegated coins\nand stake them on their owner's behalf.");
@@ -150,24 +150,22 @@ ColdStakingWidget::ColdStakingWidget(FLSGUI* parent) :
 
     onDelegateSelected(true);
     ui->pushRight->setChecked(true);
-    connect(ui->pushLeft, &QPushButton::clicked, [this](){onDelegateSelected(false);});
-    connect(ui->pushRight,  &QPushButton::clicked, [this](){onDelegateSelected(true);});
+    connect(ui->pushLeft, &QPushButton::clicked, [this]() { onDelegateSelected(false); });
+    connect(ui->pushRight, &QPushButton::clicked, [this]() { onDelegateSelected(true); });
 
     // List
     setCssProperty(ui->listView, "container");
     txHolder = new CSDelegationHolder(isLightTheme());
     delegate = new FurAbstractListItemDelegate(
-                DECORATION_SIZE,
-                txHolder,
-                this
-    );
+        DECORATION_SIZE,
+        txHolder,
+        this);
 
     addressHolder = new AddressHolder(isLightTheme());
     addressDelegate = new FurAbstractListItemDelegate(
-            DECORATION_SIZE,
-            addressHolder,
-            this
-    );
+        DECORATION_SIZE,
+        addressHolder,
+        this);
 
     ui->listView->setItemDelegate(delegate);
     ui->listView->setIconSize(QSize(DECORATION_SIZE, DECORATION_SIZE));
@@ -194,16 +192,16 @@ ColdStakingWidget::ColdStakingWidget(FLSGUI* parent) :
 
     // Sort Controls
     SortEdit* lineEdit = new SortEdit(ui->comboBoxSort);
-    connect(lineEdit, &SortEdit::Mouse_Pressed, [this](){ui->comboBoxSort->showPopup();});
+    connect(lineEdit, &SortEdit::Mouse_Pressed, [this]() { ui->comboBoxSort->showPopup(); });
     connect(ui->comboBoxSort, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this, &ColdStakingWidget::onSortChanged);
     SortEdit* lineEditOrder = new SortEdit(ui->comboBoxSortOrder);
-    connect(lineEditOrder, &SortEdit::Mouse_Pressed, [this](){ui->comboBoxSortOrder->showPopup();});
+    connect(lineEditOrder, &SortEdit::Mouse_Pressed, [this]() { ui->comboBoxSortOrder->showPopup(); });
     connect(ui->comboBoxSortOrder, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this, &ColdStakingWidget::onSortOrderChanged);
     fillAddreFLSortControls(lineEdit, lineEditOrder, ui->comboBoxSort, ui->comboBoxSortOrder);
     ui->sortWidget->setVisible(false);
 
     connect(ui->pushButtonSend, &QPushButton::clicked, this, &ColdStakingWidget::onSendClicked);
-    connect(btnOwnerContact, &QAction::triggered, [this](){ onContactsClicked(true); });
+    connect(btnOwnerContact, &QAction::triggered, [this]() { onContactsClicked(true); });
     connect(ui->listView, &QListView::clicked, this, &ColdStakingWidget::handleAddressClicked);
     connect(ui->listViewStakingAddress, &QListView::clicked, this, &ColdStakingWidget::handleMyColdAddressClicked);
     connect(ui->btnMyStakingAddresses, &OptionButton::clicked, this, &ColdStakingWidget::onMyStakingAddressesClicked);
@@ -235,7 +233,6 @@ void ColdStakingWidget::loadWalletModel()
 
         tryRefreshDelegations();
     }
-
 }
 
 void ColdStakingWidget::onTxArrived(const QString& hash, const bool& isCoinStake, const bool& isCSAnyType)
@@ -312,9 +309,8 @@ void ColdStakingWidget::onContactsClicked()
     int contactsSize = isContactOwnerSelected ? walletModel->getAddressTableModel()->sizeRecv() : walletModel->getAddressTableModel()->sizeColdSend();
     if (contactsSize == 0) {
         inform(isContactOwnerSelected ?
-                 tr( "No receive addresses available, you can go to the receive screen and create some there!") :
-                 tr("No contacts available, you can go to the contacts screen and add some there!")
-        );
+                   tr("No receive addresses available, you can go to the receive screen and create some there!") :
+                   tr("No contacts available, you can go to the contacts screen and add some there!"));
         return;
     }
 
@@ -339,14 +335,13 @@ void ColdStakingWidget::onContactsClicked()
     ui->vContainerOwner->getContentsMargins(&margin2, nullptr, nullptr, nullptr);
     pos.setX(pos.x() + margin1 + margin2);
 
-    height = (contactsSize <= 2) ? height * ( 2 * (contactsSize + 1 )) : height * 4;
+    height = (contactsSize <= 2) ? height * (2 * (contactsSize + 1)) : height * 4;
 
     if (!menuContacts) {
         menuContacts = new ContactsDropdown(
-                width,
-                height,
-                this
-        );
+            width,
+            height,
+            this);
         connect(menuContacts, &ContactsDropdown::contactSelected, [this](QString address, QString label) {
             if (isContactOwnerSelected) {
                 ui->lineEditOwnerAddress->setText(address);
@@ -406,7 +401,8 @@ void ColdStakingWidget::onDelegateSelected(bool delegate)
     }
 }
 
-void ColdStakingWidget::updateDisplayUnit() {
+void ColdStakingWidget::updateDisplayUnit()
+{
     if (walletModel && walletModel->getOptionsModel()) {
         nDisplayUnit = walletModel->getOptionsModel()->getDisplayUnit();
     }
@@ -469,11 +465,10 @@ void ColdStakingWidget::onSendClicked()
         // Warn the user if the owner address is not from this wallet
         if (!isOwnerAddressFromThisWallet &&
             !ask(tr("ALERT!"),
-                    tr("Delegating to an external owner address!\n\n"
-                       "The delegated coins will NOT be spendable by this wallet.\nSpending these coins will need to be done from the wallet or\ndevice containing the owner address.\n\n"
-                       "Do you wish to proceed?"))
-            ) {
-                return;
+                tr("Delegating to an external owner address!\n\n"
+                   "The delegated coins will NOT be spendable by this wallet.\nSpending these coins will need to be done from the wallet or\ndevice containing the owner address.\n\n"
+                   "Do you wish to proceed?"))) {
+            return;
         }
     }
 
@@ -493,12 +488,11 @@ void ColdStakingWidget::onSendClicked()
 
     // process prepareStatus and on error generate message shown to user
     GuiTransactionsUtils::ProceFLSendCoinsReturnAndInform(
-            this,
-            prepareStatus,
-            walletModel,
-            BitcoinUnits::formatWithUnit(nDisplayUnit, currentTransaction.getTransactionFee()),
-            true
-    );
+        this,
+        prepareStatus,
+        walletModel,
+        BitcoinUnits::formatWithUnit(nDisplayUnit, currentTransaction.getTransactionFee()),
+        true);
 
     if (prepareStatus.status != WalletModel::OK) {
         inform(tr("Cannot create transaction."));
@@ -517,10 +511,9 @@ void ColdStakingWidget::onSendClicked()
         WalletModel::SendCoinsReturn sendStatus = dialog->getStatus();
         // process sendStatus and on error generate message shown to user
         GuiTransactionsUtils::ProceFLSendCoinsReturnAndInform(
-                this,
-                sendStatus,
-                walletModel
-        );
+            this,
+            sendStatus,
+            walletModel);
 
         if (sendStatus.status == WalletModel::OK) {
             clearAll();
@@ -554,7 +547,7 @@ void ColdStakingWidget::onCoinControlClicked()
             coinControlDialog->exec();
             ui->btnCoinControl->setActive(CoinControlDialog::coinControl->HasSelected());
         } else {
-            inform(tr("You don't have any FLS to select."));
+            inform(tr("You don't have any DEV to select."));
         }
     }
 }
@@ -575,7 +568,7 @@ void ColdStakingWidget::showAddressGenerationDialog(bool isPaymentRequest)
         }
         isShowingDialog = true;
         showHideOp(true);
-        RequestDialog *dialog = new RequestDialog(window);
+        RequestDialog* dialog = new RequestDialog(window);
         dialog->setWalletModel(walletModel);
         dialog->setPaymentRequest(isPaymentRequest);
         openDialogWithOpaqueBackgroundY(dialog, window, 3.5, 12);
@@ -589,13 +582,13 @@ void ColdStakingWidget::showAddressGenerationDialog(bool isPaymentRequest)
     }
 }
 
-void ColdStakingWidget::handleMyColdAddressClicked(const QModelIndex &_index)
+void ColdStakingWidget::handleMyColdAddressClicked(const QModelIndex& _index)
 {
     ui->listViewStakingAddress->setCurrentIndex(_index);
 
     QRect rect = ui->listViewStakingAddress->visualRect(_index);
     QPoint pos = rect.topRight();
-    pos.setX( parentWidget()->rect().right() - (DECORATION_SIZE * 1.5) );
+    pos.setX(parentWidget()->rect().right() - (DECORATION_SIZE * 1.5));
     pos.setY(pos.y() + (DECORATION_SIZE * 2.5));
 
     QModelIndex rIndex = addressesFilter->mapToSource(_index);
@@ -619,7 +612,7 @@ void ColdStakingWidget::handleMyColdAddressClicked(const QModelIndex &_index)
     menuAddresses->show();
 }
 
-void ColdStakingWidget::handleAddressClicked(const QModelIndex &rIndex)
+void ColdStakingWidget::handleAddressClicked(const QModelIndex& rIndex)
 {
     bool isReceivedDelegation = rIndex.sibling(rIndex.row(), ColdStakingModel::IS_RECEIVED_DELEGATION).data(Qt::DisplayRole).toBool();
 
@@ -651,8 +644,7 @@ void ColdStakingWidget::handleAddressClicked(const QModelIndex &rIndex)
     this->index = rIndex;
 
     if (isReceivedDelegation) {
-        bool isWhitelisted = rIndex.sibling(rIndex.row(), ColdStakingModel::IS_WHITELISTED).data(
-                Qt::DisplayRole).toBool();
+        bool isWhitelisted = rIndex.sibling(rIndex.row(), ColdStakingModel::IS_WHITELISTED).data(Qt::DisplayRole).toBool();
         this->menu->setDeleteBtnVisible(isWhitelisted);
         this->menu->setEditBtnVisible(!isWhitelisted);
         this->menu->setCopyBtnVisible(true);
@@ -680,10 +672,9 @@ void ColdStakingWidget::onAddressCopyClicked()
 void ColdStakingWidget::onAddressEditClicked()
 {
     onLabelClicked(
-            tr("Edit Cold Address Label"),
-            addressIndex,
-            false
-    );
+        tr("Edit Cold Address Label"),
+        addressIndex,
+        false);
 }
 
 void ColdStakingWidget::onEditClicked()
@@ -731,18 +722,17 @@ void ColdStakingWidget::onCopyOwnerClicked()
 void ColdStakingWidget::onLabelClicked()
 {
     onLabelClicked(
-            tr("Edit Owner Address Label"),
-            index,
-            false
-    );
+        tr("Edit Owner Address Label"),
+        index,
+        false);
 }
 
-void ColdStakingWidget::onLabelClicked(QString dialogTitle, const QModelIndex &index, const bool& isMyColdStakingAddresses)
+void ColdStakingWidget::onLabelClicked(QString dialogTitle, const QModelIndex& index, const bool& isMyColdStakingAddresses)
 {
     if (walletModel && !isShowingDialog) {
         isShowingDialog = true;
         showHideOp(true);
-        AddNewContactDialog *dialog = new AddNewContactDialog(window);
+        AddNewContactDialog* dialog = new AddNewContactDialog(window);
         dialog->setTexts(dialogTitle);
         QString qAddress = index.data(Qt::DisplayRole).toString();
         dialog->setData(qAddress, walletModel->getAddressTableModel()->labelForAddress(qAddress));
@@ -752,10 +742,9 @@ void ColdStakingWidget::onLabelClicked(QString dialogTitle, const QModelIndex &i
             std::string purpose = walletModel->getAddressTableModel()->purposeForAddress(stdString);
             const CBitcoinAddress address = CBitcoinAddress(stdString.data());
             if (!label.isEmpty() && walletModel->updateAddressBookLabels(
-                    address.Get(),
-                    label.toUtf8().constData(),
-                    purpose
-            )) {
+                                        address.Get(),
+                                        label.toUtf8().constData(),
+                                        purpose)) {
                 if (isMyColdStakingAddresses) {
                     addressTableModel->notifyChange(index);
                 } else
@@ -773,7 +762,9 @@ void ColdStakingWidget::onMyStakingAddressesClicked()
 {
     isStakingAddressListVisible = !ui->listViewStakingAddress->isVisible();
     ui->btnMyStakingAddresses->setRightIconClass((isStakingAddressListVisible ?
-                                                  "btn-dropdown" : "ic-arrow"), true);
+                                                         "btn-dropdown" :
+                                                         "ic-arrow"),
+        true);
     ui->listViewStakingAddress->setVisible(isStakingAddressListVisible);
     if (isStakingAddressListVisible) {
         ui->sortWidget->setVisible(true);
@@ -795,20 +786,18 @@ void ColdStakingWidget::changeTheme(bool isLightTheme, QString& theme)
 void ColdStakingWidget::updateStakingTotalLabel()
 {
     const CAmount& total = csModel->getTotalAmount();
-    ui->labelStakingTotal->setText(tr("Total Staking: %1").arg(
-            (total == 0) ? "0.00 FLS" : GUIUtil::formatBalance(total, nDisplayUnit))
-    );
+    ui->labelStakingTotal->setText(tr("Total Staking: %1").arg((total == 0) ? "0.00 DEV" : GUIUtil::formatBalance(total, nDisplayUnit)));
 }
 
 void ColdStakingWidget::onSortChanged(int idx)
 {
-    sortType = (AddressTableModel::ColumnIndex) ui->comboBoxSort->itemData(idx).toInt();
+    sortType = (AddressTableModel::ColumnIndex)ui->comboBoxSort->itemData(idx).toInt();
     sortAddresses();
 }
 
 void ColdStakingWidget::onSortOrderChanged(int idx)
 {
-    sortOrder = (Qt::SortOrder) ui->comboBoxSortOrder->itemData(idx).toInt();
+    sortOrder = (Qt::SortOrder)ui->comboBoxSortOrder->itemData(idx).toInt();
     sortAddresses();
 }
 

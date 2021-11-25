@@ -43,7 +43,7 @@
 
 
 const int BITCOIN_IPC_CONNECT_TIMEOUT = 1000; // milliseconds
-const QString BITCOIN_IPC_PREFIX("fls:");
+const QString BITCOIN_IPC_PREFIX("dev:");
 // BIP70 payment protocol messages
 const char* BIP70_MESSAGE_PAYMENTACK = "PaymentACK";
 const char* BIP70_MESSAGE_PAYMENTREQUEST = "PaymentRequest";
@@ -55,19 +55,19 @@ const char* BIP71_MIMETYPE_PAYMENTREQUEST = "application/flits-paymentrequest";
 const qint64 BIP70_MAX_PAYMENTREQUEST_SIZE = 50000;
 
 struct X509StoreDeleter {
-      void operator()(X509_STORE* b) {
-          X509_STORE_free(b);
-      }
+    void operator()(X509_STORE* b)
+    {
+        X509_STORE_free(b);
+    }
 };
 
 struct X509Deleter {
-      void operator()(X509* b) { X509_free(b); }
+    void operator()(X509* b) { X509_free(b); }
 };
 
 namespace // Anon namespace
 {
-
-    std::unique_ptr<X509_STORE, X509StoreDeleter> certStore;
+std::unique_ptr<X509_STORE, X509StoreDeleter> certStore;
 }
 
 //
@@ -77,7 +77,7 @@ namespace // Anon namespace
 //
 static QString ipcServerName()
 {
-    QString name("FLSQt");
+    QString name("DEVQt");
 
     // Append a simple hash of the datadir
     // Note that GetDataDir(true) returns a different path
@@ -286,7 +286,7 @@ PaymentServer::PaymentServer(QObject* parent, bool startLocalServer) : QObject(p
         if (!uriServer->listen(name)) {
             // constructor is called early in init, so don't use "emit message()" here
             QMessageBox::critical(0, tr("Payment request error"),
-                tr("Cannot start fls: click-to-pay handler"));
+                tr("Cannot start dev: click-to-pay handler"));
         } else {
             connect(uriServer, &QLocalServer::newConnection, this, &PaymentServer::handleURIConnection);
             connect(this, &PaymentServer::receivedPaymentACK, this, &PaymentServer::handlePaymentACK);
@@ -394,7 +394,7 @@ void PaymentServer::handleURIOrFile(const QString& s)
                     Q_EMIT receivedPaymentRequest(recipient);
             } else
                 Q_EMIT message(tr("URI handling"),
-                    tr("URI cannot be parsed! This can be caused by an invalid FLS address or malformed URI parameters."),
+                    tr("URI cannot be parsed! This can be caused by an invalid DEV address or malformed URI parameters."),
                     CClientUIInterface::ICON_WARNING);
 
             return;

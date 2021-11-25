@@ -6,7 +6,7 @@
     {
       "label": "build deviant",
       "type": "shell",
-      "command": "cd build && ./build.sh",
+      "command": "cd ../build && ./build.sh",
       "problemMatcher": [],
       "group": {
         "kind": "build",
@@ -17,7 +17,7 @@
     {
       "label": "run deviant",
       "type": "shell",
-      "command": "./build/src/qt/flits-qt",
+      "command": "../build/src/qt/flits-qt",
       "problemMatcher": [],
       "group": {
         "kind": "build",

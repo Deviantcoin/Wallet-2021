@@ -6,15 +6,15 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include "clientversion.h"
+#include "guiinterface.h"
+#include "httprpc.h"
+#include "httpserver.h"
 #include "init.h"
 #include "main.h"
 #include "masternodeconfig.h"
 #include "noui.h"
 #include "rpc/server.h"
-#include "guiinterface.h"
 #include "util.h"
-#include "httpserver.h"
-#include "httprpc.h"
 
 #include <boost/algorithm/string/predicate.hpp>
 #include <boost/filesystem.hpp>
@@ -67,13 +67,13 @@ bool AppInit(int argc, char* argv[])
 
     // Process help and version before taking care about datadir
     if (mapArgs.count("-?") || mapArgs.count("-help") || mapArgs.count("-version")) {
-        std::string strUsage = _("Flits Core Daemon") + " " + _("version") + " " + FormatFullVersion() + "\n";
+        std::string strUsage = _("Deviant Core Daemon") + " " + _("version") + " " + FormatFullVersion() + "\n";
 
         if (mapArgs.count("-version")) {
             strUsage += LicenseInfo();
         } else {
             strUsage += "\n" + _("Usage:") + "\n" +
-                        "  flitsd [options]                     " + _("Start Flits Core Daemon") + "\n";
+                        "  flitsd [options]                     " + _("Start Deviant Core Daemon") + "\n";
 
             strUsage += "\n" + HelpMessage(HMM_BITCOIND);
         }

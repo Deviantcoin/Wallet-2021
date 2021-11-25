@@ -3,46 +3,44 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include "qt/fls/receivewidget.h"
-#include "qt/fls/forms/ui_receivewidget.h"
-#include "qt/fls/requestdialog.h"
-#include "qt/fls/addnewcontactdialog.h"
-#include "qt/fls/qtutils.h"
-#include "qt/fls/myaddressrow.h"
-#include "qt/fls/furlistrow.h"
-#include "qt/fls/addressholder.h"
-#include "walletmodel.h"
 #include "guiutil.h"
 #include "pairresult.h"
+#include "qt/fls/addnewcontactdialog.h"
+#include "qt/fls/addressholder.h"
+#include "qt/fls/forms/ui_receivewidget.h"
+#include "qt/fls/furlistrow.h"
+#include "qt/fls/myaddressrow.h"
+#include "qt/fls/qtutils.h"
+#include "qt/fls/requestdialog.h"
+#include "walletmodel.h"
 
-#include <QModelIndex>
 #include <QColor>
 #include <QDateTime>
+#include <QModelIndex>
 
 #define DECORATION_SIZE 70
 #define NUM_ITEMS 3
 
-ReceiveWidget::ReceiveWidget(FLSGUI* parent) :
-    PWidget(parent),
-    ui(new Ui::ReceiveWidget)
+ReceiveWidget::ReceiveWidget(FLSGUI* parent) : PWidget(parent),
+                                               ui(new Ui::ReceiveWidget)
 {
     ui->setupUi(this);
     this->setStyleSheet(parent->styleSheet());
 
     delegate = new FurAbstractListItemDelegate(
-                DECORATION_SIZE,
-                new AddressHolder(isLightTheme()),
-                this
-                );
+        DECORATION_SIZE,
+        new AddressHolder(isLightTheme()),
+        this);
 
     // Containers
     setCssProperty(ui->left, "container");
-    ui->left->setContentsMargins(20,20,20,20);
+    ui->left->setContentsMargins(20, 20, 20, 20);
     setCssProperty(ui->right, "container-right");
-    ui->right->setContentsMargins(0,9,0,0);
+    ui->right->setContentsMargins(0, 9, 0, 0);
 
     // Title
     ui->labelTitle->setText(tr("Receive"));
-    ui->labelSubtitle1->setText(tr("Scan the QR code or copy the address to receive FLS."));
+    ui->labelSubtitle1->setText(tr("Scan the QR code or copy the address to receive DEV."));
     setCssTitleScreen(ui->labelTitle);
     setCFLSubtitleScreen(ui->labelSubtitle1);
 
@@ -93,10 +91,10 @@ ReceiveWidget::ReceiveWidget(FLSGUI* parent) :
 
     // Sort Controls
     SortEdit* lineEdit = new SortEdit(ui->comboBoxSort);
-    connect(lineEdit, &SortEdit::Mouse_Pressed, [this](){ui->comboBoxSort->showPopup();});
+    connect(lineEdit, &SortEdit::Mouse_Pressed, [this]() { ui->comboBoxSort->showPopup(); });
     connect(ui->comboBoxSort, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this, &ReceiveWidget::onSortChanged);
     SortEdit* lineEditOrder = new SortEdit(ui->comboBoxSortOrder);
-    connect(lineEditOrder, &SortEdit::Mouse_Pressed, [this](){ui->comboBoxSortOrder->showPopup();});
+    connect(lineEditOrder, &SortEdit::Mouse_Pressed, [this]() { ui->comboBoxSortOrder->showPopup(); });
     connect(ui->comboBoxSortOrder, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this, &ReceiveWidget::onSortOrderChanged);
     fillAddreFLSortControls(lineEdit, lineEditOrder, ui->comboBoxSort, ui->comboBoxSortOrder);
     ui->sortWidget->setVisible(false);
@@ -124,7 +122,7 @@ void ReceiveWidget::loadWalletModel()
         refreshView();
 
         // data change
-        connect(this->addressTableModel, &AddressTableModel::dataChanged, [this](const QModelIndex& tl, const QModelIndex& br){ refreshView(tl, br); });
+        connect(this->addressTableModel, &AddressTableModel::dataChanged, [this](const QModelIndex& tl, const QModelIndex& br) { refreshView(tl, br); });
     }
 }
 
@@ -192,7 +190,7 @@ void ReceiveWidget::updateQr(QString address)
     }
 }
 
-void ReceiveWidget::handleAddressClicked(const QModelIndex &index)
+void ReceiveWidget::handleAddressClicked(const QModelIndex& index)
 {
     QModelIndex rIndex = filter->mapToSource(index);
     refreshView(rIndex.data(Qt::DisplayRole).toString());
@@ -203,18 +201,16 @@ void ReceiveWidget::onLabelClicked()
     if (walletModel && !isShowingDialog) {
         isShowingDialog = true;
         showHideOp(true);
-        AddNewContactDialog *dialog = new AddNewContactDialog(window);
+        AddNewContactDialog* dialog = new AddNewContactDialog(window);
         dialog->setTexts(tr("Edit Address Label"));
         dialog->setData(info->address, addressTableModel->labelForAddress(info->address));
         if (openDialogWithOpaqueBackgroundY(dialog, window, 3.5, 6)) {
             QString label = dialog->getLabel();
             const CBitcoinAddress address = CBitcoinAddress(info->address.toUtf8().constData());
             if (!label.isEmpty() && walletModel->updateAddressBookLabels(
-                    address.Get(),
-                    label.toUtf8().constData(),
-                    AddressBook::AddressBookPurpose::RECEIVE
-            )
-                    ) {
+                                        address.Get(),
+                                        label.toUtf8().constData(),
+                                        AddressBook::AddressBookPurpose::RECEIVE)) {
                 // update label status (icon color)
                 updateLabel();
                 inform(tr("Address label saved"));
@@ -277,7 +273,7 @@ void ReceiveWidget::showAddressGenerationDialog(bool isPaymentRequest)
         }
         isShowingDialog = true;
         showHideOp(true);
-        RequestDialog *dialog = new RequestDialog(window);
+        RequestDialog* dialog = new RequestDialog(window);
         dialog->setWalletModel(walletModel);
         dialog->setPaymentRequest(isPaymentRequest);
         openDialogWithOpaqueBackgroundY(dialog, window, 3.5, 12);
@@ -310,13 +306,13 @@ void ReceiveWidget::onMyAddressesClicked()
 
 void ReceiveWidget::onSortChanged(int idx)
 {
-    sortType = (AddressTableModel::ColumnIndex) ui->comboBoxSort->itemData(idx).toInt();
+    sortType = (AddressTableModel::ColumnIndex)ui->comboBoxSort->itemData(idx).toInt();
     sortAddresses();
 }
 
 void ReceiveWidget::onSortOrderChanged(int idx)
 {
-    sortOrder = (Qt::SortOrder) ui->comboBoxSortOrder->itemData(idx).toInt();
+    sortOrder = (Qt::SortOrder)ui->comboBoxSortOrder->itemData(idx).toInt();
     sortAddresses();
 }
 

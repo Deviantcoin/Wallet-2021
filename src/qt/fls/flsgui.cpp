@@ -8,26 +8,26 @@
 #include "macdockiconhandler.h"
 #endif
 
-#include "qt/guiutil.h"
 #include "clientmodel.h"
-#include "optionsmodel.h"
+#include "guiinterface.h"
 #include "networkstyle.h"
 #include "notificator.h"
-#include "guiinterface.h"
-#include "qt/fls/qtutils.h"
+#include "optionsmodel.h"
 #include "qt/fls/defaultdialog.h"
+#include "qt/fls/qtutils.h"
 #include "qt/fls/settings/settingsfaqwidget.h"
+#include "qt/guiutil.h"
 
 #include "init.h"
 #include "util.h"
 
-#include <QDesktopWidget>
-#include <QHBoxLayout>
-#include <QVBoxLayout>
 #include <QApplication>
 #include <QColor>
-#include <QShortcut>
+#include <QDesktopWidget>
+#include <QHBoxLayout>
 #include <QKeySequence>
+#include <QShortcut>
+#include <QVBoxLayout>
 #include <QWindowStateChangeEvent>
 
 
@@ -39,10 +39,9 @@
 
 const QString FLSGUI::DEFAULT_WALLET = "~Default";
 
-FLSGUI::FLSGUI(const NetworkStyle* networkStyle, QWidget* parent) :
-        QMainWindow(parent),
-        clientModel(0){
-
+FLSGUI::FLSGUI(const NetworkStyle* networkStyle, QWidget* parent) : QMainWindow(parent),
+                                                                    clientModel(0)
+{
     /* Open CSS when configured */
     this->setStyleSheet(GUIUtil::loadStyleSheet());
     this->setMinimumSize(BASE_WINDOW_MIN_WIDTH, BASE_WINDOW_MIN_HEIGHT);
@@ -50,13 +49,12 @@ FLSGUI::FLSGUI(const NetworkStyle* networkStyle, QWidget* parent) :
 
     // Adapt screen size
     QRect rec = QApplication::desktop()->screenGeometry();
-    int adaptedHeight = (rec.height() < BASE_WINDOW_HEIGHT) ?  BASE_WINDOW_MIN_HEIGHT : BASE_WINDOW_HEIGHT;
-    int adaptedWidth = (rec.width() < BASE_WINDOW_WIDTH) ?  BASE_WINDOW_MIN_WIDTH : BASE_WINDOW_WIDTH;
+    int adaptedHeight = (rec.height() < BASE_WINDOW_HEIGHT) ? BASE_WINDOW_MIN_HEIGHT : BASE_WINDOW_HEIGHT;
+    int adaptedWidth = (rec.width() < BASE_WINDOW_WIDTH) ? BASE_WINDOW_MIN_WIDTH : BASE_WINDOW_WIDTH;
     GUIUtil::restoreWindowGeometry(
-            "nWindow",
-            QSize(adaptedWidth, adaptedHeight),
-            this
-    );
+        "nWindow",
+        QSize(adaptedWidth, adaptedHeight),
+        this);
 
 #ifdef ENABLE_WALLET
     /* if compiled with wallet support, -disablewallet can still disable the wallet */
@@ -67,7 +65,7 @@ FLSGUI::FLSGUI(const NetworkStyle* networkStyle, QWidget* parent) :
 
     QString windowTitle = QString::fromStdString(GetArg("-windowtitle", ""));
     if (windowTitle.isEmpty()) {
-        windowTitle = tr("Flits Core") + " - ";
+        windowTitle = tr("Deviant Core") + " - ";
         windowTitle += ((enableWallet) ? tr("Wallet") : tr("Node"));
     }
     windowTitle += " " + networkStyle->getTitleAddText();
@@ -78,14 +76,13 @@ FLSGUI::FLSGUI(const NetworkStyle* networkStyle, QWidget* parent) :
 
 #ifdef ENABLE_WALLET
     // Create wallet frame
-    if(enableWallet){
-
+    if (enableWallet) {
         QFrame* centralWidget = new QFrame(this);
         this->setMinimumWidth(BASE_WINDOW_MIN_WIDTH);
         this->setMinimumHeight(BASE_WINDOW_MIN_HEIGHT);
         QHBoxLayout* centralWidgetLayouot = new QHBoxLayout();
         centralWidget->setLayout(centralWidgetLayouot);
-        centralWidgetLayouot->setContentsMargins(0,0,0,0);
+        centralWidgetLayouot->setContentsMargins(0, 0, 0, 0);
         centralWidgetLayouot->setSpacing(0);
 
         centralWidget->setProperty("cssClass", "container");
@@ -96,29 +93,29 @@ FLSGUI::FLSGUI(const NetworkStyle* networkStyle, QWidget* parent) :
         centralWidgetLayouot->addWidget(navMenu);
 
         this->setCentralWidget(centralWidget);
-        this->setContentsMargins(0,0,0,0);
+        this->setContentsMargins(0, 0, 0, 0);
 
-        QFrame *container = new QFrame(centralWidget);
-        container->setContentsMargins(0,0,0,0);
+        QFrame* container = new QFrame(centralWidget);
+        container->setContentsMargins(0, 0, 0, 0);
         centralWidgetLayouot->addWidget(container);
 
         // Then topbar + the stackedWidget
-        QVBoxLayout *baseScreensContainer = new QVBoxLayout(this);
+        QVBoxLayout* baseScreensContainer = new QVBoxLayout(this);
         baseScreensContainer->setMargin(0);
         baseScreensContainer->setSpacing(0);
-        baseScreensContainer->setContentsMargins(0,0,0,0);
+        baseScreensContainer->setContentsMargins(0, 0, 0, 0);
         container->setLayout(baseScreensContainer);
 
         // Insert the topbar
         topBar = new TopBar(this);
-        topBar->setContentsMargins(0,0,0,0);
+        topBar->setContentsMargins(0, 0, 0, 0);
         baseScreensContainer->addWidget(topBar);
 
         // Now stacked widget
         stackedContainer = new QStackedWidget(this);
         QSizePolicy sizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
         stackedContainer->setSizePolicy(sizePolicy);
-        stackedContainer->setContentsMargins(0,0,0,0);
+        stackedContainer->setContentsMargins(0, 0, 0, 0);
         baseScreensContainer->addWidget(stackedContainer);
 
         // Init
@@ -166,10 +163,10 @@ FLSGUI::FLSGUI(const NetworkStyle* networkStyle, QWidget* parent) :
 
     // Subscribe to notifications from core
     subscribeToCoreSignals();
-
 }
 
-void FLSGUI::createActions(const NetworkStyle* networkStyle){
+void FLSGUI::createActions(const NetworkStyle* networkStyle)
+{
     toggleHideAction = new QAction(networkStyle->getAppIcon(), tr("&Show / Hide"), this);
     toggleHideAction->setStatusTip(tr("Show or hide the main Window"));
 
@@ -185,10 +182,11 @@ void FLSGUI::createActions(const NetworkStyle* networkStyle){
 /**
  * Here add every event connection
  */
-void FLSGUI::connectActions() {
-    QShortcut *consoleShort = new QShortcut(this);
+void FLSGUI::connectActions()
+{
+    QShortcut* consoleShort = new QShortcut(this);
     consoleShort->setKey(QKeySequence(SHORT_KEY + Qt::Key_C));
-    connect(consoleShort, &QShortcut::activated, [this](){
+    connect(consoleShort, &QShortcut::activated, [this]() {
         navMenu->selectSettings();
         settingsWidget->showDebugConsole();
         goToSettings();
@@ -208,10 +206,11 @@ void FLSGUI::connectActions() {
 }
 
 
-void FLSGUI::createTrayIcon(const NetworkStyle* networkStyle) {
+void FLSGUI::createTrayIcon(const NetworkStyle* networkStyle)
+{
 #ifndef Q_OS_MAC
     trayIcon = new QSystemTrayIcon(this);
-    QString toolTip = tr("Flits Core client") + " " + networkStyle->getTitleAddText();
+    QString toolTip = tr("Deviant Core client") + " " + networkStyle->getTitleAddText();
     trayIcon->setToolTip(toolTip);
     trayIcon->setIcon(networkStyle->getAppIcon());
     trayIcon->hide();
@@ -220,7 +219,8 @@ void FLSGUI::createTrayIcon(const NetworkStyle* networkStyle) {
 }
 
 //
-FLSGUI::~FLSGUI() {
+FLSGUI::~FLSGUI()
+{
     // Unsubscribe from notifications from core
     unsubscribeFromCoreSignals();
 
@@ -234,16 +234,17 @@ FLSGUI::~FLSGUI() {
 
 
 /** Get restart command-line parameters and request restart */
-void FLSGUI::handleRestart(QStringList args){
+void FLSGUI::handleRestart(QStringList args)
+{
     if (!ShutdownRequested())
         Q_EMIT requestedRestart(args);
 }
 
 
-void FLSGUI::setClientModel(ClientModel* clientModel) {
+void FLSGUI::setClientModel(ClientModel* clientModel)
+{
     this->clientModel = clientModel;
-    if(this->clientModel) {
-
+    if (this->clientModel) {
         // Create system tray menu (or setup the dock menu) that late to prevent users from calling actions,
         // while the client has not yet fully loaded
         createTrayIconMenu();
@@ -259,7 +260,7 @@ void FLSGUI::setClientModel(ClientModel* clientModel) {
         connect(topBar, &TopBar::walletSynced, coldStakingWidget, &ColdStakingWidget::walletSynced);
 
         // Get restart command-line parameters and handle restart
-        connect(settingsWidget, &SettingsWidget::handleRestart, [this](QStringList arg){handleRestart(arg);});
+        connect(settingsWidget, &SettingsWidget::handleRestart, [this](QStringList arg) { handleRestart(arg); });
 
         if (rpcConsole) {
             rpcConsole->setClientModel(clientModel);
@@ -278,7 +279,8 @@ void FLSGUI::setClientModel(ClientModel* clientModel) {
     }
 }
 
-void FLSGUI::createTrayIconMenu() {
+void FLSGUI::createTrayIconMenu()
+{
 #ifndef Q_OS_MAC
     // return if trayIcon is unset (only on non-macOSes)
     if (!trayIcon)
@@ -317,10 +319,10 @@ void FLSGUI::trayIconActivated(QSystemTrayIcon::ActivationReason reason)
 }
 #else
 void FLSGUI::macosDockIconActivated()
- {
-     show();
-     activateWindow();
- }
+{
+    show();
+    activateWindow();
+}
 #endif
 
 void FLSGUI::changeEvent(QEvent* e)
@@ -352,16 +354,18 @@ void FLSGUI::closeEvent(QCloseEvent* event)
 }
 
 
-void FLSGUI::messageInfo(const QString& text){
-    if(!this->snackBar) this->snackBar = new SnackBar(this, this);
+void FLSGUI::messageInfo(const QString& text)
+{
+    if (!this->snackBar) this->snackBar = new SnackBar(this, this);
     this->snackBar->setText(text);
     this->snackBar->resize(this->width(), snackBar->height());
     openDialog(this->snackBar, this);
 }
 
 
-void FLSGUI::message(const QString& title, const QString& message, unsigned int style, bool* ret) {
-    QString strTitle =  tr("Flits Core"); // default title
+void FLSGUI::message(const QString& title, const QString& message, unsigned int style, bool* ret)
+{
+    QString strTitle = tr("Deviant Core"); // default title
     // Default to information icon
     int nNotifyIcon = Notificator::Information;
 
@@ -372,18 +376,18 @@ void FLSGUI::message(const QString& title, const QString& message, unsigned int 
         msgType = title;
     } else {
         switch (style) {
-            case CClientUIInterface::MSG_ERROR:
-                msgType = tr("Error");
-                break;
-            case CClientUIInterface::MSG_WARNING:
-                msgType = tr("Warning");
-                break;
-            case CClientUIInterface::MSG_INFORMATION:
-                msgType = tr("Information");
-                break;
-            default:
-                msgType = tr("System Message");
-                break;
+        case CClientUIInterface::MSG_ERROR:
+            msgType = tr("Error");
+            break;
+        case CClientUIInterface::MSG_WARNING:
+            msgType = tr("Warning");
+            break;
+        case CClientUIInterface::MSG_INFORMATION:
+            msgType = tr("Information");
+            break;
+        default:
+            msgType = tr("System Message");
+            break;
         }
     }
 
@@ -399,27 +403,27 @@ void FLSGUI::message(const QString& title, const QString& message, unsigned int 
         // Check for buttons, use OK as default, if none was supplied
         int r = 0;
         showNormalIfMinimized();
-        if(style & CClientUIInterface::BTN_MASK){
+        if (style & CClientUIInterface::BTN_MASK) {
             r = openStandardDialog(
-                    (title.isEmpty() ? strTitle : title), message, "OK", "CANCEL"
-                );
-        }else{
+                (title.isEmpty() ? strTitle : title), message, "OK", "CANCEL");
+        } else {
             r = openStandardDialog((title.isEmpty() ? strTitle : title), message, "OK");
         }
         if (ret != NULL)
             *ret = r;
-    } else if(style & CClientUIInterface::MSG_INFORMATION_SNACK){
+    } else if (style & CClientUIInterface::MSG_INFORMATION_SNACK) {
         messageInfo(message);
-    }else {
+    } else {
         // Append title to "FLS - "
         if (!msgType.isEmpty())
             strTitle += " - " + msgType;
-        notificator->notify((Notificator::Class) nNotifyIcon, strTitle, message);
+        notificator->notify((Notificator::Class)nNotifyIcon, strTitle, message);
     }
 }
 
-bool FLSGUI::openStandardDialog(QString title, QString body, QString okBtn, QString cancelBtn){
-    DefaultDialog *dialog;
+bool FLSGUI::openStandardDialog(QString title, QString body, QString okBtn, QString cancelBtn)
+{
+    DefaultDialog* dialog;
     if (isVisible()) {
         showHide(true);
         dialog = new DefaultDialog(this);
@@ -429,7 +433,7 @@ bool FLSGUI::openStandardDialog(QString title, QString body, QString okBtn, QStr
     } else {
         dialog = new DefaultDialog();
         dialog->setText(title, body, okBtn);
-        dialog->setWindowTitle(tr("Flits Core"));
+        dialog->setWindowTitle(tr("Deviant Core"));
         dialog->adjustSize();
         dialog->raise();
         dialog->exec();
@@ -440,7 +444,8 @@ bool FLSGUI::openStandardDialog(QString title, QString body, QString okBtn, QStr
 }
 
 
-void FLSGUI::showNormalIfMinimized(bool fToggleHidden) {
+void FLSGUI::showNormalIfMinimized(bool fToggleHidden)
+{
     if (!clientModel)
         return;
     if (!isHidden() && !isMinimized() && !GUIUtil::isObscured(this) && fToggleHidden) {
@@ -450,11 +455,13 @@ void FLSGUI::showNormalIfMinimized(bool fToggleHidden) {
     }
 }
 
-void FLSGUI::toggleHidden() {
+void FLSGUI::toggleHidden()
+{
     showNormalIfMinimized(true);
 }
 
-void FLSGUI::detectShutdown() {
+void FLSGUI::detectShutdown()
+{
     if (ShutdownRequested()) {
         if (rpcConsole)
             rpcConsole->hide();
@@ -462,48 +469,58 @@ void FLSGUI::detectShutdown() {
     }
 }
 
-void FLSGUI::goToDashboard(){
-    if(stackedContainer->currentWidget() != dashboard){
+void FLSGUI::goToDashboard()
+{
+    if (stackedContainer->currentWidget() != dashboard) {
         stackedContainer->setCurrentWidget(dashboard);
         topBar->showBottom();
     }
 }
 
-void FLSGUI::goToSend(){
+void FLSGUI::goToSend()
+{
     showTop(sendWidget);
 }
 
-void FLSGUI::goToAddresses(){
+void FLSGUI::goToAddresses()
+{
     showTop(addressesWidget);
 }
 
-void FLSGUI::goToPrivacy(){
+void FLSGUI::goToPrivacy()
+{
     if (privacyWidget) showTop(privacyWidget);
 }
 
-void FLSGUI::goToMasterNodes(){
+void FLSGUI::goToMasterNodes()
+{
     showTop(masterNodesWidget);
 }
 
-void FLSGUI::goToColdStaking(){
+void FLSGUI::goToColdStaking()
+{
     showTop(coldStakingWidget);
 }
 
-void FLSGUI::goToGovernance(){
+void FLSGUI::goToGovernance()
+{
     showTop(governancePage);
 }
 
-void FLSGUI::goToSettings(){
+void FLSGUI::goToSettings()
+{
     showTop(settingsWidget);
 }
 
-void FLSGUI::goToSettingsInfo(){
-	navMenu->selectSettings();
+void FLSGUI::goToSettingsInfo()
+{
+    navMenu->selectSettings();
     settingsWidget->showInformation();
     goToSettings();
 }
 
-void FLSGUI::goToReceive(){
+void FLSGUI::goToReceive()
+{
     showTop(receiveWidget);
 }
 
@@ -512,15 +529,16 @@ void FLSGUI::openNetworkMonitor()
     settingsWidget->openNetworkMonitor();
 }
 
-void FLSGUI::showTop(QWidget* view){
-    if(stackedContainer->currentWidget() != view){
+void FLSGUI::showTop(QWidget* view)
+{
+    if (stackedContainer->currentWidget() != view) {
         stackedContainer->setCurrentWidget(view);
         topBar->showTop();
     }
 }
 
-void FLSGUI::changeTheme(bool isLightTheme){
-
+void FLSGUI::changeTheme(bool isLightTheme)
+{
     QString css = GUIUtil::loadStyleSheet();
     this->setStyleSheet(css);
 
@@ -531,7 +549,8 @@ void FLSGUI::changeTheme(bool isLightTheme){
     updateStyle(this);
 }
 
-void FLSGUI::resizeEvent(QResizeEvent* event){
+void FLSGUI::resizeEvent(QResizeEvent* event)
+{
     // Parent..
     QMainWindow::resizeEvent(event);
     // background
@@ -540,19 +559,21 @@ void FLSGUI::resizeEvent(QResizeEvent* event){
     Q_EMIT windowResizeEvent(event);
 }
 
-bool FLSGUI::execDialog(QDialog *dialog, int xDiv, int yDiv){
+bool FLSGUI::execDialog(QDialog* dialog, int xDiv, int yDiv)
+{
     return openDialogWithOpaqueBackgroundY(dialog, this);
 }
 
-void FLSGUI::showHide(bool show){
-    if(!op) op = new QLabel(this);
-    if(!show){
+void FLSGUI::showHide(bool show)
+{
+    if (!op) op = new QLabel(this);
+    if (!show) {
         op->setVisible(false);
         opEnabled = false;
-    }else{
+    } else {
         QColor bg("#000000");
         bg.setAlpha(200);
-        if(!isLightTheme()){
+        if (!isLightTheme()) {
             bg = QColor("#00000000");
             bg.setAlpha(150);
         }
@@ -562,7 +583,7 @@ void FLSGUI::showHide(bool show){
         op->setAutoFillBackground(true);
         op->setPalette(palette);
         op->setWindowFlags(Qt::CustomizeWindowHint);
-        op->move(0,0);
+        op->move(0, 0);
         op->show();
         op->activateWindow();
         op->resize(width(), height());
@@ -571,11 +592,13 @@ void FLSGUI::showHide(bool show){
     }
 }
 
-int FLSGUI::getNavWidth(){
+int FLSGUI::getNavWidth()
+{
     return this->navMenu->width();
 }
 
-void FLSGUI::openFAQ(int section){
+void FLSGUI::openFAQ(int section)
+{
     showHide(true);
     SettingsFaqWidget* dialog = new SettingsFaqWidget(this);
     if (section > 0) dialog->setSection(section);
@@ -588,7 +611,7 @@ void FLSGUI::openFAQ(int section){
 bool FLSGUI::addWallet(const QString& name, WalletModel* walletModel)
 {
     // Single wallet supported for now..
-    if(!stackedContainer || !clientModel || !walletModel)
+    if (!stackedContainer || !clientModel || !walletModel)
         return false;
 
     // set the model for every view
@@ -617,9 +640,9 @@ bool FLSGUI::addWallet(const QString& name, WalletModel* walletModel)
     connect(masterNodesWidget, &MasterNodesWidget::message, this, &FLSGUI::message);
     connect(coldStakingWidget, &ColdStakingWidget::message, this, &FLSGUI::message);
     connect(topBar, &TopBar::message, this, &FLSGUI::message);
-    connect(sendWidget, &SendWidget::message,this, &FLSGUI::message);
-    connect(receiveWidget, &ReceiveWidget::message,this, &FLSGUI::message);
-    connect(addressesWidget, &AddressesWidget::message,this, &FLSGUI::message);
+    connect(sendWidget, &SendWidget::message, this, &FLSGUI::message);
+    connect(receiveWidget, &ReceiveWidget::message, this, &FLSGUI::message);
+    connect(addressesWidget, &AddressesWidget::message, this, &FLSGUI::message);
     connect(settingsWidget, &SettingsWidget::message, this, &FLSGUI::message);
 
     // Pass through transaction notifications
@@ -628,18 +651,21 @@ bool FLSGUI::addWallet(const QString& name, WalletModel* walletModel)
     return true;
 }
 
-bool FLSGUI::setCurrentWallet(const QString& name) {
+bool FLSGUI::setCurrentWallet(const QString& name)
+{
     // Single wallet supported.
     return true;
 }
 
-void FLSGUI::removeAllWallets() {
+void FLSGUI::removeAllWallets()
+{
     // Single wallet supported.
 }
 
-void FLSGUI::incomingTransaction(const QString& date, int unit, const CAmount& amount, const QString& type, const QString& address) {
+void FLSGUI::incomingTransaction(const QString& date, int unit, const CAmount& amount, const QString& type, const QString& address)
+{
     // Only send notifications when not disabled
-    if(!bdisableSystemnotifications){
+    if (!bdisableSystemnotifications) {
         // On new transaction, make an info balloon
         message((amount) < 0 ? (pwalletMain->fMultiSendNotify == true ? tr("Sent MultiSend transaction") : tr("Sent transaction")) : tr("Incoming transaction"),
             tr("Date: %1\n"
@@ -669,11 +695,11 @@ static bool ThreadSafeMessageBox(FLSGUI* gui, const std::string& message, const 
     std::cout << "thread safe box: " << message << std::endl;
     // In case of modal message, use blocking connection to wait for user to click a button
     QMetaObject::invokeMethod(gui, "message",
-              modal ? GUIUtil::blockingGUIThreadConnection() : Qt::QueuedConnection,
-              Q_ARG(QString, QString::fromStdString(caption)),
-              Q_ARG(QString, QString::fromStdString(message)),
-              Q_ARG(unsigned int, style),
-              Q_ARG(bool*, &ret));
+        modal ? GUIUtil::blockingGUIThreadConnection() : Qt::QueuedConnection,
+        Q_ARG(QString, QString::fromStdString(caption)),
+        Q_ARG(QString, QString::fromStdString(message)),
+        Q_ARG(unsigned int, style),
+        Q_ARG(bool*, &ret));
     return ret;
 }
 

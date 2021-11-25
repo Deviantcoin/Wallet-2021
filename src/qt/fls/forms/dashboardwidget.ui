@@ -694,7 +694,7 @@
                 <item>
                  <widget class="QLabel" name="labelFLS">
                   <property name="text">
-                   <string>FLS</string>
+                   <string>DEV</string>
                   </property>
                  </widget>
                 </item>
@@ -736,7 +736,7 @@
                 <item>
                  <widget class="QLabel" name="labelzFLS">
                   <property name="text">
-                   <string>zFLS</string>
+                   <string>zDEV</string>
                   </property>
                  </widget>
                 </item>

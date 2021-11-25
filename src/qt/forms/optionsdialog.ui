@@ -33,7 +33,7 @@
           <string>Automatically start FLS after logging in to the system.</string>
          </property>
          <property name="text">
-          <string>&amp;Start FLS on system login</string>
+          <string>&amp;Start DEV on system login</string>
          </property>
         </widget>
        </item>
@@ -133,7 +133,16 @@
        <item>
         <widget class="QWidget" name="verticalzFLSOptionsWidget" native="true">
          <layout class="QVBoxLayout" name="verticalzFLSOptionsLayout">
-          <property name="margin">
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <property name="bottomMargin">
            <number>0</number>
           </property>
           <item>
@@ -147,7 +156,7 @@
                <enum>Qt::LeftToRight</enum>
               </property>
               <property name="text">
-               <string>Enable zFLS Automint</string>
+               <string>Enable zDEV Automint</string>
               </property>
              </widget>
             </item>
@@ -174,7 +183,7 @@
                <string>Percentage of incoming FLS which get automatically converted to zFLS via Zerocoin Protocol (min: 10%)</string>
               </property>
               <property name="text">
-               <string>Percentage of autominted zFLS</string>
+               <string>Percentage of autominted zDEV</string>
               </property>
              </widget>
             </item>
@@ -207,7 +216,7 @@
                <string>Wait with automatic conversion to Zerocoin until enough FLS for this denomination is available</string>
               </property>
               <property name="text">
-               <string>Preferred Automint zFLS Denomination</string>
+               <string>Preferred Automint zDEV Denomination</string>
               </property>
              </widget>
             </item>
@@ -563,7 +572,16 @@ https://www.transifex.com/flits-core/flits-core-translations</string>
        <item>
         <widget class="QWidget" name="verticalzflsolutionsdisplayWidget" native="true">
          <layout class="QVBoxLayout" name="verticalzflsolutionsdisplayLayout">
-          <property name="margin">
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <property name="bottomMargin">
            <number>0</number>
           </property>
           <item>
