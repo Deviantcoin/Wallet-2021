@@ -67,11 +67,11 @@ TESTS =
 BENCHMARKS =
 
 if BUILD_BITCOIND
-  bin_PROGRAMS += flitsd
+  bin_PROGRAMS += deviantd
 endif
 
 if BUILD_BITCOIN_UTILS
-  bin_PROGRAMS += flits-cli flits-tx
+  bin_PROGRAMS += deviant-cli deviant-tx
 endif
 
 .PHONY: FORCE check-symbols check-security
@@ -192,14 +192,14 @@ BITCOIN_CORE_H = \
   wallet/wallet.h \
   wallet/wallet_ismine.h \
   wallet/walletdb.h \
-  zflschain.h \
-  zfls/deterministicmint.h \
-  zfls/mintpool.h \
-  zfls/zerocoin.h \
-  zfls/zflstracker.h \
-  zfls/zflswallet.h \
-  zfls/zflsmodule.h \
-  zfls/zpos.h \
+  zdevchain.h \
+  zdev/deterministicmint.h \
+  zdev/mintpool.h \
+  zdev/zerocoin.h \
+  zdev/zdevtracker.h \
+  zdev/zdevwallet.h \
+  zdev/zdevmodule.h \
+  zdev/zpos.h \
   zmq/zmqabstractnotifier.h \
   zmq/zmqconfig.h \
   zmq/zmqnotificationinterface.h \
@@ -211,7 +211,7 @@ obj/build.h: FORCE
 	  "$(abs_top_srcdir)"
 libbitcoin_util_a-clientversion.$(OBJEXT): obj/build.h
 
-# server: shared between flitsd and flits-qt
+# server: shared between deviantd and deviant-qt
 libbitcoin_server_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(MINIUPNPC_CPPFLAGS) $(EVENT_CFLAGS) $(EVENT_PTHREADS_CFLAGS)
 libbitcoin_server_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 libbitcoin_server_a_SOURCES = \
@@ -248,7 +248,7 @@ libbitcoin_server_a_SOURCES = \
   txdb.cpp \
   txmempool.cpp \
   validationinterface.cpp \
-  zflschain.cpp \
+  zdevchain.cpp \
   $(BITCOIN_CORE_H)
 
 if ENABLE_ZMQ
@@ -260,7 +260,7 @@ libbitcoin_zmq_a_SOURCES = \
   zmq/zmqpublishnotifier.cpp
 endif
 
-# wallet: shared between flitsd and flits-qt, but only linked
+# wallet: shared between deviantd and deviant-qt, but only linked
 # when wallet enabled
 libbitcoin_wallet_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
 libbitcoin_wallet_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
@@ -290,14 +290,14 @@ libbitcoin_wallet_a_SOURCES = \
   wallet/wallet_ismine.cpp \
   wallet/wallet_zerocoin.cpp \
   wallet/walletdb.cpp \
-  zfls/deterministicmint.cpp \
-  zfls/zerocoin.cpp \
-  zfls/mintpool.cpp \
-  zfls/zflswallet.cpp \
-  zfls/zflstracker.cpp \
+  zdev/deterministicmint.cpp \
+  zdev/zerocoin.cpp \
+  zdev/mintpool.cpp \
+  zdev/zdevwallet.cpp \
+  zdev/zdevtracker.cpp \
   stakeinput.cpp \
-  zfls/zflsmodule.cpp \
-  zfls/zpos.cpp \
+  zdev/zdevmodule.cpp \
+  zdev/zpos.cpp \
   $(BITCOIN_CORE_H)
 
 # crypto primitives library
@@ -368,7 +368,7 @@ if USE_NUM_OPENSSL
   libzerocoin_libbitcoin_zerocoin_a_SOURCES += libzerocoin/bignum_openssl.cpp
 endif
 
-# common: shared between flitsd, and flits-qt and non-server tools
+# common: shared between deviantd, and deviant-qt and non-server tools
 libbitcoin_common_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
 libbitcoin_common_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 libbitcoin_common_a_SOURCES = \
@@ -381,9 +381,9 @@ libbitcoin_common_a_SOURCES = \
   compressor.cpp \
   consensus/merkle.cpp \
   primitives/block.cpp \
-  zfls/deterministicmint.cpp \
+  zdev/deterministicmint.cpp \
   primitives/transaction.cpp \
-  zfls/zerocoin.cpp \
+  zdev/zerocoin.cpp \
   core_read.cpp \
   core_write.cpp \
   hash.cpp \
@@ -433,7 +433,7 @@ libbitcoin_util_a_SOURCES += compat/glibc_compat.cpp
 AM_LDFLAGS += $(COMPAT_LDFLAGS)
 endif
 
-# cli: shared between flits-cli and flits-qt
+# cli: shared between deviant-cli and deviant-qt
 libbitcoin_cli_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
 libbitcoin_cli_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 libbitcoin_cli_a_SOURCES = \
@@ -443,16 +443,16 @@ libbitcoin_cli_a_SOURCES = \
 nodist_libbitcoin_util_a_SOURCES = $(srcdir)/obj/build.h
 #
 
-# flitsd binary #
-flitsd_SOURCES = flitsd.cpp
-flitsd_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
-flitsd_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-flitsd_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+# deviantd binary #
+deviantd_SOURCES = deviantd.cpp
+deviantd_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
+deviantd_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+deviantd_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
 if TARGET_WINDOWS
-flitsd_SOURCES += flitsd-res.rc
+deviantd_SOURCES += deviantd-res.rc
 endif
-flitsd_LDADD = \
+deviantd_LDADD = \
   $(LIBBITCOIN_SERVER) \
   $(LIBBITCOIN_WALLET) \
   $(LIBBITCOIN_COMMON) \
@@ -466,38 +466,38 @@ flitsd_LDADD = \
   $(LIBMEMENV) \
   $(LIBSECP256K1)
 
-flitsd_LDADD += $(BOOST_LIBS) $(BDB_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS) $(EVENT_PTHREADS_LIBS) $(EVENT_LIBS) $(ZMQ_LIBS)
+deviantd_LDADD += $(BOOST_LIBS) $(BDB_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS) $(EVENT_PTHREADS_LIBS) $(EVENT_LIBS) $(ZMQ_LIBS)
 
-# flits-cli binary #
-flits_cli_SOURCES = flits-cli.cpp
-flits_cli_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(EVENT_CFLAGS)
-flits_cli_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-flits_cli_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+# deviant-cli binary #
+deviant_cli_SOURCES = deviant-cli.cpp
+deviant_cli_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(EVENT_CFLAGS)
+deviant_cli_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+deviant_cli_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
 if TARGET_WINDOWS
-flits_cli_SOURCES += flits-cli-res.rc
+deviant_cli_SOURCES += deviant-cli-res.rc
 endif
 
-flits_cli_LDADD = \
+deviant_cli_LDADD = \
   $(LIBBITCOIN_CLI) \
   $(LIBUNIVALUE) \
   $(LIBBITCOIN_UTIL) \
   $(LIBBITCOIN_CRYPTO)
 
-flits_cli_LDADD += $(BOOST_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(EVENT_LIBS)
+deviant_cli_LDADD += $(BOOST_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(EVENT_LIBS)
 #
 
-# flits-tx binary #
-flits_tx_SOURCES = flits-tx.cpp
-flits_tx_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
-flits_tx_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-flits_tx_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+# deviant-tx binary #
+deviant_tx_SOURCES = deviant-tx.cpp
+deviant_tx_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
+deviant_tx_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+deviant_tx_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
 if TARGET_WINDOWS
-flits_tx_SOURCES += flits-tx-res.rc
+deviant_tx_SOURCES += deviant-tx-res.rc
 endif
 
-flits_tx_LDADD = \
+deviant_tx_LDADD = \
   $(LIBUNIVALUE) \
   $(LIBBITCOIN_COMMON) \
   $(LIBBITCOIN_ZEROCOIN) \
@@ -505,7 +505,7 @@ flits_tx_LDADD = \
   $(LIBBITCOIN_CRYPTO) \
   $(LIBSECP256K1)
 
-flits_tx_LDADD += $(BOOST_LIBS) $(CRYPTO_LIBS)
+deviant_tx_LDADD += $(BOOST_LIBS) $(CRYPTO_LIBS)
 #
 
 # bitcoinconsensus library #
@@ -555,18 +555,18 @@ CLEANFILES += univalue/*.gcda univalue/*.gcno
 CLEANFILES += wallet/*.gcda wallet/*.gcno
 CLEANFILES += wallet/test/*.gcda wallet/test/*.gcno
 CLEANFILES += zmq/*.gcda zmq/*.gcno
-CLEANFILES += zfls/*.gcda zfls/*.gcno
+CLEANFILES += zdev/*.gcda zdev/*.gcno
 CLEANFILES += obj/build.h
 
 EXTRA_DIST =
 
 
-config/flits-config.h: config/stamp-h1
+config/deviant-config.h: config/stamp-h1
 	@$(MAKE) -C $(top_builddir) $(subdir)/$(@)
-config/stamp-h1: $(top_srcdir)/$(subdir)/config/flits-config.h.in $(top_builddir)/config.status
+config/stamp-h1: $(top_srcdir)/$(subdir)/config/deviant-config.h.in $(top_builddir)/config.status
 	$(AM_V_at)$(MAKE) -C $(top_builddir) $(subdir)/$(@)
-$(top_srcdir)/$(subdir)/config/flits-config.h.in:  $(am__configure_deps)
-	$(AM_V_at)$(MAKE) -C $(top_srcdir) $(subdir)/config/flits-config.h.in
+$(top_srcdir)/$(subdir)/config/deviant-config.h.in:  $(am__configure_deps)
+	$(AM_V_at)$(MAKE) -C $(top_srcdir) $(subdir)/config/deviant-config.h.in
 
 clean-local:
 	-$(MAKE) -C secp256k1 clean

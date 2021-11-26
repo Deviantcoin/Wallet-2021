@@ -5,7 +5,7 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #ifdef HAVE_CONFIG_H
-#include "config/flits-config.h"
+#include "config/deviant-config.h"
 #endif
 
 #include "netbase.h"

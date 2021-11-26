@@ -12,14 +12,14 @@
 #include <stdlib.h>
 #include <string>
 
-/** Amount in FLS (Can be negative) */
+/** Amount in DEV (Can be negative) */
 typedef int64_t CAmount;
 
 static const CAmount COIN = 100000000;
 static const CAmount CENT = 1000000;
 
 /**
- * Fee rate in FLS per kilobyte: CAmount / kB
+ * Fee rate in DEV per kilobyte: CAmount / kB
  */
 class CFeeRate
 {

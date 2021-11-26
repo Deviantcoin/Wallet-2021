@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef flits_QT_MULTISENDDIALOG_H
-#define flits_QT_MULTISENDDIALOG_H
+#ifndef deviant_QT_MULTISENDDIALOG_H
+#define deviant_QT_MULTISENDDIALOG_H
 
 #include <QDialog>
 
@@ -38,4 +38,4 @@ private:
     WalletModel* model;
 };
 
-#endif // flits_QT_MULTISENDDIALOG_H
+#endif // deviant_QT_MULTISENDDIALOG_H

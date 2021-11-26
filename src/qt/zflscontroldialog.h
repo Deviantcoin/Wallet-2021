@@ -7,7 +7,7 @@
 
 #include <QDialog>
 #include <QTreeWidgetItem>
-#include "zfls/zerocoin.h"
+#include "zdev/zerocoin.h"
 
 class CZerocoinMint;
 class WalletModel;

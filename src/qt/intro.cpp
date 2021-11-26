@@ -1,7 +1,7 @@
 // Copyright (c) 2011-2014 The Bitcoin developers
 // Copyright (c) 2014-2015 The Dash developers
 // Copyright (c) 2015-2019 The PIVX developers
-// Copyright (c) 2020 The Flits developers
+// Copyright (c) 2020 The Deviant developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -10,7 +10,7 @@
 
 #include "guiutil.h"
 
-#include "qt/fls/qtutils.h"
+#include "qt/dev/qtutils.h"
 #include "util.h"
 
 #include <boost/filesystem.hpp>
@@ -210,8 +210,8 @@ bool Intro::pickDataDirectory()
     }
 
     /* Only override -datadir if different from the default, to make it possible to
-     * override -datadir in the fls.conf file in the default data directory
-     * (to be consistent with flitsd behavior)
+     * override -datadir in the dev.conf file in the default data directory
+     * (to be consistent with deviantd behavior)
      */
 
     if (dataDir != getDefaultDataDirectory())

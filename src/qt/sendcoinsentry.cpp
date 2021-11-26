@@ -29,9 +29,9 @@ SendCoinsEntry::SendCoinsEntry(QWidget* parent) : QStackedWidget(parent),
 #endif
     ui->addAsLabel->setPlaceholderText(tr("Enter a label for this address to add it to your address book"));
 
-    // normal Flits-Core address field
+    // normal Deviant-Core address field
     GUIUtil::setupAddressWidget(ui->payTo, this);
-    // just a label for displaying Flits-Core address(es)
+    // just a label for displaying Deviant-Core address(es)
     ui->payTo_is->setFont(GUIUtil::bitcoinAddressFont());
 
     // Connect signals

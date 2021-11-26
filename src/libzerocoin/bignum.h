@@ -8,7 +8,7 @@
 #define BITCOIN_BIGNUM_H
 
 #if defined HAVE_CONFIG_H
-#include "config/flits-config.h"
+#include "config/deviant-config.h"
 #endif
 
 #if defined(USE_NUM_OPENSSL)

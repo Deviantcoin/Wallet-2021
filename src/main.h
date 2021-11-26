@@ -12,7 +12,7 @@
 #define BITCOIN_MAIN_H
 
 #if defined(HAVE_CONFIG_H)
-#include "config/flits-config.h"
+#include "config/deviant-config.h"
 #endif
 
 #include "amount.h"
@@ -24,8 +24,8 @@
 #include "pow.h"
 #include "primitives/block.h"
 #include "primitives/transaction.h"
-#include "zfls/zerocoin.h"
-#include "zfls/zflsmodule.h"
+#include "zdev/zerocoin.h"
+#include "zdev/zdevmodule.h"
 #include "script/script.h"
 #include "script/sigcache.h"
 #include "script/standard.h"

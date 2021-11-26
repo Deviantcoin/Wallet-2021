@@ -1,9 +1,9 @@
-// Copyright (c) 2015-2018 The Flits-Core developers
+// Copyright (c) 2015-2018 The Deviant-Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef flits_GENWIT_H
-#define flits_GENWIT_H
+#ifndef deviant_GENWIT_H
+#define deviant_GENWIT_H
 
 
 #include <iostream>
@@ -58,4 +58,4 @@ private:
 };
 
 
-#endif //flits_GENWIT_H
+#endif //deviant_GENWIT_H

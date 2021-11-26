@@ -105,7 +105,7 @@ public:
     }
 };
 
-/** Interface to FLS wallet from Qt view code. */
+/** Interface to DEV wallet from Qt view code. */
 class WalletModel : public QObject
 {
     Q_OBJECT

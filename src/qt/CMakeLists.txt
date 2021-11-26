@@ -60,7 +60,7 @@ set(GUI_FORMS
         ${CMAKE_CURRENT_SOURCE_DIR}/forms/bip38tooldialog.ui
         ${CMAKE_CURRENT_SOURCE_DIR}/forms/coincontroldialog.ui
         ${CMAKE_CURRENT_SOURCE_DIR}/forms/governancepage.ui
-        ${CMAKE_CURRENT_SOURCE_DIR}/forms/zflscontroldialog.ui
+        ${CMAKE_CURRENT_SOURCE_DIR}/forms/zdevcontroldialog.ui
         ${CMAKE_CURRENT_SOURCE_DIR}/forms/blockexplorer.ui
         ${CMAKE_CURRENT_SOURCE_DIR}/forms/editaddressdialog.ui
         ${CMAKE_CURRENT_SOURCE_DIR}/forms/helpmessagedialog.ui
@@ -113,7 +113,7 @@ SET(QT_SOURCES
         ${CMAKE_CURRENT_SOURCE_DIR}/addresstablemodel.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/askpassphrasedialog.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/coincontroldialog.cpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/zflscontroldialog.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/zdevcontroldialog.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/coincontroltreewidget.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/privacydialog.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/proposalframe.cpp
@@ -162,12 +162,12 @@ set_source_files_properties(${QT_TRANSLATIONS_FILES} PROPERTIES OUTPUT_LOCATION 
 QT5_ADD_TRANSLATION(QM ${QT_TRANSLATIONS_FILES})
 add_custom_target(translations_target ALL DEPENDS ${QM})
 
-QT5_ADD_RESOURCES(QRC_RESOURCE fls.qrc)
-QT5_ADD_RESOURCES(QRC_LOCALE_RESOURCE fls_locale.qrc)
+QT5_ADD_RESOURCES(QRC_RESOURCE dev.qrc)
+QT5_ADD_RESOURCES(QRC_LOCALE_RESOURCE dev_locale.qrc)
 
-add_executable(flits-qt fls.cpp ${QM} ${QRC_RESOURCE} ${QRC_LOCALE_RESOURCE})
-add_dependencies(flits-qt translations_target libunivalue libsecp256k1 leveldb leveldb_sse42 memenv)
-target_link_libraries(flits-qt
+add_executable(deviant-qt dev.cpp ${QM} ${QRC_RESOURCE} ${QRC_LOCALE_RESOURCE})
+add_dependencies(deviant-qt translations_target libunivalue libsecp256k1 leveldb leveldb_sse42 memenv)
+target_link_libraries(deviant-qt
         qt_stuff
         univalue
         SERVER_A UTIL_A WALLET_A CLI_A COMMON_A BITCOIN_CRYPTO_A ZEROCOIN_A
@@ -176,24 +176,24 @@ target_link_libraries(flits-qt
         pthread
         )
 if (${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
-    target_link_libraries(flits-qt "-framework Cocoa")
+    target_link_libraries(deviant-qt "-framework Cocoa")
 endif()
 if(GMP_FOUND)
-    target_link_libraries(flits-qt ${GMP_LIBRARY})
+    target_link_libraries(deviant-qt ${GMP_LIBRARY})
 endif()
 if(ZMQ_FOUND)
-    target_link_libraries(flits-qt ZMQ_A ${ZMQ_LIB})
+    target_link_libraries(deviant-qt ZMQ_A ${ZMQ_LIB})
 endif()
 if (QRCODE_FOUND)
-    target_link_libraries(flits-qt ${QRCODE_LIB})
+    target_link_libraries(deviant-qt ${QRCODE_LIB})
 endif()
 
-QT5_USE_Modules(flits-qt Gui)
-QT5_USE_Modules(flits-qt Core)
-QT5_USE_Modules(flits-qt Widgets)
-QT5_USE_Modules(flits-qt Test)
-QT5_USE_Modules(flits-qt PrintSupport)
-QT5_USE_Modules(flits-qt Network)
+QT5_USE_Modules(deviant-qt Gui)
+QT5_USE_Modules(deviant-qt Core)
+QT5_USE_Modules(deviant-qt Widgets)
+QT5_USE_Modules(deviant-qt Test)
+QT5_USE_Modules(deviant-qt PrintSupport)
+QT5_USE_Modules(deviant-qt Network)
 if (Qt5DBus_FOUND)
-    QT5_USE_Modules(flits-qt DBus)
+    QT5_USE_Modules(deviant-qt DBus)
 endif()

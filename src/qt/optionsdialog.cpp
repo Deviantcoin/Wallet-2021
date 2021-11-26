@@ -4,7 +4,7 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #if defined(HAVE_CONFIG_H)
-#include "config/flits-config.h"
+#include "config/deviant-config.h"
 #endif
 
 #include "optionsdialog.h"
@@ -72,7 +72,7 @@ OptionsDialog::OptionsDialog(QWidget* parent, bool enableWallet) : QDialog(paren
         ui->tabWidget->removeTab(ui->tabWidget->indexOf(ui->tabWallet));
 
         ui->verticalzFLSOptionsWidget->hide();
-        ui->verticalzflsolutionsdisplayWidget->hide();
+        ui->verticalzdevolutionsdisplayWidget->hide();
     }
 
     /* Display elements init */

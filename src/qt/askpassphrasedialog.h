@@ -7,7 +7,7 @@
 #define BITCOIN_QT_ASKPASSPHRASEDIALOG_H
 
 #include <QDialog>
-#include "qt/fls/prunnable.h"
+#include "qt/dev/prunnable.h"
 #include "allocators.h"
 #include <QCheckBox>
 
@@ -43,7 +43,7 @@ public:
         Encrypt,        /** Encrypt unencrypted wallet */
         ToggleLock,     /** Toggle wallet lock state */
         ChangePass,     /** Change passphrase */
-        Send_FLS,       /** Send FLS */
+        Send_FLS,       /** Send DEV */
         Send_zFLS,      /** Send zFLS */
         Mint_zFLS,      /** Mint zFLS */
         BIP_38,         /** BIP38 menu */

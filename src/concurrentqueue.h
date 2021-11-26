@@ -1,10 +1,10 @@
 //
-// Copyright (c) 2015-2018 The Flits-Core developers
+// Copyright (c) 2015-2018 The Deviant-Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef flits_CONCURRENTQUEUE_H
-#define flits_CONCURRENTQUEUE_H
+#ifndef deviant_CONCURRENTQUEUE_H
+#define deviant_CONCURRENTQUEUE_H
 
 
 #include <mutex>
@@ -48,4 +48,4 @@ public:
     }
 };
 
-#endif //flits_CONCURRENTQUEUE_H
+#endif //deviant_CONCURRENTQUEUE_H

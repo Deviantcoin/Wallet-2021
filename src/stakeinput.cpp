@@ -7,7 +7,7 @@
 #include "chain.h"
 #include "main.h"
 #include "txdb.h"
-#include "zfls/deterministicmint.h"
+#include "zdev/deterministicmint.h"
 #include "wallet/wallet.h"
 
 bool CFLSStake::InitFromTxIn(const CTxIn& txin)
@@ -121,7 +121,7 @@ bool CFLSStake::CreateTxOuts(CWallet* pwallet, std::vector<CTxOut>& vout, CAmoun
 
 CDataStream CFLSStake::GetUniqueness() const
 {
-    //The unique identifier for a FLS stake is the outpoint
+    //The unique identifier for a DEV stake is the outpoint
     CDataStream ss(SER_NETWORK, 0);
     ss << nPosition << txFrom.GetHash();
     return ss;

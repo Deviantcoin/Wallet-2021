@@ -18,7 +18,7 @@
 #include "main.h"
 #include "wallet/wallet.h"
 
-#include "qt/fls/qtutils.h"
+#include "qt/dev/qtutils.h"
 
 #include <boost/assign/list_of.hpp> // for 'map_list_of()'
 
@@ -682,7 +682,7 @@ void CoinControlDialog::updateLabels(WalletModel* model, QDialog* dialog)
     }
 
     // actually update labels
-    int nDisplayUnit = BitcoinUnits::FLS;
+    int nDisplayUnit = BitcoinUnits::DEV;
     if (model && model->getOptionsModel())
         nDisplayUnit = model->getOptionsModel()->getDisplayUnit();
 
@@ -856,7 +856,7 @@ void CoinControlDialog::updateView()
             if (haveDest) {
                 sAddress = QString::fromStdString(CBitcoinAddress(outputAddress).ToString());
 
-                // if listMode or change => show FLS address. In tree mode, address is not shown again for direct wallet address outputs
+                // if listMode or change => show DEV address. In tree mode, address is not shown again for direct wallet address outputs
                 if (!treeMode || (!(sAddress == sWalletAddress)))
                     itemOutput->setText(COLUMN_ADDRESS, sAddress);
                 else

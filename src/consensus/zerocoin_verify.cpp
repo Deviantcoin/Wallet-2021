@@ -208,12 +208,12 @@ bool RecalculateFLSSupply(int nHeightStart, bool fSkipzFLS)
         for (auto& denom : libzerocoin::zerocoinDenomList) mapZerocoinSupply.insert(std::make_pair(denom, 0));
     }
 
-    uiInterface.ShowProgress(_("Recalculating FLS supply..."), 0);
+    uiInterface.ShowProgress(_("Recalculating DEV supply..."), 0);
     while (true) {
         if (pindex->nHeight % 1000 == 0) {
             LogPrintf("%s : block %d...\n", __func__, pindex->nHeight);
             int percent = std::max(1, std::min(99, (int)((double)((pindex->nHeight - nHeightStart) * 100) / (chainHeight - nHeightStart))));
-            uiInterface.ShowProgress(_("Recalculating FLS supply..."), percent);
+            uiInterface.ShowProgress(_("Recalculating DEV supply..."), percent);
         }
 
         CBlock block;
@@ -249,7 +249,7 @@ bool RecalculateFLSSupply(int nHeightStart, bool fSkipzFLS)
         // Rewrite money supply
         nMoneySupply += (nValueOut - nValueIn);
 
-        // Rewrite zfls supply too
+        // Rewrite zdev supply too
         if (!fSkipzFLS && pindex->nHeight >= consensus.height_start_ZC) {
             UpdateZFLSSupplyConnect(block, pindex, true);
         }

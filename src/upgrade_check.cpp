@@ -38,7 +38,7 @@ void ShouldUpgrade(const std::string& SubVer) {
 	    bool shouldupgrade =  (ratio > requiredRatioForUpgrade && PeersCount > requiredPeersForUpgrade);
 	    if (shouldupgrade) {
 	        std::string strWarning = "More than 33% or 2/5 of your peers are reporting a newer software version. "
-	            "Please check for upgrades at http://github.com/flits/flits/releases "
+	            "Please check for upgrades at http://github.com/deviant/deviant/releases "
 	            "and for safety you can confirm release info by checking our twitter/discord/telegram";
                 strMiscWarning = strWarning;
 

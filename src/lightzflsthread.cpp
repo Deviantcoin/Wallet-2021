@@ -1,17 +1,17 @@
 // Copyright (c) 2015-2019 The PIVX developers
 // Copyright (c) 2019 The CryptoDev developers
-// Copyright (c) 2019 The Flits developers
+// Copyright (c) 2019 The Deviant developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 //
 
 
-#include "lightzflsthread.h"
+#include "lightzdevthread.h"
 #include "main.h"
 
 /****** Thread ********/
 void CLightWorker::ThreadLightZFLSSimplified() {
-    RenameThread("flits-light-thread");
+    RenameThread("deviant-light-thread");
     isWorkerRunning = true;
     while (true) {
         try {
@@ -21,7 +21,7 @@ void CLightWorker::ThreadLightZFLSSimplified() {
 
             // TODO: Future: join several similar requests into one calculation if the filter and denom match..
             CGenWit genWit = requestsQueue.pop();
-            LogPrintf("%s pop work for %s \n\n", "flits-light-thread", genWit.toString());
+            LogPrintf("%s pop work for %s \n\n", "deviant-light-thread", genWit.toString());
 
             libzerocoin::ZerocoinParams *params = Params().Zerocoin_Params(false);
             CBlockIndex *pIndex = chainActive[genWit.getStartingHeight()];
@@ -29,7 +29,7 @@ void CLightWorker::ThreadLightZFLSSimplified() {
                 // Rejects only the failed height
                 rejectWork(genWit, genWit.getStartingHeight(), NON_DETERMINED);
             } else {
-                LogPrintf("%s calculating work for %s \n\n", "flits-light-thread", genWit.toString());
+                LogPrintf("%s calculating work for %s \n\n", "deviant-light-thread", genWit.toString());
                 int blockHeight = pIndex->nHeight;
                 if (blockHeight >= Params().Zerocoin_Block_V2_Start()) {
 
@@ -84,10 +84,10 @@ void CLightWorker::ThreadLightZFLSSimplified() {
                         }
                         ss << heightStop;
                         if (genWit.getPfrom()) {
-                            LogPrintf("%s pushing message to %s \n", "flits-light-thread", genWit.getPfrom()->addrName);
+                            LogPrintf("%s pushing message to %s \n", "deviant-light-thread", genWit.getPfrom()->addrName);
                             genWit.getPfrom()->PushMessage("pubcoins", ss);
                         } else
-                            LogPrintf("%s NOT pushing message to %s \n", "flits-light-thread", genWit.getPfrom()->addrName);
+                            LogPrintf("%s NOT pushing message to %s \n", "deviant-light-thread", genWit.getPfrom()->addrName);
                     }
                 } else {
                     // Rejects only the failed height
@@ -96,7 +96,7 @@ void CLightWorker::ThreadLightZFLSSimplified() {
             }
         } catch (std::exception& e) {
             //std::cout << "exception in light loop, closing it. " << e.what() << std::endl;
-            PrintExceptionContinue(&e, "lightzflsthread");
+            PrintExceptionContinue(&e, "lightzdevthread");
             break;
         }
     }
@@ -107,7 +107,7 @@ void CLightWorker::ThreadLightZFLSSimplified() {
 // TODO: Think more the peer misbehaving policy..
 void CLightWorker::rejectWork(CGenWit& wit, int blockHeight, uint32_t errorNumber) {
     if (wit.getStartingHeight() == blockHeight){
-        LogPrintf("%s rejecting work %s , error code: %s\n", "flits-light-thread", wit.toString(), errorNumber);
+        LogPrintf("%s rejecting work %s , error code: %s\n", "deviant-light-thread", wit.toString(), errorNumber);
         CDataStream ss(SER_NETWORK, PROTOCOL_VERSION);
         ss << wit.getRequestNum();
         ss << errorNumber;

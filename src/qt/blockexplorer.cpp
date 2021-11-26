@@ -1,4 +1,4 @@
-// Copyright (c) 2017-2019 The Flits-Core developers
+// Copyright (c) 2017-2019 The Deviant-Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -48,7 +48,7 @@ static std::string ValueToString(CAmount nValue, bool AllowNegative = false)
     if (nValue < 0 && !AllowNegative)
         return "<span>" + _("unknown") + "</span>";
 
-    QString Str = BitcoinUnits::formatWithUnit(BitcoinUnits::FLS, nValue);
+    QString Str = BitcoinUnits::formatWithUnit(BitcoinUnits::DEV, nValue);
     if (AllowNegative && nValue > 0)
         Str = '+' + Str;
     return std::string("<span>") + Str.toUtf8().data() + "</span>";
@@ -484,7 +484,7 @@ void BlockExplorer::showEvent(QShowEvent*)
         updateNavButtons();
 
         if (!GetBoolArg("-txindex", true)) {
-            QString Warning = tr("Not all transactions will be shown. To view all transactions you need to set txindex=1 in the configuration file (flits.conf).");
+            QString Warning = tr("Not all transactions will be shown. To view all transactions you need to set txindex=1 in the configuration file (deviant.conf).");
             QMessageBox::warning(this, "Deviant Core Blockchain Explorer", Warning, QMessageBox::Ok);
         }
     }

@@ -6,7 +6,7 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #if defined(HAVE_CONFIG_H)
-#include "config/flits-config.h"
+#include "config/deviant-config.h"
 #endif
 
 #include "util.h"
@@ -87,7 +87,7 @@ namespace fs = boost::filesystem;
 #include <openssl/rand.h>
 
 
-// FLS only features
+// DEV only features
 // Masternode
 bool fMasterNode = false;
 std::string strMasterNodePrivKey = "";
@@ -267,7 +267,7 @@ static std::string FormatException(const std::exception* pex, const char* pszThr
     char pszModule[MAX_PATH] = "";
     GetModuleFileNameA(NULL, pszModule, sizeof(pszModule));
 #else
-    const char* pszModule = "fls";
+    const char* pszModule = "dev";
 #endif
     if (pex)
         return strprintf(
@@ -287,13 +287,13 @@ void PrintExceptionContinue(const std::exception* pex, const char* pszThread)
 
 fs::path GetDefaultDataDir()
 {
-// Windows < Vista: C:\Documents and Settings\Username\Application Data\FLS
-// Windows >= Vista: C:\Users\Username\AppData\Roaming\FLS
-// Mac: ~/Library/Application Support/FLS
-// Unix: ~/.fls
+// Windows < Vista: C:\Documents and Settings\Username\Application Data\DEV
+// Windows >= Vista: C:\Users\Username\AppData\Roaming\DEV
+// Mac: ~/Library/Application Support/DEV
+// Unix: ~/.dev
 #ifdef WIN32
     // Windows
-    return GetSpecialFolderPath(CSIDL_APPDATA) / "FLS";
+    return GetSpecialFolderPath(CSIDL_APPDATA) / "DEV";
 #else
     fs::path pathRet;
     char* pszHome = getenv("HOME");
@@ -305,10 +305,10 @@ fs::path GetDefaultDataDir()
     // Mac
     pathRet /= "Library/Application Support";
     TryCreateDirectory(pathRet);
-    return pathRet / "FLS";
+    return pathRet / "DEV";
 #else
     // Unix
-    return pathRet / ".fls";
+    return pathRet / ".dev";
 #endif
 #endif
 }
@@ -353,7 +353,7 @@ void ClearDatadirCache()
 
 fs::path GetConfigFile()
 {
-    fs::path pathConfigFile(GetArg("-conf", "fls.conf"));
+    fs::path pathConfigFile(GetArg("-conf", "dev.conf"));
     if (!pathConfigFile.is_complete())
         pathConfigFile = GetDataDir(false) / pathConfigFile;
 
@@ -372,7 +372,7 @@ void ReadConfigFile(std::map<std::string, std::string>& mapSettingsRet,
 {
     fs::ifstream streamConfig(GetConfigFile());
     if (!streamConfig.good()) {
-        // Create empty fls.conf if it does not exist
+        // Create empty dev.conf if it does not exist
         FILE* configFile = fopen(GetConfigFile().string().c_str(), "a");
         if (configFile != NULL)
             fclose(configFile);
@@ -383,7 +383,7 @@ void ReadConfigFile(std::map<std::string, std::string>& mapSettingsRet,
     setOptions.insert("*");
 
     for (boost::program_options::detail::config_file_iterator it(streamConfig, setOptions), end; it != end; ++it) {
-        // Don't overwrite existing settings so command line settings override fls.conf
+        // Don't overwrite existing settings so command line settings override dev.conf
         std::string strKey = std::string("-") + it->string_key;
         std::string strValue = it->value[0];
         InterpretNegativeSetting(strKey, strValue);
@@ -406,7 +406,7 @@ fs::path AbsPathForConfigVal(const fs::path& path, bool net_specific)
 #ifndef WIN32
 fs::path GetPidFile()
 {
-    fs::path pathPidFile(GetArg("-pid", "flitsd.pid"));
+    fs::path pathPidFile(GetArg("-pid", "deviantd.pid"));
     if (!pathPidFile.is_complete()) pathPidFile = GetDataDir() / pathPidFile;
     return pathPidFile;
 }

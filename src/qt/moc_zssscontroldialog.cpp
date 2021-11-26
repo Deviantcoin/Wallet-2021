@@ -1,15 +1,15 @@
 /****************************************************************************
-** Meta object code from reading C++ file 'zflscontroldialog.h'
+** Meta object code from reading C++ file 'zdevcontroldialog.h'
 **
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
 
-#include "qt/zflscontroldialog.h"
+#include "qt/zdevcontroldialog.h"
 #include <QtCore/qbytearray.h>
 #include <QtCore/qmetatype.h>
 #if !defined(Q_MOC_OUTPUT_REVISION)
-#error "The header file 'zflscontroldialog.h' doesn't include <QObject>."
+#error "The header file 'zdevcontroldialog.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
 #error "This file was generated using the moc from 5.9.7. It"
 #error "cannot be used with the include files from this version of Qt."

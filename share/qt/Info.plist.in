@@ -29,16 +29,16 @@
   <string>????</string>
 
   <key>CFBundleExecutable</key>
-  <string>flits-qt</string>
+  <string>deviant-qt</string>
 
   <key>CFBundleName</key>
-  <string>flits-qt</string>
+  <string>deviant-qt</string>
 
   <key>LSHasLocalizedDisplayName</key>
   <true/>
 
   <key>CFBundleIdentifier</key>
-  <string>io.fls.flits-qt</string>
+  <string>io.dev.deviant-qt</string>
 
   <key>CFBundleURLTypes</key>
   <array>
@@ -46,10 +46,10 @@
       <key>CFBundleTypeRole</key>
       <string>Editor</string>
       <key>CFBundleURLName</key>
-      <string>io.fls.flsPayment</string>
+      <string>io.dev.devPayment</string>
       <key>CFBundleURLSchemes</key>
       <array>
-        <string>fls</string>
+        <string>dev</string>
       </array>
     </dict>
   </array>
@@ -58,9 +58,9 @@
   <array>
     <dict>
       <key>UTTypeIdentifier</key>
-      <string>io.fls.paymentrequest</string>
+      <string>io.dev.paymentrequest</string>
       <key>UTTypeDescription</key>
-      <string>fls payment request</string>
+      <string>dev payment request</string>
       <key>UTTypeConformsTo</key>
       <array>
         <string>public.data</string>
@@ -68,10 +68,10 @@
       <key>UTTypeTagSpecification</key>
       <dict>
         <key>public.mime-type</key>
-        <string>application/x-flits-payment-request</string>
+        <string>application/x-deviant-payment-request</string>
         <key>public.filename-extension</key>
         <array>
-          <string>flspaymentrequest</string>
+          <string>devpaymentrequest</string>
         </array>
       </dict>
     </dict>
@@ -84,7 +84,7 @@
       <string>Editor</string>
       <key>LSItemContentTypes</key>
       <array>
-        <string>io.fls.paymentrequest</string>
+        <string>io.dev.paymentrequest</string>
       </array>
       <key>LSHandlerRank</key>
       <string>Owner</string>

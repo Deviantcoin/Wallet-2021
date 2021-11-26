@@ -2,8 +2,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "zflscontroldialog.h"
-#include "ui_zflscontroldialog.h"
+#include "zdevcontroldialog.h"
+#include "ui_zdevcontroldialog.h"
 
 #include "guiutil.h"
 #include "main.h"

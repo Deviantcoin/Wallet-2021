@@ -21,7 +21,7 @@
 #include "sync.h"
 #include "wallet/wallet.h"
 #include "wallet/walletdb.h" // for BackupWallet
-#include "zfls/deterministicmint.h"
+#include "zdev/deterministicmint.h"
 #include <iostream>
 #include <stdint.h>
 
@@ -439,7 +439,7 @@ WalletModel::SendCoinsReturn WalletModel::prepareTransaction(WalletModelTransact
                 return InvalidAmount;
             }
             total += subtotal;
-        } else { // User-entered fls address / amount:
+        } else { // User-entered dev address / amount:
             if (!validateAddress(rcp.address)) {
                 return InvalidAddress;
             }
@@ -568,7 +568,7 @@ WalletModel::SendCoinsReturn WalletModel::sendCoins(WalletModelTransaction& tran
                 std::string value;
                 rcp.paymentRequest.SerializeToString(&value);
                 newTx->vOrderForm.push_back(std::make_pair(key, value));
-            } else if (!rcp.message.isEmpty()) // Message from normal fls:URI (fls:XyZ...?message=example)
+            } else if (!rcp.message.isEmpty()) // Message from normal dev:URI (dev:XyZ...?message=example)
             {
                 newTx->vOrderForm.push_back(std::make_pair("Message", rcp.message.toStdString()));
             }
@@ -999,7 +999,7 @@ bool WalletModel::updateAddressBookPurpose(const QString& addreFLStr, const std:
 {
     CBitcoinAddress address(addreFLStr.toStdString());
     if (address.IsStakingAddress())
-        return error("Invalid FLS address, cold staking address");
+        return error("Invalid DEV address, cold staking address");
     CKeyID keyID;
     if (!getKeyId(address, keyID))
         return false;
@@ -1009,10 +1009,10 @@ bool WalletModel::updateAddressBookPurpose(const QString& addreFLStr, const std:
 bool WalletModel::getKeyId(const CBitcoinAddress& address, CKeyID& keyID)
 {
     if (!address.IsValid())
-        return error("Invalid FLS address");
+        return error("Invalid DEV address");
 
     if (!address.GetKeyID(keyID))
-        return error("Unable to get KeyID from FLS address");
+        return error("Unable to get KeyID from DEV address");
 
     return true;
 }
@@ -1115,7 +1115,7 @@ void WalletModel::listLockedCoins(std::vector<COutPoint>& vOutpts)
 void WalletModel::listZerocoinMints(std::set<CMintMeta>& setMints, bool fUnusedOnly, bool fMaturedOnly, bool fUpdateStatus, bool fWrongSeed)
 {
     setMints.clear();
-    setMints = pwalletMain->zflsTracker->ListMints(fUnusedOnly, fMaturedOnly, fUpdateStatus, fWrongSeed);
+    setMints = pwalletMain->zdevTracker->ListMints(fUnusedOnly, fMaturedOnly, fUpdateStatus, fWrongSeed);
 }
 
 void WalletModel::loadReceiveRequests(std::vector<std::string>& vReceiveRequests)

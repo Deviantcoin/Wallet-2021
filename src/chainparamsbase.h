@@ -10,8 +10,8 @@
 #include <vector>
 
 /**
- * CBaseChainParams defines the base parameters (shared between flits-cli and flitsd)
- * of a given instance of the fls system.
+ * CBaseChainParams defines the base parameters (shared between deviant-cli and deviantd)
+ * of a given instance of the dev system.
  */
 class CBaseChainParams
 {

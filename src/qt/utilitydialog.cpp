@@ -1,7 +1,7 @@
 // Copyright (c) 2011-2014 The Bitcoin developers
 // Copyright (c) 2014-2015 The Dash developers
 // Copyright (c) 2015-2019 The PIVX developers
-// Copyright (c) 2020 The Flits developers
+// Copyright (c) 2020 The Deviant developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -14,7 +14,7 @@
 #include "guiutil.h"
 #include "intro.h"
 
-#include "qt/fls/qtutils.cpp"
+#include "qt/dev/qtutils.cpp"
 
 #include "clientversion.h"
 #include "init.h"
@@ -72,7 +72,7 @@ HelpMessageDialog::HelpMessageDialog(QWidget* parent, bool about) : QDialog(pare
     } else {
         setWindowTitle(tr("Command-line options"));
         QString header = tr("Usage:") + "\n" +
-                         "  flits-qt [" + tr("command-line options") + "]                     " + "\n";
+                         "  deviant-qt [" + tr("command-line options") + "]                     " + "\n";
         QTextCursor cursor(ui->helpMessage->document());
         cursor.insertText(version);
         cursor.insertBlock();

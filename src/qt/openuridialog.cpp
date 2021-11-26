@@ -6,7 +6,7 @@
 #include "ui_openuridialog.h"
 
 #include "guiutil.h"
-#include "qt/fls/qtutils.h"
+#include "qt/dev/qtutils.h"
 #include "walletmodel.h"
 
 #include <QFile>

@@ -8,7 +8,7 @@
 #include "consensus/consensus.h"
 #include "main.h"
 #include "script/interpreter.h"
-#include "zflschain.h"
+#include "zdevchain.h"
 
 /** Context-independent validity checks */
 bool CheckZerocoinSpend(const CTransaction& tx, bool fVerifySignature, CValidationState& state, bool fFakeSerialAttack = false);

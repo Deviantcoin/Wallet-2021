@@ -2,12 +2,12 @@
 // Copyright (c) 2014-2015 The Dash developers
 // Copyright (c) 2015-2019 The PIVX developers
 // Copyright (c) 2019 The CryptoDev developers
-// Copyright (c) 2019 The Flits developers
+// Copyright (c) 2019 The Deviant developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #if defined(HAVE_CONFIG_H)
-#include "config/flits-config.h"
+#include "config/deviant-config.h"
 #endif
 
 #include "bitcoingui.h"
@@ -83,7 +83,7 @@ static void InitMessage(const std::string& message)
  */
 static std::string Translate(const char* psz)
 {
-    return QCoreApplication::translate("flits-core", psz).toStdString();
+    return QCoreApplication::translate("deviant-core", psz).toStdString();
 }
 
 static QString GetLangTerritory()
@@ -130,11 +130,11 @@ static void initTranslations(QTranslator& qtTranslatorBase, QTranslator& qtTrans
     if (qtTranslator.load("qt_" + lang_territory, QLibraryInfo::location(QLibraryInfo::TranslationsPath)))
         QApplication::installTranslator(&qtTranslator);
 
-    // Load e.g. bitcoin_de.qm (shortcut "de" needs to be defined in fls.qrc)
+    // Load e.g. bitcoin_de.qm (shortcut "de" needs to be defined in dev.qrc)
     if (translatorBase.load(lang, ":/translations/"))
         QApplication::installTranslator(&translatorBase);
 
-    // Load e.g. bitcoin_de_DE.qm (shortcut "de_DE" needs to be defined in fls.qrc)
+    // Load e.g. bitcoin_de_DE.qm (shortcut "de_DE" needs to be defined in dev.qrc)
     if (translator.load(lang_territory, ":/translations/"))
         QApplication::installTranslator(&translator);
 }
@@ -147,7 +147,7 @@ void DebugMessageHandler(QtMsgType type, const QMessageLogContext& context, cons
     LogPrint(category, "GUI: %s\n", msg.toStdString());
 }
 
-/** Class encapsulating FLS Core startup and shutdown.
+/** Class encapsulating DEV Core startup and shutdown.
  * Allows running startup and shutdown in a different thread from the UI thread.
  */
 class BitcoinCore : public QObject
@@ -174,7 +174,7 @@ private:
     void handleRunawayException(std::exception* e);
 };
 
-/** Main FLS application object */
+/** Main DEV application object */
 class BitcoinApplication : public QApplication
 {
     Q_OBJECT
@@ -232,7 +232,7 @@ private:
     void startThread();
 };
 
-#include "fls.moc"
+#include "dev.moc"
 
 BitcoinCore::BitcoinCore() : QObject()
 {
@@ -455,7 +455,7 @@ void BitcoinApplication::initializeResult(int retval)
 
 #ifdef ENABLE_WALLET
         // Now that initialization/startup is done, process any command-line
-        // FLS: URIs or payment requests:
+        // DEV: URIs or payment requests:
         connect(paymentServer, SIGNAL(receivedPaymentRequest(SendCoinsRecipient)),
             window, SLOT(handlePaymentRequest(SendCoinsRecipient)));
         connect(window, SIGNAL(receivedURI(QString)),
@@ -501,8 +501,8 @@ int main(int argc, char* argv[])
     // Do not refer to data directory yet, this can be overridden by Intro::pickDataDirectory
 
     /// 2. Basic Qt initialization (not dependent on parameters or configuration)
-    Q_INIT_RESOURCE(fls_locale);
-    Q_INIT_RESOURCE(fls);
+    Q_INIT_RESOURCE(dev_locale);
+    Q_INIT_RESOURCE(dev);
 
     BitcoinApplication app(argc, argv);
 #if QT_VERSION > 0x050100
@@ -549,7 +549,7 @@ int main(int argc, char* argv[])
     if (!Intro::pickDataDirectory())
         return 0;
 
-    /// 6. Determine availability of data directory and parse fls.conf
+    /// 6. Determine availability of data directory and parse dev.conf
     /// - Do not call GetDataDir(true) before this step finishes
     if (!boost::filesystem::is_directory(GetDataDir(false))) {
         QMessageBox::critical(0, QObject::tr("DEV Core"),
@@ -606,7 +606,7 @@ int main(int argc, char* argv[])
         exit(0);
 
     // Start up the payment server early, too, so impatient users that click on
-    // fls: links repeatedly have their payment requests routed to this process:
+    // dev: links repeatedly have their payment requests routed to this process:
     app.createPaymentServer();
 #endif
 

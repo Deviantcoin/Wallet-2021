@@ -1,7 +1,7 @@
 // Copyright (c) 2011-2014 The Bitcoin developers
 // Copyright (c) 2014-2015 The Dash developers
 // Copyright (c) 2015-2019 The PIVX developers
-// Copyright (c) 2020 The Flits developers
+// Copyright (c) 2020 The Deviant developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -22,7 +22,7 @@ BitcoinUnits::BitcoinUnits(QObject* parent) : QAbstractListModel(parent),
 QList<BitcoinUnits::Unit> BitcoinUnits::availableUnits()
 {
     QList<BitcoinUnits::Unit> unitlist;
-    unitlist.append(FLS);
+    unitlist.append(DEV);
     unitlist.append(mFLS);
     unitlist.append(uFLS);
     return unitlist;
@@ -31,7 +31,7 @@ QList<BitcoinUnits::Unit> BitcoinUnits::availableUnits()
 bool BitcoinUnits::valid(int unit)
 {
     switch (unit) {
-    case FLS:
+    case DEV:
     case mFLS:
     case uFLS:
         return true;
@@ -43,7 +43,7 @@ bool BitcoinUnits::valid(int unit)
 QString BitcoinUnits::id(int unit)
 {
 	switch (unit) {
-	    case FLS:
+	    case DEV:
 	        return QString("deviant");
 	    case mFLS:
 	        return QString("mdeviant");
@@ -60,7 +60,7 @@ QString BitcoinUnits::name(int unit, bool iszFLS)
     if(iszFLS) z = "z";
     if (Params().NetworkID() == CBaseChainParams::MAIN) {
         switch (unit) {
-        case FLS:
+        case DEV:
             return z + QString("DEV");
         case mFLS:
             return z + QString("mDEV");
@@ -71,7 +71,7 @@ QString BitcoinUnits::name(int unit, bool iszFLS)
         }
     } else {
         switch (unit) {
-        case FLS:
+        case DEV:
             return z + QString("tDEV");
         case mFLS:
             return z + QString("mtDEV");
@@ -87,7 +87,7 @@ QString BitcoinUnits::description(int unit)
 {
     if (Params().NetworkID() == CBaseChainParams::MAIN) {
         switch (unit) {
-        case FLS:
+        case DEV:
             return QString("DEV");
         case mFLS:
             return QString("Milli-DEV (1 / 1" THIN_SP_UTF8 "000)");
@@ -98,7 +98,7 @@ QString BitcoinUnits::description(int unit)
         }
     } else {
         switch (unit) {
-        case FLS:
+        case DEV:
             return QString("TestDEVs");
         case mFLS:
             return QString("Milli-TestDEV (1 / 1" THIN_SP_UTF8 "000)");
@@ -113,7 +113,7 @@ QString BitcoinUnits::description(int unit)
 qint64 BitcoinUnits::factor(int unit)
 {
     switch (unit) {
-    case FLS:
+    case DEV:
         return 100000000;
     case mFLS:
         return 100000;
@@ -127,7 +127,7 @@ qint64 BitcoinUnits::factor(int unit)
 int BitcoinUnits::decimals(int unit)
 {
     switch (unit) {
-    case FLS:
+    case DEV:
         return 8;
     case mFLS:
         return 5;

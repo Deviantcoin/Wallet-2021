@@ -13,8 +13,8 @@
 #include "util.h"
 #include "stakeinput.h"
 #include "utilmoneystr.h"
-#include "zflschain.h"
-#include "zfls/zpos.h"
+#include "zdevchain.h"
+#include "zdev/zpos.h"
 
 #include <boost/assign/list_of.hpp>
 
