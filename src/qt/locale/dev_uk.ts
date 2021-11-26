@@ -172,7 +172,7 @@
         <translation>Підтвердження шифрування гаманця</translation>
     </message>
     <message>
-        <source>DEV will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your FLSs from being stolen by malware infecting your computer.</source>
+        <source>DEV will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your DEVs from being stolen by malware infecting your computer.</source>
         <translation>DEV зараз закриється, щоб завершити процес шифрування. Пам'ятайте, що шифрування гаманця не може повністю захистити ваші DEV'и від крадіжки зловмисним програмним забезпеченням, що заражає ваш комп'ютер.</translation>
     </message>
     <message>
@@ -380,7 +380,7 @@
     </message>
     </context>
 <context>
-    <name>ZFlsControlDialog</name>
+    <name>ZDevControlDialog</name>
     </context>
 <context>
     <name>deviant-core</name>

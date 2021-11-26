@@ -4,8 +4,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef FLS_QT_WALLETMODEL_H
-#define FLS_QT_WALLETMODEL_H
+#ifndef DEV_QT_WALLETMODEL_H
+#define DEV_QT_WALLETMODEL_H
 
 #include "askpassphrasedialog.h"
 #include "paymentrequestplus.h"
@@ -178,7 +178,7 @@ public:
     void decryptKey(const std::vector<unsigned char>& crypted, const std::string& slt, const std::string& pwd, CKey& key);
     void emitBalanceChanged(); // Force update of UI-elements even when no values have changed
 
-    // return minted zFLS
+    // return minted zDEV
     bool getMint(const uint256& hashSerial, CZerocoinMint& mint);
 
     // Check address for validity
@@ -204,10 +204,10 @@ public:
 
     // Send coins to a list of recipients
     SendCoinsReturn sendCoins(WalletModelTransaction& transaction);
-    // Mint zFLS
+    // Mint zDEV
     bool mintCoins(CAmount value, CCoinControl* coinControl, std::string &strError);
 
-    bool createzFLSSpend(
+    bool createzDEVSpend(
             CWalletTx &wtxNew,
             std::vector<CZerocoinMint> &vMintsSelected,
             CZerocoinSpendReceipt &receipt,
@@ -215,14 +215,14 @@ public:
             std::string changeAddress = ""
     );
 
-    bool sendzFLS(
+    bool sendzDEV(
             std::vector<CZerocoinMint> &vMintsSelected,
             CZerocoinSpendReceipt &receipt,
             std::list<std::pair<CBitcoinAddress*, CAmount>> outputs,
             std::string changeAddress = ""
     );
 
-    bool convertBackzFLS(
+    bool convertBackzDEV(
             CAmount value,
             std::vector<CZerocoinMint> &vMintsSelected,
             CZerocoinSpendReceipt &receipt
@@ -280,14 +280,14 @@ public:
      */
     PairResult getNewStakingAddress(CBitcoinAddress& ret, std::string label = "") const;
 
-    bool whitelistAddressFromColdStaking(const QString &addreFLStr);
+    bool whitelistAddressFromColdStaking(const QString &addreDEVtr);
     bool blacklistAddressFromColdStaking(const QString &address);
-    bool updateAddressBookPurpose(const QString &addreFLStr, const std::string& purpose);
+    bool updateAddressBookPurpose(const QString &addreDEVtr, const std::string& purpose);
     std::string getLabelForAddress(const CBitcoinAddress& address);
     bool getKeyId(const CBitcoinAddress& address, CKeyID& keyID);
 
     bool isMine(CBitcoinAddress address);
-    bool isMine(const QString& addreFLStr);
+    bool isMine(const QString& addreDEVtr);
     bool isUsed(CBitcoinAddress address);
     void getOutputs(const std::vector<COutPoint>& vOutpoints, std::vector<COutput>& vOutputs);
     bool isSpent(const COutPoint& outpoint) const;
@@ -396,4 +396,4 @@ public Q_SLOTS:
     bool updateAddressBookLabels(const CTxDestination& address, const std::string& strName, const std::string& strPurpose);
 };
 
-#endif // FLS_QT_WALLETMODEL_H
+#endif // DEV_QT_WALLETMODEL_H

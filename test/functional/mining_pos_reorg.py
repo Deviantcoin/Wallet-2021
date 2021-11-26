@@ -51,13 +51,13 @@ class ReorgStakeTest(devestFramework):
         wi = self.nodes[nodeid].getwalletinfo()
         return wi['balance'] + wi['immature_balance']
 
-    def check_money_supply(self, expected_FLS, expected_zdev):
+    def check_money_supply(self, expected_DEV, expected_zdev):
         g_info = [self.nodes[i].getinfo() for i in range(self.num_nodes)]
-        # verify that nodes have the expected DEV and zFLS supply
+        # verify that nodes have the expected DEV and zDEV supply
         for node in g_info:
-            assert_equal(node['moneysupply'], DecimalAmt(expected_FLS))
-            for denom in node['zFLSsupply']:
-                assert_equal(node['zFLSsupply'][denom], DecimalAmt(expected_zdev[denom]))
+            assert_equal(node['moneysupply'], DecimalAmt(expected_DEV))
+            for denom in node['zDEVsupply']:
+                assert_equal(node['zDEVsupply'][denom], DecimalAmt(expected_zdev[denom]))
 
 
     def run_test(self):
@@ -68,9 +68,9 @@ class ReorgStakeTest(devestFramework):
                     return True, x
             return False, None
 
-        # Check DEV and zFLS supply at the beginning
+        # Check DEV and zDEV supply at the beginning
         # ------------------------------------------
-        # zFLS supply: 2 coins for each denomination
+        # zDEV supply: 2 coins for each denomination
         expected_zdev_supply = {
             "1": 2,
             "5": 10,
@@ -230,8 +230,8 @@ class ReorgStakeTest(devestFramework):
         res, utxo = findUtxoInList(stakeinput["txid"], stakeinput["vout"], self.nodes[0].listunspent())
         assert (not res or not utxo["spendable"])
 
-        # Verify that DEV and zFLS supplies were properly updated after the spends and reorgs
-        self.log.info("Check DEV and zFLS supply...")
+        # Verify that DEV and zDEV supplies were properly updated after the spends and reorgs
+        self.log.info("Check DEV and zDEV supply...")
         expected_money_supply += 250.0 * (self.nodes[1].getblockcount() - 330)
         spent_coin_0 = mints[0]["denomination"]
         spent_coin_1 = mints[1]["denomination"]

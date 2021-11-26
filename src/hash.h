@@ -6,8 +6,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef FLS_HASH_H
-#define FLS_HASH_H
+#ifndef DEV_HASH_H
+#define DEV_HASH_H
 
 #include "crypto/ripemd160.h"
 #include "crypto/sha256.h"
@@ -406,4 +406,4 @@ inline uint256 HashQuark(const T1 pbegin, const T1 pend)
 
 void scrypt_hash(const char* pass, unsigned int pLen, const char* salt, unsigned int sLen, char* output, unsigned int N, unsigned int r, unsigned int p, unsigned int dkLen);
 
-#endif // FLS_HASH_H
+#endif // DEV_HASH_H

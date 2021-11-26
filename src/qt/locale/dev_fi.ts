@@ -172,8 +172,8 @@
         <translation>Vahvista lompakon salaus</translation>
     </message>
     <message>
-        <source>DEV will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your FLSs from being stolen by malware infecting your computer.</source>
-        <translation>DEV sulkeutuu salausprosessin ajaksi. Muista, että lompakon salaus ei voi täysin suojella FLSien varkaudelta, jos tietokoneesi sisältää haittaohjelmia.</translation>
+        <source>DEV will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your DEVs from being stolen by malware infecting your computer.</source>
+        <translation>DEV sulkeutuu salausprosessin ajaksi. Muista, että lompakon salaus ei voi täysin suojella DEVien varkaudelta, jos tietokoneesi sisältää haittaohjelmia.</translation>
     </message>
     <message>
         <source>Are you sure you wish to encrypt your wallet?</source>
@@ -181,7 +181,7 @@
     </message>
     <message>
         <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR DEV&lt;/b&gt;!</source>
-        <translation>Varoitus: Jos salaat lompakkosi ja unohdat salausavaimesi, &lt;b&gt;menetät kaikki FLSisi&lt;/b&gt;</translation>
+        <translation>Varoitus: Jos salaat lompakkosi ja unohdat salausavaimesi, &lt;b&gt;menetät kaikki DEVisi&lt;/b&gt;</translation>
     </message>
     <message>
         <source>Wallet encrypted</source>
@@ -2433,7 +2433,7 @@
     </message>
 </context>
 <context>
-    <name>ZFlsControlDialog</name>
+    <name>ZDevControlDialog</name>
     <message>
         <source>0</source>
         <translation>0</translation>

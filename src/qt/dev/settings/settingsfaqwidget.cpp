@@ -9,7 +9,7 @@
 #include <QMetaObject>
 #include <QScrollBar>
 
-SettingsFaqWidget::SettingsFaqWidget(FLSGUI* parent) : QDialog(parent),
+SettingsFaqWidget::SettingsFaqWidget(DEVGUI* parent) : QDialog(parent),
                                                        ui(new Ui::SettingsFaqWidget)
 {
     ui->setupUi(this);
@@ -97,7 +97,7 @@ SettingsFaqWidget::SettingsFaqWidget(FLSGUI* parent) : QDialog(parent),
     connect(ui->pushButtonWebLink, &QPushButton::clicked, this, &SettingsFaqWidget::onButtonWebLinkClicked);
 
     if (parent)
-        connect(parent, &FLSGUI::windowResizeEvent, this, &SettingsFaqWidget::windowResizeEvent);
+        connect(parent, &DEVGUI::windowResizeEvent, this, &SettingsFaqWidget::windowResizeEvent);
 }
 
 void SettingsFaqWidget::showEvent(QShowEvent* event)

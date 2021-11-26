@@ -872,7 +872,7 @@ void ThreadSocketHandler()
             std::vector<CNode*> vNodesCopy = vNodes;
             for (CNode* pnode : vNodesCopy) {
                 if (pnode->fDisconnect ||
-                    (pnode->GetRefCount() <= 0 && pnode->vRecvMsg.empty() && pnode->nSendSize == 0 && pnode->FLSend.empty())) {
+                    (pnode->GetRefCount() <= 0 && pnode->vRecvMsg.empty() && pnode->nSendSize == 0 && pnode->DEVend.empty())) {
                     // remove from vNodes
                     vNodes.erase(remove(vNodes.begin(), vNodes.end(), pnode), vNodes.end());
 
@@ -1249,7 +1249,7 @@ void MapPort(bool)
 #endif
 
 
-void ThreadDNSAddreFLSeed()
+void ThreadDNSAddreDEVeed()
 {
     // goal: only query DNS seeds if address need is acute
     if ((addrman.size() > 0) &&
@@ -1778,7 +1778,7 @@ void StartNode(boost::thread_group& threadGroup, CScheduler& scheduler)
     if (!GetBoolArg("-dnsseed", true))
         LogPrintf("DNS seeding disabled\n");
     else
-        threadGroup.create_thread(boost::bind(&TraceThread<void (*)()>, "dnsseed", &ThreadDNSAddreFLSeed));
+        threadGroup.create_thread(boost::bind(&TraceThread<void (*)()>, "dnsseed", &ThreadDNSAddreDEVeed));
 
     // Map ports with UPnP
     MapPort(GetBoolArg("-upnp", DEFAULT_UPNP));
@@ -1951,24 +1951,24 @@ void CNode::Fuzz(int nChance)
     switch (GetRand(3)) {
     case 0:
         // xor a random byte with a random value:
-        if (!FLSend.empty()) {
-            CDataStream::size_type pos = GetRand(FLSend.size());
-            FLSend[pos] ^= (unsigned char)(GetRand(256));
+        if (!DEVend.empty()) {
+            CDataStream::size_type pos = GetRand(DEVend.size());
+            DEVend[pos] ^= (unsigned char)(GetRand(256));
         }
         break;
     case 1:
         // delete a random byte:
-        if (!FLSend.empty()) {
-            CDataStream::size_type pos = GetRand(FLSend.size());
-            FLSend.erase(FLSend.begin() + pos);
+        if (!DEVend.empty()) {
+            CDataStream::size_type pos = GetRand(DEVend.size());
+            DEVend.erase(DEVend.begin() + pos);
         }
         break;
     case 2:
         // insert a random byte at a random position
         {
-            CDataStream::size_type pos = GetRand(FLSend.size());
+            CDataStream::size_type pos = GetRand(DEVend.size());
             char ch = (char)GetRand(256);
-            FLSend.insert(FLSend.begin() + pos, ch);
+            DEVend.insert(DEVend.begin() + pos, ch);
         }
         break;
     }
@@ -2081,7 +2081,7 @@ bool CAddrDB::Read(CAddrMan& addr, CDataStream& ssPeers)
 unsigned int ReceiveFloodSize() { return 1000 * GetArg("-maxreceivebuffer", 5 * 1000); }
 unsigned int SendBufferSize() { return 1000 * GetArg("-maxsendbuffer", 1 * 1000); }
 
-CNode::CNode(SOCKET hSocketIn, CAddress addrIn, std::string addrNameIn, bool fInboundIn) : FLSend(SER_NETWORK, INIT_PROTO_VERSION), setAddrKnown(5000)
+CNode::CNode(SOCKET hSocketIn, CAddress addrIn, std::string addrNameIn, bool fInboundIn) : DEVend(SER_NETWORK, INIT_PROTO_VERSION), setAddrKnown(5000)
 {
     nServices = 0;
     hSocket = hSocketIn;
@@ -2177,14 +2177,14 @@ void CNode::AskFor(const CInv& inv)
 void CNode::BeginMessage(const char* pszCommand) EXCLUSIVE_LOCK_FUNCTION(cs_vSend)
 {
     ENTER_CRITICAL_SECTION(cs_vSend);
-    assert(FLSend.size() == 0);
-    FLSend << CMessageHeader(pszCommand, 0);
+    assert(DEVend.size() == 0);
+    DEVend << CMessageHeader(pszCommand, 0);
     LogPrint(BCLog::NET, "sending: %s ", SanitizeString(pszCommand));
 }
 
 void CNode::AbortMessage() UNLOCK_FUNCTION(cs_vSend)
 {
-    FLSend.clear();
+    DEVend.clear();
 
     LEAVE_CRITICAL_SECTION(cs_vSend);
 
@@ -2204,26 +2204,26 @@ void CNode::EndMessage() UNLOCK_FUNCTION(cs_vSend)
     if (mapArgs.count("-fuzzmessagestest"))
         Fuzz(GetArg("-fuzzmessagestest", 10));
 
-    if (FLSend.size() == 0) {
+    if (DEVend.size() == 0) {
         LEAVE_CRITICAL_SECTION(cs_vSend);
         return;
     }
 
     // Set the size
-    unsigned int nSize = FLSend.size() - CMessageHeader::HEADER_SIZE;
-    memcpy((char*)&FLSend[CMessageHeader::MESSAGE_SIZE_OFFSET], &nSize, sizeof(nSize));
+    unsigned int nSize = DEVend.size() - CMessageHeader::HEADER_SIZE;
+    memcpy((char*)&DEVend[CMessageHeader::MESSAGE_SIZE_OFFSET], &nSize, sizeof(nSize));
 
     // Set the checksum
-    uint256 hash = Hash(FLSend.begin() + CMessageHeader::HEADER_SIZE, FLSend.end());
+    uint256 hash = Hash(DEVend.begin() + CMessageHeader::HEADER_SIZE, DEVend.end());
     unsigned int nChecksum = 0;
     memcpy(&nChecksum, &hash, sizeof(nChecksum));
-    assert(FLSend.size() >= CMessageHeader::CHECKSUM_OFFSET + sizeof(nChecksum));
-    memcpy((char*)&FLSend[CMessageHeader::CHECKSUM_OFFSET], &nChecksum, sizeof(nChecksum));
+    assert(DEVend.size() >= CMessageHeader::CHECKSUM_OFFSET + sizeof(nChecksum));
+    memcpy((char*)&DEVend[CMessageHeader::CHECKSUM_OFFSET], &nChecksum, sizeof(nChecksum));
 
     LogPrint(BCLog::NET, "(%d bytes) peer=%d\n", nSize, id);
 
     std::deque<CSerializeData>::iterator it = vSendMsg.insert(vSendMsg.end(), CSerializeData());
-    FLSend.GetAndClear(*it);
+    DEVend.GetAndClear(*it);
     nSendSize += (*it).size();
 
     // If write queue empty, attempt "optimistic write"

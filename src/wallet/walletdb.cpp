@@ -1284,7 +1284,7 @@ bool CWalletDB::ReadCurrentSeedHash(uint256& hashSeed)
     return Read(std::string("seedhash"), hashSeed);
 }
 
-bool CWalletDB::WriteZFLSSeed(const uint256& hashSeed, const std::vector<unsigned char>& seed)
+bool CWalletDB::WriteZDEVSeed(const uint256& hashSeed, const std::vector<unsigned char>& seed)
 {
     if (!WriteCurrentSeedHash(hashSeed))
         return error("%s: failed to write current seed hash", __func__);
@@ -1292,13 +1292,13 @@ bool CWalletDB::WriteZFLSSeed(const uint256& hashSeed, const std::vector<unsigne
     return Write(std::make_pair(std::string("dzs"), hashSeed), seed);
 }
 
-bool CWalletDB::EraseZFLSSeed()
+bool CWalletDB::EraseZDEVSeed()
 {
     uint256 hash;
     if(!ReadCurrentSeedHash(hash)){
         return error("Failed to read a current seed hash");
     }
-    if(!WriteZFLSSeed(hash, ToByteVector(base_uint<256>(0) << 256))) {
+    if(!WriteZDEVSeed(hash, ToByteVector(base_uint<256>(0) << 256))) {
         return error("Failed to write empty seed to wallet");
     }
     if(!WriteCurrentSeedHash(UINT256_ZERO)) {
@@ -1308,27 +1308,27 @@ bool CWalletDB::EraseZFLSSeed()
     return true;
 }
 
-bool CWalletDB::EraseZFLSSeed_deprecated()
+bool CWalletDB::EraseZDEVSeed_deprecated()
 {
     return Erase(std::string("dzs"));
 }
 
-bool CWalletDB::ReadZFLSSeed(const uint256& hashSeed, std::vector<unsigned char>& seed)
+bool CWalletDB::ReadZDEVSeed(const uint256& hashSeed, std::vector<unsigned char>& seed)
 {
     return Read(std::make_pair(std::string("dzs"), hashSeed), seed);
 }
 
-bool CWalletDB::ReadZFLSSeed_deprecated(uint256& seed)
+bool CWalletDB::ReadZDEVSeed_deprecated(uint256& seed)
 {
     return Read(std::string("dzs"), seed);
 }
 
-bool CWalletDB::WriteZFLSCount(const uint32_t& nCount)
+bool CWalletDB::WriteZDEVCount(const uint32_t& nCount)
 {
     return Write(std::string("dzc"), nCount);
 }
 
-bool CWalletDB::ReadZFLSCount(uint32_t& nCount)
+bool CWalletDB::ReadZDEVCount(uint32_t& nCount)
 {
     return Read(std::string("dzc"), nCount);
 }

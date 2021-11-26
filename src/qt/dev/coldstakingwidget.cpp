@@ -72,7 +72,7 @@ private:
     CSRow* cachedRow = nullptr;
 };
 
-ColdStakingWidget::ColdStakingWidget(FLSGUI* parent) : PWidget(parent),
+ColdStakingWidget::ColdStakingWidget(DEVGUI* parent) : PWidget(parent),
                                                        ui(new Ui::ColdStakingWidget),
                                                        isLoading(false)
 {
@@ -102,7 +102,7 @@ ColdStakingWidget::ColdStakingWidget(FLSGUI* parent) : PWidget(parent),
 
     /* Subtitle */
     ui->labelSubtitle1->setText(tr("You can delegate your DEVs, letting a hot node (24/7 online node)\nstake on your behalf, while you keep the keys securely offline."));
-    setCFLSubtitleScreen(ui->labelSubtitle1);
+    setCDEVubtitleScreen(ui->labelSubtitle1);
     spacerDiv = new QSpacerItem(40, 20, QSizePolicy::Maximum, QSizePolicy::Expanding);
 
     setCssProperty(ui->labelSubtitleDescription, "text-title");
@@ -113,7 +113,7 @@ ColdStakingWidget::ColdStakingWidget(FLSGUI* parent) : PWidget(parent),
     setShadow(ui->lineEditOwnerAddress);
 
     ui->labelSubtitle2->setText(tr("Accept DEV delegation / Delegate DEV"));
-    setCFLSubtitleScreen(ui->labelSubtitle2);
+    setCDEVubtitleScreen(ui->labelSubtitle2);
     ui->labelSubtitle2->setContentsMargins(0, 2, 0, 0);
 
     ui->pushButtonSend->setText(tr("Delegate"));
@@ -197,7 +197,7 @@ ColdStakingWidget::ColdStakingWidget(FLSGUI* parent) : PWidget(parent),
     SortEdit* lineEditOrder = new SortEdit(ui->comboBoxSortOrder);
     connect(lineEditOrder, &SortEdit::Mouse_Pressed, [this]() { ui->comboBoxSortOrder->showPopup(); });
     connect(ui->comboBoxSortOrder, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this, &ColdStakingWidget::onSortOrderChanged);
-    fillAddreFLSortControls(lineEdit, lineEditOrder, ui->comboBoxSort, ui->comboBoxSortOrder);
+    fillAddreDEVortControls(lineEdit, lineEditOrder, ui->comboBoxSort, ui->comboBoxSortOrder);
     ui->sortWidget->setVisible(false);
 
     connect(ui->pushButtonSend, &QPushButton::clicked, this, &ColdStakingWidget::onSendClicked);
@@ -487,7 +487,7 @@ void ColdStakingWidget::onSendClicked()
     WalletModel::SendCoinsReturn prepareStatus = walletModel->prepareTransaction(currentTransaction, CoinControlDialog::coinControl, false);
 
     // process prepareStatus and on error generate message shown to user
-    GuiTransactionsUtils::ProceFLSendCoinsReturnAndInform(
+    GuiTransactionsUtils::ProceDEVendCoinsReturnAndInform(
         this,
         prepareStatus,
         walletModel,
@@ -510,7 +510,7 @@ void ColdStakingWidget::onSendClicked()
         // now send the prepared transaction
         WalletModel::SendCoinsReturn sendStatus = dialog->getStatus();
         // process sendStatus and on error generate message shown to user
-        GuiTransactionsUtils::ProceFLSendCoinsReturnAndInform(
+        GuiTransactionsUtils::ProceDEVendCoinsReturnAndInform(
             this,
             sendStatus,
             walletModel);

@@ -11,7 +11,7 @@
 #include <QListView>
 #include <QComboBox>
 
-SendCustomFeeDialog::SendCustomFeeDialog(FLSGUI *parent) :
+SendCustomFeeDialog::SendCustomFeeDialog(DEVGUI *parent) :
     QDialog(parent),
     ui(new Ui::SendCustomFeeDialog)
 {
@@ -55,7 +55,7 @@ SendCustomFeeDialog::SendCustomFeeDialog(FLSGUI *parent) :
     connect(ui->comboBoxRecommended, static_cast<void (QComboBox::*)(const QString &)>(&QComboBox::currentIndexChanged),
         this, &SendCustomFeeDialog::updateFee);
     if (parent)
-        connect(parent, &FLSGUI::themeChanged, this, &SendCustomFeeDialog::onChangeTheme);
+        connect(parent, &DEVGUI::themeChanged, this, &SendCustomFeeDialog::onChangeTheme);
     ui->checkBoxRecommended->setChecked(true);
 }
 

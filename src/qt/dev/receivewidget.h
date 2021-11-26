@@ -14,7 +14,7 @@
 #include <QWidget>
 #include <QPixmap>
 
-class FLSGUI;
+class DEVGUI;
 class SendCoinsRecipient;
 
 namespace Ui {
@@ -30,7 +30,7 @@ class ReceiveWidget : public PWidget
     Q_OBJECT
 
 public:
-    explicit ReceiveWidget(FLSGUI* parent);
+    explicit ReceiveWidget(DEVGUI* parent);
     ~ReceiveWidget();
 
     void loadWalletModel() override;

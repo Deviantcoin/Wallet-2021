@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef FLS_MINTPOOL_H
-#define FLS_MINTPOOL_H
+#ifndef DEV_MINTPOOL_H
+#define DEV_MINTPOOL_H
 
 #include <map>
 #include <list>
@@ -50,4 +50,4 @@ public:
 };
 
 
-#endif //FLS_MINTPOOL_H
+#endif //DEV_MINTPOOL_H

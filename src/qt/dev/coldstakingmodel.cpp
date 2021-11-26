@@ -79,17 +79,17 @@ bool ColdStakingModel::parseCSDelegation(const CTxOut& out, CSDelegation& ret, c
                 __func__, txId.toStdString(), utxoIndex);
     }
 
-    std::string stakingAddreFLStr = CBitcoinAddress(
+    std::string stakingAddreDEVtr = CBitcoinAddress(
             addresses[0],
             CChainParams::STAKING_ADDRESS
     ).ToString();
 
-    std::string ownerAddreFLStr = CBitcoinAddress(
+    std::string ownerAddreDEVtr = CBitcoinAddress(
             addresses[1],
             CChainParams::PUBKEY_ADDRESS
     ).ToString();
 
-    ret = CSDelegation(stakingAddreFLStr, ownerAddreFLStr);
+    ret = CSDelegation(stakingAddreDEVtr, ownerAddreDEVtr);
 
     return true;
 }

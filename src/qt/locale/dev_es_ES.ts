@@ -176,8 +176,8 @@
         <translation>Confirmar encriptación del monedero</translation>
     </message>
     <message>
-        <source>DEV will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your FLSs from being stolen by malware infecting your computer.</source>
-        <translation>DEV se cerrará ahora para completar el proceso de encriptación. Recuerde que la encriptación no le protege completamente del robo de sus FLSs frente a malware que infecte su ordenador.</translation>
+        <source>DEV will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your DEVs from being stolen by malware infecting your computer.</source>
+        <translation>DEV se cerrará ahora para completar el proceso de encriptación. Recuerde que la encriptación no le protege completamente del robo de sus DEVs frente a malware que infecte su ordenador.</translation>
     </message>
     <message>
         <source>Are you sure you wish to encrypt your wallet?</source>
@@ -652,7 +652,7 @@
     </message>
     </context>
 <context>
-    <name>ZFlsControlDialog</name>
+    <name>ZDevControlDialog</name>
     </context>
 <context>
     <name>deviant-core</name>

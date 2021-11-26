@@ -37,7 +37,7 @@ using namespace QtCharts;
 
 #endif
 
-class FLSGUI;
+class DEVGUI;
 class WalletModel;
 
 namespace Ui {
@@ -80,10 +80,10 @@ public:
 
     QMap<int, std::pair<qint64, qint64>> amountsByCache;
     qreal maxValue = 0;
-    qint64 totalFLS = 0;
-    qint64 totalzFLS = 0;
-    QList<qreal> valuesFLS;
-    QList<qreal> valueszFLS;
+    qint64 totalDEV = 0;
+    qint64 totalzDEV = 0;
+    QList<qreal> valuesDEV;
+    QList<qreal> valueszDEV;
     QStringList xLabels;
 };
 
@@ -96,7 +96,7 @@ class DashboardWidget : public PWidget
     Q_OBJECT
 
 public:
-    explicit DashboardWidget(FLSGUI* _window);
+    explicit DashboardWidget(DEVGUI* _window);
     ~DashboardWidget();
 
     void loadWalletModel() override;
@@ -163,7 +163,7 @@ private:
     int yearFilter = 0;
     int monthFilter = 0;
     int dayStart = 1;
-    bool haszFLSStakes = false;
+    bool haszDEVStakes = false;
 
     ChartData* chartData = nullptr;
     bool hasStakes = false;

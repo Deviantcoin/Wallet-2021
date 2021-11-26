@@ -176,7 +176,7 @@
         <translation>Conferma cifratura portafoglio</translation>
     </message>
     <message>
-        <source>DEV will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your FLSs from being stolen by malware infecting your computer.</source>
+        <source>DEV will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your DEVs from being stolen by malware infecting your computer.</source>
         <translation>DEV verrà ora chiuso per completare il processo di cifratura. Ricorda che crittografare il tuo portafoglio non protegge completamente i tuoi DEV dal furto da parte di software malevoli che potrebbero infettare il tuo computer.</translation>
     </message>
     <message>
@@ -433,8 +433,8 @@
         <translation>Espora la cronologia delle transazioni</translation>
     </message>
     <message>
-        <source>Privacy Actions for zFLS</source>
-        <translation>Operazioni di privacy per zFLS</translation>
+        <source>Privacy Actions for zDEV</source>
+        <translation>Operazioni di privacy per zDEV</translation>
     </message>
     <message>
         <source>E&amp;xit</source>
@@ -1103,7 +1103,7 @@ MultiSend: %1</translation>
     </message>
     <message>
         <source>Can vary +/- %1 udev per input.</source>
-        <translation>Può variare di +/- %1 uFLS per input.</translation>
+        <translation>Può variare di +/- %1 uDEV per input.</translation>
     </message>
     <message>
         <source>(no label)</source>
@@ -1262,7 +1262,7 @@ MultiSend: %1</translation>
     </message>
     <message>
         <source>Welcome to DEV Core.</source>
-        <translation>Benvenuto in FLSIX Core.</translation>
+        <translation>Benvenuto in DEVIX Core.</translation>
     </message>
     <message>
         <source>As this is the first time the program is launched, you can choose where DEV Core will store its data.</source>
@@ -1638,24 +1638,24 @@ MultiSend non verrà attivato a meno che tu non prema su Attiva</translation>
         <translation>Mappa la porta utilizzando &amp;UPnP</translation>
     </message>
     <message>
-        <source>Enable automatic minting of DEV units to zFLS</source>
-        <translation>Attiva il conio automatico di unità DEV in zFLS</translation>
+        <source>Enable automatic minting of DEV units to zDEV</source>
+        <translation>Attiva il conio automatico di unità DEV in zDEV</translation>
     </message>
     <message>
-        <source>Enable zFLS Automint</source>
-        <translation>Attiva Conio automatico zFLS</translation>
+        <source>Enable zDEV Automint</source>
+        <translation>Attiva Conio automatico zDEV</translation>
     </message>
     <message>
-        <source>Percentage of incoming DEV which get automatically converted to zFLS via Zerocoin Protocol (min: 10%)</source>
-        <translation>Percentuale di DEV in entrata che viene automaticamente convertita in zFLS attraverso il protocollo Zerocoin (min: 10%)</translation>
+        <source>Percentage of incoming DEV which get automatically converted to zDEV via Zerocoin Protocol (min: 10%)</source>
+        <translation>Percentuale di DEV in entrata che viene automaticamente convertita in zDEV attraverso il protocollo Zerocoin (min: 10%)</translation>
     </message>
     <message>
-        <source>Percentage of autominted zFLS</source>
-        <translation>Percentuale di zFLS Percentuale di zFLS da coniare automaticamente</translation>
+        <source>Percentage of autominted zDEV</source>
+        <translation>Percentuale di zDEV Percentuale di zDEV da coniare automaticamente</translation>
     </message>
     <message>
-        <source>Preferred Automint zFLS Denomination</source>
-        <translation>Denominazione preferita conio automatico zFLS</translation>
+        <source>Preferred Automint zDEV Denomination</source>
+        <translation>Denominazione preferita conio automatico zDEV</translation>
     </message>
     <message>
         <source>Proxy &amp;IP:</source>
@@ -1733,14 +1733,14 @@ MultiSend non verrà attivato a meno che tu non prema su Attiva</translation>
         <translation>Il tuo saldo DEV corrente, incluse le transazioni non confermate e non mature</translation>
     </message>
     <message>
-        <source>zFLS Balance</source>
-        <translation>Bilancio zFLS</translation>
+        <source>zDEV Balance</source>
+        <translation>Bilancio zDEV</translation>
     </message>
     <message>
         <source>Mature: more than 20 confirmation and more than 1 mint of the same denomination after it was minted.
-These zFLS are spendable.</source>
+These zDEV are spendable.</source>
         <translation>Maturi: più di 20 conferme e più di 1 conio della stessa denominazione dopo il conio.
-Questi zFLS sono spendibili.</translation>
+Questi zDEV sono spendibili.</translation>
     </message>
     <message>
         <source>OVERVIEW</source>
@@ -1771,8 +1771,8 @@ Questi zFLS sono spendibili.</translation>
         <translation>Spendibili:</translation>
     </message>
     <message>
-        <source>Locked DEV or Masternode collaterals. These are excluded from zFLS minting.</source>
-        <translation>DEV bloccati o collaterali Masternodo. Questi sono esclusi dal conio di zFLS.</translation>
+        <source>Locked DEV or Masternode collaterals. These are excluded from zDEV minting.</source>
+        <translation>DEV bloccati o collaterali Masternodo. Questi sono esclusi dal conio di zDEV.</translation>
     </message>
     <message>
         <source>Locked:</source>
@@ -1783,18 +1783,18 @@ Questi zFLS sono spendibili.</translation>
         <translation>Non confermati:</translation>
     </message>
     <message>
-        <source>Your current zFLS balance, unconfirmed and immature zFLS included.</source>
-        <translation>Il tuo saldo zFLS corrente, inclusi zFLS non confermati e non maturi</translation>
+        <source>Your current zDEV balance, unconfirmed and immature zDEV included.</source>
+        <translation>Il tuo saldo zDEV corrente, inclusi zDEV non confermati e non maturi</translation>
     </message>
     <message>
         <source>Recent transactions</source>
         <translation>Transazioni recenti</translation>
     </message>
     <message>
-        <source>Current percentage of zFLS.
+        <source>Current percentage of zDEV.
 If AutoMint is enabled this percentage will settle around the configured AutoMint percentage (default = 10%).
 </source>
-        <translation>Percentuale corrente di zFLS.
+        <translation>Percentuale corrente di zDEV.
 Se il conio automatico è attivato questa percentuale si stabilizzerà all'incirca sulla percentuale stabilita per il conio automatico (percentuale prestabilita = 10%).
 </translation>
     </message>
@@ -1858,8 +1858,8 @@ Per attivare il Conio automatico cambiare 'enablezeromint=0' in 'enablezeromint=
         <translation>0</translation>
     </message>
     <message>
-        <source>zFLS</source>
-        <translation>zFLS</translation>
+        <source>zDEV</source>
+        <translation>zDEV</translation>
     </message>
     <message>
         <source>Reset</source>
@@ -1870,12 +1870,12 @@ Per attivare il Conio automatico cambiare 'enablezeromint=0' in 'enablezeromint=
         <translation>PRIVACY</translation>
     </message>
     <message>
-        <source>zFLS Control</source>
-        <translation>Controllo zFLS</translation>
+        <source>zDEV Control</source>
+        <translation>Controllo zDEV</translation>
     </message>
     <message>
-        <source>zFLS Selected:</source>
-        <translation>zFLS selezionati:</translation>
+        <source>zDEV Selected:</source>
+        <translation>zDEV selezionati:</translation>
     </message>
     <message>
         <source>Quantity Selected:</source>
@@ -1886,23 +1886,23 @@ Per attivare il Conio automatico cambiare 'enablezeromint=0' in 'enablezeromint=
         <translation>Spendi Zerocoin</translation>
     </message>
     <message>
-        <source>Available (mature and spendable) zFLS for spending</source>
-        <translation>zFLS disponibili disponibili per essere spesi (maturi e spendibili)</translation>
+        <source>Available (mature and spendable) zDEV for spending</source>
+        <translation>zDEV disponibili disponibili per essere spesi (maturi e spendibili)</translation>
     </message>
     <message>
         <source>Available Balance:</source>
         <translation>Bilancio Disponibile:</translation>
     </message>
     <message>
-        <source>Available (mature and spendable) zFLS for spending
+        <source>Available (mature and spendable) zDEV for spending
 
-zFLS are mature when they have more than 20 confirmations AND more than 2 mints of the same denomination after them were minted</source>
-        <translation>zFLS disponibili disponibili per essere spesi (maturi e spendibili)
-Gli zFLS sono maturi quando hanno più di 20 conferme E più di 2 conii della stessa denominazione dopo che sono stati coniati</translation>
+zDEV are mature when they have more than 20 confirmations AND more than 2 mints of the same denomination after them were minted</source>
+        <translation>zDEV disponibili disponibili per essere spesi (maturi e spendibili)
+Gli zDEV sono maturi quando hanno più di 20 conferme E più di 2 conii della stessa denominazione dopo che sono stati coniati</translation>
     </message>
     <message>
-        <source>0 zFLS</source>
-        <translation>0 zFLS</translation>
+        <source>0 zDEV</source>
+        <translation>0 zDEV</translation>
     </message>
     <message>
         <source>Pay &amp;To:</source>
@@ -1945,31 +1945,31 @@ Gli zFLS sono maturi quando hanno più di 20 conferme E più di 2 conii della st
         <translation>Statistiche Zerocoin:</translation>
     </message>
     <message>
-        <source>Total Balance including unconfirmed and immature zFLS</source>
-        <translation>Saldo totale inclusi zFLS non confermati e non maturi</translation>
+        <source>Total Balance including unconfirmed and immature zDEV</source>
+        <translation>Saldo totale inclusi zDEV non confermati e non maturi</translation>
     </message>
     <message>
         <source>Total Zerocoin  Balance:</source>
         <translation>Saldo totale Zerocoin:</translation>
     </message>
     <message>
-        <source>Show the current status of automatic zFLS minting.
+        <source>Show the current status of automatic zDEV minting.
 
 To change the status (restart required):
 - enable: add 'enablezeromint=1' to dev.conf
 - disable: add 'enablezeromint=0' to dev.conf
 
 To change the percentage (no restart required):
-- menu Settings-&gt;Options-&gt;Percentage of autominted zFLS
+- menu Settings-&gt;Options-&gt;Percentage of autominted zDEV
 
 </source>
-        <translation>Mostra lo stato corrente del conio automatico zFLS.
+        <translation>Mostra lo stato corrente del conio automatico zDEV.
 Per cambiare lo stato (riavvio necessario):
 - attivato: aggiungi 'enablezeromint=1' a dev.conf
 - disattivato: aggiungi 'enablezeromint=0' a dev.conf
 
 Per cambiare la percentuale (riavvio non necessario):
-- menu Impostazioni-&gt;Opzioni-&gt;Percentuale di zFLS da coniare automaticamente
+- menu Impostazioni-&gt;Opzioni-&gt;Percentuale di zDEV da coniare automaticamente
 
 </translation>
     </message>
@@ -2110,8 +2110,8 @@ Per cambiare la percentuale (riavvio non necessario):
         <translation>Differenza:</translation>
     </message>
     <message>
-        <source>zFLS Mint</source>
-        <translation>Conio zFLS</translation>
+        <source>zDEV Mint</source>
+        <translation>Conio zDEV</translation>
     </message>
     <message>
         <source>AutoMint Status:</source>
@@ -2594,14 +2594,14 @@ Per cambiare la percentuale (riavvio non necessario):
     </message>
     </context>
 <context>
-    <name>ZFlsControlDialog</name>
+    <name>ZDevControlDialog</name>
     <message>
         <source>0</source>
         <translation>0</translation>
     </message>
     <message>
-        <source>zFLS</source>
-        <translation>zFLS</translation>
+        <source>zDEV</source>
+        <translation>zDEV</translation>
     </message>
     </context>
 <context>

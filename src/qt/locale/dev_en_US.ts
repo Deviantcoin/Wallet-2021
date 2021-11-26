@@ -176,8 +176,8 @@
         <translation>Confirm wallet encryption</translation>
     </message>
     <message>
-        <source>DEV will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your FLSs from being stolen by malware infecting your computer.</source>
-        <translation>DEV will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your FLSs from being stolen by malware infecting your computer.</translation>
+        <source>DEV will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your DEVs from being stolen by malware infecting your computer.</source>
+        <translation>DEV will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your DEVs from being stolen by malware infecting your computer.</translation>
     </message>
     <message>
         <source>Are you sure you wish to encrypt your wallet?</source>
@@ -239,8 +239,8 @@
         <translation>&amp;BIP 38 Encrypt</translation>
     </message>
     <message>
-        <source>Enter a Fls Address that you would like to encrypt using BIP 38. Enter a passphrase in the middle box. Press encrypt to compute the encrypted private key.</source>
-        <translation>Enter a Fls Address that you would like to encrypt using BIP 38. Enter a passphrase in the middle box. Press encrypt to compute the encrypted private key.</translation>
+        <source>Enter a Dev Address that you would like to encrypt using BIP 38. Enter a passphrase in the middle box. Press encrypt to compute the encrypted private key.</source>
+        <translation>Enter a Dev Address that you would like to encrypt using BIP 38. Enter a passphrase in the middle box. Press encrypt to compute the encrypted private key.</translation>
     </message>
     <message>
         <source>Address:</source>
@@ -2840,12 +2840,12 @@ https://www.transifex.com/CryptoDev-Project/CryptoDev-Project-translations</tran
         <translation>Confirmation time:</translation>
     </message>
     <message>
-        <source>If the custom fee is set to 1000 uFLSs and the transaction is only 250 bytes, then "per kilobyte" only pays 250 uFLSs in fee,&lt;br /&gt;while "at least" pays 1000 uFLSs. For transactions bigger than a kilobyte both pay by kilobyte.</source>
-        <translation>If the custom fee is set to 1000 uFLSs and the transaction is only 250 bytes, then "per kilobyte" only pays 250 uFLSs in fee,&lt;br /&gt;while "at least" pays 1000 uFLSs. For transactions bigger than a kilobyte both pay by kilobyte.</translation>
+        <source>If the custom fee is set to 1000 uDEVs and the transaction is only 250 bytes, then "per kilobyte" only pays 250 uDEVs in fee,&lt;br /&gt;while "at least" pays 1000 uDEVs. For transactions bigger than a kilobyte both pay by kilobyte.</source>
+        <translation>If the custom fee is set to 1000 uDEVs and the transaction is only 250 bytes, then "per kilobyte" only pays 250 uDEVs in fee,&lt;br /&gt;while "at least" pays 1000 uDEVs. For transactions bigger than a kilobyte both pay by kilobyte.</translation>
     </message>
     <message>
-        <source>If the custom fee is set to 1000 uFLSs and the transaction is only 250 bytes, then "per kilobyte" only pays 250 uFLSs in fee,&lt;br /&gt;while "total at least" pays 1000 uFLSs. For transactions bigger than a kilobyte both pay by kilobyte.</source>
-        <translation>If the custom fee is set to 1000 uFLSs and the transaction is only 250 bytes, then "per kilobyte" only pays 250 uFLSs in fee,&lt;br /&gt;while "total at least" pays 1000 uFLSs. For transactions bigger than a kilobyte both pay by kilobyte.</translation>
+        <source>If the custom fee is set to 1000 uDEVs and the transaction is only 250 bytes, then "per kilobyte" only pays 250 uDEVs in fee,&lt;br /&gt;while "total at least" pays 1000 uDEVs. For transactions bigger than a kilobyte both pay by kilobyte.</source>
+        <translation>If the custom fee is set to 1000 uDEVs and the transaction is only 250 bytes, then "per kilobyte" only pays 250 uDEVs in fee,&lt;br /&gt;while "total at least" pays 1000 uDEVs. For transactions bigger than a kilobyte both pay by kilobyte.</translation>
     </message>
     <message>
         <source>Paying only the minimum fee is just fine as long as there is less transaction volume than space in the blocks.&lt;br /&gt;But be aware that this can end up in a never confirming transaction once there is more demand for DEV transactions than the network can process.</source>

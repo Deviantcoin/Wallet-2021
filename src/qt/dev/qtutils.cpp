@@ -36,7 +36,7 @@ bool openDialog(QDialog* widget, QWidget* gui)
     return widget->exec();
 }
 
-void closeDialog(QDialog* widget, FLSGUI* gui)
+void closeDialog(QDialog* widget, DEVGUI* gui)
 {
     widget->setWindowFlags(Qt::CustomizeWindowHint);
     widget->setAttribute(Qt::WA_TranslucentBackground, true);
@@ -57,7 +57,7 @@ void openDialogFullScreen(QWidget* parent, QWidget* dialog)
     dialog->resize(parent->width(), parent->height());
 }
 
-bool openDialogWithOpaqueBackgroundY(QDialog* widget, FLSGUI* gui, double posX, int posY)
+bool openDialogWithOpaqueBackgroundY(QDialog* widget, DEVGUI* gui, double posX, int posY)
 {
     widget->setWindowFlags(Qt::CustomizeWindowHint);
     widget->setAttribute(Qt::WA_TranslucentBackground, true);
@@ -74,12 +74,12 @@ bool openDialogWithOpaqueBackgroundY(QDialog* widget, FLSGUI* gui, double posX, 
     return res;
 }
 
-bool openDialogWithOpaqueBackground(QDialog* widget, FLSGUI* gui, double posX)
+bool openDialogWithOpaqueBackground(QDialog* widget, DEVGUI* gui, double posX)
 {
     return openDialogWithOpaqueBackgroundY(widget, gui, posX, 5);
 }
 
-bool openDialogWithOpaqueBackgroundFullScreen(QDialog* widget, FLSGUI* gui)
+bool openDialogWithOpaqueBackgroundFullScreen(QDialog* widget, DEVGUI* gui)
 {
     widget->setWindowFlags(Qt::CustomizeWindowHint);
     widget->setAttribute(Qt::WA_TranslucentBackground, true);
@@ -243,7 +243,7 @@ void initComboBox(QComboBox* combo, QLineEdit* lineEdit, QString cssClass)
     combo->setView(new QListView());
 }
 
-void fillAddreFLSortControls(SortEdit* seType, SortEdit* seOrder, QComboBox* boxType, QComboBox* boxOrder)
+void fillAddreDEVortControls(SortEdit* seType, SortEdit* seOrder, QComboBox* boxType, QComboBox* boxOrder)
 {
     // Sort Type
     initComboBox(boxType, seType, "btn-combo-small");
@@ -315,7 +315,7 @@ void setCssTitleScreen(QLabel* label)
     setCssProperty(label, "text-title-screen", false);
 }
 
-void setCFLSubtitleScreen(QWidget* wid)
+void setCDEVubtitleScreen(QWidget* wid)
 {
     setCssProperty(wid, "text-subtitle", false);
 }

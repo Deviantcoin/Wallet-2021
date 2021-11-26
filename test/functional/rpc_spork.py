@@ -10,7 +10,7 @@ from test_framework.test_framework import devestFramework
 from test_framework.util import set_node_times, assert_equal
 
 
-class FLS_RPCSporkTest(devestFramework):
+class DEV_RPCSporkTest(devestFramework):
 
     def set_test_params(self):
         self.setup_clean_chain = True
@@ -70,5 +70,5 @@ class FLS_RPCSporkTest(devestFramework):
 
 
 if __name__ == '__main__':
-    FLS_RPCSporkTest().main()
+    DEV_RPCSporkTest().main()
 

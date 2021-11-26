@@ -72,7 +72,7 @@ void CSporkManager::LoadSporksFromDB()
     }
 }
 
-void CSporkManager::ProceFLSpork(CNode* pfrom, std::string& strCommand, CDataStream& vRecv)
+void CSporkManager::ProceDEVpork(CNode* pfrom, std::string& strCommand, CDataStream& vRecv)
 {
     if (fLiteMode) return; // disable all masternode related functionality
 

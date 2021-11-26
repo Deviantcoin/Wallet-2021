@@ -197,14 +197,14 @@ public:
     bool ReadZerocoinSpendSerialEntry(const CBigNum& bnSerial);
     bool WriteCurrentSeedHash(const uint256& hashSeed);
     bool ReadCurrentSeedHash(uint256& hashSeed);
-    bool WriteZFLSSeed(const uint256& hashSeed, const std::vector<unsigned char>& seed);
-    bool ReadZFLSSeed(const uint256& hashSeed, std::vector<unsigned char>& seed);
-    bool ReadZFLSSeed_deprecated(uint256& seed);
-    bool EraseZFLSSeed();
-    bool EraseZFLSSeed_deprecated();
+    bool WriteZDEVSeed(const uint256& hashSeed, const std::vector<unsigned char>& seed);
+    bool ReadZDEVSeed(const uint256& hashSeed, std::vector<unsigned char>& seed);
+    bool ReadZDEVSeed_deprecated(uint256& seed);
+    bool EraseZDEVSeed();
+    bool EraseZDEVSeed_deprecated();
 
-    bool WriteZFLSCount(const uint32_t& nCount);
-    bool ReadZFLSCount(uint32_t& nCount);
+    bool WriteZDEVCount(const uint32_t& nCount);
+    bool ReadZDEVCount(uint32_t& nCount);
     std::map<uint256, std::vector<std::pair<uint256, uint32_t> > > MapMintPool();
     bool WriteMintPoolPair(const uint256& hashMasterSeed, const uint256& hashPubcoin, const uint32_t& nCount);
 

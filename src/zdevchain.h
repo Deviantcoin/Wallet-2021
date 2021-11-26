@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef FLS_ZFLSCHAIN_H
-#define FLS_ZFLSCHAIN_H
+#ifndef DEV_ZDEVCHAIN_H
+#define DEV_ZDEVCHAIN_H
 
 #include "chain.h"
 #include "libzerocoin/Coin.h"
@@ -42,7 +42,7 @@ std::list<libzerocoin::CoinDenomination> ZerocoinSpendListFromBlock(const CBlock
 /** Global variable for the zerocoin supply */
 extern std::map<libzerocoin::CoinDenomination, int64_t> mapZerocoinSupply;
 int64_t GetZerocoinSupply();
-bool UpdateZFLSSupplyConnect(const CBlock& block, CBlockIndex* pindex, bool fJustCheck);
-bool UpdateZFLSSupplyDisconnect(const CBlock& block, CBlockIndex* pindex);
+bool UpdateZDEVSupplyConnect(const CBlock& block, CBlockIndex* pindex, bool fJustCheck);
+bool UpdateZDEVSupplyDisconnect(const CBlock& block, CBlockIndex* pindex);
 
-#endif //FLS_ZFLSCHAIN_H
+#endif //DEV_ZDEVCHAIN_H

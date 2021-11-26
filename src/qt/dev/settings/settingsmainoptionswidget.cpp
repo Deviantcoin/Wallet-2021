@@ -32,7 +32,7 @@
 #include <QTimer>
 
 
-SettingsMainOptionsWidget::SettingsMainOptionsWidget(FLSGUI* _window, QWidget* parent) : PWidget(_window, parent),
+SettingsMainOptionsWidget::SettingsMainOptionsWidget(DEVGUI* _window, QWidget* parent) : PWidget(_window, parent),
                                                                                          ui(new Ui::SettingsMainOptionsWidget)
 {
     ui->setupUi(this);
@@ -49,9 +49,9 @@ SettingsMainOptionsWidget::SettingsMainOptionsWidget(FLSGUI* _window, QWidget* p
     ui->labelSubtitle1->setText("Customize the main application options");
 
     setCssTitleScreen(ui->labelTitle);
-    setCFLSubtitleScreen(ui->labelSubtitle1);
+    setCDEVubtitleScreen(ui->labelSubtitle1);
     setCssTitleScreen(ui->labelTitleDown);
-    setCFLSubtitleScreen(ui->labelSubtitleDown);
+    setCDEVubtitleScreen(ui->labelSubtitleDown);
 
     ui->labelTitleSizeDb->setText(tr("Size of database cache"));
     ui->labelTitleSizeDb->setProperty("cssClass", "text-main-settings");

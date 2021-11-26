@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef FLS_ADDRESSHOLDER_H
-#define FLS_ADDRESSHOLDER_H
+#ifndef DEV_ADDRESSHOLDER_H
+#define DEV_ADDRESSHOLDER_H
 
 #include <QWidget>
 #include <QColor>
@@ -38,4 +38,4 @@ public:
 };
 
 
-#endif //FLS_ADDRESSHOLDER_H
+#endif //DEV_ADDRESSHOLDER_H

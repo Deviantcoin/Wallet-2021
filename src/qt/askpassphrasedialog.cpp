@@ -193,7 +193,7 @@ void AskPassphraseDialog::accept()
         if (ret) {
             if (newpass1 == newpass2) {
                 newpassCache = newpass1;
-                FLSGUI* window = static_cast<FLSGUI*>(parentWidget());
+                DEVGUI* window = static_cast<DEVGUI*>(parentWidget());
                 LoadingDialog* dialog = new LoadingDialog(window);
                 dialog->execute(this, 1);
                 openDialogWithOpaqueBackgroundFullScreen(dialog, window);
@@ -315,7 +315,7 @@ bool AskPassphraseDialog::eventFilter(QObject* object, QEvent* event)
 
 bool AskPassphraseDialog::openStandardDialog(QString title, QString body, QString okBtn, QString cancelBtn)
 {
-    FLSGUI* gui = static_cast<FLSGUI*>(parentWidget());
+    DEVGUI* gui = static_cast<DEVGUI*>(parentWidget());
     DefaultDialog* confirmDialog = new DefaultDialog(gui);
     confirmDialog->setText(title, body, okBtn, cancelBtn);
     confirmDialog->adjustSize();
@@ -328,7 +328,7 @@ bool AskPassphraseDialog::openStandardDialog(QString title, QString body, QStrin
 void AskPassphraseDialog::warningMessage()
 {
     hide();
-    static_cast<FLSGUI*>(parentWidget())->showHide(true);
+    static_cast<DEVGUI*>(parentWidget())->showHide(true);
     openStandardDialog(
         tr("Wallet encrypted"),
         "<qt>" +

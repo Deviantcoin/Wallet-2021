@@ -72,7 +72,7 @@ your deviantd's P2P listen port (6740 by default).
 
 In a typical situation, where you're only reachable via Tor, this should suffice:
 
-	./deviantd -proxy=127.0.0.1:9050 -externalip=FLSzj6l4cvo2fxy.onion -listen
+	./deviantd -proxy=127.0.0.1:9050 -externalip=DEVzj6l4cvo2fxy.onion -listen
 
 (obviously, replace the .onion address with your own). It should be noted that you still
 listen on all devices and another node could establish a clearnet connection, when knowing
@@ -90,7 +90,7 @@ and open port 6740 on your firewall (or use -upnp).
 If you only want to use Tor to reach .onion addresses, but not use it as a proxy
 for normal IPv4/IPv6 communication, use:
 
-	./deviantd -onion=127.0.0.1:9050 -externalip=FLSzj6l4cvo2fxy.onion -discover
+	./deviantd -onion=127.0.0.1:9050 -externalip=DEVzj6l4cvo2fxy.onion -discover
 
 ## 3. Automatically listen on Tor
 

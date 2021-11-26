@@ -1,7 +1,7 @@
 // Copyright (c) 2020 The Deviant Core developers
 // Distributed under the MIT software license, see the accompanying
-#ifndef FLS_HDCHAIN_H
-#define FLS_HDCHAIN_H
+#ifndef DEV_HDCHAIN_H
+#define DEV_HDCHAIN_H
 
 #include "key.h"
 
@@ -64,4 +64,4 @@ public:
     }
 };
 
-#endif // FLS_HDCHAIN_H
+#endif // DEV_HDCHAIN_H

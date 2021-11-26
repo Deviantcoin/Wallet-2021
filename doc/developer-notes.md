@@ -215,7 +215,7 @@ to see it.
 
 ### Testnet and Regtest modes
 
-Run with the `-testnet` option to run with "play FLSs (tFLS)" on the test network, if you
+Run with the `-testnet` option to run with "play DEVs (tDEV)" on the test network, if you
 are testing multi-machine code that needs to operate across the internet.
 
 If you are testing something that can run on one machine, run with the `-regtest` option.
@@ -239,9 +239,9 @@ which includes known Valgrind warnings in our dependencies that cannot be fixed
 in-tree. Example use:
 
 ```shell
-$ valgrind --suppressions=contrib/valgrind.supp src/test/test_FLS
+$ valgrind --suppressions=contrib/valgrind.supp src/test/test_DEV
 $ valgrind --suppressions=contrib/valgrind.supp --leak-check=full \
-      --show-leak-kinds=all src/test/test_FLS --log_level=test_suite
+      --show-leak-kinds=all src/test/test_DEV --log_level=test_suite
 $ valgrind -v --leak-check=full src/deviantd -printtoconsole
 ```
 
@@ -258,7 +258,7 @@ To enable LCOV report generation during test runs:
 make
 make cov
 
-# A coverage report will now be accessible at `./test_FLS.coverage/index.html`.
+# A coverage report will now be accessible at `./test_DEV.coverage/index.html`.
 ```
 
 Locking/mutex usage notes
@@ -287,7 +287,7 @@ Threads
 
 - StartNode : Starts other threads.
 
-- ThreadDNSAddreFLSeed : Loads addresses of peers from the DNS.
+- ThreadDNSAddreDEVeed : Loads addresses of peers from the DNS.
 
 - ThreadMapPort : Universal plug-and-play startup/shutdown
 
@@ -305,7 +305,7 @@ Threads
 
 - ThreadRPCServer : Remote procedure call handler, listens on port 8332 for connections and services them.
 
-- BitcoinMiner : Generates FLSs (if wallet is enabled).
+- BitcoinMiner : Generates DEVs (if wallet is enabled).
 
 - Shutdown : Does an orderly shutdown of everything.
 

@@ -176,7 +176,7 @@
         <translation>cüzdan şifrelemesini onayla</translation>
     </message>
     <message>
-        <source>DEV will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your FLSs from being stolen by malware infecting your computer.</source>
+        <source>DEV will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your DEVs from being stolen by malware infecting your computer.</source>
         <translation>DEV şifreleme işlemini tamamlamak için şimdi kapanacaktır. Cüzdanınızı şifrelemenin, DEV'lerinizi bilgisayarınıza bulaşan kötücül yazılımlar tarafından çalınmasına tamamen engelleyemediğini unutmayın</translation>
     </message>
     <message>
@@ -433,8 +433,8 @@
         <translation>İşlem geçmişini ara</translation>
     </message>
     <message>
-        <source>Privacy Actions for zFLS</source>
-        <translation>Gizlilik Aksiyonları zFLS</translation>
+        <source>Privacy Actions for zDEV</source>
+        <translation>Gizlilik Aksiyonları zDEV</translation>
     </message>
     <message>
         <source>E&amp;xit</source>
@@ -670,11 +670,11 @@
     </message>
     <message>
         <source>&amp;About DEV Core</source>
-        <translation>Fls core Hakkında</translation>
+        <translation>Dev core Hakkında</translation>
     </message>
     <message>
         <source>Show information about DEV Core</source>
-        <translation>Fls Core hakkında bilgi göster</translation>
+        <translation>Dev Core hakkında bilgi göster</translation>
     </message>
     <message>
         <source>Modify configuration options for DEV</source>
@@ -1863,28 +1863,28 @@ https://www.transifex.com/CryptoDev-Project/CryptoDev-Project-translations</tran
         <translation>Map port using &amp;UPnP</translation>
     </message>
     <message>
-        <source>Enable automatic minting of DEV units to zFLS</source>
-        <translation>DEV birimlerinin zFLS'e otomatik basımını ektinleştir</translation>
+        <source>Enable automatic minting of DEV units to zDEV</source>
+        <translation>DEV birimlerinin zDEV'e otomatik basımını ektinleştir</translation>
     </message>
     <message>
-        <source>Enable zFLS Automint</source>
-        <translation>zFLS Otomatik basımı etkinleştir</translation>
+        <source>Enable zDEV Automint</source>
+        <translation>zDEV Otomatik basımı etkinleştir</translation>
     </message>
     <message>
-        <source>Percentage of incoming DEV which get automatically converted to zFLS via Zerocoin Protocol (min: 10%)</source>
-        <translation>Zerocoin Protokolü üzerinden otomatik olarak zFLS'ye dönüştürülen gelen DEV yüzdesi (dakika: 10%)</translation>
+        <source>Percentage of incoming DEV which get automatically converted to zDEV via Zerocoin Protocol (min: 10%)</source>
+        <translation>Zerocoin Protokolü üzerinden otomatik olarak zDEV'ye dönüştürülen gelen DEV yüzdesi (dakika: 10%)</translation>
     </message>
     <message>
-        <source>Percentage of autominted zFLS</source>
-        <translation>Otomatikleştirilmiş zFLS yüzdesi</translation>
+        <source>Percentage of autominted zDEV</source>
+        <translation>Otomatikleştirilmiş zDEV yüzdesi</translation>
     </message>
     <message>
         <source>Wait with automatic conversion to Zerocoin until enough DEV for this denomination is available</source>
         <translation>Bu mezhebi için yeterli DEV bulunana kadar Zerocoin'e otomatik dönüşümle birlikte bekleyin</translation>
     </message>
     <message>
-        <source>Preferred Automint zFLS Denomination</source>
-        <translation>Tercih edilen Automint zFLS Nominal değeri</translation>
+        <source>Preferred Automint zDEV Denomination</source>
+        <translation>Tercih edilen Automint zDEV Nominal değeri</translation>
     </message>
     <message>
         <source>Connect to the DEV network through a SOCKS5 proxy.</source>
@@ -2066,14 +2066,14 @@ https://www.transifex.com/CryptoDev-Project/CryptoDev-Project-translations</tran
         <translation>Güncel DEV bakiyeniz, onaylanmamış ve olgunlaşmamış işlemler dahil</translation>
     </message>
     <message>
-        <source>zFLS Balance</source>
-        <translation>zFLS Bakiyesi</translation>
+        <source>zDEV Balance</source>
+        <translation>zDEV Bakiyesi</translation>
     </message>
     <message>
         <source>Mature: more than 20 confirmation and more than 1 mint of the same denomination after it was minted.
-These zFLS are spendable.</source>
+These zDEV are spendable.</source>
         <translation>Olgun: basılmış olduktan sonra 20'den fazla onay alınmış ve aynı ölçü biriminden 1 kereden fazla basılmış.
-Bu zFLS ler harcanabilir.</translation>
+Bu zDEV ler harcanabilir.</translation>
     </message>
     <message>
         <source>Unconfirmed: less than 20 confirmations
@@ -2126,8 +2126,8 @@ Olgunlaşmamış: onaylandı, ancak basıldıktan sonra aynı ölçü biriminden
         <translation>Harcanabilir:</translation>
     </message>
     <message>
-        <source>Locked DEV or Masternode collaterals. These are excluded from zFLS minting.</source>
-        <translation>Kilitli DEV veya Masternode teminatları. Bunlar zFLS matlaştırmadan çıkarılır.</translation>
+        <source>Locked DEV or Masternode collaterals. These are excluded from zDEV minting.</source>
+        <translation>Kilitli DEV veya Masternode teminatları. Bunlar zDEV matlaştırmadan çıkarılır.</translation>
     </message>
     <message>
         <source>Locked:</source>
@@ -2138,8 +2138,8 @@ Olgunlaşmamış: onaylandı, ancak basıldıktan sonra aynı ölçü biriminden
         <translation>onaylanmamış:</translation>
     </message>
     <message>
-        <source>Your current zFLS balance, unconfirmed and immature zFLS included.</source>
-        <translation>Güncel zFLS bakiyeniz, onaylanmamış ve olgunlaşmamış zFLS'ler dahil.</translation>
+        <source>Your current zDEV balance, unconfirmed and immature zDEV included.</source>
+        <translation>Güncel zDEV bakiyeniz, onaylanmamış ve olgunlaşmamış zDEV'ler dahil.</translation>
     </message>
     <message>
         <source>Recent transactions</source>
@@ -2150,10 +2150,10 @@ Olgunlaşmamış: onaylandı, ancak basıldıktan sonra aynı ölçü biriminden
         <translation>senkronizasyon dışı</translation>
     </message>
     <message>
-        <source>Current percentage of zFLS.
+        <source>Current percentage of zDEV.
 If AutoMint is enabled this percentage will settle around the configured AutoMint percentage (default = 10%).
 </source>
-        <translation>Mevcut zFLS yüzdesi.
+        <translation>Mevcut zDEV yüzdesi.
 AutoMint etkinleştirilirse, bu yüzde, yapılandırılmış AutoMint yüzdesi etrafında düzelir (varsayılan = 10%).
 </translation>
     </message>
@@ -2196,7 +2196,7 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in dev.conf</
     </message>
     <message>
         <source>Cannot start dev: click-to-pay handler</source>
-        <translation>Fls başlatılamıyor: tıkla ve ödeme işleyicisi</translation>
+        <translation>Dev başlatılamıyor: tıkla ve ödeme işleyicisi</translation>
     </message>
     <message>
         <source>URI cannot be parsed! This can be caused by an invalid DEV address or malformed URI parameters.</source>
@@ -2297,8 +2297,8 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in dev.conf</
         <translation>0</translation>
     </message>
     <message>
-        <source>zFLS</source>
-        <translation>zFLS</translation>
+        <source>zDEV</source>
+        <translation>zDEV</translation>
     </message>
     <message>
         <source>Reset Zerocoin Wallet DB. Deletes transactions that did not make it into the blockchain.</source>
@@ -2325,12 +2325,12 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in dev.conf</
         <translation>GİZLİLİK</translation>
     </message>
     <message>
-        <source>zFLS Control</source>
-        <translation>zFLS Kontrolü</translation>
+        <source>zDEV Control</source>
+        <translation>zDEV Kontrolü</translation>
     </message>
     <message>
-        <source>zFLS Selected:</source>
-        <translation>zFls Seçildi:</translation>
+        <source>zDEV Selected:</source>
+        <translation>zDev Seçildi:</translation>
     </message>
     <message>
         <source>Quantity Selected:</source>
@@ -2345,24 +2345,24 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in dev.conf</
         <translation>Harca Zerocoin</translation>
     </message>
     <message>
-        <source>Available (mature and spendable) zFLS for spending</source>
-        <translation>Mevcut (olgun ve harcanabilir) harcama için zFLS</translation>
+        <source>Available (mature and spendable) zDEV for spending</source>
+        <translation>Mevcut (olgun ve harcanabilir) harcama için zDEV</translation>
     </message>
     <message>
         <source>Available Balance:</source>
         <translation>Kullanılabilir Bakiye:</translation>
     </message>
     <message>
-        <source>Available (mature and spendable) zFLS for spending
+        <source>Available (mature and spendable) zDEV for spending
 
-zFLS are mature when they have more than 20 confirmations AND more than 2 mints of the same denomination after them were minted</source>
-        <translation>Mevcut (olgun ve harcanabilir) harcama için zFLS
+zDEV are mature when they have more than 20 confirmations AND more than 2 mints of the same denomination after them were minted</source>
+        <translation>Mevcut (olgun ve harcanabilir) harcama için zDEV
 
-zFLS, 20'den fazla teyit bulunduğunda olgunlaşır ve bundan sonra aynı mezhepten 2 kat fazla darphane çekilir.</translation>
+zDEV, 20'den fazla teyit bulunduğunda olgunlaşır ve bundan sonra aynı mezhepten 2 kat fazla darphane çekilir.</translation>
     </message>
     <message>
-        <source>0 zFLS</source>
-        <translation>0 zFLS</translation>
+        <source>0 zDEV</source>
+        <translation>0 zDEV</translation>
     </message>
     <message>
         <source>Pay &amp;To:</source>
@@ -2421,8 +2421,8 @@ zFLS, 20'den fazla teyit bulunduğunda olgunlaşır ve bundan sonra aynı mezhep
         <translation>Zerocoin durumu:</translation>
     </message>
     <message>
-        <source>Total Balance including unconfirmed and immature zFLS</source>
-        <translation>Doğrulanmamış ve olgunlaşmamış zFLS dahil toplam bakiye</translation>
+        <source>Total Balance including unconfirmed and immature zDEV</source>
+        <translation>Doğrulanmamış ve olgunlaşmamış zDEV dahil toplam bakiye</translation>
     </message>
     <message>
         <source>Total Zerocoin  Balance:</source>
@@ -2581,12 +2581,12 @@ Please be patient...</source>
 Lütfen sabırlı olun...</translation>
     </message>
     <message>
-        <source>zFLS is currently disabled due to maintenance.</source>
-        <translation>zFLS bakım nedeniyle şu an kullanıma kapalı.</translation>
+        <source>zDEV is currently disabled due to maintenance.</source>
+        <translation>zDEV bakım nedeniyle şu an kullanıma kapalı.</translation>
     </message>
     <message>
-        <source>zFLS is currently undergoing maintenance.</source>
-        <translation>zFLS halen bakım alıyor.</translation>
+        <source>zDEV is currently undergoing maintenance.</source>
+        <translation>zDEV halen bakım alıyor.</translation>
     </message>
     <message>
         <source>AutoMint Status:</source>
@@ -2611,8 +2611,8 @@ Lütfen sabırlı olun...</translation>
         <translation>Sağlanan 'Ödeme Yapmak İçin' adresi yok, yerel ödeme oluşturun</translation>
     </message>
     <message>
-        <source>Invalid Fls Address</source>
-        <translation>Geçersiz Fls Adresi</translation>
+        <source>Invalid Dev Address</source>
+        <translation>Geçersiz Dev Adresi</translation>
     </message>
     <message>
         <source>Invalid Send Amount</source>
@@ -3387,12 +3387,12 @@ Lütfen sabırlı olun...</translation>
         <translation>Koinler otomatik seçildi</translation>
     </message>
     <message>
-        <source>If the custom fee is set to 1000 uFLSs and the transaction is only 250 bytes, then "per kilobyte" only pays 250 uFLSs in fee,&lt;br /&gt;while "at least" pays 1000 uFLSs. For transactions bigger than a kilobyte both pay by kilobyte.</source>
-        <translation>Özel ücret 1000 uFLS olarak ayarlanmış ve işlem sadece 250 bayt ise, "kilobayt başına" ücret karşılığında yalnızca 250 uFLS öder,&lt;br /&gt;"en az" ise 1000 uFLS öder. Bir kilobayttan daha büyük işlemler için kilobayt ödersiniz.</translation>
+        <source>If the custom fee is set to 1000 uDEVs and the transaction is only 250 bytes, then "per kilobyte" only pays 250 uDEVs in fee,&lt;br /&gt;while "at least" pays 1000 uDEVs. For transactions bigger than a kilobyte both pay by kilobyte.</source>
+        <translation>Özel ücret 1000 uDEV olarak ayarlanmış ve işlem sadece 250 bayt ise, "kilobayt başına" ücret karşılığında yalnızca 250 uDEV öder,&lt;br /&gt;"en az" ise 1000 uDEV öder. Bir kilobayttan daha büyük işlemler için kilobayt ödersiniz.</translation>
     </message>
     <message>
-        <source>If the custom fee is set to 1000 uFLSs and the transaction is only 250 bytes, then "per kilobyte" only pays 250 uFLSs in fee,&lt;br /&gt;while "total at least" pays 1000 uFLSs. For transactions bigger than a kilobyte both pay by kilobyte.</source>
-        <translation>Özel ücret 1000 uFLS olarak ayarlanırsa ve işlem sadece 250 bayt ise, "kilobayt başına" ücret karşılığında yalnızca 250 uFLS ücreti verilir,&lt;br /&gt;"toplam en az" ise 1000 uFLS ödüyor. Bir kilobayttan daha büyük işlemler için kilobayt ödersiniz.</translation>
+        <source>If the custom fee is set to 1000 uDEVs and the transaction is only 250 bytes, then "per kilobyte" only pays 250 uDEVs in fee,&lt;br /&gt;while "total at least" pays 1000 uDEVs. For transactions bigger than a kilobyte both pay by kilobyte.</source>
+        <translation>Özel ücret 1000 uDEV olarak ayarlanırsa ve işlem sadece 250 bayt ise, "kilobayt başına" ücret karşılığında yalnızca 250 uDEV ücreti verilir,&lt;br /&gt;"toplam en az" ise 1000 uDEV ödüyor. Bir kilobayttan daha büyük işlemler için kilobayt ödersiniz.</translation>
     </message>
     <message>
         <source>Paying only the minimum fee is just fine as long as there is less transaction volume than space in the blocks.&lt;br /&gt;But be aware that this can end up in a never confirming transaction once there is more demand for DEV transactions than the network can process.</source>
@@ -4367,7 +4367,7 @@ Lütfen sabırlı olun...</translation>
     </message>
 </context>
 <context>
-    <name>ZFlsControlDialog</name>
+    <name>ZDevControlDialog</name>
     <message>
         <source>Quantity</source>
         <translation>Adet</translation>
@@ -4377,8 +4377,8 @@ Lütfen sabırlı olun...</translation>
         <translation>0</translation>
     </message>
     <message>
-        <source>zFLS</source>
-        <translation>zFLS</translation>
+        <source>zDEV</source>
+        <translation>zDEV</translation>
     </message>
     <message>
         <source>Select/Deselect All</source>

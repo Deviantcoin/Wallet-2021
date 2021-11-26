@@ -176,7 +176,7 @@
         <translation>Потвърдете шифрирането на портфейла</translation>
     </message>
     <message>
-        <source>DEV will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your FLSs from being stolen by malware infecting your computer.</source>
+        <source>DEV will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your DEVs from being stolen by malware infecting your computer.</source>
         <translation>DEV сега ще се затвори, за да довърши процеса по шифриране. Запомнете, че шифрирането на вашия портфейл не може напълно да защити вашия DEV от това, да бъде откраднат чрез злонамерен софутуер, инфектирал вашия компютър.</translation>
     </message>
     <message>
@@ -255,7 +255,7 @@
     </message>
     <message>
         <source>Enter a DEV Address that you would like to encrypt using BIP 38. Enter a passphrase in the middle box. Press encrypt to compute the encrypted private key.</source>
-        <translation>Въведете Fls адрес, който искате да криптиране с BIP 38. Въведете парола в средното поле. Натиснете 'криптирай', за да се изчисли криптирания таен ключ. </translation>
+        <translation>Въведете Dev адрес, който искате да криптиране с BIP 38. Въведете парола в средното поле. Натиснете 'криптирай', за да се изчисли криптирания таен ключ. </translation>
     </message>
     <message>
         <source>The DEV address to encrypt</source>
@@ -433,8 +433,8 @@
         <translation>История на транзакциите</translation>
     </message>
     <message>
-        <source>Privacy Actions for zFLS</source>
-        <translation>Поверителни Действия за ZFLS</translation>
+        <source>Privacy Actions for zDEV</source>
+        <translation>Поверителни Действия за ZDEV</translation>
     </message>
     <message>
         <source>E&amp;xit</source>
@@ -1828,28 +1828,28 @@ https://www.transifex.com/CryptoDev-Project/CryptoDev-Project-translations</tran
         <translation>Картографирай портовете използвайки &amp;UPnP</translation>
     </message>
     <message>
-        <source>Enable automatic minting of DEV units to zFLS</source>
-        <translation>Включи автоматичното емитиране на DEV единици в zFLS</translation>
+        <source>Enable automatic minting of DEV units to zDEV</source>
+        <translation>Включи автоматичното емитиране на DEV единици в zDEV</translation>
     </message>
     <message>
-        <source>Enable zFLS Automint</source>
-        <translation>Включи Автоматично емитиране на zFLS</translation>
+        <source>Enable zDEV Automint</source>
+        <translation>Включи Автоматично емитиране на zDEV</translation>
     </message>
     <message>
-        <source>Percentage of incoming DEV which get automatically converted to zFLS via Zerocoin Protocol (min: 10%)</source>
-        <translation>Процент от входящите DEV, който автоматично да се конвертира в zFLS посредтвом Zerocoin Протокола (мин: 10%)</translation>
+        <source>Percentage of incoming DEV which get automatically converted to zDEV via Zerocoin Protocol (min: 10%)</source>
+        <translation>Процент от входящите DEV, който автоматично да се конвертира в zDEV посредтвом Zerocoin Протокола (мин: 10%)</translation>
     </message>
     <message>
-        <source>Percentage of autominted zFLS</source>
-        <translation>Процент автоматично сечени zFLS</translation>
+        <source>Percentage of autominted zDEV</source>
+        <translation>Процент автоматично сечени zDEV</translation>
     </message>
     <message>
         <source>Wait with automatic conversion to Zerocoin until enough DEV for this denomination is available</source>
-        <translation>Не бързай с автоматичното конвертиране в zFLS докато не се съберат достатъчно DEV за тази деноминация</translation>
+        <translation>Не бързай с автоматичното конвертиране в zDEV докато не се съберат достатъчно DEV за тази деноминация</translation>
     </message>
     <message>
-        <source>Preferred Automint zFLS Denomination</source>
-        <translation>Предпочитани деноминации, в които да се сече автоматичен zFLS</translation>
+        <source>Preferred Automint zDEV Denomination</source>
+        <translation>Предпочитани деноминации, в които да се сече автоматичен zDEV</translation>
     </message>
     <message>
         <source>Stake split threshold:</source>
@@ -2035,14 +2035,14 @@ https://www.transifex.com/CryptoDev-Project/CryptoDev-Project-translations</tran
         <translation>Вашите DEV наличности, включително непотвърдените и неузрели преводи</translation>
     </message>
     <message>
-        <source>zFLS Balance</source>
-        <translation>zFLS Наличности</translation>
+        <source>zDEV Balance</source>
+        <translation>zDEV Наличности</translation>
     </message>
     <message>
         <source>Mature: more than 20 confirmation and more than 1 mint of the same denomination after it was minted.
-These zFLS are spendable.</source>
+These zDEV are spendable.</source>
         <translation>Узрели: повече от 20 потвърждения и повече от 1 емисии от същата деноминация след като е била емитирана.
-Тези zFLS могат да се похарчат.</translation>
+Тези zDEV могат да се похарчат.</translation>
     </message>
     <message>
         <source>Unconfirmed: less than 20 confirmations
@@ -2095,8 +2095,8 @@ Immature: confirmed, but less than 1 mint of the same denomination after it was 
         <translation>Налични за харчене:</translation>
     </message>
     <message>
-        <source>Locked DEV or Masternode collaterals. These are excluded from zFLS minting.</source>
-        <translation>Заключен DEV или допълнителни гаранции в Главни Възли. Тези не са включени в zFLS емитирането.</translation>
+        <source>Locked DEV or Masternode collaterals. These are excluded from zDEV minting.</source>
+        <translation>Заключен DEV или допълнителни гаранции в Главни Възли. Тези не са включени в zDEV емитирането.</translation>
     </message>
     <message>
         <source>Locked:</source>
@@ -2107,8 +2107,8 @@ Immature: confirmed, but less than 1 mint of the same denomination after it was 
         <translation>Непотвърден</translation>
     </message>
     <message>
-        <source>Your current zFLS balance, unconfirmed and immature zFLS included.</source>
-        <translation>Вашите zFLS наличности, включеително непотвърдените и неузрелите zFLS.</translation>
+        <source>Your current zDEV balance, unconfirmed and immature zDEV included.</source>
+        <translation>Вашите zDEV наличности, включеително непотвърдените и неузрелите zDEV.</translation>
     </message>
     <message>
         <source>Recent transactions</source>
@@ -2258,8 +2258,8 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in dev.conf</
         <translation>0</translation>
     </message>
     <message>
-        <source>zFLS</source>
-        <translation>zFLS</translation>
+        <source>zDEV</source>
+        <translation>zDEV</translation>
     </message>
     <message>
         <source>Reset Zerocoin Wallet DB. Deletes transactions that did not make it into the blockchain.</source>
@@ -2286,12 +2286,12 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in dev.conf</
         <translation>КОНФИДЕНЦИАЛНОСТ</translation>
     </message>
     <message>
-        <source>zFLS Control</source>
-        <translation>zFLS Контрол</translation>
+        <source>zDEV Control</source>
+        <translation>zDEV Контрол</translation>
     </message>
     <message>
-        <source>zFLS Selected:</source>
-        <translation>Избрани zFLS:</translation>
+        <source>zDEV Selected:</source>
+        <translation>Избрани zDEV:</translation>
     </message>
     <message>
         <source>Quantity Selected:</source>
@@ -2306,24 +2306,24 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in dev.conf</
         <translation>Похарчи Zerocoin</translation>
     </message>
     <message>
-        <source>Available (mature and spendable) zFLS for spending</source>
-        <translation>Налични (узрели и готови за харчене) zFLS за употреба</translation>
+        <source>Available (mature and spendable) zDEV for spending</source>
+        <translation>Налични (узрели и готови за харчене) zDEV за употреба</translation>
     </message>
     <message>
         <source>Available Balance:</source>
         <translation>Налични:</translation>
     </message>
     <message>
-        <source>Available (mature and spendable) zFLS for spending
+        <source>Available (mature and spendable) zDEV for spending
 
-zFLS are mature when they have more than 20 confirmations AND more than 2 mints of the same denomination after them were minted</source>
-        <translation>Налични (узрели и готови за харчене) zFLS за употреба
+zDEV are mature when they have more than 20 confirmations AND more than 2 mints of the same denomination after them were minted</source>
+        <translation>Налични (узрели и готови за харчене) zDEV за употреба
 
-zFLS са узрели, тогава когато имат повече от 20 потвърждения И повече от 2 емисии от същата деноминация след като са биле емитирани</translation>
+zDEV са узрели, тогава когато имат повече от 20 потвърждения И повече от 2 емисии от същата деноминация след като са биле емитирани</translation>
     </message>
     <message>
-        <source>0 zFLS</source>
-        <translation>0 zFLS</translation>
+        <source>0 zDEV</source>
+        <translation>0 zDEV</translation>
     </message>
     <message>
         <source>Pay &amp;To:</source>
@@ -2363,7 +2363,7 @@ zFLS са узрели, тогава когато имат повече от 20 
     </message>
     <message>
         <source>Convert Change to Zerocoin (might cost additional fees)</source>
-        <translation>Изсечи zFLS от рестото (ще струва допълнително заради таксите)</translation>
+        <translation>Изсечи zDEV от рестото (ще струва допълнително заради таксите)</translation>
     </message>
     <message>
         <source>If checked, the wallet tries to minimize the returning change instead of minimizing the number of spent denominations.</source>
@@ -2382,8 +2382,8 @@ zFLS са узрели, тогава когато имат повече от 20 
         <translation>Zerocoin статистика:</translation>
     </message>
     <message>
-        <source>Total Balance including unconfirmed and immature zFLS</source>
-        <translation>Обща Наличност включеително непотвърдените и неузрели zFLS</translation>
+        <source>Total Balance including unconfirmed and immature zDEV</source>
+        <translation>Обща Наличност включеително непотвърдените и неузрели zDEV</translation>
     </message>
     <message>
         <source>Total Zerocoin  Balance:</source>
@@ -2404,24 +2404,24 @@ Immature: confirmed, but less than 1 mint of the same denomination after it was 
 Неузрели: потвърдени, но с по-малко от 1 емисии от същата деноминация след като са биле емитирани</translation>
     </message>
     <message>
-        <source>Show the current status of automatic zFLS minting.
+        <source>Show the current status of automatic zDEV minting.
 
 To change the status (restart required):
 - enable: add 'enablezeromint=1' to dev.conf
 - disable: add 'enablezeromint=0' to dev.conf
 
 To change the percentage (no restart required):
-- menu Settings-&gt;Options-&gt;Percentage of autominted zFLS
+- menu Settings-&gt;Options-&gt;Percentage of autominted zDEV
 
 </source>
-        <translation>Покажи състоянието на автоматичното zFLS емитиране.
+        <translation>Покажи състоянието на автоматичното zDEV емитиране.
 
 За да пормените състоянието (изисква рестарт):
 - вклчване: добавете 'enablezeromint=1' в dev.conf
 - изключване: добавете 'enablezeromint=0' в dev.conf
 
 За промяна в процентите (не изисква рестарт):
-- меню Настройки -&gt; Опции -&gt; Процент на автоемитиран zFLS
+- меню Настройки -&gt; Опции -&gt; Процент на автоемитиран zDEV
 </translation>
     </message>
     <message>
@@ -2595,12 +2595,12 @@ Please be patient...</source>
 Моля изчакате...</translation>
     </message>
     <message>
-        <source>zFLS Spend #: </source>
-        <translation>zFLS Похарчени #:</translation>
+        <source>zDEV Spend #: </source>
+        <translation>zDEV Похарчени #:</translation>
     </message>
     <message>
-        <source>zFLS Mint</source>
-        <translation>Сечене на zFLS</translation>
+        <source>zDEV Mint</source>
+        <translation>Сечене на zDEV</translation>
     </message>
     <message>
         <source> &lt;b&gt;enabled&lt;/b&gt;.</source>
@@ -2615,12 +2615,12 @@ Please be patient...</source>
         <translation>Конфигуриран целеви процент: &lt;b&gt;</translation>
     </message>
     <message>
-        <source>zFLS is currently disabled due to maintenance.</source>
-        <translation>В момента zFLS не работи поради ремонт.</translation>
+        <source>zDEV is currently disabled due to maintenance.</source>
+        <translation>В момента zDEV не работи поради ремонт.</translation>
     </message>
     <message>
-        <source>zFLS is currently undergoing maintenance.</source>
-        <translation>В момента zFLS е в ремонт.</translation>
+        <source>zDEV is currently undergoing maintenance.</source>
+        <translation>В момента zDEV е в ремонт.</translation>
     </message>
     <message>
         <source>Denom. with value &lt;b&gt;1&lt;/b&gt;:</source>
@@ -2709,7 +2709,7 @@ Please be patient...</source>
         <translation>Без 'Плати На' адрес, плащането е локално</translation>
     </message>
     <message>
-        <source>Invalid Fls Address</source>
+        <source>Invalid Dev Address</source>
         <translation>Невалиден DEV адрес</translation>
     </message>
     <message>
@@ -3065,8 +3065,8 @@ Please be patient...</source>
         <translation>Персонален резервен път:</translation>
     </message>
     <message>
-        <source>Custom zFLS Backup Path:</source>
-        <translation>Персонализиран zFLS резервен път:</translation>
+        <source>Custom zDEV Backup Path:</source>
+        <translation>Персонализиран zDEV резервен път:</translation>
     </message>
     <message>
         <source>Custom Backups Threshold:</source>
@@ -3569,12 +3569,12 @@ Please be patient...</source>
         <translation>Автоматично избрани монети</translation>
     </message>
     <message>
-        <source>If the custom fee is set to 1000 uFLSs and the transaction is only 250 bytes, then "per kilobyte" only pays 250 uFLSs in fee,&lt;br /&gt;while "at least" pays 1000 uFLSs. For transactions bigger than a kilobyte both pay by kilobyte.</source>
-        <translation>Ако собствената такса е настроена на 1000 uFLS и превода е само 250 байта, то тогава "за килобайт" само плаща 250 uFLS входяща такса, &lt;br /&gt;докато "минимална сума" плаща 1000 uFLS. За транзакции по-големи от килобайт, и двете плащат за килобайт.</translation>
+        <source>If the custom fee is set to 1000 uDEVs and the transaction is only 250 bytes, then "per kilobyte" only pays 250 uDEVs in fee,&lt;br /&gt;while "at least" pays 1000 uDEVs. For transactions bigger than a kilobyte both pay by kilobyte.</source>
+        <translation>Ако собствената такса е настроена на 1000 uDEV и превода е само 250 байта, то тогава "за килобайт" само плаща 250 uDEV входяща такса, &lt;br /&gt;докато "минимална сума" плаща 1000 uDEV. За транзакции по-големи от килобайт, и двете плащат за килобайт.</translation>
     </message>
     <message>
-        <source>If the custom fee is set to 1000 uFLSs and the transaction is only 250 bytes, then "per kilobyte" only pays 250 uFLSs in fee,&lt;br /&gt;while "total at least" pays 1000 uFLSs. For transactions bigger than a kilobyte both pay by kilobyte.</source>
-        <translation>Ако собствената такса е настроена на 1000 uFLS и превода е само 250 байта, то тогава "за килобайт" само плаща 250 uFLS входяща такса,&lt;br /&gt; докато "минимална сума" плаща 1000 uFLS. За транзакции по-големи от килобайт, и двете плащат за килобайт.</translation>
+        <source>If the custom fee is set to 1000 uDEVs and the transaction is only 250 bytes, then "per kilobyte" only pays 250 uDEVs in fee,&lt;br /&gt;while "total at least" pays 1000 uDEVs. For transactions bigger than a kilobyte both pay by kilobyte.</source>
+        <translation>Ако собствената такса е настроена на 1000 uDEV и превода е само 250 байта, то тогава "за килобайт" само плаща 250 uDEV входяща такса,&lt;br /&gt; докато "минимална сума" плаща 1000 uDEV. За транзакции по-големи от килобайт, и двете плащат за килобайт.</translation>
     </message>
     <message>
         <source>Paying only the minimum fee is just fine as long as there is less transaction volume than space in the blocks.&lt;br /&gt;But be aware that this can end up in a never confirming transaction once there is more demand for DEV transactions than the network can process.</source>
@@ -4273,8 +4273,8 @@ Please be patient...</source>
         <translation>DEV Stake</translation>
     </message>
     <message>
-        <source>zFLS Stake</source>
-        <translation>zFLS Stake</translation>
+        <source>zDEV Stake</source>
+        <translation>zDEV Stake</translation>
     </message>
     <message>
         <source>Obfuscation Denominate</source>
@@ -4293,32 +4293,32 @@ Please be patient...</source>
         <translation>Обфускация и направа на Деноминации</translation>
     </message>
     <message>
-        <source>Converted DEV to zFLS</source>
-        <translation>Конвертиран DEV във zFLS</translation>
+        <source>Converted DEV to zDEV</source>
+        <translation>Конвертиран DEV във zDEV</translation>
     </message>
     <message>
-        <source>Spent zFLS</source>
-        <translation>Похарчени zFLS</translation>
+        <source>Spent zDEV</source>
+        <translation>Похарчени zDEV</translation>
     </message>
     <message>
-        <source>Received DEV from zFLS</source>
-        <translation>Получен DEV от zFLS</translation>
+        <source>Received DEV from zDEV</source>
+        <translation>Получен DEV от zDEV</translation>
     </message>
     <message>
-        <source>Minted Change as zFLS from zFLS Spend</source>
-        <translation>Исечено ресто като zFLS от похарчените zFLS</translation>
+        <source>Minted Change as zDEV from zDEV Spend</source>
+        <translation>Исечено ресто като zDEV от похарчените zDEV</translation>
     </message>
     <message>
-        <source>Converted zFLS to DEV</source>
-        <translation>Конвертиран zFLS във DEV</translation>
+        <source>Converted zDEV to DEV</source>
+        <translation>Конвертиран zDEV във DEV</translation>
     </message>
     <message>
-        <source>Anonymous (zFLS Transaction)</source>
-        <translation>Анонимен (транзакция zFLS)</translation>
+        <source>Anonymous (zDEV Transaction)</source>
+        <translation>Анонимен (транзакция zDEV)</translation>
     </message>
     <message>
-        <source>Anonymous (zFLS Stake)</source>
-        <translation>Анонимен (zFLS Stake)</translation>
+        <source>Anonymous (zDEV Stake)</source>
+        <translation>Анонимен (zDEV Stake)</translation>
     </message>
     <message>
         <source>Sent to</source>
@@ -4528,12 +4528,12 @@ Please be patient...</source>
         <translation>Експортирането Успешно</translation>
     </message>
     <message>
-        <source>Received DEV from zFLS</source>
-        <translation>Получен DEV от zFLS</translation>
+        <source>Received DEV from zDEV</source>
+        <translation>Получен DEV от zDEV</translation>
     </message>
     <message>
-        <source>Zerocoin Spend, Change in zFLS</source>
-        <translation>Харчене на Zerocoin, Ресто в zFLS</translation>
+        <source>Zerocoin Spend, Change in zDEV</source>
+        <translation>Харчене на Zerocoin, Ресто в zDEV</translation>
     </message>
     <message>
         <source>The transaction history was successfully saved to %1.</source>
@@ -4601,10 +4601,10 @@ Please be patient...</source>
     </message>
 </context>
 <context>
-    <name>ZFlsControlDialog</name>
+    <name>ZDevControlDialog</name>
     <message>
-        <source>Select zFLS to Spend</source>
-        <translation>Изберете zFLS за Изпращане</translation>
+        <source>Select zDEV to Spend</source>
+        <translation>Изберете zDEV за Изпращане</translation>
     </message>
     <message>
         <source>Quantity</source>
@@ -4615,8 +4615,8 @@ Please be patient...</source>
         <translation>0</translation>
     </message>
     <message>
-        <source>zFLS</source>
-        <translation>zFLS</translation>
+        <source>zDEV</source>
+        <translation>zDEV</translation>
     </message>
     <message>
         <source>Select/Deselect All</source>
@@ -4678,16 +4678,16 @@ Please be patient...</source>
         <translation>Разпространява се пот MIT софтуерен лиценз, виж съпровождащия файл от &lt;http://www.opensource.org/licenses/mit-license.php&gt;.</translation>
     </message>
     <message>
-        <source>Enable automatic wallet backups triggered after each zFLS minting (0-1, default: %u)</source>
-        <translation>Включи автоматичните бекъпи на портфейла след всяко zFLS емитиране (0-1, по подразбиране: %u)</translation>
+        <source>Enable automatic wallet backups triggered after each zDEV minting (0-1, default: %u)</source>
+        <translation>Включи автоматичните бекъпи на портфейла след всяко zDEV емитиране (0-1, по подразбиране: %u)</translation>
     </message>
     <message>
         <source>Enable or disable staking functionality for DEV inputs (0-1, default: %u)</source>
         <translation>Активиране или деактивиране на функцията за зареждане за DEV входове (0-1, по подразбиране: %u)</translation>
     </message>
     <message>
-        <source>Enable or disable staking functionality for zFLS inputs (0-1, default: %u)</source>
-        <translation>Активиране или деактивиране на функцията за зареждане за zFLS входове (0-1, по подразбиране: %u)</translation>
+        <source>Enable or disable staking functionality for zDEV inputs (0-1, default: %u)</source>
+        <translation>Активиране или деактивиране на функцията за зареждане за zDEV входове (0-1, по подразбиране: %u)</translation>
     </message>
     <message>
         <source>Enable spork administration functionality with the appropriate private key.</source>
@@ -5214,8 +5214,8 @@ Please be patient...</source>
         <translation>Процент автоматично емитирани Zerocoin (1-100, по подразбиране: %u)</translation>
     </message>
     <message>
-        <source>Reindex the DEV and zFLS money supply statistics</source>
-        <translation>Индексирай наново DEV и zFLS данните по наличности</translation>
+        <source>Reindex the DEV and zDEV money supply statistics</source>
+        <translation>Индексирай наново DEV и zDEV данните по наличности</translation>
     </message>
     <message>
         <source>Reindexing zerocoin database...</source>
@@ -5290,8 +5290,8 @@ Please be patient...</source>
         <translation>Предпочитани деноминации за автоматично изсечените Zerocoin (1/5/10/50/100/500/1000/5000), 0 за каквито и да е. (По подразбиране: %u)</translation>
     </message>
     <message>
-        <source>Specify custom backup path to add a copy of any automatic zFLS backup. If set as dir, every backup generates a timestamped file. If set as file, will rewrite to that file every backup. If backuppath is set as well, 4 backups will happen</source>
-        <translation>Посочете персонализиран път за архивиране, за да добавите копие на всяко автоматично архивиране zFLS. Ако е зададено като реж., Всеки архив генерира файл с времева маркировка. Ако е зададен като файл, ще пренапише към този файл всеки архив. Ако е зададено и резервно копие, ще се случат 4 архиви</translation>
+        <source>Specify custom backup path to add a copy of any automatic zDEV backup. If set as dir, every backup generates a timestamped file. If set as file, will rewrite to that file every backup. If backuppath is set as well, 4 backups will happen</source>
+        <translation>Посочете персонализиран път за архивиране, за да добавите копие на всяко автоматично архивиране zDEV. Ако е зададено като реж., Всеки архив генерира файл с времева маркировка. Ако е зададен като файл, ще пренапише към този файл всеки архив. Ако е зададено и резервно копие, ще се случат 4 архиви</translation>
     </message>
     <message>
         <source>Specify custom backup path to add a copy of any wallet backup. If set as dir, every backup generates a timestamped file. If set as file, will rewrite to that file every backup.</source>
@@ -5702,8 +5702,8 @@ Please be patient...</source>
         <translation>Синхронизиране на вилицо-лъжиците...</translation>
     </message>
     <message>
-        <source>Syncing zFLS wallet...</source>
-        <translation>Синхронизиране на zFLS портфейла ...</translation>
+        <source>Syncing zDEV wallet...</source>
+        <translation>Синхронизиране на zDEV портфейла ...</translation>
     </message>
     <message>
         <source>The coin spend has been used</source>
@@ -5810,8 +5810,8 @@ Please be patient...</source>
         <translation>Потребителско име за JSON-RPC свръзките</translation>
     </message>
     <message>
-        <source>Value is below the smallest available denomination (= 1) of zFLS</source>
-        <translation>Стойността е под най-малката налична деноминация (= 1) в zFLS</translation>
+        <source>Value is below the smallest available denomination (= 1) of zDEV</source>
+        <translation>Стойността е под най-малката налична деноминация (= 1) в zDEV</translation>
     </message>
     <message>
         <source>Verifying blocks...</source>

@@ -29,7 +29,7 @@ don't have test cases for.
 - Avoid wildcard imports
 - Use a module-level docstring to describe what the test is testing, and how it
   is testing it.
-- When subclassing the FLSestFramwork, place overrides for the
+- When subclassing the DEVestFramwork, place overrides for the
   `set_test_params()`, `add_options()` and `setup_xxxx()` methods at the top of
   the subclass, then locally-defined helper methods, then the `run_test()` method.
 - Use `'{}'.format(x)` for string formatting, not `'%s' % x`.
@@ -133,7 +133,7 @@ Helper functions for creating blocks and transactions.
 ### Comptool
 
 * Testing framework for writing tests that compare the block/tx acceptance
-behavior of a DEV against 1 or more other FLSsinstances, or against
+behavior of a DEV against 1 or more other DEVsinstances, or against
 known outcomes, or both.
 
 * Set the ```num_nodes``` variable (defined in ```ComparisonTestFramework```) to start up

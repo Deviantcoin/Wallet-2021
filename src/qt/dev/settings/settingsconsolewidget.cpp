@@ -236,7 +236,7 @@ void RPCExecutor::requestCommand(const QString& command)
     }
 }
 
-SettingsConsoleWidget::SettingsConsoleWidget(FLSGUI* _window, QWidget* parent) : PWidget(_window, parent),
+SettingsConsoleWidget::SettingsConsoleWidget(DEVGUI* _window, QWidget* parent) : PWidget(_window, parent),
                                                                                  ui(new Ui::SettingsConsoleWidget)
 {
     ui->setupUi(this);

@@ -4,8 +4,8 @@
 
 
 
-#ifndef FLS_INVALID_SERIALS_JSON_H
-#define FLS_INVALID_SERIALS_JSON_H
+#ifndef DEV_INVALID_SERIALS_JSON_H
+#define DEV_INVALID_SERIALS_JSON_H
 
 #include <string>
 
@@ -1189,4 +1189,4 @@ std::string LoadInvalidSerials()
     return str;
 }
 
-#endif //FLS_INVALID_SERIALS_JSON_H
+#endif //DEV_INVALID_SERIALS_JSON_H

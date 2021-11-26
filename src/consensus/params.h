@@ -51,7 +51,7 @@ struct Params {
     int height_last_ZC_WrappedSerials;
     int height_start_BIP65;                         // Blocks v5 start
     int height_start_InvalidUTXOsCheck;
-    int height_start_MeFLSignaturesV2;
+    int height_start_MeDEVignaturesV2;
     int height_start_StakeModifierNewSelection;
     int height_start_StakeModifierV2;               // Blocks v6 start
     int height_start_TimeProtoV2;                   // Blocks v7 start
@@ -63,8 +63,8 @@ struct Params {
     int height_ZC_RecalcAccumulators;
 
     // validation by-pass
-    int64_t nFLSBadBlockTime;
-    unsigned int nFLSBadBlockBits;
+    int64_t nDEVBadBlockTime;
+    unsigned int nDEVBadBlockBits;
 
 
     int64_t TargetTimespan(const bool fV2 = true) const { return fV2 ? nTargetTimespanV2 : nTargetTimespan; }

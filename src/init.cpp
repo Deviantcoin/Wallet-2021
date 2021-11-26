@@ -75,7 +75,7 @@
 
 
 #ifdef ENABLE_WALLET
-CzFLSWallet* zwalletMain = NULL;
+CzDEVWallet* zwalletMain = NULL;
 int nWalletBackups = 10;
 #endif
 volatile bool fFeeEstimatesInitialized = false;
@@ -394,7 +394,7 @@ std::string HelpMessage(HelpMessageMode mode)
     strUsage += HelpMessageOpt("-pid=<file>", strprintf(_("Specify pid file (default: %s)"), "deviantd.pid"));
 #endif
     strUsage += HelpMessageOpt("-reindex", _("Rebuild block chain index from current blk000??.dat files") + " " + _("on startup"));
-    strUsage += HelpMessageOpt("-reindexmoneysupply", _("Reindex the DEV and zFLS money supply statistics") + " " + _("on startup"));
+    strUsage += HelpMessageOpt("-reindexmoneysupply", _("Reindex the DEV and zDEV money supply statistics") + " " + _("on startup"));
     strUsage += HelpMessageOpt("-resync", _("Delete blockchain folders and resync from scratch") + " " + _("on startup"));
 #if !defined(WIN32)
     strUsage += HelpMessageOpt("-sysperms", _("Create new files with system default permissions, instead of umask 077 (only effective with disabled wallet functionality)"));
@@ -532,8 +532,8 @@ std::string HelpMessage(HelpMessageMode mode)
     strUsage += HelpMessageGroup(_("Staking options:"));
     strUsage += HelpMessageOpt("-staking=<n>", strprintf(_("Enable staking functionality (0-1, default: %u)"), 1));
     strUsage += HelpMessageOpt("-coldstaking=<n>", strprintf(_("Enable cold staking functionality (0-1, default: %u). Disabled if staking=0"), 1));
-    strUsage += HelpMessageOpt("-FLSstake=<n>", strprintf(_("Enable or disable staking functionality for DEV inputs (0-1, default: %u)"), 1));
-    strUsage += HelpMessageOpt("-zdevstake=<n>", strprintf(_("Enable or disable staking functionality for zFLS inputs (0-1, default: %u)"), 1));
+    strUsage += HelpMessageOpt("-DEVstake=<n>", strprintf(_("Enable or disable staking functionality for DEV inputs (0-1, default: %u)"), 1));
+    strUsage += HelpMessageOpt("-zdevstake=<n>", strprintf(_("Enable or disable staking functionality for zDEV inputs (0-1, default: %u)"), 1));
     strUsage += HelpMessageOpt("-reservebalance=<amt>", _("Keep the specified amount available for spending at all times (default: 0)"));
     if (GetBoolArg("-help-debug", false)) {
         strUsage += HelpMessageOpt("-printstakemodifier", _("Display the stake modifier calculations in the debug.log file."));
@@ -1512,18 +1512,18 @@ bool AppInit2()
                     LOCK(cs_main);
                     chainHeight = chainActive.Height();
 
-                    // initialize DEV and zFLS supply to 0
+                    // initialize DEV and zDEV supply to 0
                     mapZerocoinSupply.clear();
                     for (auto& denom : libzerocoin::zerocoinDenomList)
                         mapZerocoinSupply.insert(std::make_pair(denom, 0));
                     nMoneySupply = 0;
 
-                    // Load DEV and zFLS supply from DB
+                    // Load DEV and zDEV supply from DB
                     if (chainHeight >= 0) {
                         const uint256& tipHash = chainActive[chainHeight]->GetBlockHash();
                         CLegacyBlockIndex bi;
 
-                        // Load zFLS supply map
+                        // Load zDEV supply map
                         if (!fReindexZerocoin && chainHeight >= consensus.height_start_ZC && !zerocoinDB->ReadZCSupply(mapZerocoinSupply)) {
                             // try first reading legacy block index from DB
                             if (pblocktree->ReadLegacyBlockIndex(tipHash, bi) && !bi.mapZerocoinSupply.empty()) {
@@ -1562,7 +1562,7 @@ bool AppInit2()
                 if (fReindexMoneySupply) {
                     LOCK(cs_main);
                     // Skip zdev if already reindexed
-                    RecalculateFLSSupply(1, fReindexZerocoin);
+                    RecalculateDEVSupply(1, fReindexZerocoin);
                 }
 
                 if (!fReindex) {
@@ -1689,7 +1689,7 @@ bool AppInit2()
         // Forced upgrade
         const bool fLegacyWallet = GetBoolArg("-legacywallet", false);
         if (GetBoolArg("-upgradewallet", fFirstRun && !fLegacyWallet)) {
-            if (prev_version <= FEATURE_PRE_FLS && pwalletMain->IsLocked()) {
+            if (prev_version <= FEATURE_PRE_DEV && pwalletMain->IsLocked()) {
                 // Cannot upgrade a locked wallet
                 std::string strProblem = "Cannot upgrade a locked wallet.\n";
                 strErrors << _("Error: ") << strProblem;
@@ -1734,7 +1734,7 @@ bool AppInit2()
                 }
                 // Create legacy wallet
                 LogPrintf("Creating Pre-HD Wallet\n");
-                pwalletMain->SetMaxVersion(FEATURE_PRE_FLS);
+                pwalletMain->SetMaxVersion(FEATURE_PRE_DEV);
             }
 
             // Top up the keypool
@@ -1749,7 +1749,7 @@ bool AppInit2()
 
         LogPrintf("Init errors: %s\n", strErrors.str());
         LogPrintf("Wallet completed loading in %15dms\n", GetTimeMillis() - nWalletStartTime);
-        zwalletMain = new CzFLSWallet(pwalletMain);
+        zwalletMain = new CzDEVWallet(pwalletMain);
         pwalletMain->setZWallet(zwalletMain);
 
         RegisterValidationInterface(pwalletMain);
@@ -1800,8 +1800,8 @@ bool AppInit2()
         fVerifyingBlocks = false;
 
         if (!zwalletMain->GetMasterSeed().IsNull()) {
-            //Inititalize zFLSWallet
-            uiInterface.InitMessage(_("Syncing zFLS wallet..."));
+            //Inititalize zDEVWallet
+            uiInterface.InitMessage(_("Syncing zDEV wallet..."));
 
             //Load zerocoin mint hashes to memory
             pwalletMain->zdevTracker->Init();

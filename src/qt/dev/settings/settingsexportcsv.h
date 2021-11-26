@@ -19,7 +19,7 @@ class SettingsExportCSV : public PWidget
     Q_OBJECT
 
 public:
-    explicit SettingsExportCSV(FLSGUI* _window, QWidget *parent = nullptr);
+    explicit SettingsExportCSV(DEVGUI* _window, QWidget *parent = nullptr);
     ~SettingsExportCSV();
 
 private Q_SLOTS:

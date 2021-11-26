@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef FLS_INVALID_OUTPOINTS_JSON_H
-#define FLS_INVALID_OUTPOINTS_JSON_H
+#ifndef DEV_INVALID_OUTPOINTS_JSON_H
+#define DEV_INVALID_OUTPOINTS_JSON_H
 #include <string>
 
 std::string LoadInvalidOutPoints()
@@ -6793,4 +6793,4 @@ std::string LoadInvalidOutPoints()
     return str;
 }
 
-#endif //FLS_INVALID_OUTPOINTS_JSON_H
+#endif //DEV_INVALID_OUTPOINTS_JSON_H

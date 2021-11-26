@@ -400,8 +400,8 @@ std::string AddressToString(const CBitcoinAddress& Address)
 
     std::set<COutPoint> PrevOuts;
     /*
-    CScript AddreFLScript;
-    AddreFLScript.SetDestination(Address.Get());
+    CScript AddreDEVcript;
+    AddreDEVcript.SetDestination(Address.Get());
 
     CAmount Sum = 0;
     bool fAddrIndex = false;
@@ -411,7 +411,7 @@ std::string AddressToString(const CBitcoinAddress& Address)
     else
     {
         std::vector<CDiskTxPos> Txs;
-        paddressmap->GetTxs(Txs, AddreFLScript.GetID());
+        paddressmap->GetTxs(Txs, AddreDEVcript.GetID());
         BOOST_FOREACH (const CDiskTxPos& pos, Txs)
         {
             CTransaction tx;
@@ -425,7 +425,7 @@ std::string AddressToString(const CBitcoinAddress& Address)
             if (!pindex || !chainActive.Contains(pindex))
                 continue;
             std::string Prepend = "<a href=\"" + itostr(pindex->nHeight) + "\">" + TimeToString(pindex->nTime) + "</a>";
-            TxContent += TxToRow(tx, AddreFLScript, Prepend, &Sum);
+            TxContent += TxToRow(tx, AddreDEVcript, Prepend, &Sum);
         }
     }
     */

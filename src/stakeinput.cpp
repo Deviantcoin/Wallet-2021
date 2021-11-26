@@ -10,10 +10,10 @@
 #include "zdev/deterministicmint.h"
 #include "wallet/wallet.h"
 
-bool CFLSStake::InitFromTxIn(const CTxIn& txin)
+bool CDEVStake::InitFromTxIn(const CTxIn& txin)
 {
     if (txin.IsZerocoinSpend())
-        return error("%s: unable to initialize CFLSStake from zerocoin spend");
+        return error("%s: unable to initialize CDEVStake from zerocoin spend");
 
     // Find the previous transaction in database
     uint256 hashBlock;
@@ -35,14 +35,14 @@ bool CFLSStake::InitFromTxIn(const CTxIn& txin)
     return true;
 }
 
-bool CFLSStake::SetPrevout(CTransaction txPrev, unsigned int n)
+bool CDEVStake::SetPrevout(CTransaction txPrev, unsigned int n)
 {
     this->txFrom = txPrev;
     this->nPosition = n;
     return true;
 }
 
-bool CFLSStake::GetTxFrom(CTransaction& tx) const
+bool CDEVStake::GetTxFrom(CTransaction& tx) const
 {
     if (txFrom.IsNull())
         return false;
@@ -50,7 +50,7 @@ bool CFLSStake::GetTxFrom(CTransaction& tx) const
     return true;
 }
 
-bool CFLSStake::GetTxOutFrom(CTxOut& out) const
+bool CDEVStake::GetTxOutFrom(CTxOut& out) const
 {
     if (txFrom.IsNull() || nPosition >= txFrom.vout.size())
         return false;
@@ -58,18 +58,18 @@ bool CFLSStake::GetTxOutFrom(CTxOut& out) const
     return true;
 }
 
-bool CFLSStake::CreateTxIn(CWallet* pwallet, CTxIn& txIn, uint256 hashTxOut)
+bool CDEVStake::CreateTxIn(CWallet* pwallet, CTxIn& txIn, uint256 hashTxOut)
 {
     txIn = CTxIn(txFrom.GetHash(), nPosition);
     return true;
 }
 
-CAmount CFLSStake::GetValue() const
+CAmount CDEVStake::GetValue() const
 {
     return txFrom.vout[nPosition].nValue;
 }
 
-bool CFLSStake::CreateTxOuts(CWallet* pwallet, std::vector<CTxOut>& vout, CAmount nTotal)
+bool CDEVStake::CreateTxOuts(CWallet* pwallet, std::vector<CTxOut>& vout, CAmount nTotal)
 {
     std::vector<valtype> vSolutions;
     txnouttype whichType;
@@ -119,7 +119,7 @@ bool CFLSStake::CreateTxOuts(CWallet* pwallet, std::vector<CTxOut>& vout, CAmoun
     return true;
 }
 
-CDataStream CFLSStake::GetUniqueness() const
+CDataStream CDEVStake::GetUniqueness() const
 {
     //The unique identifier for a DEV stake is the outpoint
     CDataStream ss(SER_NETWORK, 0);
@@ -128,7 +128,7 @@ CDataStream CFLSStake::GetUniqueness() const
 }
 
 //The block that the UTXO was added to the chain
-CBlockIndex* CFLSStake::GetIndexFrom()
+CBlockIndex* CDEVStake::GetIndexFrom()
 {
     if (pindexFrom)
         return pindexFrom;
@@ -149,7 +149,7 @@ CBlockIndex* CFLSStake::GetIndexFrom()
 }
 
 // Verify stake contextual checks
-bool CFLSStake::ContextCheck(int nHeight, uint32_t nTime)
+bool CDEVStake::ContextCheck(int nHeight, uint32_t nTime)
 {
     const Consensus::Params& consensus = Params().GetConsensus();
     // Get Stake input block time/height

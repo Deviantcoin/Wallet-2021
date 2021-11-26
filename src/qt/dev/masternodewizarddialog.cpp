@@ -55,7 +55,7 @@ MasterNodeWizardDialog::MasterNodeWizardDialog(WalletModel *model, QWidget *pare
     // Frame 4
     setCssProperty(ui->labelTitle4, "text-title-dialog");
     setCssProperty({ui->labelSubtitleIp, ui->labelSubtitlePort}, "text-title");
-    setCFLSubtitleScreen(ui->labelSubtitleAddressIp);
+    setCDEVubtitleScreen(ui->labelSubtitleAddressIp);
 
     ui->lineEditIpAddress->setPlaceholderText("e.g 18.255.255.255");
     ui->lineEditPort->setPlaceholderText("e.g 12270");
@@ -174,9 +174,9 @@ bool MasterNodeWizardDialog::createMN()
         }
         std::string alias = addressLabel.toStdString();
 
-        QString addreFLStr = ui->lineEditIpAddress->text();
+        QString addreDEVtr = ui->lineEditIpAddress->text();
         QString portStr = ui->lineEditPort->text();
-        if (addreFLStr.isEmpty() || portStr.isEmpty()) {
+        if (addreDEVtr.isEmpty() || portStr.isEmpty()) {
             returnStr = tr("IP or port cannot be empty");
             return false;
         }
@@ -187,7 +187,7 @@ bool MasterNodeWizardDialog::createMN()
             return false;
         }
         // ip + port
-        std::string ipAddress = addreFLStr.toStdString();
+        std::string ipAddress = addreDEVtr.toStdString();
         std::string port = portStr.toStdString();
 
         // New receive address
@@ -215,7 +215,7 @@ bool MasterNodeWizardDialog::createMN()
         QString returnMsg = "Unknown error";
         // process prepareStatus and on error generate message shown to user
         CClientUIInterface::MessageBoxFlags informType;
-        returnMsg = GuiTransactionsUtils::ProceFLSendCoinsReturn(
+        returnMsg = GuiTransactionsUtils::ProceDEVendCoinsReturn(
                 this,
                 prepareStatus,
                 walletModel,
@@ -232,7 +232,7 @@ bool MasterNodeWizardDialog::createMN()
 
         WalletModel::SendCoinsReturn sendStatus = walletModel->sendCoins(currentTransaction);
         // process sendStatus and on error generate message shown to user
-        returnMsg = GuiTransactionsUtils::ProceFLSendCoinsReturn(
+        returnMsg = GuiTransactionsUtils::ProceDEVendCoinsReturn(
                 this,
                 sendStatus,
                 walletModel,
@@ -309,7 +309,7 @@ bool MasterNodeWizardDialog::createMN()
                 std::string indexOutStr = std::to_string(indexOut);
 
                 // Check IP address type
-                QHostAddress hostAddress(addreFLStr);
+                QHostAddress hostAddress(addreDEVtr);
                 QAbstractSocket::NetworkLayerProtocol layerProtocol = hostAddress.protocol();
                 if (layerProtocol == QAbstractSocket::IPv6Protocol) {
                     ipAddress = "["+ipAddress+"]";

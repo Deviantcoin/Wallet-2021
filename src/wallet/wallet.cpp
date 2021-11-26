@@ -35,7 +35,7 @@ bool fSendFreeTransactions = false;
 bool fPayAtLeastCustomFee = true;
 
 /**
- * Fees smaller than this (in uFLS) are considered zero fee (for transaction creation)
+ * Fees smaller than this (in uDEV) are considered zero fee (for transaction creation)
  * We are ~100 times smaller then bitcoin now (2015-06-23), set minTxFee 10 times higher
  * so it's still 10 times lower comparing to bitcoin.
  * Override with -mintxfee
@@ -376,7 +376,7 @@ bool CWallet::Unlock(const CKeyingMaterial& vMasterKeyIn)
             if (CWalletDB(strWalletFile).ReadCurrentSeedHash(hashSeed)) {
                 uint256 nSeed;
                 if (!GetDeterministicSeed(hashSeed, nSeed)) {
-                    return error("Failed to read zFLS seed from DB. Wallet is probably corrupt.");
+                    return error("Failed to read zDEV seed from DB. Wallet is probably corrupt.");
                 }
                 zwalletMain->SetMasterSeed(nSeed, false);
             }
@@ -1647,8 +1647,8 @@ int CWallet::ScanForWalletTransactions(CBlockIndex* pindexStart, bool fUpdate, b
 {
     int ret = 0;
     int64_t nNow = GetTime();
-    bool fCheckZFLS = GetBoolArg("-zapwallettxes", false);
-    if (fCheckZFLS)
+    bool fCheckZDEV = GetBoolArg("-zapwallettxes", false);
+    if (fCheckZDEV)
         zdevTracker->Init();
 
     CBlockIndex* pindex = pindexStart;
@@ -1661,12 +1661,12 @@ int CWallet::ScanForWalletTransactions(CBlockIndex* pindexStart, bool fUpdate, b
             pindex = chainActive.Next(pindex);
 
         ShowProgress(_("Rescanning..."), 0); // show rescan progress in GUI as dialog or on splashscreen, if -rescan on startup
-        double dProgreFLStart = Checkpoints::GuessVerificationProgress(pindex, false);
+        double dProgreDEVtart = Checkpoints::GuessVerificationProgress(pindex, false);
         double dProgressTip = Checkpoints::GuessVerificationProgress(chainActive.Tip(), false);
         std::set<uint256> setAddedToWallet;
         while (pindex) {
-            if (pindex->nHeight % 100 == 0 && dProgressTip - dProgreFLStart > 0.0)
-                ShowProgress(_("Rescanning..."), std::max(1, std::min(99, (int)((Checkpoints::GuessVerificationProgress(pindex, false) - dProgreFLStart) / (dProgressTip - dProgreFLStart) * 100))));
+            if (pindex->nHeight % 100 == 0 && dProgressTip - dProgreDEVtart > 0.0)
+                ShowProgress(_("Rescanning..."), std::max(1, std::min(99, (int)((Checkpoints::GuessVerificationProgress(pindex, false) - dProgreDEVtart) / (dProgressTip - dProgreDEVtart) * 100))));
 
             if (fromStartup && ShutdownRequested()) {
                 return -1;
@@ -1680,7 +1680,7 @@ int CWallet::ScanForWalletTransactions(CBlockIndex* pindexStart, bool fUpdate, b
             }
 
             //If this is a zapwallettx, need to readd zdev
-            if (fCheckZFLS && pindex->nHeight >= Params().GetConsensus().height_start_ZC) {
+            if (fCheckZDEV && pindex->nHeight >= Params().GetConsensus().height_start_ZC) {
                 std::list<CZerocoinMint> listMints;
                 BlockToZerocoinMintList(block, listMints, true);
                 CWalletDB walletdb(strWalletFile);
@@ -2596,10 +2596,10 @@ bool CWallet::CreateCoinStake(
         return false;
     }
 
-    // Parse utxos into CFLSStakes
+    // Parse utxos into CDEVStakes
     std::list<std::unique_ptr<CStakeInput> > listInputs;
     for (const COutput &out : vCoins) {
-        std::unique_ptr<CFLSStake> input(new CFLSStake());
+        std::unique_ptr<CDEVStake> input(new CDEVStake());
         input->SetPrevout((CTransaction) *out.tx, out.i);
         listInputs.emplace_back(std::move(input));
     }
@@ -2628,7 +2628,7 @@ bool CWallet::CreateCoinStake(
         if (IsLocked() || ShutdownRequested()) return false;
 
         // This should never happen
-        if (stakeInput->IsZFLS()) {
+        if (stakeInput->IsZDEV()) {
             LogPrintf("%s: ERROR - zPOS is disabled\n", __func__);
             continue;
         }
@@ -2895,10 +2895,10 @@ bool CWallet::SetAddressBook(const CTxDestination& address, const std::string& s
         strPurpose, (fUpdated ? CT_UPDATED : CT_NEW));
     if (!fFileBacked)
         return false;
-    std::string addreFLStr = ParseIntoAddress(address, strPurpose).ToString();
-    if (!strPurpose.empty() && !CWalletDB(strWalletFile).WritePurpose(addreFLStr, strPurpose))
+    std::string addreDEVtr = ParseIntoAddress(address, strPurpose).ToString();
+    if (!strPurpose.empty() && !CWalletDB(strWalletFile).WritePurpose(addreDEVtr, strPurpose))
         return false;
-    return CWalletDB(strWalletFile).WriteName(addreFLStr, strName);
+    return CWalletDB(strWalletFile).WriteName(addreDEVtr, strName);
 }
 
 bool CWallet::DelAddressBook(const CTxDestination& address, const CChainParams::Base58Type addrType)

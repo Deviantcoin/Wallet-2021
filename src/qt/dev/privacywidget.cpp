@@ -15,7 +15,7 @@
 #define DECORATION_SIZE 65
 #define NUM_ITEMS 3
 
-PrivacyWidget::PrivacyWidget(FLSGUI* parent) : PWidget(parent),
+PrivacyWidget::PrivacyWidget(DEVGUI* parent) : PWidget(parent),
                                                ui(new Ui::PrivacyWidget)
 {
     ui->setupUi(this);
@@ -44,10 +44,10 @@ PrivacyWidget::PrivacyWidget(FLSGUI* parent) : PWidget(parent),
 
     /* Subtitle */
     ui->labelSubtitle1->setText(tr("Minting zDEV anonymizes your DEV by removing any\ntransaction history, making transactions untraceable "));
-    setCFLSubtitleScreen(ui->labelSubtitle1);
+    setCDEVubtitleScreen(ui->labelSubtitle1);
 
     ui->labelSubtitle2->setText(tr("Mint new zDEV or convert back to DEV"));
-    setCFLSubtitleScreen(ui->labelSubtitle2);
+    setCDEVubtitleScreen(ui->labelSubtitle2);
     ui->labelSubtitle2->setContentsMargins(0, 2, 0, 0);
     setCssProperty(ui->labelSubtitleAmount, "text-title");
 
@@ -114,9 +114,9 @@ PrivacyWidget::PrivacyWidget(FLSGUI* parent) : PWidget(parent),
     ui->containerViewPrivacyChecks->setVisible(false);
     onMintSelected(false);
 
-    ui->btnTotalzFLS->setTitleClassAndText("btn-title-grey", "Total 0 zDEV");
-    ui->btnTotalzFLS->setSubTitleClassAndText("text-subtitle", "Show denominations of zDEV owned.");
-    ui->btnTotalzFLS->setRightIconClass("ic-arrow");
+    ui->btnTotalzDEV->setTitleClassAndText("btn-title-grey", "Total 0 zDEV");
+    ui->btnTotalzDEV->setSubTitleClassAndText("text-subtitle", "Show denominations of zDEV owned.");
+    ui->btnTotalzDEV->setRightIconClass("ic-arrow");
 
     ui->btnCoinControl->setTitleClassAndText("btn-title-grey", "Coin Control");
     ui->btnCoinControl->setSubTitleClassAndText("text-subtitle", "Select DEV outputs to mint into zDEV.");
@@ -127,7 +127,7 @@ PrivacyWidget::PrivacyWidget(FLSGUI* parent) : PWidget(parent),
     ui->btnResetZerocoin->setTitleClassAndText("btn-title-grey", "Reset Spent zDEV");
     ui->btnResetZerocoin->setSubTitleClassAndText("text-subtitle", "Reset zerocoin database.");
 
-    connect(ui->btnTotalzFLS, &OptionButton::clicked, this, &PrivacyWidget::onTotalzFLSClicked);
+    connect(ui->btnTotalzDEV, &OptionButton::clicked, this, &PrivacyWidget::onTotalzDEVClicked);
     connect(ui->btnCoinControl, &OptionButton::clicked, this, &PrivacyWidget::onCoinControlClicked);
     connect(ui->btnRescanMints, &OptionButton::clicked, this, &PrivacyWidget::onRescanMintsClicked);
     connect(ui->btnResetZerocoin, &OptionButton::clicked, this, &PrivacyWidget::onResetZeroClicked);
@@ -216,15 +216,15 @@ void PrivacyWidget::showList()
     ui->listView->setVisible(true);
 }
 
-void PrivacyWidget::onTotalzFLSClicked()
+void PrivacyWidget::onTotalzDEVClicked()
 {
     bool isVisible = ui->layoutDenom->isVisible();
     if (!isVisible) {
         ui->layoutDenom->setVisible(true);
-        ui->btnTotalzFLS->setRightIconClass("btn-dropdown", true);
+        ui->btnTotalzDEV->setRightIconClass("btn-dropdown", true);
     } else {
         ui->layoutDenom->setVisible(false);
-        ui->btnTotalzFLS->setRightIconClass("ic-arrow", true);
+        ui->btnTotalzDEV->setRightIconClass("ic-arrow", true);
     }
 }
 
@@ -285,7 +285,7 @@ void PrivacyWidget::spend(CAmount value)
     CZerocoinSpendReceipt receipt;
     std::vector<CZerocoinMint> selectedMints;
 
-    if (!walletModel->convertBackzFLS(
+    if (!walletModel->convertBackzDEV(
             value,
             selectedMints,
             receipt)) {
@@ -423,7 +423,7 @@ void PrivacyWidget::updateDenomsSupply()
     }
 
     CAmount matureZerocoinBalance = walletModel->getZerocoinBalance() - walletModel->getUnconfirmedZerocoinBalance() - walletModel->getImmatureZerocoinBalance();
-    ui->btnTotalzFLS->setTitleText(tr("Total %1").arg(GUIUtil::formatBalance(matureZerocoinBalance, nDisplayUnit, true)));
+    ui->btnTotalzDEV->setTitleText(tr("Total %1").arg(GUIUtil::formatBalance(matureZerocoinBalance, nDisplayUnit, true)));
 }
 
 void PrivacyWidget::changeTheme(bool isLightTheme, QString& theme)

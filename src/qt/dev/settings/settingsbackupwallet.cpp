@@ -10,7 +10,7 @@
 #include "qt/dev/qtutils.h"
 #include "guiinterface.h"
 #include "qt/dev/qtutils.h"
-SettingsBackupWallet::SettingsBackupWallet(FLSGUI* _window, QWidget *parent) :
+SettingsBackupWallet::SettingsBackupWallet(DEVGUI* _window, QWidget *parent) :
     PWidget(_window, parent),
     ui(new Ui::SettingsBackupWallet)
 {

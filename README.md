@@ -1,7 +1,7 @@
 DEV Core integration/staging repository
 =====================================
 
-[![Build Status](https://travis-ci.org/Deviant-Core/DEV.svg?branch=master)](https://travis-ci.org/Deviant-Core/DEV) [![GitHub version](https://badge.fury.io/gh/Deviant-Core%2FFLS.svg)](https://badge.fury.io/gh/Deviant-Core%2FFLS)
+[![Build Status](https://travis-ci.org/Deviant-Core/DEV.svg?branch=master)](https://travis-ci.org/Deviant-Core/DEV) [![GitHub version](https://badge.fury.io/gh/Deviant-Core%2FDEV.svg)](https://badge.fury.io/gh/Deviant-Core%2FDEV)
 
 The goal of DEV is to achieve a decentralized sustainable crypto currency with near instant transactions, fair governance and community intelligence and to be the power of the Deviant app ecosystem.
 - Decentralized blockchain voting utilizing Masternode technology to form a DAO. The blockchain will distribute monthly treasury funds based on successful proposals submitted by the community and voted on by the DAO.

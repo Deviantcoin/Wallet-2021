@@ -24,7 +24,7 @@
 #include <QTimer>
 #include <QToolButton>
 
-GovernancePage::GovernancePage(FLSGUI *parent) :
+GovernancePage::GovernancePage(DEVGUI *parent) :
                                                   PWidget(parent),
                                                   ui(new Ui::GovernancePage)
 {
@@ -71,7 +71,7 @@ GovernancePage::GovernancePage(FLSGUI *parent) :
     ui->masternode_count_label->setProperty("cssClass", "text-text");
 
     ui->labelSubtitle1->setText(tr("Full nodes that incentivize node operators to perform the core consensus functions\nand vote on the treasury system receiving a periodic reward."));
-    setCFLSubtitleScreen(ui->labelSubtitle1);
+    setCDEVubtitleScreen(ui->labelSubtitle1);
 
     timer = new QTimer(this);
     connect(timer, SIGNAL(timeout()), this, SLOT(updateProposalList()));

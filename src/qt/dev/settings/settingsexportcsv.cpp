@@ -11,7 +11,7 @@
 #include "qt/dev/qtutils.h"
 #include "guiinterface.h"
 
-SettingsExportCSV::SettingsExportCSV(FLSGUI* _window, QWidget *parent) :
+SettingsExportCSV::SettingsExportCSV(DEVGUI* _window, QWidget *parent) :
     PWidget(_window, parent),
     ui(new Ui::SettingsExportCSV)
 {
@@ -59,7 +59,7 @@ void SettingsExportCSV::selectFileOutput(const bool& isTxExport)
 {
     QString filename = GUIUtil::getSaveFileName(this,
                                         isTxExport ? tr("Export CSV") : tr("Export Address List"), QString(),
-                                        isTxExport ? tr("FLS_tx_csv_export(*.csv)") : tr("FLS_addresses_csv_export(*.csv)"),
+                                        isTxExport ? tr("DEV_tx_csv_export(*.csv)") : tr("DEV_addresses_csv_export(*.csv)"),
                                         nullptr);
 
     if (isTxExport) {

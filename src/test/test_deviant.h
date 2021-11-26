@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef FLS_TEST_TEST_FLS_H
-#define FLS_TEST_TEST_FLS_H
+#ifndef DEV_TEST_TEST_DEV_H
+#define DEV_TEST_TEST_DEV_H
 
 #include "txdb.h"
 

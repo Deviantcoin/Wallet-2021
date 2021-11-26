@@ -10,7 +10,7 @@
 #include "qt/dev/pwidget.h"
 #include "qt/dev/furabstractlistitemdelegate.h"
 
-class FLSGUI;
+class DEVGUI;
 
 namespace Ui {
 class SettingsMultisendWidget;

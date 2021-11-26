@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef FLS_DETERMINISTICMINT_H
-#define FLS_DETERMINISTICMINT_H
+#ifndef DEV_DETERMINISTICMINT_H
+#define DEV_DETERMINISTICMINT_H
 
 #include <libzerocoin/Denominations.h>
 #include <uint256.h>
@@ -64,4 +64,4 @@ public:
     };
 };
 
-#endif //FLS_DETERMINISTICMINT_H
+#endif //DEV_DETERMINISTICMINT_H

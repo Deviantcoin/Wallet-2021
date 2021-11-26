@@ -19,18 +19,18 @@
 QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
-struct qt_meta_stringdata_zFLSControlDialog_t {
+struct qt_meta_stringdata_zDEVControlDialog_t {
     QByteArrayData data[7];
     char stringdata0[81];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
-    qptrdiff(offsetof(qt_meta_stringdata_zFLSControlDialog_t, stringdata0) + ofs \
+    qptrdiff(offsetof(qt_meta_stringdata_zDEVControlDialog_t, stringdata0) + ofs \
         - idx * sizeof(QByteArrayData)) \
     )
-static const qt_meta_stringdata_zFLSControlDialog_t qt_meta_stringdata_zFLSControlDialog = {
+static const qt_meta_stringdata_zDEVControlDialog_t qt_meta_stringdata_zDEVControlDialog = {
     {
-QT_MOC_LITERAL(0, 0, 17), // "zFLSControlDialog"
+QT_MOC_LITERAL(0, 0, 17), // "zDEVControlDialog"
 QT_MOC_LITERAL(1, 18, 15), // "updateSelection"
 QT_MOC_LITERAL(2, 34, 0), // ""
 QT_MOC_LITERAL(3, 35, 16), // "QTreeWidgetItem*"
@@ -39,13 +39,13 @@ QT_MOC_LITERAL(5, 57, 6), // "column"
 QT_MOC_LITERAL(6, 64, 16) // "ButtonAllClicked"
 
     },
-    "zFLSControlDialog\0updateSelection\0\0"
+    "zDEVControlDialog\0updateSelection\0\0"
     "QTreeWidgetItem*\0item\0column\0"
     "ButtonAllClicked"
 };
 #undef QT_MOC_LITERAL
 
-static const uint qt_meta_data_zFLSControlDialog[] = {
+static const uint qt_meta_data_zDEVControlDialog[] = {
 
  // content:
        7,       // revision
@@ -69,10 +69,10 @@ static const uint qt_meta_data_zFLSControlDialog[] = {
        0        // eod
 };
 
-void zFLSControlDialog::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+void zDEVControlDialog::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
     if (_c == QMetaObject::InvokeMetaMethod) {
-        zFLSControlDialog *_t = static_cast<zFLSControlDialog *>(_o);
+        zDEVControlDialog *_t = static_cast<zDEVControlDialog *>(_o);
         Q_UNUSED(_t)
         switch (_id) {
         case 0: _t->updateSelection((*reinterpret_cast< QTreeWidgetItem*(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
@@ -82,26 +82,26 @@ void zFLSControlDialog::qt_static_metacall(QObject *_o, QMetaObject::Call _c, in
     }
 }
 
-const QMetaObject zFLSControlDialog::staticMetaObject = {
-    { &QDialog::staticMetaObject, qt_meta_stringdata_zFLSControlDialog.data,
-      qt_meta_data_zFLSControlDialog,  qt_static_metacall, nullptr, nullptr}
+const QMetaObject zDEVControlDialog::staticMetaObject = {
+    { &QDialog::staticMetaObject, qt_meta_stringdata_zDEVControlDialog.data,
+      qt_meta_data_zDEVControlDialog,  qt_static_metacall, nullptr, nullptr}
 };
 
 
-const QMetaObject *zFLSControlDialog::metaObject() const
+const QMetaObject *zDEVControlDialog::metaObject() const
 {
     return QObject::d_ptr->metaObject ? QObject::d_ptr->dynamicMetaObject() : &staticMetaObject;
 }
 
-void *zFLSControlDialog::qt_metacast(const char *_clname)
+void *zDEVControlDialog::qt_metacast(const char *_clname)
 {
     if (!_clname) return nullptr;
-    if (!strcmp(_clname, qt_meta_stringdata_zFLSControlDialog.stringdata0))
+    if (!strcmp(_clname, qt_meta_stringdata_zDEVControlDialog.stringdata0))
         return static_cast<void*>(this);
     return QDialog::qt_metacast(_clname);
 }
 
-int zFLSControlDialog::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+int zDEVControlDialog::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
     _id = QDialog::qt_metacall(_c, _id, _a);
     if (_id < 0)

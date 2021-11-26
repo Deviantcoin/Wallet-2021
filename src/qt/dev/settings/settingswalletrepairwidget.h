@@ -17,7 +17,7 @@ class SettingsWalletRepairWidget : public PWidget
     Q_OBJECT
 
 public:
-    explicit SettingsWalletRepairWidget(FLSGUI* _window, QWidget *parent = nullptr);
+    explicit SettingsWalletRepairWidget(DEVGUI* _window, QWidget *parent = nullptr);
     ~SettingsWalletRepairWidget();
 
     /** Build parameter list for restart */

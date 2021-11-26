@@ -12,7 +12,7 @@
 #include <QTimer>
 #include <QWidget>
 
-class FLSGUI;
+class DEVGUI;
 class WalletModel;
 class ClientModel;
 
@@ -26,7 +26,7 @@ class TopBar : public PWidget
     Q_OBJECT
 
 public:
-    explicit TopBar(FLSGUI* _mainWindow, QWidget* parent = nullptr);
+    explicit TopBar(DEVGUI* _mainWindow, QWidget* parent = nullptr);
     ~TopBar();
 
     void showTop();

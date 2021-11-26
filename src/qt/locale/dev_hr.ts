@@ -172,7 +172,7 @@
         <translation>Potvrdite šifriranje novčanika</translation>
     </message>
     <message>
-        <source>DEV will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your FLSs from being stolen by malware infecting your computer.</source>
+        <source>DEV will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your DEVs from being stolen by malware infecting your computer.</source>
         <translation>DEV se sada zatvara kako bi dovršio proces šifriranja. Ne zaboravite da šifriranje vašeg novčanika ne može u potpunosti zaštititi vaše DEV od krađe zlonamjernog softvera koji zarazi vaše računalo.</translation>
     </message>
     <message>
@@ -181,7 +181,7 @@
     </message>
     <message>
         <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR DEV&lt;/b&gt;!</source>
-        <translation>Upozorenje: Ako šifrirate svoj novčanik i izgubite vašu zaporku, vi ćete1 IZGUBITI ĆE TE SAV VAŠ FLS1!</translation>
+        <translation>Upozorenje: Ako šifrirate svoj novčanik i izgubite vašu zaporku, vi ćete1 IZGUBITI ĆE TE SAV VAŠ DEV1!</translation>
     </message>
     <message>
         <source>Wallet encrypted</source>
@@ -409,8 +409,8 @@
         <translation>Pregledajte povijest transakcija</translation>
     </message>
     <message>
-        <source>Privacy Actions for zFLS</source>
-        <translation>Aktivnosti na privatnost za zFLS</translation>
+        <source>Privacy Actions for zDEV</source>
+        <translation>Aktivnosti na privatnost za zDEV</translation>
     </message>
     <message>
         <source>E&amp;xit</source>
@@ -1560,7 +1560,7 @@
     </message>
     </context>
 <context>
-    <name>ZFlsControlDialog</name>
+    <name>ZDevControlDialog</name>
     <message>
         <source>0</source>
         <translation>0</translation>

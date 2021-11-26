@@ -7,7 +7,7 @@
 
 #include <QDialog>
 
-class FLSGUI;
+class DEVGUI;
 
 namespace Ui
 {
@@ -19,7 +19,7 @@ class SettingsFaqWidget : public QDialog
     Q_OBJECT
 
 public:
-    explicit SettingsFaqWidget(FLSGUI* parent = nullptr);
+    explicit SettingsFaqWidget(DEVGUI* parent = nullptr);
     ~SettingsFaqWidget();
 
     void showEvent(QShowEvent* event) override;

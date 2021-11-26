@@ -176,7 +176,7 @@
         <translation>Bekræft, og tegnebogen krypteres.</translation>
     </message>
     <message>
-        <source>DEV will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your FLSs from being stolen by malware infecting your computer.</source>
+        <source>DEV will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your DEVs from being stolen by malware infecting your computer.</source>
         <translation>DEV vil lukke ned for at færdiggøre kryptograferingsprocesserne. Husk at kryptering alene ikke sikrer mod tyveri af mønterne fra malware eller virus på computeren.</translation>
     </message>
     <message>
@@ -433,8 +433,8 @@
         <translation>Vis transaktionshistorik</translation>
     </message>
     <message>
-        <source>Privacy Actions for zFLS</source>
-        <translation>Beskyttelse af personlige oplysninger for zFLS</translation>
+        <source>Privacy Actions for zDEV</source>
+        <translation>Beskyttelse af personlige oplysninger for zDEV</translation>
     </message>
     <message>
         <source>E&amp;xit</source>
@@ -1846,28 +1846,28 @@ https://www.transifex.com/CryptoDev-Project/CryptoDev-Project-translations</tran
         <translation>MAP port ved hjælp af UPnP</translation>
     </message>
     <message>
-        <source>Enable automatic minting of DEV units to zFLS</source>
-        <translation>Aktivér automatisk mintning af deviant-enheder til zFLS</translation>
+        <source>Enable automatic minting of DEV units to zDEV</source>
+        <translation>Aktivér automatisk mintning af deviant-enheder til zDEV</translation>
     </message>
     <message>
-        <source>Enable zFLS Automint</source>
-        <translation>Aktivér zFLS Automint</translation>
+        <source>Enable zDEV Automint</source>
+        <translation>Aktivér zDEV Automint</translation>
     </message>
     <message>
-        <source>Percentage of incoming DEV which get automatically converted to zFLS via Zerocoin Protocol (min: 10%)</source>
-        <translation>Procentdelen af indkommende DEV, som automatisk konverteres til zFLS via Zerocoin Protocol (min: 10%)</translation>
+        <source>Percentage of incoming DEV which get automatically converted to zDEV via Zerocoin Protocol (min: 10%)</source>
+        <translation>Procentdelen af indkommende DEV, som automatisk konverteres til zDEV via Zerocoin Protocol (min: 10%)</translation>
     </message>
     <message>
-        <source>Percentage of autominted zFLS</source>
-        <translation>Procentdel af automatiseret zFLS</translation>
+        <source>Percentage of autominted zDEV</source>
+        <translation>Procentdel af automatiseret zDEV</translation>
     </message>
     <message>
         <source>Wait with automatic conversion to Zerocoin until enough DEV for this denomination is available</source>
         <translation>Vent med automatisk konvertering til Zerocoin, indtil nok DEV til denne betegnelse er tilgængelig</translation>
     </message>
     <message>
-        <source>Preferred Automint zFLS Denomination</source>
-        <translation>Foretrukket Automint zFLS Denomination</translation>
+        <source>Preferred Automint zDEV Denomination</source>
+        <translation>Foretrukket Automint zDEV Denomination</translation>
     </message>
     <message>
         <source>Stake split threshold:</source>
@@ -2053,14 +2053,14 @@ https://www.transifex.com/CryptoDev-Project/CryptoDev-Project-translations</tran
         <translation>Din nuværende deviant-saldo, ubekræftede og umodne transaktioner inkluderet</translation>
     </message>
     <message>
-        <source>zFLS Balance</source>
-        <translation>zFLS-saldo</translation>
+        <source>zDEV Balance</source>
+        <translation>zDEV-saldo</translation>
     </message>
     <message>
         <source>Mature: more than 20 confirmation and more than 1 mint of the same denomination after it was minted.
-These zFLS are spendable.</source>
+These zDEV are spendable.</source>
         <translation>Ældre: mere end 20 bekræftelser og mere end 1 minutter med samme betegnelse, efter at den blev minted
-Disse zFLS kan bruges.</translation>
+Disse zDEV kan bruges.</translation>
     </message>
     <message>
         <source>Unconfirmed: less than 20 confirmations
@@ -2113,8 +2113,8 @@ Uplettet: bekræftet, men mindre end 1 minutter med samme betegnelse, efter at d
         <translation>Brugbare:</translation>
     </message>
     <message>
-        <source>Locked DEV or Masternode collaterals. These are excluded from zFLS minting.</source>
-        <translation>Låste DEV eller Masternode collaterals. Disse er udelukket fra zFLS-mintning.</translation>
+        <source>Locked DEV or Masternode collaterals. These are excluded from zDEV minting.</source>
+        <translation>Låste DEV eller Masternode collaterals. Disse er udelukket fra zDEV-mintning.</translation>
     </message>
     <message>
         <source>Locked:</source>
@@ -2125,8 +2125,8 @@ Uplettet: bekræftet, men mindre end 1 minutter med samme betegnelse, efter at d
         <translation>Ubekræftet:</translation>
     </message>
     <message>
-        <source>Your current zFLS balance, unconfirmed and immature zFLS included.</source>
-        <translation>Din nuværende zFLS-saldo, ubekræftede og umodne zFLS inkluderet.</translation>
+        <source>Your current zDEV balance, unconfirmed and immature zDEV included.</source>
+        <translation>Din nuværende zDEV-saldo, ubekræftede og umodne zDEV inkluderet.</translation>
     </message>
     <message>
         <source>Recent transactions</source>
@@ -2137,10 +2137,10 @@ Uplettet: bekræftet, men mindre end 1 minutter med samme betegnelse, efter at d
         <translation>Ude af synk</translation>
     </message>
     <message>
-        <source>Current percentage of zFLS.
+        <source>Current percentage of zDEV.
 If AutoMint is enabled this percentage will settle around the configured AutoMint percentage (default = 10%).
 </source>
-        <translation>Nuværende procentdel af zFLS
+        <translation>Nuværende procentdel af zDEV
 Hvis AutoMint er aktiveret, vil denne procentdel sætte sig omkring den konfigurerede AutoMint-procent (default = 10%)</translation>
     </message>
     <message>
@@ -2283,8 +2283,8 @@ For at aktivere AutoMint-ændring 'enablezeromint = 0' til 'enablezeromint = 1' 
         <translation>0</translation>
     </message>
     <message>
-        <source>zFLS</source>
-        <translation>zFLS</translation>
+        <source>zDEV</source>
+        <translation>zDEV</translation>
     </message>
     <message>
         <source>Reset Zerocoin Wallet DB. Deletes transactions that did not make it into the blockchain.</source>
@@ -2311,12 +2311,12 @@ For at aktivere AutoMint-ændring 'enablezeromint = 0' til 'enablezeromint = 1' 
         <translation>PRIVATLIV</translation>
     </message>
     <message>
-        <source>zFLS Control</source>
-        <translation>zFLS Control</translation>
+        <source>zDEV Control</source>
+        <translation>zDEV Control</translation>
     </message>
     <message>
-        <source>zFLS Selected:</source>
-        <translation>zFLS Selected:</translation>
+        <source>zDEV Selected:</source>
+        <translation>zDEV Selected:</translation>
     </message>
     <message>
         <source>Quantity Selected:</source>
@@ -2331,24 +2331,24 @@ For at aktivere AutoMint-ændring 'enablezeromint = 0' til 'enablezeromint = 1' 
         <translation>Tilbring Zerocoin</translation>
     </message>
     <message>
-        <source>Available (mature and spendable) zFLS for spending</source>
-        <translation>Tilgængelig (moden og brugt) zFLS for udgifter</translation>
+        <source>Available (mature and spendable) zDEV for spending</source>
+        <translation>Tilgængelig (moden og brugt) zDEV for udgifter</translation>
     </message>
     <message>
         <source>Available Balance:</source>
         <translation>Disponibel saldo:</translation>
     </message>
     <message>
-        <source>Available (mature and spendable) zFLS for spending
+        <source>Available (mature and spendable) zDEV for spending
 
-zFLS are mature when they have more than 20 confirmations AND more than 2 mints of the same denomination after them were minted</source>
-        <translation>Tilgængelig (moden og brugt) zFLS for spending
+zDEV are mature when they have more than 20 confirmations AND more than 2 mints of the same denomination after them were minted</source>
+        <translation>Tilgængelig (moden og brugt) zDEV for spending
 
-zFLS er modne, når de har mere end 20 bekræftelser OG mere end 2 minutter med samme betegnelse, efter at de blev præsenteret</translation>
+zDEV er modne, når de har mere end 20 bekræftelser OG mere end 2 minutter med samme betegnelse, efter at de blev præsenteret</translation>
     </message>
     <message>
-        <source>0 zFLS</source>
-        <translation>0 zFLS</translation>
+        <source>0 zDEV</source>
+        <translation>0 zDEV</translation>
     </message>
     <message>
         <source>Pay &amp;To:</source>
@@ -2407,8 +2407,8 @@ zFLS er modne, når de har mere end 20 bekræftelser OG mere end 2 minutter med 
         <translation>Zerocoin Stats:</translation>
     </message>
     <message>
-        <source>Total Balance including unconfirmed and immature zFLS</source>
-        <translation>Samlet saldo inklusive ubekræftede og umodne zFLS</translation>
+        <source>Total Balance including unconfirmed and immature zDEV</source>
+        <translation>Samlet saldo inklusive ubekræftede og umodne zDEV</translation>
     </message>
     <message>
         <source>Total Zerocoin  Balance:</source>
@@ -2429,24 +2429,24 @@ Immature: confirmed, but less than 1 mint of the same denomination after it was 
 Uplettet: bekræftet, men mindre end 1 minutter med samme betegnelse, efter at den blev mønnet</translation>
     </message>
     <message>
-        <source>Show the current status of automatic zFLS minting.
+        <source>Show the current status of automatic zDEV minting.
 
 To change the status (restart required):
 - enable: add 'enablezeromint=1' to dev.conf
 - disable: add 'enablezeromint=0' to dev.conf
 
 To change the percentage (no restart required):
-- menu Settings-&gt;Options-&gt;Percentage of autominted zFLS
+- menu Settings-&gt;Options-&gt;Percentage of autominted zDEV
 
 </source>
-        <translation>Vis den aktuelle status for automatisk zFLS minting.øj
+        <translation>Vis den aktuelle status for automatisk zDEV minting.øj
 
 For at ændre status (genstart kræves):.
 - aktiver: tilføj 'enablezeromint = 1' til dev.conf
 - deaktiver: tilføj 'enablezeromint = 0' til dev.conf
 
 For at ændre procentdelen (ingen genstart kræves):.
-- menu Indstillinger-&gt; Indstillinger-&gt; Procentdel af automatiseret zFLS
+- menu Indstillinger-&gt; Indstillinger-&gt; Procentdel af automatiseret zDEV
 </translation>
     </message>
     <message>
@@ -2620,12 +2620,12 @@ Please be patient...</source>
 Vær tålmodig...</translation>
     </message>
     <message>
-        <source>zFLS Spend #: </source>
-        <translation>zFLS Spend #: </translation>
+        <source>zDEV Spend #: </source>
+        <translation>zDEV Spend #: </translation>
     </message>
     <message>
-        <source>zFLS Mint</source>
-        <translation>zFLS Mint</translation>
+        <source>zDEV Mint</source>
+        <translation>zDEV Mint</translation>
     </message>
     <message>
         <source> &lt;b&gt;enabled&lt;/b&gt;.</source>
@@ -2640,12 +2640,12 @@ Vær tålmodig...</translation>
         <translation>Konfigureret målprocent:&lt;b&gt;</translation>
     </message>
     <message>
-        <source>zFLS is currently disabled due to maintenance.</source>
-        <translation>zFLS er i øjeblikket deaktiveret på grund af vedligeholdelse.</translation>
+        <source>zDEV is currently disabled due to maintenance.</source>
+        <translation>zDEV er i øjeblikket deaktiveret på grund af vedligeholdelse.</translation>
     </message>
     <message>
-        <source>zFLS is currently undergoing maintenance.</source>
-        <translation>zFLS er i øjeblikket under opretholdelse.</translation>
+        <source>zDEV is currently undergoing maintenance.</source>
+        <translation>zDEV er i øjeblikket under opretholdelse.</translation>
     </message>
     <message>
         <source>Denom. with value &lt;b&gt;1&lt;/b&gt;:</source>
@@ -2734,7 +2734,7 @@ Vær tålmodig...</translation>
         <translation>Ingen 'Betal til' adresse, der er oprettet, skaber lokal betaling</translation>
     </message>
     <message>
-        <source>Invalid Fls Address</source>
+        <source>Invalid Dev Address</source>
         <translation> Ugyldig DEV adresse</translation>
     </message>
     <message>
@@ -3090,8 +3090,8 @@ Vær tålmodig...</translation>
         <translation>Brugerdefineret Backup-sti:</translation>
     </message>
     <message>
-        <source>Custom zFLS Backup Path:</source>
-        <translation>Brugerdefineret zFLS Backup-sti:</translation>
+        <source>Custom zDEV Backup Path:</source>
+        <translation>Brugerdefineret zDEV Backup-sti:</translation>
     </message>
     <message>
         <source>Custom Backups Threshold:</source>
@@ -3598,12 +3598,12 @@ Vær tålmodig...</translation>
         <translation>Mønter vælges automatisk</translation>
     </message>
     <message>
-        <source>If the custom fee is set to 1000 uFLSs and the transaction is only 250 bytes, then "per kilobyte" only pays 250 uFLSs in fee,&lt;br /&gt;while "at least" pays 1000 uFLSs. For transactions bigger than a kilobyte both pay by kilobyte.</source>
-        <translation>Hvis den brugerfastsatte gebyrbetaling er sat til 1000 uFLSs og transaktionen kun fylder 250 bytes, så vil "pr. kilobyte" kun udbetale 250 uFLS i gebyr, &lt;br /&gt; mens "mindst" udbetaler 1000 uFLSs. For transaktioner større end en kilobyte betales i begge tilfælde i forhold til antallet af kilobytes </translation>
+        <source>If the custom fee is set to 1000 uDEVs and the transaction is only 250 bytes, then "per kilobyte" only pays 250 uDEVs in fee,&lt;br /&gt;while "at least" pays 1000 uDEVs. For transactions bigger than a kilobyte both pay by kilobyte.</source>
+        <translation>Hvis den brugerfastsatte gebyrbetaling er sat til 1000 uDEVs og transaktionen kun fylder 250 bytes, så vil "pr. kilobyte" kun udbetale 250 uDEV i gebyr, &lt;br /&gt; mens "mindst" udbetaler 1000 uDEVs. For transaktioner større end en kilobyte betales i begge tilfælde i forhold til antallet af kilobytes </translation>
     </message>
     <message>
-        <source>If the custom fee is set to 1000 uFLSs and the transaction is only 250 bytes, then "per kilobyte" only pays 250 uFLSs in fee,&lt;br /&gt;while "total at least" pays 1000 uFLSs. For transactions bigger than a kilobyte both pay by kilobyte.</source>
-        <translation>Hvis den brugerfastsatte gebyrbetaling er sat til 1000 uFLSs og transaktionen kun fylder 250 bytes, så vil "pr. kilobyte" kun udbetale 250 uFLS i gebyr, &lt;br /&gt; mens "Total-mindst" udbetaler 1000 uFLSs. For transaktioner større end en kilobyte betales i begge tilfælde i forhold til antallet af kilobytes </translation>
+        <source>If the custom fee is set to 1000 uDEVs and the transaction is only 250 bytes, then "per kilobyte" only pays 250 uDEVs in fee,&lt;br /&gt;while "total at least" pays 1000 uDEVs. For transactions bigger than a kilobyte both pay by kilobyte.</source>
+        <translation>Hvis den brugerfastsatte gebyrbetaling er sat til 1000 uDEVs og transaktionen kun fylder 250 bytes, så vil "pr. kilobyte" kun udbetale 250 uDEV i gebyr, &lt;br /&gt; mens "Total-mindst" udbetaler 1000 uDEVs. For transaktioner større end en kilobyte betales i begge tilfælde i forhold til antallet af kilobytes </translation>
     </message>
     <message>
         <source>Paying only the minimum fee is just fine as long as there is less transaction volume than space in the blocks.&lt;br /&gt;But be aware that this can end up in a never confirming transaction once there is more demand for DEV transactions than the network can process.</source>
@@ -4302,8 +4302,8 @@ Vær tålmodig...</translation>
         <translation>DEV Stake</translation>
     </message>
     <message>
-        <source>zFLS Stake</source>
-        <translation>zFLS Stake</translation>
+        <source>zDEV Stake</source>
+        <translation>zDEV Stake</translation>
     </message>
     <message>
         <source>Obfuscation Denominate</source>
@@ -4322,32 +4322,32 @@ Vær tålmodig...</translation>
         <translation>Opret tilsløret designering</translation>
     </message>
     <message>
-        <source>Converted DEV to zFLS</source>
-        <translation>Konverteret DEV til zFLS</translation>
+        <source>Converted DEV to zDEV</source>
+        <translation>Konverteret DEV til zDEV</translation>
     </message>
     <message>
-        <source>Spent zFLS</source>
-        <translation>Brugt zFls</translation>
+        <source>Spent zDEV</source>
+        <translation>Brugt zDev</translation>
     </message>
     <message>
-        <source>Received DEV from zFLS</source>
-        <translation>Modtaget Fls fra zFls</translation>
+        <source>Received DEV from zDEV</source>
+        <translation>Modtaget Dev fra zDev</translation>
     </message>
     <message>
-        <source>Minted Change as zFLS from zFLS Spend</source>
-        <translation>Minted Change som zFLS fra zFLS Spend</translation>
+        <source>Minted Change as zDEV from zDEV Spend</source>
+        <translation>Minted Change som zDEV fra zDEV Spend</translation>
     </message>
     <message>
-        <source>Converted zFLS to DEV</source>
-        <translation>Konverteret DEV til zFLS</translation>
+        <source>Converted zDEV to DEV</source>
+        <translation>Konverteret DEV til zDEV</translation>
     </message>
     <message>
-        <source>Anonymous (zFLS Transaction)</source>
-        <translation>Anonym (zFLS Transaction)</translation>
+        <source>Anonymous (zDEV Transaction)</source>
+        <translation>Anonym (zDEV Transaction)</translation>
     </message>
     <message>
-        <source>Anonymous (zFLS Stake)</source>
-        <translation>Anonym (zFLS Stake)</translation>
+        <source>Anonymous (zDEV Stake)</source>
+        <translation>Anonym (zDEV Stake)</translation>
     </message>
     <message>
         <source>Sent to</source>
@@ -4557,12 +4557,12 @@ Vær tålmodig...</translation>
         <translation>Eksporteret!</translation>
     </message>
     <message>
-        <source>Received DEV from zFLS</source>
-        <translation>Modtaget Fls fra zFls</translation>
+        <source>Received DEV from zDEV</source>
+        <translation>Modtaget Dev fra zDev</translation>
     </message>
     <message>
-        <source>Zerocoin Spend, Change in zFLS</source>
-        <translation>Zerocoin Spend, Ændring i zFLS</translation>
+        <source>Zerocoin Spend, Change in zDEV</source>
+        <translation>Zerocoin Spend, Ændring i zDEV</translation>
     </message>
     <message>
         <source>The transaction history was successfully saved to %1.</source>
@@ -4599,7 +4599,7 @@ Vær tålmodig...</translation>
     </message>
     <message>
         <source>SwiftX doesn't support sending values that high yet. Transactions are currently limited to %1 DEV.</source>
-        <translation>SwiftTx understøtter ikke afsendelse af så store beløb endnu. Transaktioner er for tiden begrænsede til %1FLS.</translation>
+        <translation>SwiftTx understøtter ikke afsendelse af så store beløb endnu. Transaktioner er for tiden begrænsede til %1DEV.</translation>
     </message>
 </context>
 <context>
@@ -4630,10 +4630,10 @@ Vær tålmodig...</translation>
     </message>
 </context>
 <context>
-    <name>ZFlsControlDialog</name>
+    <name>ZDevControlDialog</name>
     <message>
-        <source>Select zFLS to Spend</source>
-        <translation>Vælg zFLS for at bruge</translation>
+        <source>Select zDEV to Spend</source>
+        <translation>Vælg zDEV for at bruge</translation>
     </message>
     <message>
         <source>Quantity</source>
@@ -4644,8 +4644,8 @@ Vær tålmodig...</translation>
         <translation>0</translation>
     </message>
     <message>
-        <source>zFLS</source>
-        <translation>zFLS</translation>
+        <source>zDEV</source>
+        <translation>zDEV</translation>
     </message>
     <message>
         <source>Select/Deselect All</source>
@@ -4708,16 +4708,16 @@ Vær tålmodig...</translation>
 &lt;http://www.opensource.org/licenses/mit-license.php&gt;. </translation>
     </message>
     <message>
-        <source>Enable automatic wallet backups triggered after each zFLS minting (0-1, default: %u)</source>
-        <translation>Aktivér automatiske wallet-sikkerhedskopier udløst efter hver zFls-mintning (0-1, standard: %u)</translation>
+        <source>Enable automatic wallet backups triggered after each zDEV minting (0-1, default: %u)</source>
+        <translation>Aktivér automatiske wallet-sikkerhedskopier udløst efter hver zDev-mintning (0-1, standard: %u)</translation>
     </message>
     <message>
         <source>Enable or disable staking functionality for DEV inputs (0-1, default: %u)</source>
         <translation>Aktiver eller deaktiver staking-funktionalitet for deviant-indgange (0-1, standard: %u)</translation>
     </message>
     <message>
-        <source>Enable or disable staking functionality for zFLS inputs (0-1, default: %u)</source>
-        <translation>Aktiver eller deaktiver staking-funktionalitet for zFLS-indgange (0-1, standard: %u)</translation>
+        <source>Enable or disable staking functionality for zDEV inputs (0-1, default: %u)</source>
+        <translation>Aktiver eller deaktiver staking-funktionalitet for zDEV-indgange (0-1, standard: %u)</translation>
     </message>
     <message>
         <source>Enable spork administration functionality with the appropriate private key.</source>
@@ -5252,8 +5252,8 @@ Vær tålmodig...</translation>
         <translation>Procentdel af automatisk mintede Zerocoin (10-100, standard: %u)</translation>
     </message>
     <message>
-        <source>Reindex the DEV and zFLS money supply statistics</source>
-        <translation>Reindex DEV og zFLS pengemængde statistikker</translation>
+        <source>Reindex the DEV and zDEV money supply statistics</source>
+        <translation>Reindex DEV og zDEV pengemængde statistikker</translation>
     </message>
     <message>
         <source>Reindexing zerocoin database...</source>
@@ -5328,8 +5328,8 @@ Vær tålmodig...</translation>
         <translation>Foretrukken Betegnelse for automatisk mintede Zerocoin (1/5/10/50/100/500/1000/5000), 0 uden præference. standard: %u)</translation>
     </message>
     <message>
-        <source>Specify custom backup path to add a copy of any automatic zFLS backup. If set as dir, every backup generates a timestamped file. If set as file, will rewrite to that file every backup. If backuppath is set as well, 4 backups will happen</source>
-        <translation>Angiv brugerdefineret backup-vej for at tilføje en kopi af enhver zFLS-backup. Hvis det er angivet som dig, genererer hver backup en tidsstempelet fil. Hvis den er angivet som fil, ønsker man at omskrive til den pågældende fil hver backup. Hvis backupath er indstillet, vil der ske 4 sikkerhedskopier</translation>
+        <source>Specify custom backup path to add a copy of any automatic zDEV backup. If set as dir, every backup generates a timestamped file. If set as file, will rewrite to that file every backup. If backuppath is set as well, 4 backups will happen</source>
+        <translation>Angiv brugerdefineret backup-vej for at tilføje en kopi af enhver zDEV-backup. Hvis det er angivet som dig, genererer hver backup en tidsstempelet fil. Hvis den er angivet som fil, ønsker man at omskrive til den pågældende fil hver backup. Hvis backupath er indstillet, vil der ske 4 sikkerhedskopier</translation>
     </message>
     <message>
         <source>Specify custom backup path to add a copy of any wallet backup. If set as dir, every backup generates a timestamped file. If set as file, will rewrite to that file every backup.</source>
@@ -5740,8 +5740,8 @@ Vær tålmodig...</translation>
         <translation>Synkroniserer sporks...</translation>
     </message>
     <message>
-        <source>Syncing zFLS wallet...</source>
-        <translation>Syncing zFLS wallet ..</translation>
+        <source>Syncing zDEV wallet...</source>
+        <translation>Syncing zDEV wallet ..</translation>
     </message>
     <message>
         <source>The coin spend has been used</source>
@@ -5848,8 +5848,8 @@ Vær tålmodig...</translation>
         <translation>Brugernavn til JSON-RPC forbindelser</translation>
     </message>
     <message>
-        <source>Value is below the smallest available denomination (= 1) of zFLS</source>
-        <translation>Værdien er under den mindste tilgængelige værdi (= 1) for zFLS</translation>
+        <source>Value is below the smallest available denomination (= 1) of zDEV</source>
+        <translation>Værdien er under den mindste tilgængelige værdi (= 1) for zDEV</translation>
     </message>
     <message>
         <source>Verifying blocks...</source>

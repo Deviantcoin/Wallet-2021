@@ -12,9 +12,9 @@ Please report bugs using the issue tracker at github:
 Recommended Update
 ==============
 
-Deviant-Core v3.0.2 is a recommended, semi-mandatory update for all users. This release contains transaction creation bug fixes for zFLS spends, automint calculation adjustments, and other various updates/fixes.
+Deviant-Core v3.0.2 is a recommended, semi-mandatory update for all users. This release contains transaction creation bug fixes for zDEV spends, automint calculation adjustments, and other various updates/fixes.
 
-zFLS spending requires this update.
+zDEV spending requires this update.
 
 How to Upgrade
 ==============
@@ -45,21 +45,21 @@ Notable Changes
 
 Auto Wallet Backup
 ---------------------
-In addition to the automatic wallet backup that is done at each start of the client, a new automatic backup function has been added that will, by default, create a backup of the wallet file during each zFLS mint operation (zFLS spends which re-mint their change are also included in this). This functionality is controlled by the `-backupzFLS` command-line option, which defaults to `1` (enabled, auto-backup).
+In addition to the automatic wallet backup that is done at each start of the client, a new automatic backup function has been added that will, by default, create a backup of the wallet file during each zDEV mint operation (zDEV spends which re-mint their change are also included in this). This functionality is controlled by the `-backupzDEV` command-line option, which defaults to `1` (enabled, auto-backup).
 
-Users that wish to prevent this behavior (not recommended) can pass `-backupzFLS=0` at the command-line when starting the client, or add `backupzFLS=0` to their `DEV.conf` file.
+Users that wish to prevent this behavior (not recommended) can pass `-backupzDEV=0` at the command-line when starting the client, or add `backupzDEV=0` to their `DEV.conf` file.
 
-zFLS Automint Calculations
+zDEV Automint Calculations
 ---------------------
-A bug in the automint calculations was made apparent on mainnet when block times exceeded expectations, resulting in zFLS mint transactions that were in an unconfirmed state to still be treated as if they had never been minted. This caused automint to effectively mint more than what was intended.
+A bug in the automint calculations was made apparent on mainnet when block times exceeded expectations, resulting in zDEV mint transactions that were in an unconfirmed state to still be treated as if they had never been minted. This caused automint to effectively mint more than what was intended.
 
-zFLS Spending Fix
+zDEV Spending Fix
 ---------------------
-The size of zFLS spend transactions is knowingly larger than normal transactions, and while this was expected, a much stricter check against the scriptsig size is used for mainnet, causing the transactions to be rejected by the mempool, and thus not being packaged into any blocks.
+The size of zDEV spend transactions is knowingly larger than normal transactions, and while this was expected, a much stricter check against the scriptsig size is used for mainnet, causing the transactions to be rejected by the mempool, and thus not being packaged into any blocks.
 
-zFLS Transaction Recovery
+zDEV Transaction Recovery
 ---------------------
-Due to the aforementioned issue with zFLS spending, users may find that their attempted spends are now conflicted and zFLS balances are not represented as expected. "Recovery" of these transactions can be done using the following methods:
+Due to the aforementioned issue with zDEV spending, users may find that their attempted spends are now conflicted and zDEV balances are not represented as expected. "Recovery" of these transactions can be done using the following methods:
 
 1. GUI:
 
@@ -90,13 +90,13 @@ git merge commit are mentioned.
 
 ### P2P Protocol and Network Code
 - #286 `85c0f53` [Main] Change sporkDB from smart ptr to ptr. (presstab)
-- #292 `feadab4` Additional checks for double spending of zFLS serials. (presstab)
+- #292 `feadab4` Additional checks for double spending of zDEV serials. (presstab)
 
 ### Wallet
 - #271 `5e9a086` [Wallet] Remove unused member wallet in UnlockContext inner class (Jon Spock)
-- #279 `e734010` Add -backupzFLS startup flag. (presstab)
-- #280 `fdc182d` [Wallet] Fix zFLS spending errors. (presstab)
-- #282 `310f216` [Wallet] Count pending zFLS balance for automint. (presstab)
+- #279 `e734010` Add -backupzDEV startup flag. (presstab)
+- #280 `fdc182d` [Wallet] Fix zDEV spending errors. (presstab)
+- #282 `310f216` [Wallet] Count pending zDEV balance for automint. (presstab)
 - #290 `004d7b6` Include both pending and mature zerocoins for automint calculations (presstab)
 
 ### GUI
@@ -105,7 +105,7 @@ git merge commit are mentioned.
 - #270 `bd2328e` [Qt] Make lock icon clickable to toggle wallet lock state (Fuzzbawls)
 - #273 `f31136e` [Qt] Fix UI tab order and shortcuts (Mrs-X)
 - #287 `74a1c3c` [Qt] Don't allow the Esc key to close the privacy tab (Fuzzbawls)
-- #291 `cb314e6` [Qt] zFLS control quantity/amount fixes (rejectedpromise)
+- #291 `cb314e6` [Qt] zDEV control quantity/amount fixes (rejectedpromise)
 
 ### Miscellaneous
 - #266 `2d97b54` [Scripts] Fix location for aarch64 outputs in gitian-build.sh (Fuzzbawls)

@@ -22,7 +22,7 @@
 #include <QDataWidgetMapper>
 #include <QScrollBar>
 
-SettingsWidget::SettingsWidget(FLSGUI* parent) : PWidget(parent),
+SettingsWidget::SettingsWidget(DEVGUI* parent) : PWidget(parent),
                                                  ui(new Ui::SettingsWidget)
 {
     ui->setupUi(this);
@@ -141,7 +141,7 @@ SettingsWidget::SettingsWidget(FLSGUI* parent) : PWidget(parent),
 
     // Help
     connect(ui->pushButtonHelp, &QPushButton::clicked, this, &SettingsWidget::onHelpClicked);
-    connect(ui->pushButtonHelp1, &QPushButton::clicked, window, &FLSGUI::openFAQ);
+    connect(ui->pushButtonHelp1, &QPushButton::clicked, window, &DEVGUI::openFAQ);
     connect(ui->pushButtonHelp2, &QPushButton::clicked, this, &SettingsWidget::onAboutClicked);
 
     // Get restart command-line parameters and handle restart

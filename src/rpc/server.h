@@ -181,7 +181,7 @@ extern std::string HelpExampleRpc(std::string methodname, std::string args);
 extern void EnsureWalletIsUnlocked(bool fAllowAnonOnly = false);
 // Ensure the wallet's existence.
 extern void EnsureWallet();
-extern UniValue DozFLSSpend(const CAmount nAmount, std::vector<CZerocoinMint>& vMintsSelected, std::string address_str);
+extern UniValue DozDEVSpend(const CAmount nAmount, std::vector<CZerocoinMint>& vMintsSelected, std::string address_str);
 
 extern UniValue getconnectioncount(const UniValue& params, bool fHelp); // in rpc/net.cpp
 extern UniValue getpeerinfo(const UniValue& params, bool fHelp);

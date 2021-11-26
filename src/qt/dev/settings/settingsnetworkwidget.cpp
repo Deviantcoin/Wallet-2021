@@ -7,7 +7,7 @@
 #include "qt/dev/qtutils.h"
 #include "qt/dev/settings/forms/ui_settingsnetworkwidget.h"
 
-SettingsNetworkWidget::SettingsNetworkWidget(FLSGUI* _window, QWidget* parent) : PWidget(_window, parent),
+SettingsNetworkWidget::SettingsNetworkWidget(DEVGUI* _window, QWidget* parent) : PWidget(_window, parent),
                                                                                  ui(new Ui::SettingsNetworkWidget)
 {
     ui->setupUi(this);

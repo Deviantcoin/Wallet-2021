@@ -176,7 +176,7 @@
         <translation>Bevestig versleuteling van de portemonnee</translation>
     </message>
     <message>
-        <source>DEV will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your FLSs from being stolen by malware infecting your computer.</source>
+        <source>DEV will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your DEVs from being stolen by malware infecting your computer.</source>
         <translation>DEV zal nu afsluiten om het versleutelingsproces te voltooien. Onthoud dat het versleutelen van uw portemonnee u niet volledig kan beschermen tegen malware infecties op uw computer die uw DEV's kunnen stelen.</translation>
     </message>
     <message>
@@ -433,8 +433,8 @@
         <translation>Blader door transactiegescheidenis</translation>
     </message>
     <message>
-        <source>Privacy Actions for zFLS</source>
-        <translation>Privacy Acties voor zFLS</translation>
+        <source>Privacy Actions for zDEV</source>
+        <translation>Privacy Acties voor zDEV</translation>
     </message>
     <message>
         <source>&amp;Governance</source>
@@ -1934,32 +1934,32 @@ https://www.transifex.com/CryptoDev-Project/CryptoDev-Project-translations</tran
         <translation>Map poort gebruikt &amp;UPnP</translation>
     </message>
     <message>
-        <source>Enable automatic minting of DEV units to zFLS</source>
-        <translation>Schakel automatisch slaan van deviant-eenheden in op zFLS</translation>
+        <source>Enable automatic minting of DEV units to zDEV</source>
+        <translation>Schakel automatisch slaan van deviant-eenheden in op zDEV</translation>
     </message>
     <message>
-        <source>Enable zFLS Automint</source>
-        <translation>Schakel zFLS Automint in</translation>
+        <source>Enable zDEV Automint</source>
+        <translation>Schakel zDEV Automint in</translation>
     </message>
     <message>
         <source>Enable Automint Addresses</source>
         <translation>Automint Adressen Inschakelen</translation>
     </message>
     <message>
-        <source>Percentage of incoming DEV which get automatically converted to zFLS via Zerocoin Protocol (min: 10%)</source>
-        <translation>Percentage inkomende DEV die automatisch wordt omgezet naar zFLS via Zerocoin Protocol (min: 10%)</translation>
+        <source>Percentage of incoming DEV which get automatically converted to zDEV via Zerocoin Protocol (min: 10%)</source>
+        <translation>Percentage inkomende DEV die automatisch wordt omgezet naar zDEV via Zerocoin Protocol (min: 10%)</translation>
     </message>
     <message>
-        <source>Percentage of autominted zFLS</source>
-        <translation>Percentage autominted zFLS</translation>
+        <source>Percentage of autominted zDEV</source>
+        <translation>Percentage autominted zDEV</translation>
     </message>
     <message>
         <source>Wait with automatic conversion to Zerocoin until enough DEV for this denomination is available</source>
         <translation>Wacht met automatische omzetting naar Zerocoin totdat er genoeg DEV voor deze denominatie beschikbaar is</translation>
     </message>
     <message>
-        <source>Preferred Automint zFLS Denomination</source>
-        <translation>Gewenste Automint zFLS denominatie</translation>
+        <source>Preferred Automint zDEV Denomination</source>
+        <translation>Gewenste Automint zDEV denominatie</translation>
     </message>
     <message>
         <source>Stake split threshold:</source>
@@ -2153,12 +2153,12 @@ https://www.transifex.com/CryptoDev-Project/CryptoDev-Project-translations</tran
         <translation>Uw huidige deviant-saldo, onbevestigde en onvolgroeide transacties inbegrepen</translation>
     </message>
     <message>
-        <source>zFLS Balance</source>
-        <translation>zFLS-saldo</translation>
+        <source>zDEV Balance</source>
+        <translation>zDEV-saldo</translation>
     </message>
     <message>
         <source>Mature: more than 20 confirmation and more than 1 mint of the same denomination after it was minted.
-These zFLS are spendable.</source>
+These zDEV are spendable.</source>
         <translation>Volwassen: meer dan 20 bevestigingen en meer dan 1 mint van dezelfde denominatie nadat het gemint was.
 Deze zPIB zijn besteedbaar.</translation>
     </message>
@@ -2213,8 +2213,8 @@ Onvolwassen: bevestigd, maar minder dan 1 mint van dezelfde denominatie nadat he
         <translation>Uitgeefbaar:</translation>
     </message>
     <message>
-        <source>Locked DEV or Masternode collaterals. These are excluded from zFLS minting.</source>
-        <translation>Vergrendelde DEV of Masternode onderpanden. Deze zijn uitgesloten van de zFLS muntage.</translation>
+        <source>Locked DEV or Masternode collaterals. These are excluded from zDEV minting.</source>
+        <translation>Vergrendelde DEV of Masternode onderpanden. Deze zijn uitgesloten van de zDEV muntage.</translation>
     </message>
     <message>
         <source>Locked:</source>
@@ -2225,8 +2225,8 @@ Onvolwassen: bevestigd, maar minder dan 1 mint van dezelfde denominatie nadat he
         <translation>Onbevestigd:</translation>
     </message>
     <message>
-        <source>Your current zFLS balance, unconfirmed and immature zFLS included.</source>
-        <translation>Uw huidige zFLS-saldo, onbevestigde en onvolgroeide zFLS inbegrepen.</translation>
+        <source>Your current zDEV balance, unconfirmed and immature zDEV included.</source>
+        <translation>Uw huidige zDEV-saldo, onbevestigde en onvolgroeide zDEV inbegrepen.</translation>
     </message>
     <message>
         <source>Recent transactions</source>
@@ -2237,10 +2237,10 @@ Onvolwassen: bevestigd, maar minder dan 1 mint van dezelfde denominatie nadat he
         <translation>niet gesynchroniseerd</translation>
     </message>
     <message>
-        <source>Current percentage of zFLS.
+        <source>Current percentage of zDEV.
 If AutoMint is enabled this percentage will settle around the configured AutoMint percentage (default = 10%).
 </source>
-        <translation>Huidige percentage van zFLS
+        <translation>Huidige percentage van zDEV
 Als AutoMint ingeschakeld is zal deze percentage afhangen van de geconfigureerde AutoMint percentage (standaard = 10%).
 </translation>
     </message>
@@ -2384,8 +2384,8 @@ Om AutoMint in te schakelend verander je 'enablezeromint=0' naar 'enablezeromint
         <translation>0</translation>
     </message>
     <message>
-        <source>zFLS</source>
-        <translation>zFLS</translation>
+        <source>zDEV</source>
+        <translation>zDEV</translation>
     </message>
     <message>
         <source>Reset Zerocoin Wallet DB. Deletes transactions that did not make it into the blockchain.</source>
@@ -2412,12 +2412,12 @@ Om AutoMint in te schakelend verander je 'enablezeromint=0' naar 'enablezeromint
         <translation>PRIVACY</translation>
     </message>
     <message>
-        <source>zFLS Control</source>
-        <translation>zFLS Control</translation>
+        <source>zDEV Control</source>
+        <translation>zDEV Control</translation>
     </message>
     <message>
-        <source>zFLS Selected:</source>
-        <translation>zFLS geselecteerd:</translation>
+        <source>zDEV Selected:</source>
+        <translation>zDEV geselecteerd:</translation>
     </message>
     <message>
         <source>Quantity Selected:</source>
@@ -2432,24 +2432,24 @@ Om AutoMint in te schakelend verander je 'enablezeromint=0' naar 'enablezeromint
         <translation>Besteed Zerocoin</translation>
     </message>
     <message>
-        <source>Available (mature and spendable) zFLS for spending</source>
-        <translation>Beschikbare (volwassen en uitgeefbaar) zFLS voor besteding</translation>
+        <source>Available (mature and spendable) zDEV for spending</source>
+        <translation>Beschikbare (volwassen en uitgeefbaar) zDEV voor besteding</translation>
     </message>
     <message>
         <source>Available Balance:</source>
         <translation>Beschikbaar saldo:</translation>
     </message>
     <message>
-        <source>Available (mature and spendable) zFLS for spending
+        <source>Available (mature and spendable) zDEV for spending
 
-zFLS are mature when they have more than 20 confirmations AND more than 2 mints of the same denomination after them were minted</source>
-        <translation>Beschikbare (volwwassen en uitgeefbaar) zFLS voor besteding
+zDEV are mature when they have more than 20 confirmations AND more than 2 mints of the same denomination after them were minted</source>
+        <translation>Beschikbare (volwwassen en uitgeefbaar) zDEV voor besteding
 
-zFls zijn volwassen wanneer zij meer dan 20 bevestigingen hebben EN meer dan 2 muntages van dezelfde denominaties nadat zij gemunt zijn.</translation>
+zDev zijn volwassen wanneer zij meer dan 20 bevestigingen hebben EN meer dan 2 muntages van dezelfde denominaties nadat zij gemunt zijn.</translation>
     </message>
     <message>
-        <source>0 zFLS</source>
-        <translation>0 zFLS</translation>
+        <source>0 zDEV</source>
+        <translation>0 zDEV</translation>
     </message>
     <message>
         <source>Pay &amp;To:</source>
@@ -2508,8 +2508,8 @@ zFls zijn volwassen wanneer zij meer dan 20 bevestigingen hebben EN meer dan 2 m
         <translation>Zerocoin Statistieken:</translation>
     </message>
     <message>
-        <source>Total Balance including unconfirmed and immature zFLS</source>
-        <translation>Totale Saldi, inclusief onbevestigde en onvolwassen zFLS</translation>
+        <source>Total Balance including unconfirmed and immature zDEV</source>
+        <translation>Totale Saldi, inclusief onbevestigde en onvolwassen zDEV</translation>
     </message>
     <message>
         <source>Total Zerocoin  Balance:</source>
@@ -2530,24 +2530,24 @@ Immature: confirmed, but less than 1 mint of the same denomination after it was 
 Onvolwassen: bevestigd, maar minder dan 1 mint van dezelfde denominatie nadat het gemint was.</translation>
     </message>
     <message>
-        <source>Show the current status of automatic zFLS minting.
+        <source>Show the current status of automatic zDEV minting.
 
 To change the status (restart required):
 - enable: add 'enablezeromint=1' to dev.conf
 - disable: add 'enablezeromint=0' to dev.conf
 
 To change the percentage (no restart required):
-- menu Settings-&gt;Options-&gt;Percentage of autominted zFLS
+- menu Settings-&gt;Options-&gt;Percentage of autominted zDEV
 
 </source>
-        <translation>Toon de huidige status van automatische zFLS-markering.
+        <translation>Toon de huidige status van automatische zDEV-markering.
 
 Om de status te wijzigen (opnieuw opstarten vereist): 
 - enable: voeg 'enablezeromint = 1' toe aan dev.conf
 - uitschakelen: voeg 'enablezeromint = 0' toe aan dev.conf
 
 Om het percentage te wijzigen (geen herstart vereist): 
-- menu Instellingen-&gt; Opties-&gt; Percentage van geautomatiseerde zFLS
+- menu Instellingen-&gt; Opties-&gt; Percentage van geautomatiseerde zDEV
 </translation>
     </message>
     <message>
@@ -2595,8 +2595,8 @@ Om het percentage te wijzigen (geen herstart vereist):
         <translation> 0 x</translation>
     </message>
     <message>
-        <source>Show zFLS denominations list</source>
-        <translation>Toon zFLS denominatielijst</translation>
+        <source>Show zDEV denominations list</source>
+        <translation>Toon zDEV denominatielijst</translation>
     </message>
     <message>
         <source>Show Denominations</source>
@@ -2733,12 +2733,12 @@ Please be patient...</source>
 Wees alsjeblieft geduldig...</translation>
     </message>
     <message>
-        <source>zFLS Spend #: </source>
-        <translation>zFLS besteed #:</translation>
+        <source>zDEV Spend #: </source>
+        <translation>zDEV besteed #:</translation>
     </message>
     <message>
-        <source>zFLS Mint</source>
-        <translation>zFLS mint</translation>
+        <source>zDEV Mint</source>
+        <translation>zDEV mint</translation>
     </message>
     <message>
         <source> &lt;b&gt;enabled&lt;/b&gt;.</source>
@@ -2753,12 +2753,12 @@ Wees alsjeblieft geduldig...</translation>
         <translation>Geconfigureerd doelpercentage:&lt;b&gt;</translation>
     </message>
     <message>
-        <source>zFLS is currently disabled due to maintenance.</source>
-        <translation>zFLS is momenteel uitgeschakeld vanwege onderhoud.</translation>
+        <source>zDEV is currently disabled due to maintenance.</source>
+        <translation>zDEV is momenteel uitgeschakeld vanwege onderhoud.</translation>
     </message>
     <message>
-        <source>zFLS is currently undergoing maintenance.</source>
-        <translation>zFLS wordt momenteel onderhouden.</translation>
+        <source>zDEV is currently undergoing maintenance.</source>
+        <translation>zDEV wordt momenteel onderhouden.</translation>
     </message>
     <message>
         <source>Denom. with value &lt;b&gt;1&lt;/b&gt;:</source>
@@ -2847,8 +2847,8 @@ Wees alsjeblieft geduldig...</translation>
         <translation>Geen 'Betaal aan' adres verstrekt, lokale betaling wordt gemaakt</translation>
     </message>
     <message>
-        <source>Invalid Fls Address</source>
-        <translation>Ongeldig Fls addres</translation>
+        <source>Invalid Dev Address</source>
+        <translation>Ongeldig Dev addres</translation>
     </message>
     <message>
         <source>Invalid Send Amount</source>
@@ -3255,8 +3255,8 @@ Wees alsjeblieft geduldig...</translation>
         <translation>Aangepast back-up pad:</translation>
     </message>
     <message>
-        <source>Custom zFLS Backup Path:</source>
-        <translation>Aangepast zFLS back-up pad:</translation>
+        <source>Custom zDEV Backup Path:</source>
+        <translation>Aangepast zDEV back-up pad:</translation>
     </message>
     <message>
         <source>Custom Backups Threshold:</source>
@@ -3771,12 +3771,12 @@ Wees alsjeblieft geduldig...</translation>
         <translation>Munten automatisch geselecteerd</translation>
     </message>
     <message>
-        <source>If the custom fee is set to 1000 uFLSs and the transaction is only 250 bytes, then "per kilobyte" only pays 250 uFLSs in fee,&lt;br /&gt;while "at least" pays 1000 uFLSs. For transactions bigger than a kilobyte both pay by kilobyte.</source>
-        <translation>Als de aangepaste vergoeding is ingesteld op 1000 uFLSs en de transactie is slechts 250 bytes, dan betaalt per kilobyte alleen 250 uFLS's in vergoeding,&lt;br /&gt;terwijl "minstens" 1000 uFLS's betaalt. Voor transacties die groter zijn dan een kilobyte, betalen beiden per kilobyte.</translation>
+        <source>If the custom fee is set to 1000 uDEVs and the transaction is only 250 bytes, then "per kilobyte" only pays 250 uDEVs in fee,&lt;br /&gt;while "at least" pays 1000 uDEVs. For transactions bigger than a kilobyte both pay by kilobyte.</source>
+        <translation>Als de aangepaste vergoeding is ingesteld op 1000 uDEVs en de transactie is slechts 250 bytes, dan betaalt per kilobyte alleen 250 uDEV's in vergoeding,&lt;br /&gt;terwijl "minstens" 1000 uDEV's betaalt. Voor transacties die groter zijn dan een kilobyte, betalen beiden per kilobyte.</translation>
     </message>
     <message>
-        <source>If the custom fee is set to 1000 uFLSs and the transaction is only 250 bytes, then "per kilobyte" only pays 250 uFLSs in fee,&lt;br /&gt;while "total at least" pays 1000 uFLSs. For transactions bigger than a kilobyte both pay by kilobyte.</source>
-        <translation>Als de aangepaste vergoeding is ingesteld op 1000 uFLSs en de transactie is slechts 250 bytes, dan betaalt per kilobyte alleen 250 uFLS's in vergoeding,&lt;br /&gt;terwijl "totaal minstens" 1000 uFLS's betaalt. Voor transacties die groter zijn dan een kilobyte, betalen beiden per kilobyte.</translation>
+        <source>If the custom fee is set to 1000 uDEVs and the transaction is only 250 bytes, then "per kilobyte" only pays 250 uDEVs in fee,&lt;br /&gt;while "total at least" pays 1000 uDEVs. For transactions bigger than a kilobyte both pay by kilobyte.</source>
+        <translation>Als de aangepaste vergoeding is ingesteld op 1000 uDEVs en de transactie is slechts 250 bytes, dan betaalt per kilobyte alleen 250 uDEV's in vergoeding,&lt;br /&gt;terwijl "totaal minstens" 1000 uDEV's betaalt. Voor transacties die groter zijn dan een kilobyte, betalen beiden per kilobyte.</translation>
     </message>
     <message>
         <source>Paying only the minimum fee is just fine as long as there is less transaction volume than space in the blocks.&lt;br /&gt;But be aware that this can end up in a never confirming transaction once there is more demand for DEV transactions than the network can process.</source>
@@ -4475,8 +4475,8 @@ Wees alsjeblieft geduldig...</translation>
         <translation>DEV Stake</translation>
     </message>
     <message>
-        <source>zFLS Stake</source>
-        <translation>zFLS Stake</translation>
+        <source>zDEV Stake</source>
+        <translation>zDEV Stake</translation>
     </message>
     <message>
         <source>Obfuscation Denominate</source>
@@ -4495,32 +4495,32 @@ Wees alsjeblieft geduldig...</translation>
         <translation>Verduistering creëert denominaties</translation>
     </message>
     <message>
-        <source>Converted DEV to zFLS</source>
-        <translation>Geconverteerde DEV naar zFLS</translation>
+        <source>Converted DEV to zDEV</source>
+        <translation>Geconverteerde DEV naar zDEV</translation>
     </message>
     <message>
-        <source>Spent zFLS</source>
-        <translation>Bestede zFLS</translation>
+        <source>Spent zDEV</source>
+        <translation>Bestede zDEV</translation>
     </message>
     <message>
-        <source>Received DEV from zFLS</source>
-        <translation>Ontvangen DEV van zFLS</translation>
+        <source>Received DEV from zDEV</source>
+        <translation>Ontvangen DEV van zDEV</translation>
     </message>
     <message>
-        <source>Minted Change as zFLS from zFLS Spend</source>
-        <translation>Gemint wisselgeld als zFLS van bestede zFLS</translation>
+        <source>Minted Change as zDEV from zDEV Spend</source>
+        <translation>Gemint wisselgeld als zDEV van bestede zDEV</translation>
     </message>
     <message>
-        <source>Converted zFLS to DEV</source>
-        <translation>Geconverteerde zFLS naar DEV</translation>
+        <source>Converted zDEV to DEV</source>
+        <translation>Geconverteerde zDEV naar DEV</translation>
     </message>
     <message>
-        <source>Anonymous (zFLS Transaction)</source>
-        <translation>Anonieme (zFLS transactie)</translation>
+        <source>Anonymous (zDEV Transaction)</source>
+        <translation>Anonieme (zDEV transactie)</translation>
     </message>
     <message>
-        <source>Anonymous (zFLS Stake)</source>
-        <translation>Anonieme (zFLS stake)</translation>
+        <source>Anonymous (zDEV Stake)</source>
+        <translation>Anonieme (zDEV stake)</translation>
     </message>
     <message>
         <source>Sent to</source>
@@ -4734,12 +4734,12 @@ Wees alsjeblieft geduldig...</translation>
         <translation>Exporteren succesvol</translation>
     </message>
     <message>
-        <source>Received DEV from zFLS</source>
-        <translation>Ontvangen DEV van zFLS</translation>
+        <source>Received DEV from zDEV</source>
+        <translation>Ontvangen DEV van zDEV</translation>
     </message>
     <message>
-        <source>Zerocoin Spend, Change in zFLS</source>
-        <translation>Zerocoin besteed, wisselgeld in zFLS</translation>
+        <source>Zerocoin Spend, Change in zDEV</source>
+        <translation>Zerocoin besteed, wisselgeld in zDEV</translation>
     </message>
     <message>
         <source>The transaction history was successfully saved to %1.</source>
@@ -4807,10 +4807,10 @@ Wees alsjeblieft geduldig...</translation>
     </message>
 </context>
 <context>
-    <name>ZFlsControlDialog</name>
+    <name>ZDevControlDialog</name>
     <message>
-        <source>Select zFLS to Spend</source>
-        <translation>Selecteer zFLS om te besteden</translation>
+        <source>Select zDEV to Spend</source>
+        <translation>Selecteer zDEV om te besteden</translation>
     </message>
     <message>
         <source>Quantity</source>
@@ -4821,8 +4821,8 @@ Wees alsjeblieft geduldig...</translation>
         <translation>0</translation>
     </message>
     <message>
-        <source>zFLS</source>
-        <translation>zFLS</translation>
+        <source>zDEV</source>
+        <translation>zDEV</translation>
     </message>
     <message>
         <source>Select/Deselect All</source>
@@ -4888,16 +4888,16 @@ Wees alsjeblieft geduldig...</translation>
         <translation>Gedistribueerd onder de MIT software licentie, zie het bijgevoegde bestand COPYING of &lt;http://www.opensource.org/licenses/mit-license.php&gt;.</translation>
     </message>
     <message>
-        <source>Enable automatic wallet backups triggered after each zFLS minting (0-1, default: %u)</source>
-        <translation>Schakel automatische portemonnee back-ups in geactiveerd na elke geminte zFLS (0-1, standaard: %u)</translation>
+        <source>Enable automatic wallet backups triggered after each zDEV minting (0-1, default: %u)</source>
+        <translation>Schakel automatische portemonnee back-ups in geactiveerd na elke geminte zDEV (0-1, standaard: %u)</translation>
     </message>
     <message>
         <source>Enable or disable staking functionality for DEV inputs (0-1, default: %u)</source>
         <translation>In- of uitschakelen staking functionaliteit voor DEV inputs (0-1, standaard: %u)</translation>
     </message>
     <message>
-        <source>Enable or disable staking functionality for zFLS inputs (0-1, default: %u)</source>
-        <translation>In- of uitschakelen staking functionaliteit voor zFLS inputs (0-1, standaard: %u)</translation>
+        <source>Enable or disable staking functionality for zDEV inputs (0-1, default: %u)</source>
+        <translation>In- of uitschakelen staking functionaliteit voor zDEV inputs (0-1, standaard: %u)</translation>
     </message>
     <message>
         <source>Enable spork administration functionality with the appropriate private key.</source>
@@ -5436,8 +5436,8 @@ Wees alsjeblieft geduldig...</translation>
         <translation>Percentage automatisch geminte Zerocoin (10-100, standaard: %u)</translation>
     </message>
     <message>
-        <source>Reindex the DEV and zFLS money supply statistics</source>
-        <translation>Indexeer de deviant- en zFLS-geldvoorraadstatistieken opnieuw</translation>
+        <source>Reindex the DEV and zDEV money supply statistics</source>
+        <translation>Indexeer de deviant- en zDEV-geldvoorraadstatistieken opnieuw</translation>
     </message>
     <message>
         <source>Reindexing zerocoin database...</source>
@@ -5512,8 +5512,8 @@ Wees alsjeblieft geduldig...</translation>
         <translation>Voorkeur denominatie voor automatisch minted Zerocoin (1/5/10/50/100/500/1000/5000), 0 voor geen voorkeur. standaard: %u)</translation>
     </message>
     <message>
-        <source>Specify custom backup path to add a copy of any automatic zFLS backup. If set as dir, every backup generates a timestamped file. If set as file, will rewrite to that file every backup. If backuppath is set as well, 4 backups will happen</source>
-        <translation>Specificeer aangepast back-up pad om een kopie van elke automatische zFLS back-up toe te voegen. Indien ingesteld als dir zal elke back-up een bestand genereren met een tijdstempel. Indien ingesteld als file zal elke back-up herschreven worden naar dat bestand. Indien backuppath ook is ingesteld zullen 4 back-ups gedaan worden.</translation>
+        <source>Specify custom backup path to add a copy of any automatic zDEV backup. If set as dir, every backup generates a timestamped file. If set as file, will rewrite to that file every backup. If backuppath is set as well, 4 backups will happen</source>
+        <translation>Specificeer aangepast back-up pad om een kopie van elke automatische zDEV back-up toe te voegen. Indien ingesteld als dir zal elke back-up een bestand genereren met een tijdstempel. Indien ingesteld als file zal elke back-up herschreven worden naar dat bestand. Indien backuppath ook is ingesteld zullen 4 back-ups gedaan worden.</translation>
     </message>
     <message>
         <source>Specify custom backup path to add a copy of any wallet backup. If set as dir, every backup generates a timestamped file. If set as file, will rewrite to that file every backup.</source>
@@ -5924,8 +5924,8 @@ Wees alsjeblieft geduldig...</translation>
         <translation>Synchroniseren sporks...</translation>
     </message>
     <message>
-        <source>Syncing zFLS wallet...</source>
-        <translation>Synchroniseren zFLS portemonnee...</translation>
+        <source>Syncing zDEV wallet...</source>
+        <translation>Synchroniseren zDEV portemonnee...</translation>
     </message>
     <message>
         <source>The coin spend has been used</source>
@@ -6036,8 +6036,8 @@ Wees alsjeblieft geduldig...</translation>
         <translation>Gebruikersnaam voor JSON-RPC verbindingen</translation>
     </message>
     <message>
-        <source>Value is below the smallest available denomination (= 1) of zFLS</source>
-        <translation>Waarde is minder dan de kleinst beschikbare denominatie (=1) van zFLS</translation>
+        <source>Value is below the smallest available denomination (= 1) of zDEV</source>
+        <translation>Waarde is minder dan de kleinst beschikbare denominatie (=1) van zDEV</translation>
     </message>
     <message>
         <source>Verifying blocks...</source>

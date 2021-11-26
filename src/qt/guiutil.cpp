@@ -130,9 +130,9 @@ CAmount parseValue(const QString& text, int displayUnit, bool* valid_out)
     return valid ? val : 0;
 }
 
-QString formatBalance(CAmount amount, int nDisplayUnit, bool iszFLS)
+QString formatBalance(CAmount amount, int nDisplayUnit, bool iszDEV)
 {
-    return (amount == 0) ? ("0.00 " + BitcoinUnits::name(nDisplayUnit, iszFLS)) : BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, amount, false, BitcoinUnits::separatorAlways, true, iszFLS);
+    return (amount == 0) ? ("0.00 " + BitcoinUnits::name(nDisplayUnit, iszDEV)) : BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, amount, false, BitcoinUnits::separatorAlways, true, iszDEV);
 }
 
 void setupAddressWidget(QValidatedLineEdit* widget, QWidget* parent)

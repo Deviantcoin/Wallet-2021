@@ -131,8 +131,8 @@
         </spacer>
        </item>
        <item>
-        <widget class="QWidget" name="verticalzFLSOptionsWidget" native="true">
-         <layout class="QVBoxLayout" name="verticalzFLSOptionsLayout">
+        <widget class="QWidget" name="verticalzDEVOptionsWidget" native="true">
+         <layout class="QVBoxLayout" name="verticalzDEVOptionsLayout">
           <property name="leftMargin">
            <number>0</number>
           </property>
@@ -150,7 +150,7 @@
             <item>
              <widget class="QCheckBox" name="checkBoxZeromintEnable">
               <property name="toolTip">
-               <string>Enable automatic minting of DEV units to zFLS</string>
+               <string>Enable automatic minting of DEV units to zDEV</string>
               </property>
               <property name="layoutDirection">
                <enum>Qt::LeftToRight</enum>
@@ -163,7 +163,7 @@
             <item>
              <widget class="QCheckBox" name="checkBoxZeromintAddresses">
               <property name="toolTip">
-               <string>Enable automatic zFLS minting from specific addresses</string>
+               <string>Enable automatic zDEV minting from specific addresses</string>
               </property>
               <property name="layoutDirection">
                <enum>Qt::LeftToRight</enum>
@@ -180,7 +180,7 @@
             <item>
              <widget class="QLabel" name="percentage_label">
               <property name="toolTip">
-               <string>Percentage of incoming DEV which get automatically converted to zFLS via Zerocoin Protocol (min: 10%)</string>
+               <string>Percentage of incoming DEV which get automatically converted to zDEV via Zerocoin Protocol (min: 10%)</string>
               </property>
               <property name="text">
                <string>Percentage of autominted zDEV</string>

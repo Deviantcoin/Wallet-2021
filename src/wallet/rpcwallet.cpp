@@ -377,7 +377,7 @@ UniValue getnewstakingaddress(const UniValue& params, bool fHelp)
     if (fHelp || params.size() > 1)
         throw std::runtime_error(
             "getnewstakingaddress ( \"account\" )\n"
-            "\nReturns a new FLScold staking address for receiving delegated cold stakes.\n"
+            "\nReturns a new DEVcold staking address for receiving delegated cold stakes.\n"
 
             "\nArguments:\n"
             "1. \"account\"        (string, optional) DEPRECATED. The account name for the address to be linked to. if not provided, the default account \"\" is used. It can also be set to the empty string \"\" to represent the default account. The account does not need to exist, it will be created if there is no account by the given name.\n"
@@ -414,7 +414,7 @@ UniValue delegatoradd(const UniValue& params, bool fHelp)
 
     CBitcoinAddress address(params[0].get_str());
     if (!address.IsValid() || address.IsStakingAddress())
-        throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid FLSaddress");
+        throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid DEVaddress");
 
     const std::string strLabel = (params.size() > 1 ? params[1].get_str() : "");
 
@@ -449,7 +449,7 @@ UniValue delegatorremove(const UniValue& params, bool fHelp)
 
     CKeyID keyID;
     if (!address.GetKeyID(keyID))
-        throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Unable to get KeyID from FLSaddress");
+        throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Unable to get KeyID from DEVaddress");
 
     if (!pwalletMain->HasAddressBook(keyID))
         throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Unable to get DEV address from addressBook");
@@ -502,7 +502,7 @@ UniValue listdelegators(const UniValue& params, bool fHelp)
             "[\n"
             "   {\n"
             "   \"label\": \"yyy\",    (string) account label\n"
-            "   \"address\": \"xxx\",  (string) FLSaddress string\n"
+            "   \"address\": \"xxx\",  (string) DEVaddress string\n"
             "   }\n"
             "  ...\n"
             "]\n"
@@ -528,7 +528,7 @@ UniValue liststakingaddresses(const UniValue& params, bool fHelp)
             "[\n"
             "   {\n"
             "   \"label\": \"yyy\",  (string) account label\n"
-            "   \"address\": \"xxx\",  (string) FLSaddress string\n"
+            "   \"address\": \"xxx\",  (string) DEVaddress string\n"
             "   }\n"
             "  ...\n"
             "]\n"
@@ -840,7 +840,7 @@ UniValue CreateColdStakeDelegation(const UniValue& params, CWalletTx& wtxNew, CR
     CBitcoinAddress stakeAddr(params[0].get_str());
     CKeyID stakeKey;
     if (!stakeAddr.IsValid() || !stakeAddr.IsStakingAddress())
-        throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid FLSstaking address");
+        throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid DEVstaking address");
     if (!stakeAddr.GetKeyID(stakeKey))
         throw JSONRPCError(RPC_WALLET_ERROR, "Unable to get stake pubkey hash from stakingaddress");
 
@@ -870,7 +870,7 @@ UniValue CreateColdStakeDelegation(const UniValue& params, CWalletTx& wtxNew, CR
         // Address provided
         ownerAddr.SetString(params[2].get_str());
         if (!ownerAddr.IsValid() || ownerAddr.IsStakingAddress())
-            throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid FLSspending address");
+            throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid DEVspending address");
         if (!ownerAddr.GetKeyID(ownerKey))
             throw JSONRPCError(RPC_WALLET_ERROR, "Unable to get spend pubkey hash from owneraddress");
         // Check that the owner address belongs to this wallet, or fForceExternalAddr is true
@@ -1054,7 +1054,7 @@ UniValue sendtoaddressix(const UniValue& params, bool fHelp)
 
     CBitcoinAddress address(params[0].get_str());
     if (!address.IsValid() || address.IsStakingAddress())
-        throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid FLSaddress");
+        throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid DEVaddress");
 
     // Amount
     CAmount nAmount = AmountFromValue(params[1]);
@@ -1694,7 +1694,7 @@ UniValue addmultisigaddress(const UniValue& params, bool fHelp)
         throw std::runtime_error(
             "addmultisigaddress nrequired [\"key\",...] ( \"account\" )\n"
             "\nAdd a nrequired-to-sign multisignature address to the wallet.\n"
-            "Each key is a FLSaddress or hex-encoded public key.\n"
+            "Each key is a DEVaddress or hex-encoded public key.\n"
             "If 'account' is specified (DEPRECATED), assign address to that account.\n"
 
             "\nArguments:\n"
@@ -2558,7 +2558,7 @@ UniValue walletpassphrase(const UniValue& params, bool fHelp)
         throw std::runtime_error(
             "walletpassphrase \"passphrase\" timeout ( stakingonly )\n"
             "\nStores the wallet decryption key in memory for 'timeout' seconds.\n"
-            "This is needed prior to performing transactions related to private keys such as sending FLSs\n"
+            "This is needed prior to performing transactions related to private keys such as sending DEVs\n"
 
             "\nArguments:\n"
             "1. \"passphrase\"     (string, required) The wallet passphrase\n"
@@ -2723,7 +2723,7 @@ UniValue encryptwallet(const UniValue& params, bool fHelp)
             "\nExamples:\n"
             "\nEncrypt you wallet\n" +
             HelpExampleCli("encryptwallet", "\"my pass phrase\"") +
-            "\nNow set the passphrase to use the wallet, such as for signing or sending FLSs\n" +
+            "\nNow set the passphrase to use the wallet, such as for signing or sending DEVs\n" +
             HelpExampleCli("walletpassphrase", "\"my pass phrase\"") +
             "\nNow we can so something like sign\n" +
             HelpExampleCli("signmessage", "\"devaddress\" \"test message\"") +
@@ -2767,7 +2767,7 @@ UniValue lockunspent(const UniValue& params, bool fHelp)
             "lockunspent unlock [{\"txid\":\"txid\",\"vout\":n},...]\n"
             "\nUpdates list of temporarily unspendable outputs.\n"
             "Temporarily lock (unlock=false) or unlock (unlock=true) specified transaction outputs.\n"
-            "A locked transaction output will not be chosen by automatic coin selection, when spending FLSs.\n"
+            "A locked transaction output will not be chosen by automatic coin selection, when spending DEVs.\n"
             "Locks are stored in memory only. Nodes start with zero locked outputs, and the locked output list\n"
             "is always cleared (by virtue of process exit) when a node stops or fails.\n"
             "Also see the listunspent call\n"
@@ -3359,11 +3359,11 @@ UniValue getzerocoinbalance(const UniValue& params, bool fHelp)
     if (fHelp || params.size() != 0)
         throw std::runtime_error(
             "getzerocoinbalance\n"
-            "\nReturn the wallet's total zFLS balance.\n" +
+            "\nReturn the wallet's total zDEV balance.\n" +
             HelpRequiringPassphrase() + "\n"
 
             "\nResult:\n"
-            "amount         (numeric) Total zFLS balance.\n"
+            "amount         (numeric) Total zDEV balance.\n"
 
             "\nExamples:\n" +
             HelpExampleCli("getzerocoinbalance", "") + HelpExampleRpc("getzerocoinbalance", ""));
@@ -3387,7 +3387,7 @@ UniValue listmintedzerocoins(const UniValue& params, bool fHelp)
     if (fHelp || params.size() > 2)
         throw std::runtime_error(
             "listmintedzerocoins (fVerbose) (fMatureOnly)\n"
-            "\nList all zFLS mints in the wallet.\n" +
+            "\nList all zDEV mints in the wallet.\n" +
             HelpRequiringPassphrase() + "\n"
 
             "\nArguments:\n"
@@ -3406,7 +3406,7 @@ UniValue listmintedzerocoins(const UniValue& params, bool fHelp)
             "  {\n"
             "    \"serial hash\": \"xxx\",   (string) Mint serial hash in hex format.\n"
             "    \"version\": n,   (numeric) Zerocoin version number.\n"
-            "    \"zFLS ID\": \"xxx\",   (string) Pubcoin in hex format.\n"
+            "    \"zDEV ID\": \"xxx\",   (string) Pubcoin in hex format.\n"
             "    \"denomination\": n,   (numeric) Coin denomination.\n"
             "    \"mint height\": n     (numeric) Height of the block containing this mint.\n"
             "    \"confirmations\": n   (numeric) Number of confirmations.\n"
@@ -3439,7 +3439,7 @@ UniValue listmintedzerocoins(const UniValue& params, bool fHelp)
             UniValue objMint(UniValue::VOBJ);
             objMint.push_back(Pair("serial hash", m.hashSerial.GetHex()));  // Serial hash
             objMint.push_back(Pair("version", m.nVersion));                 // Zerocoin version
-            objMint.push_back(Pair("zFLS ID", m.hashPubcoin.GetHex()));     // PubCoin
+            objMint.push_back(Pair("zDEV ID", m.hashPubcoin.GetHex()));     // PubCoin
             int denom = libzerocoin::ZerocoinDenominationToInt(m.denom);
             objMint.push_back(Pair("denomination", denom));                 // Denomination
             objMint.push_back(Pair("mint height", m.nHeight));              // Mint Height
@@ -3516,7 +3516,7 @@ UniValue listspentzerocoins(const UniValue& params, bool fHelp)
     if (fHelp || params.size() != 0)
         throw std::runtime_error(
             "listspentzerocoins\n"
-            "\nList all the spent zFLS mints in the wallet.\n" +
+            "\nList all the spent zDEV mints in the wallet.\n" +
             HelpRequiringPassphrase() + "\n"
 
             "\nResult:\n"
@@ -3548,11 +3548,11 @@ UniValue mintzerocoin(const UniValue& params, bool fHelp)
     if (fHelp || params.size() < 1 || params.size() > 2)
         throw std::runtime_error(
             "mintzerocoin amount ( utxos )\n"
-            "\nMint the specified zFLS amount\n" +
+            "\nMint the specified zDEV amount\n" +
             HelpRequiringPassphrase() + "\n"
 
             "\nArguments:\n"
-            "1. amount      (numeric, required) Enter an amount of DEV to convert to zFLS\n"
+            "1. amount      (numeric, required) Enter an amount of DEV to convert to zDEV\n"
             "2. utxos       (string, optional) A json array of objects.\n"
             "                   Each object needs the txid (string) and vout (numeric)\n"
             "  [\n"
@@ -3589,7 +3589,7 @@ UniValue mintzerocoin(const UniValue& params, bool fHelp)
 
 
     if (!Params().IsRegTestNet())
-        throw JSONRPCError(RPC_WALLET_ERROR, "zFLS minting is DISABLED");
+        throw JSONRPCError(RPC_WALLET_ERROR, "zDEV minting is DISABLED");
 
     LOCK2(cs_main, pwalletMain->cs_wallet);
 
@@ -3603,7 +3603,7 @@ UniValue mintzerocoin(const UniValue& params, bool fHelp)
 
     int64_t nTime = GetTimeMillis();
     if(sporkManager.IsSporkActive(SPORK_16_ZEROCOIN_MAINTENANCE_MODE))
-        throw JSONRPCError(RPC_WALLET_ERROR, "zFLS is currently disabled due to maintenance.");
+        throw JSONRPCError(RPC_WALLET_ERROR, "zDEV is currently disabled due to maintenance.");
 
     EnsureWalletIsUnlocked(true);
 
@@ -3668,7 +3668,7 @@ UniValue spendzerocoin(const UniValue& params, bool fHelp)
     if (fHelp || params.size() > 2 || params.size() < 1)
         throw std::runtime_error(
             "spendzerocoin amount ( \"address\" )\n"
-            "\nSpend zFLS to a DEV address.\n" +
+            "\nSpend zDEV to a DEV address.\n" +
             HelpRequiringPassphrase() + "\n"
 
             "\nArguments:\n"
@@ -3706,13 +3706,13 @@ UniValue spendzerocoin(const UniValue& params, bool fHelp)
     LOCK2(cs_main, pwalletMain->cs_wallet);
 
     if(sporkManager.IsSporkActive(SPORK_16_ZEROCOIN_MAINTENANCE_MODE))
-        throw JSONRPCError(RPC_WALLET_ERROR, "zFLS is currently disabled due to maintenance.");
+        throw JSONRPCError(RPC_WALLET_ERROR, "zDEV is currently disabled due to maintenance.");
 
     CAmount nAmount = AmountFromValue(params[0]);        // Spending amount
     const std::string address_str = (params.size() > 1 ? params[1].get_str() : "");
 
     std::vector<CZerocoinMint> vMintsSelected;
-    return DozFLSSpend(nAmount, vMintsSelected, address_str);
+    return DozDEVSpend(nAmount, vMintsSelected, address_str);
 }
 
 
@@ -3721,7 +3721,7 @@ UniValue spendzerocoinmints(const UniValue& params, bool fHelp)
     if (fHelp || params.size() < 1 || params.size() > 2)
         throw std::runtime_error(
             "spendzerocoinmints mints_list ( \"address\" ) \n"
-            "\nSpend zFLS mints to a DEV address.\n" +
+            "\nSpend zDEV mints to a DEV address.\n" +
             HelpRequiringPassphrase() + "\n"
 
             "\nArguments:\n"
@@ -3758,7 +3758,7 @@ UniValue spendzerocoinmints(const UniValue& params, bool fHelp)
     LOCK2(cs_main, pwalletMain->cs_wallet);
 
     if(sporkManager.IsSporkActive(SPORK_16_ZEROCOIN_MAINTENANCE_MODE))
-        throw JSONRPCError(RPC_WALLET_ERROR, "zFLS is currently disabled due to maintenance.");
+        throw JSONRPCError(RPC_WALLET_ERROR, "zDEV is currently disabled due to maintenance.");
 
     UniValue arrMints = params[0].get_array();
     const std::string address_str = (params.size() > 1 ? params[1].get_str() : "");
@@ -3788,11 +3788,11 @@ UniValue spendzerocoinmints(const UniValue& params, bool fHelp)
         nAmount += mint.GetDenominationAsAmount();
     }
 
-    return DozFLSSpend(nAmount, vMintsSelected, address_str);
+    return DozDEVSpend(nAmount, vMintsSelected, address_str);
 }
 
 
-extern UniValue DozFLSSpend(const CAmount nAmount, std::vector<CZerocoinMint>& vMintsSelected, std::string address_str)
+extern UniValue DozDEVSpend(const CAmount nAmount, std::vector<CZerocoinMint>& vMintsSelected, std::string address_str)
 {
     int64_t nTimeStart = GetTimeMillis();
     CBitcoinAddress address = CBitcoinAddress(); // Optional sending address. Dummy initialization here.
@@ -3887,7 +3887,7 @@ UniValue resetmintzerocoin(const UniValue& params, bool fHelp)
     LOCK2(cs_main, pwalletMain->cs_wallet);
 
     CWalletDB walletdb(pwalletMain->strWalletFile);
-    CzFLSTracker* zdevTracker = pwalletMain->zdevTracker.get();
+    CzDEVTracker* zdevTracker = pwalletMain->zdevTracker.get();
     std::set<CMintMeta> setMints = zdevTracker->ListMints(false, false, true);
     std::vector<CMintMeta> vMintsToFind(setMints.begin(), setMints.end());
     std::vector<CMintMeta> vMintsMissing;
@@ -3940,7 +3940,7 @@ UniValue resetspentzerocoin(const UniValue& params, bool fHelp)
     LOCK2(cs_main, pwalletMain->cs_wallet);
 
     CWalletDB walletdb(pwalletMain->strWalletFile);
-    CzFLSTracker* zdevTracker = pwalletMain->zdevTracker.get();
+    CzDEVTracker* zdevTracker = pwalletMain->zdevTracker.get();
     std::set<CMintMeta> setMints = zdevTracker->ListMints(false, false, false);
     std::list<CZerocoinSpend> listSpends = walletdb.ListSpentCoins();
     std::list<CZerocoinSpend> listUnconfirmedSpends;
@@ -4045,12 +4045,12 @@ UniValue exportzerocoins(const UniValue& params, bool fHelp)
 
             "\nArguments:\n"
             "1. \"include_spent\"        (bool, required) Include mints that have already been spent\n"
-            "2. \"denomination\"         (integer, optional) Export a specific denomination of zFLS\n"
+            "2. \"denomination\"         (integer, optional) Export a specific denomination of zDEV\n"
 
             "\nResult:\n"
             "[                   (array of json object)\n"
             "  {\n"
-            "    \"id\": \"serial hash\",  (string) the mint's zFLS serial hash \n"
+            "    \"id\": \"serial hash\",  (string) the mint's zDEV serial hash \n"
             "    \"d\": n,         (numeric) the mint's zerocoin denomination \n"
             "    \"p\": \"pubcoin\", (string) The public coin\n"
             "    \"s\": \"serial\",  (string) The secret serial number\n"
@@ -4058,8 +4058,8 @@ UniValue exportzerocoins(const UniValue& params, bool fHelp)
             "    \"t\": \"txid\",    (string) The txid that the coin was minted in\n"
             "    \"h\": n,         (numeric) The height the tx was added to the blockchain\n"
             "    \"u\": used,      (boolean) Whether the mint has been spent\n"
-            "    \"v\": version,   (numeric) The version of the zFLS\n"
-            "    \"k\": \"privkey\"  (string) The zFLS private key (V2+ zFLS only)\n"
+            "    \"v\": version,   (numeric) The version of the zDEV\n"
+            "    \"k\": \"privkey\"  (string) The zDEV private key (V2+ zDEV only)\n"
             "  }\n"
             "  ,...\n"
             "]\n"
@@ -4078,7 +4078,7 @@ UniValue exportzerocoins(const UniValue& params, bool fHelp)
     if (params.size() == 2)
         denomination = libzerocoin::IntToZerocoinDenomination(params[1].get_int());
 
-    CzFLSTracker* zdevTracker = pwalletMain->zdevTracker.get();
+    CzDEVTracker* zdevTracker = pwalletMain->zdevTracker.get();
     std::set<CMintMeta> setMints = zdevTracker->ListMints(!fIncludeSpent, false, false);
 
     UniValue jsonList(UniValue::VARR);
@@ -4130,7 +4130,7 @@ UniValue importzerocoins(const UniValue& params, bool fHelp)
             "\nResult:\n"
             "{\n"
             "  \"added\": n,        (numeric) The quantity of zerocoin mints that were added\n"
-            "  \"value\": amount    (numeric) The total zFLS value of zerocoin mints that were added\n"
+            "  \"value\": amount    (numeric) The total zDEV value of zerocoin mints that were added\n"
             "}\n"
 
             "\nExamples\n" +
@@ -4210,7 +4210,7 @@ UniValue reconsiderzerocoins(const UniValue& params, bool fHelp)
     if(fHelp || !params.empty())
         throw std::runtime_error(
             "reconsiderzerocoins\n"
-            "\nCheck archived zFLS list to see if any mints were added to the blockchain.\n" +
+            "\nCheck archived zDEV list to see if any mints were added to the blockchain.\n" +
             HelpRequiringPassphrase() + "\n"
 
             "\nResult:\n"
@@ -4279,7 +4279,7 @@ UniValue setzdevseed(const UniValue& params, bool fHelp)
     uint256 seed;
     seed.SetHex(params[0].get_str());
 
-    CzFLSWallet* zwallet = pwalletMain->getZWallet();
+    CzDEVWallet* zwallet = pwalletMain->getZWallet();
     bool fSuccess = zwallet->SetMasterSeed(seed, true);
     if (fSuccess)
         zwallet->SyncWithChain();
@@ -4295,18 +4295,18 @@ UniValue getzdevseed(const UniValue& params, bool fHelp)
     if(fHelp || !params.empty())
         throw std::runtime_error(
             "getzdevseed\n"
-            "\nCheck archived zFLS list to see if any mints were added to the blockchain.\n" +
+            "\nCheck archived zDEV list to see if any mints were added to the blockchain.\n" +
             HelpRequiringPassphrase() + "\n"
 
             "\nResult\n"
-            "\"seed\" : s,  (string) The deterministic zFLS seed.\n"
+            "\"seed\" : s,  (string) The deterministic zDEV seed.\n"
 
             "\nExamples\n" +
             HelpExampleCli("getzdevseed", "") + HelpExampleRpc("getzdevseed", ""));
 
     EnsureWalletIsUnlocked();
 
-    CzFLSWallet* zwallet = pwalletMain->getZWallet();
+    CzDEVWallet* zwallet = pwalletMain->getZWallet();
     uint256 seed = zwallet->GetMasterSeed();
 
     UniValue ret(UniValue::VOBJ);
@@ -4320,12 +4320,12 @@ UniValue generatemintlist(const UniValue& params, bool fHelp)
     if(fHelp || params.size() != 2)
         throw std::runtime_error(
             "generatemintlist\n"
-            "\nShow mints that are derived from the deterministic zFLS seed.\n" +
+            "\nShow mints that are derived from the deterministic zDEV seed.\n" +
             HelpRequiringPassphrase() + "\n"
 
             "\nArguments\n"
-            "1. \"count\"  : n,  (numeric) Which sequential zFLS to start with.\n"
-            "2. \"range\"  : n,  (numeric) How many zFLS to generate.\n"
+            "1. \"count\"  : n,  (numeric) Which sequential zDEV to start with.\n"
+            "2. \"range\"  : n,  (numeric) How many zDEV to generate.\n"
 
             "\nResult:\n"
             "[\n"
@@ -4345,7 +4345,7 @@ UniValue generatemintlist(const UniValue& params, bool fHelp)
 
     int nCount = params[0].get_int();
     int nRange = params[1].get_int();
-    CzFLSWallet* zwallet = pwalletMain->zwalletMain;
+    CzDEVWallet* zwallet = pwalletMain->zwalletMain;
 
     UniValue arrRet(UniValue::VARR);
     for (int i = nCount; i < nCount + nRange; i++) {
@@ -4368,13 +4368,13 @@ UniValue dzdevstate(const UniValue& params, bool fHelp) {
     if (fHelp || params.size() != 0)
         throw std::runtime_error(
                 "dzdevstate\n"
-                        "\nThe current state of the mintpool of the deterministic zFLS wallet.\n" +
+                        "\nThe current state of the mintpool of the deterministic zDEV wallet.\n" +
                 HelpRequiringPassphrase() + "\n"
 
                         "\nExamples\n" +
                 HelpExampleCli("mintpoolstatus", "") + HelpExampleRpc("mintpoolstatus", ""));
 
-    CzFLSWallet* zwallet = pwalletMain->zwalletMain;
+    CzDEVWallet* zwallet = pwalletMain->zwalletMain;
     UniValue obj(UniValue::VOBJ);
     int nCount, nCountLastUsed;
     zwallet->GetState(nCount, nCountLastUsed);
@@ -4385,7 +4385,7 @@ UniValue dzdevstate(const UniValue& params, bool fHelp) {
 }
 
 
-void static SearchThread(CzFLSWallet* zwallet, int nCountStart, int nCountEnd)
+void static SearchThread(CzDEVWallet* zwallet, int nCountStart, int nCountEnd)
 {
     LogPrintf("%s: start=%d end=%d\n", __func__, nCountStart, nCountEnd);
     CWalletDB walletDB(pwalletMain->strWalletFile);
@@ -4402,7 +4402,7 @@ void static SearchThread(CzFLSWallet* zwallet, int nCountStart, int nCountEnd)
             CBigNum bnSerial;
             CBigNum bnRandomness;
             CKey key;
-            zwallet->SeedToZFLS(zerocoinSeed, bnValue, bnSerial, bnRandomness, key);
+            zwallet->SeedToZDEV(zerocoinSeed, bnValue, bnSerial, bnRandomness, key);
 
             uint256 hashPubcoin = GetPubCoinHash(bnValue);
             zwallet->AddToMintPool(std::make_pair(hashPubcoin, i), true);
@@ -4420,12 +4420,12 @@ UniValue searchdzdev(const UniValue& params, bool fHelp)
     if(fHelp || params.size() != 3)
         throw std::runtime_error(
             "searchdzdev\n"
-            "\nMake an extended search for deterministically generated zFLS that have not yet been recognized by the wallet.\n" +
+            "\nMake an extended search for deterministically generated zDEV that have not yet been recognized by the wallet.\n" +
             HelpRequiringPassphrase() + "\n"
 
             "\nArguments\n"
-            "1. \"count\"       (numeric) Which sequential zFLS to start with.\n"
-            "2. \"range\"       (numeric) How many zFLS to generate.\n"
+            "1. \"count\"       (numeric) Which sequential zDEV to start with.\n"
+            "2. \"range\"       (numeric) How many zDEV to generate.\n"
             "3. \"threads\"     (numeric) How many threads should this operation consume.\n"
 
             "\nExamples\n" +
@@ -4443,7 +4443,7 @@ UniValue searchdzdev(const UniValue& params, bool fHelp)
 
     int nThreads = params[2].get_int();
 
-    CzFLSWallet* zwallet = pwalletMain->zwalletMain;
+    CzDEVWallet* zwallet = pwalletMain->zwalletMain;
 
     boost::thread_group* dzdevThreads = new boost::thread_group();
     int nRangePerThread = nRange / nThreads;
@@ -4492,7 +4492,7 @@ UniValue spendrawzerocoin(const UniValue& params, bool fHelp)
     LOCK2(cs_main, pwalletMain->cs_wallet);
 
     if (sporkManager.IsSporkActive(SPORK_16_ZEROCOIN_MAINTENANCE_MODE))
-            throw JSONRPCError(RPC_WALLET_ERROR, "zFLS is currently disabled due to maintenance.");
+            throw JSONRPCError(RPC_WALLET_ERROR, "zDEV is currently disabled due to maintenance.");
 
     CBigNum serial;
     serial.SetHex(params[0].get_str());
@@ -4556,6 +4556,6 @@ UniValue spendrawzerocoin(const UniValue& params, bool fHelp)
     }
 
     std::vector<CZerocoinMint> vMintsSelected = {mint};
-    return DozFLSSpend(mint.GetDenominationAsAmount(), vMintsSelected, address_str);
+    return DozDEVSpend(mint.GetDenominationAsAmount(), vMintsSelected, address_str);
 }
 

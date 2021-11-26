@@ -8,7 +8,7 @@
 #include <QDialog>
 #include "amount.h"
 
-class FLSGUI;
+class DEVGUI;
 class WalletModel;
 
 namespace Ui {
@@ -20,7 +20,7 @@ class SendCustomFeeDialog : public QDialog
     Q_OBJECT
 
 public:
-    explicit SendCustomFeeDialog(FLSGUI *parent = nullptr);
+    explicit SendCustomFeeDialog(DEVGUI *parent = nullptr);
     ~SendCustomFeeDialog();
 
     void setWalletModel(WalletModel* model);

@@ -5,8 +5,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef FLS_SERIALIZE_H
-#define FLS_SERIALIZE_H
+#ifndef DEV_SERIALIZE_H
+#define DEV_SERIALIZE_H
 
 #include <algorithm>
 #include <assert.h>
@@ -955,4 +955,4 @@ public:
     }
 };
 
-#endif // FLS_SERIALIZE_H
+#endif // DEV_SERIALIZE_H

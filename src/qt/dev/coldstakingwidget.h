@@ -24,7 +24,7 @@
 #include <QSpacerItem>
 #include <atomic>
 
-class FLSGUI;
+class DEVGUI;
 class WalletModel;
 class CSDelegationHolder;
 
@@ -41,7 +41,7 @@ class ColdStakingWidget : public PWidget
     Q_OBJECT
 
 public:
-    explicit ColdStakingWidget(FLSGUI* parent);
+    explicit ColdStakingWidget(DEVGUI* parent);
     ~ColdStakingWidget();
 
     void loadWalletModel() override;

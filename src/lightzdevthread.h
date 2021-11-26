@@ -5,8 +5,8 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 //
 
-#ifndef FLS_LIGHTZFLSTHREAD_H
-#define FLS_LIGHTZFLSTHREAD_H
+#ifndef DEV_LIGHTZDEVTHREAD_H
+#define DEV_LIGHTZDEVTHREAD_H
 
 #include <atomic>
 #include "genwit.h"
@@ -53,7 +53,7 @@ public:
 
     void StartLightZdevThread(boost::thread_group& threadGroup) {
         LogPrintf("%s thread start\n", "deviant-light-thread");
-        threadIns = boost::thread(boost::bind(&CLightWorker::ThreadLightZFLSSimplified, this));
+        threadIns = boost::thread(boost::bind(&CLightWorker::ThreadLightZDEVSimplified, this));
     }
 
     void StopLightZdevThread() {
@@ -63,10 +63,10 @@ public:
 
 private:
 
-    void ThreadLightZFLSSimplified();
+    void ThreadLightZDEVSimplified();
 
     void rejectWork(CGenWit& wit, int blockHeight, uint32_t errorNumber);
 
 };
 
-#endif //FLS_LIGHTZFLSTHREAD_H
+#endif //DEV_LIGHTZDEVTHREAD_H

@@ -40,7 +40,7 @@
 
 //////////////////////////////////////////////////////////////////////////////
 //
-// FLSMiner
+// DEVMiner
 //
 
 //
@@ -250,7 +250,7 @@ CBlockTemplate* CreateNewBlock(const CScript& scriptPubKeyIn, CWallet* pwallet, 
 
                 int nConf = nHeight - coins->nHeight;
 
-                // zFLS spends can have very large priority, use non-overflowing safe functions
+                // zDEV spends can have very large priority, use non-overflowing safe functions
                 dPriority = double_safe_addition(dPriority, ((double)nValueIn * nConf));
 
             }
@@ -323,7 +323,7 @@ CBlockTemplate* CreateNewBlock(const CScript& scriptPubKeyIn, CWallet* pwallet, 
             if (!view.HaveInputs(tx))
                 continue;
 
-            // double check that there are no double spent zFLS spends in this block or tx
+            // double check that there are no double spent zDEV spends in this block or tx
             if (tx.HasZerocoinSpendInputs()) {
                 int nHeightTx = 0;
                 if (IsTransactionInChain(tx.GetHash(), nHeightTx))
@@ -338,7 +338,7 @@ CBlockTemplate* CreateNewBlock(const CScript& scriptPubKeyIn, CWallet* pwallet, 
                             libzerocoin::ZerocoinParams* params = consensus.Zerocoin_Params(false);
                             PublicCoinSpend publicSpend(params);
                             CValidationState state;
-                            if (!ZFLSModule::ParseZerocoinPublicSpend(txIn, tx, state, publicSpend)){
+                            if (!ZDEVModule::ParseZerocoinPublicSpend(txIn, tx, state, publicSpend)){
                                 throw std::runtime_error("Invalid public spend parse");
                             }
                             spend = &publicSpend;
@@ -359,7 +359,7 @@ CBlockTemplate* CreateNewBlock(const CScript& scriptPubKeyIn, CWallet* pwallet, 
                         vTxSerials.emplace_back(spend->getCoinSerialNumber());
                     }
                 }
-                //This zFLS serial has already been included in the block, do not add this tx.
+                //This zDEV serial has already been included in the block, do not add this tx.
                 if (fDoubleSerial)
                     continue;
             }
@@ -523,7 +523,7 @@ bool ProcessBlockFound(CBlock* pblock, CWallet& wallet, CReserveKey& reservekey)
     {
         WAIT_LOCK(g_best_block_mutex, lock);
         if (pblock->hashPrevBlock != g_best_block)
-            return error("FLSMiner : generated block is stale");
+            return error("DEVMiner : generated block is stale");
     }
 
     // Remove key from key pool
@@ -541,7 +541,7 @@ bool ProcessBlockFound(CBlock* pblock, CWallet& wallet, CReserveKey& reservekey)
     // Process this block the same as if we had received it from another node
     CValidationState state;
     if (!ProcessNewBlock(state, NULL, pblock)) {
-        return error("FLSMiner : ProcessNewBlock, block not accepted");
+        return error("DEVMiner : ProcessNewBlock, block not accepted");
     }
 
     for (CNode* node : vNodes) {
@@ -567,7 +567,7 @@ void CheckForCoins(CWallet* pwallet, const int minutes)
 
 void BitcoinMiner(CWallet* pwallet, bool fProofOfStake)
 {
-    LogPrintf("FLSMiner started\n");
+    LogPrintf("DEVMiner started\n");
     SetThreadPriority(THREAD_PRIORITY_LOWEST);
     util::ThreadRename("deviant-miner");
     const int64_t nSpacingMillis = Params().GetConsensus().nTargetSpacing * 1000;
@@ -640,7 +640,7 @@ void BitcoinMiner(CWallet* pwallet, bool fProofOfStake)
         // POW - miner main
         IncrementExtraNonce(pblock, pindexPrev, nExtraNonce);
 
-        LogPrintf("Running FLSMiner with %u transactions in block (%u bytes)\n", pblock->vtx.size(),
+        LogPrintf("Running DEVMiner with %u transactions in block (%u bytes)\n", pblock->vtx.size(),
             ::GetSerializeSize(*pblock, SER_NETWORK, PROTOCOL_VERSION));
 
         //
@@ -726,12 +726,12 @@ void static ThreadBitcoinMiner(void* parg)
         BitcoinMiner(pwallet, false);
         boost::this_thread::interruption_point();
     } catch (const std::exception& e) {
-        LogPrintf("FLSMiner exception");
+        LogPrintf("DEVMiner exception");
     } catch (...) {
-        LogPrintf("FLSMiner exception");
+        LogPrintf("DEVMiner exception");
     }
 
-    LogPrintf("FLSMiner exiting\n");
+    LogPrintf("DEVMiner exiting\n");
 }
 
 void GenerateBitcoins(bool fGenerate, CWallet* pwallet, int nThreads)

@@ -15,7 +15,7 @@
 
 class AddressViewDelegate;
 class TooltipMenu;
-class FLSGUI;
+class DEVGUI;
 class WalletModel;
 
 namespace Ui {
@@ -31,7 +31,7 @@ class AddressesWidget : public PWidget
     Q_OBJECT
 
 public:
-    explicit AddressesWidget(FLSGUI* parent);
+    explicit AddressesWidget(DEVGUI* parent);
     ~AddressesWidget();
 
     void loadWalletModel() override;

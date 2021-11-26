@@ -1,19 +1,19 @@
-FLSolutions Core version 3.0.5 is now available from:
+DEVolutions Core version 3.0.5 is now available from:
 
-  <https://github.com/FLSolutions-project/FLSolutions/releases>
+  <https://github.com/DEVolutions-project/DEVolutions/releases>
 
 This is a new minor-revision version release, including various bug fixes and
 performance improvements, as well as updated translations.
 
 Please report bugs using the issue tracker at github:
 
-  <https://github.com/FLSolutions-project/FLSolutions/issues>
+  <https://github.com/DEVolutions-project/DEVolutions/issues>
 
 
 Mandatory Update
 ==============
 
-FLSolutions Core v3.0.5 is a mandatory update for all users. This release contains various updates/fixes pertaining to the zFLS protocol, supply tracking, block transmission and relaying, as well as usability and quality-of-life updates to the GUI. Users are required to update before block `908000` which is when the accumulators will be refactored. Shortly after that block, zFLS transactions will be enabled. **When zFLS is enabled, autominting will also be enabled.** If you would like to disable automatic conversion of 10% of your DEV balance to zFLS, then you will need to add `enablezeromint=0` to your `FLSolutions.conf` file. For information about where to find your FLSolutions.conf you can visit this link from [FLSolutions Support](https://FLSolutions.freshdesk.com/support/solutions/articles/30000004664-where-are-my-wallet-dat-blockchain-and-configuration-conf-files-located-).
+DEVolutions Core v3.0.5 is a mandatory update for all users. This release contains various updates/fixes pertaining to the zDEV protocol, supply tracking, block transmission and relaying, as well as usability and quality-of-life updates to the GUI. Users are required to update before block `908000` which is when the accumulators will be refactored. Shortly after that block, zDEV transactions will be enabled. **When zDEV is enabled, autominting will also be enabled.** If you would like to disable automatic conversion of 10% of your DEV balance to zDEV, then you will need to add `enablezeromint=0` to your `DEVolutions.conf` file. For information about where to find your DEVolutions.conf you can visit this link from [DEVolutions Support](https://DEVolutions.freshdesk.com/support/solutions/articles/30000004664-where-are-my-wallet-dat-blockchain-and-configuration-conf-files-located-).
 
 Users will have a grace period to update their clients before versions prior to this release are no longer allowed to connect to this (and future) version(s).
 
@@ -27,7 +27,7 @@ If you are running an older version, shut it down. Wait until it has completely 
 Compatibility
 ==============
 
-FLSolutions Core is extensively tested on multiple operating systems using
+DEVolutions Core is extensively tested on multiple operating systems using
 the Linux kernel, macOS 10.8+, and Windows Vista and later.
 
 Microsoft ended support for Windows XP on [April 8th, 2014](https://www.microsoft.com/en-us/WindowsForBusiness/end-of-xp-support),
@@ -35,7 +35,7 @@ No attempt is made to prevent installing or running the software on Windows XP, 
 can still do so at your own risk but be aware that there are known instabilities and issues.
 Please do not report issues about Windows XP to the issue tracker.
 
-FLSolutions Core should also work on most other Unix-like systems but is not
+DEVolutions Core should also work on most other Unix-like systems but is not
 frequently tested on them.
 
 ### :exclamation::exclamation::exclamation: MacOS 10.13 High Sierra :exclamation::exclamation::exclamation:
@@ -48,23 +48,23 @@ Notable Changes
 
 Accumulator Code Refactor
 ---------------------
-The zFLS accumulator code has undergone a major refactor. Accumulators are one of the most essential components of the zerocoin protocol, and also one of the most computationally expensive parts of the protocol. This refactoring speeds up syncing and spending of zFLS by over 5x. The new code also allows for spending of zFLS with only 2 required mints occurring on the network after your mint has been added, whereas before 3 were required. This refactor allows for lighter resource load and a smoother user experience.
+The zDEV accumulator code has undergone a major refactor. Accumulators are one of the most essential components of the zerocoin protocol, and also one of the most computationally expensive parts of the protocol. This refactoring speeds up syncing and spending of zDEV by over 5x. The new code also allows for spending of zDEV with only 2 required mints occurring on the network after your mint has been added, whereas before 3 were required. This refactor allows for lighter resource load and a smoother user experience.
 
 libzerocoin Exploit Fix
 ---------------------
-zFLS relies on a 3rd party library called libzerocoin. All currencies that utilize the zerocoin protocol use libzerocoin, and many of those currencies have been exposed to an exploit which allowed for the creation of multiple zero-knowledge spending proofs for one single zerocoin mint. The FLSolutions developers were able properly identify the exploit, track down any fraudulent spending proofs, link the fraudulent spending proofs with their one valid proof that they were mutated from, and remove any mints from the accumulators that were derived from the invalid spends. 
+zDEV relies on a 3rd party library called libzerocoin. All currencies that utilize the zerocoin protocol use libzerocoin, and many of those currencies have been exposed to an exploit which allowed for the creation of multiple zero-knowledge spending proofs for one single zerocoin mint. The DEVolutions developers were able properly identify the exploit, track down any fraudulent spending proofs, link the fraudulent spending proofs with their one valid proof that they were mutated from, and remove any mints from the accumulators that were derived from the invalid spends. 
 
-zFLS Maintenance Mode Spork
+zDEV Maintenance Mode Spork
 ---------------------
-Handling the above noted libzerocoin exploit required the FLSolutions team to immediately release a patched wallet to as many users as possible which rejected bad spends and also disabled all zFLS transactions in general. The process of releasing a patched wallet in such a small time frame is frustrating and difficult for all members of the FLSolutions team and especially users of FLSolutions. The FLSolutions developers have added a new spork which allows for zFLS transacting to be turned on/off without having to release a patched wallet. This will allow much smoother operation if any problems occur in the future, and should also allow exchanges and 3rd party services to continue to operate even if zFLS is in maintenance mode.
+Handling the above noted libzerocoin exploit required the DEVolutions team to immediately release a patched wallet to as many users as possible which rejected bad spends and also disabled all zDEV transactions in general. The process of releasing a patched wallet in such a small time frame is frustrating and difficult for all members of the DEVolutions team and especially users of DEVolutions. The DEVolutions developers have added a new spork which allows for zDEV transacting to be turned on/off without having to release a patched wallet. This will allow much smoother operation if any problems occur in the future, and should also allow exchanges and 3rd party services to continue to operate even if zDEV is in maintenance mode.
 
 Money Supply Indexing
 ---------------------
-The exploit in libzerocoin threw off some of the wallet's internal money supply calculations for both the zFLS supply and the DEV supply. User's wallet's will automatically recalculate the supply on block `908001`. User's also have the ability to recalculate supply using the startup flag `reindexmoneysupply`.
+The exploit in libzerocoin threw off some of the wallet's internal money supply calculations for both the zDEV supply and the DEV supply. User's wallet's will automatically recalculate the supply on block `908001`. User's also have the ability to recalculate supply using the startup flag `reindexmoneysupply`.
 
-More Extensive Tracking of zFLS Supply Through RPC
+More Extensive Tracking of zDEV Supply Through RPC
 ---------------------
-More information has been added to the `getinfo` and `getblock` RPC calls, which now display the total zFLS supply as well as the balance for each zFLS accumulator.
+More information has been added to the `getinfo` and `getblock` RPC calls, which now display the total zDEV supply as well as the balance for each zDEV accumulator.
 
 Multisig GUI
 ---------------------
@@ -85,7 +85,7 @@ git merge commit are mentioned.
 
 ### Wallet
 - #308 `bd8a982` [Minting] Clear mempool after invalid block from miner (presstab)
-- #316 `ed192cf` [Minting] Better filtering of zFLS serials in miner. (presstab)
+- #316 `ed192cf` [Minting] Better filtering of zDEV serials in miner. (presstab)
 
 ### GUI
 - #278 `46f4960` [QT] Multisignature GUI (rejectedpromise)
@@ -108,4 +108,4 @@ Thanks to everyone who directly contributed to this release:
 - presstab
 - rejectedpromise
 
-As well as everyone that helped translating on [Transifex](https://www.transifex.com/projects/p/FLSolutions-project-translations/).
+As well as everyone that helped translating on [Transifex](https://www.transifex.com/projects/p/DEVolutions-project-translations/).

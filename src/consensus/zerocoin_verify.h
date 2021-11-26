@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef FLS_CONSENSUS_ZEROCOIN_VERIFY_H
-#define FLS_CONSENSUS_ZEROCOIN_VERIFY_H
+#ifndef DEV_CONSENSUS_ZEROCOIN_VERIFY_H
+#define DEV_CONSENSUS_ZEROCOIN_VERIFY_H
 
 #include "consensus/consensus.h"
 #include "main.h"
@@ -20,7 +20,7 @@ int CurrentPublicCoinSpendVersion();
 bool CheckPublicCoinSpendVersion(int version);
 bool ContextualCheckZerocoinSpend(const CTransaction& tx, const libzerocoin::CoinSpend* spend, int nHeight, const uint256& hashBlock);
 bool ContextualCheckZerocoinSpendNoSerialCheck(const CTransaction& tx, const libzerocoin::CoinSpend* spend, int nHeight, const uint256& hashBlock);
-bool RecalculateFLSSupply(int nHeightStart, bool fSkipzFLS = true);
+bool RecalculateDEVSupply(int nHeightStart, bool fSkipzDEV = true);
 CAmount GetInvalidUTXOValue();
 
-#endif //FLS_CONSENSUS_ZEROCOIN_VERIFY_H
+#endif //DEV_CONSENSUS_ZEROCOIN_VERIFY_H

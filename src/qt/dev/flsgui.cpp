@@ -37,9 +37,9 @@
 #define BASE_WINDOW_MIN_WIDTH 1100
 
 
-const QString FLSGUI::DEFAULT_WALLET = "~Default";
+const QString DEVGUI::DEFAULT_WALLET = "~Default";
 
-FLSGUI::FLSGUI(const NetworkStyle* networkStyle, QWidget* parent) : QMainWindow(parent),
+DEVGUI::DEVGUI(const NetworkStyle* networkStyle, QWidget* parent) : QMainWindow(parent),
                                                                     clientModel(0)
 {
     /* Open CSS when configured */
@@ -165,7 +165,7 @@ FLSGUI::FLSGUI(const NetworkStyle* networkStyle, QWidget* parent) : QMainWindow(
     subscribeToCoreSignals();
 }
 
-void FLSGUI::createActions(const NetworkStyle* networkStyle)
+void DEVGUI::createActions(const NetworkStyle* networkStyle)
 {
     toggleHideAction = new QAction(networkStyle->getAppIcon(), tr("&Show / Hide"), this);
     toggleHideAction->setStatusTip(tr("Show or hide the main Window"));
@@ -175,14 +175,14 @@ void FLSGUI::createActions(const NetworkStyle* networkStyle)
     quitAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_Q));
     quitAction->setMenuRole(QAction::QuitRole);
 
-    connect(toggleHideAction, &QAction::triggered, this, &FLSGUI::toggleHidden);
+    connect(toggleHideAction, &QAction::triggered, this, &DEVGUI::toggleHidden);
     connect(quitAction, &QAction::triggered, qApp, &QApplication::quit);
 }
 
 /**
  * Here add every event connection
  */
-void FLSGUI::connectActions()
+void DEVGUI::connectActions()
 {
     QShortcut* consoleShort = new QShortcut(this);
     consoleShort->setKey(QKeySequence(SHORT_KEY + Qt::Key_C));
@@ -191,22 +191,22 @@ void FLSGUI::connectActions()
         settingsWidget->showDebugConsole();
         goToSettings();
     });
-    connect(topBar, &TopBar::showHide, this, &FLSGUI::showHide);
-    connect(topBar, &TopBar::themeChanged, this, &FLSGUI::changeTheme);
+    connect(topBar, &TopBar::showHide, this, &DEVGUI::showHide);
+    connect(topBar, &TopBar::themeChanged, this, &DEVGUI::changeTheme);
     connect(topBar, &TopBar::onShowHideColdStakingChanged, navMenu, &NavMenuWidget::onShowHideColdStakingChanged);
-    connect(settingsWidget, &SettingsWidget::showHide, this, &FLSGUI::showHide);
-    connect(sendWidget, &SendWidget::showHide, this, &FLSGUI::showHide);
-    connect(receiveWidget, &ReceiveWidget::showHide, this, &FLSGUI::showHide);
-    connect(addressesWidget, &AddressesWidget::showHide, this, &FLSGUI::showHide);
-    connect(masterNodesWidget, &MasterNodesWidget::showHide, this, &FLSGUI::showHide);
-    connect(masterNodesWidget, &MasterNodesWidget::execDialog, this, &FLSGUI::execDialog);
-    connect(coldStakingWidget, &ColdStakingWidget::showHide, this, &FLSGUI::showHide);
-    connect(coldStakingWidget, &ColdStakingWidget::execDialog, this, &FLSGUI::execDialog);
-    connect(settingsWidget, &SettingsWidget::execDialog, this, &FLSGUI::execDialog);
+    connect(settingsWidget, &SettingsWidget::showHide, this, &DEVGUI::showHide);
+    connect(sendWidget, &SendWidget::showHide, this, &DEVGUI::showHide);
+    connect(receiveWidget, &ReceiveWidget::showHide, this, &DEVGUI::showHide);
+    connect(addressesWidget, &AddressesWidget::showHide, this, &DEVGUI::showHide);
+    connect(masterNodesWidget, &MasterNodesWidget::showHide, this, &DEVGUI::showHide);
+    connect(masterNodesWidget, &MasterNodesWidget::execDialog, this, &DEVGUI::execDialog);
+    connect(coldStakingWidget, &ColdStakingWidget::showHide, this, &DEVGUI::showHide);
+    connect(coldStakingWidget, &ColdStakingWidget::execDialog, this, &DEVGUI::execDialog);
+    connect(settingsWidget, &SettingsWidget::execDialog, this, &DEVGUI::execDialog);
 }
 
 
-void FLSGUI::createTrayIcon(const NetworkStyle* networkStyle)
+void DEVGUI::createTrayIcon(const NetworkStyle* networkStyle)
 {
 #ifndef Q_OS_MAC
     trayIcon = new QSystemTrayIcon(this);
@@ -219,7 +219,7 @@ void FLSGUI::createTrayIcon(const NetworkStyle* networkStyle)
 }
 
 //
-FLSGUI::~FLSGUI()
+DEVGUI::~DEVGUI()
 {
     // Unsubscribe from notifications from core
     unsubscribeFromCoreSignals();
@@ -234,14 +234,14 @@ FLSGUI::~FLSGUI()
 
 
 /** Get restart command-line parameters and request restart */
-void FLSGUI::handleRestart(QStringList args)
+void DEVGUI::handleRestart(QStringList args)
 {
     if (!ShutdownRequested())
         Q_EMIT requestedRestart(args);
 }
 
 
-void FLSGUI::setClientModel(ClientModel* clientModel)
+void DEVGUI::setClientModel(ClientModel* clientModel)
 {
     this->clientModel = clientModel;
     if (this->clientModel) {
@@ -255,7 +255,7 @@ void FLSGUI::setClientModel(ClientModel* clientModel)
         settingsWidget->setClientModel(clientModel);
 
         // Receive and report messages from client model
-        connect(clientModel, &ClientModel::message, this, &FLSGUI::message);
+        connect(clientModel, &ClientModel::message, this, &DEVGUI::message);
         connect(topBar, &TopBar::walletSynced, dashboard, &DashboardWidget::walletSynced);
         connect(topBar, &TopBar::walletSynced, coldStakingWidget, &ColdStakingWidget::walletSynced);
 
@@ -279,7 +279,7 @@ void FLSGUI::setClientModel(ClientModel* clientModel)
     }
 }
 
-void FLSGUI::createTrayIconMenu()
+void DEVGUI::createTrayIconMenu()
 {
 #ifndef Q_OS_MAC
     // return if trayIcon is unset (only on non-macOSes)
@@ -289,11 +289,11 @@ void FLSGUI::createTrayIconMenu()
     trayIconMenu = new QMenu(this);
     trayIcon->setContextMenu(trayIconMenu);
 
-    connect(trayIcon, &QSystemTrayIcon::activated, this, &FLSGUI::trayIconActivated);
+    connect(trayIcon, &QSystemTrayIcon::activated, this, &DEVGUI::trayIconActivated);
 #else
     // Note: On macOS, the Dock icon is used to provide the tray's functionality.
     MacDockIconHandler* dockIconHandler = MacDockIconHandler::instance();
-    connect(dockIconHandler, &MacDockIconHandler::dockIconClicked, this, &FLSGUI::macosDockIconActivated);
+    connect(dockIconHandler, &MacDockIconHandler::dockIconClicked, this, &DEVGUI::macosDockIconActivated);
 
     trayIconMenu = new QMenu(this);
     trayIconMenu->setAsDockMenu();
@@ -310,7 +310,7 @@ void FLSGUI::createTrayIconMenu()
 }
 
 #ifndef Q_OS_MAC
-void FLSGUI::trayIconActivated(QSystemTrayIcon::ActivationReason reason)
+void DEVGUI::trayIconActivated(QSystemTrayIcon::ActivationReason reason)
 {
     if (reason == QSystemTrayIcon::Trigger) {
         // Click on system tray icon triggers show/hide of the main window
@@ -318,14 +318,14 @@ void FLSGUI::trayIconActivated(QSystemTrayIcon::ActivationReason reason)
     }
 }
 #else
-void FLSGUI::macosDockIconActivated()
+void DEVGUI::macosDockIconActivated()
 {
     show();
     activateWindow();
 }
 #endif
 
-void FLSGUI::changeEvent(QEvent* e)
+void DEVGUI::changeEvent(QEvent* e)
 {
     QMainWindow::changeEvent(e);
 #ifndef Q_OS_MAC // Ignored on Mac
@@ -333,7 +333,7 @@ void FLSGUI::changeEvent(QEvent* e)
         if (clientModel && clientModel->getOptionsModel() && clientModel->getOptionsModel()->getMinimizeToTray()) {
             QWindowStateChangeEvent* wsevt = static_cast<QWindowStateChangeEvent*>(e);
             if (!(wsevt->oldState() & Qt::WindowMinimized) && isMinimized()) {
-                QTimer::singleShot(0, this, &FLSGUI::hide);
+                QTimer::singleShot(0, this, &DEVGUI::hide);
                 e->ignore();
             }
         }
@@ -341,7 +341,7 @@ void FLSGUI::changeEvent(QEvent* e)
 #endif
 }
 
-void FLSGUI::closeEvent(QCloseEvent* event)
+void DEVGUI::closeEvent(QCloseEvent* event)
 {
 #ifndef Q_OS_MAC // Ignored on Mac
     if (clientModel && clientModel->getOptionsModel()) {
@@ -354,7 +354,7 @@ void FLSGUI::closeEvent(QCloseEvent* event)
 }
 
 
-void FLSGUI::messageInfo(const QString& text)
+void DEVGUI::messageInfo(const QString& text)
 {
     if (!this->snackBar) this->snackBar = new SnackBar(this, this);
     this->snackBar->setText(text);
@@ -363,7 +363,7 @@ void FLSGUI::messageInfo(const QString& text)
 }
 
 
-void FLSGUI::message(const QString& title, const QString& message, unsigned int style, bool* ret)
+void DEVGUI::message(const QString& title, const QString& message, unsigned int style, bool* ret)
 {
     QString strTitle = tr("Deviant Core"); // default title
     // Default to information icon
@@ -421,7 +421,7 @@ void FLSGUI::message(const QString& title, const QString& message, unsigned int 
     }
 }
 
-bool FLSGUI::openStandardDialog(QString title, QString body, QString okBtn, QString cancelBtn)
+bool DEVGUI::openStandardDialog(QString title, QString body, QString okBtn, QString cancelBtn)
 {
     DefaultDialog* dialog;
     if (isVisible()) {
@@ -444,7 +444,7 @@ bool FLSGUI::openStandardDialog(QString title, QString body, QString okBtn, QStr
 }
 
 
-void FLSGUI::showNormalIfMinimized(bool fToggleHidden)
+void DEVGUI::showNormalIfMinimized(bool fToggleHidden)
 {
     if (!clientModel)
         return;
@@ -455,12 +455,12 @@ void FLSGUI::showNormalIfMinimized(bool fToggleHidden)
     }
 }
 
-void FLSGUI::toggleHidden()
+void DEVGUI::toggleHidden()
 {
     showNormalIfMinimized(true);
 }
 
-void FLSGUI::detectShutdown()
+void DEVGUI::detectShutdown()
 {
     if (ShutdownRequested()) {
         if (rpcConsole)
@@ -469,7 +469,7 @@ void FLSGUI::detectShutdown()
     }
 }
 
-void FLSGUI::goToDashboard()
+void DEVGUI::goToDashboard()
 {
     if (stackedContainer->currentWidget() != dashboard) {
         stackedContainer->setCurrentWidget(dashboard);
@@ -477,59 +477,59 @@ void FLSGUI::goToDashboard()
     }
 }
 
-void FLSGUI::goToSend()
+void DEVGUI::goToSend()
 {
     showTop(sendWidget);
 }
 
-void FLSGUI::goToAddresses()
+void DEVGUI::goToAddresses()
 {
     showTop(addressesWidget);
 }
 
-void FLSGUI::goToPrivacy()
+void DEVGUI::goToPrivacy()
 {
     if (privacyWidget) showTop(privacyWidget);
 }
 
-void FLSGUI::goToMasterNodes()
+void DEVGUI::goToMasterNodes()
 {
     showTop(masterNodesWidget);
 }
 
-void FLSGUI::goToColdStaking()
+void DEVGUI::goToColdStaking()
 {
     showTop(coldStakingWidget);
 }
 
-void FLSGUI::goToGovernance()
+void DEVGUI::goToGovernance()
 {
     showTop(governancePage);
 }
 
-void FLSGUI::goToSettings()
+void DEVGUI::goToSettings()
 {
     showTop(settingsWidget);
 }
 
-void FLSGUI::goToSettingsInfo()
+void DEVGUI::goToSettingsInfo()
 {
     navMenu->selectSettings();
     settingsWidget->showInformation();
     goToSettings();
 }
 
-void FLSGUI::goToReceive()
+void DEVGUI::goToReceive()
 {
     showTop(receiveWidget);
 }
 
-void FLSGUI::openNetworkMonitor()
+void DEVGUI::openNetworkMonitor()
 {
     settingsWidget->openNetworkMonitor();
 }
 
-void FLSGUI::showTop(QWidget* view)
+void DEVGUI::showTop(QWidget* view)
 {
     if (stackedContainer->currentWidget() != view) {
         stackedContainer->setCurrentWidget(view);
@@ -537,7 +537,7 @@ void FLSGUI::showTop(QWidget* view)
     }
 }
 
-void FLSGUI::changeTheme(bool isLightTheme)
+void DEVGUI::changeTheme(bool isLightTheme)
 {
     QString css = GUIUtil::loadStyleSheet();
     this->setStyleSheet(css);
@@ -549,7 +549,7 @@ void FLSGUI::changeTheme(bool isLightTheme)
     updateStyle(this);
 }
 
-void FLSGUI::resizeEvent(QResizeEvent* event)
+void DEVGUI::resizeEvent(QResizeEvent* event)
 {
     // Parent..
     QMainWindow::resizeEvent(event);
@@ -559,12 +559,12 @@ void FLSGUI::resizeEvent(QResizeEvent* event)
     Q_EMIT windowResizeEvent(event);
 }
 
-bool FLSGUI::execDialog(QDialog* dialog, int xDiv, int yDiv)
+bool DEVGUI::execDialog(QDialog* dialog, int xDiv, int yDiv)
 {
     return openDialogWithOpaqueBackgroundY(dialog, this);
 }
 
-void FLSGUI::showHide(bool show)
+void DEVGUI::showHide(bool show)
 {
     if (!op) op = new QLabel(this);
     if (!show) {
@@ -592,12 +592,12 @@ void FLSGUI::showHide(bool show)
     }
 }
 
-int FLSGUI::getNavWidth()
+int DEVGUI::getNavWidth()
 {
     return this->navMenu->width();
 }
 
-void FLSGUI::openFAQ(int section)
+void DEVGUI::openFAQ(int section)
 {
     showHide(true);
     SettingsFaqWidget* dialog = new SettingsFaqWidget(this);
@@ -608,7 +608,7 @@ void FLSGUI::openFAQ(int section)
 
 
 #ifdef ENABLE_WALLET
-bool FLSGUI::addWallet(const QString& name, WalletModel* walletModel)
+bool DEVGUI::addWallet(const QString& name, WalletModel* walletModel)
 {
     // Single wallet supported for now..
     if (!stackedContainer || !clientModel || !walletModel)
@@ -632,37 +632,37 @@ bool FLSGUI::addWallet(const QString& name, WalletModel* walletModel)
         stackedContainer->addWidget(privacyWidget);
 
         privacyWidget->setWalletModel(walletModel);
-        connect(privacyWidget, &PrivacyWidget::message, this, &FLSGUI::message);
-        connect(privacyWidget, &PrivacyWidget::showHide, this, &FLSGUI::showHide);
+        connect(privacyWidget, &PrivacyWidget::message, this, &DEVGUI::message);
+        connect(privacyWidget, &PrivacyWidget::showHide, this, &DEVGUI::showHide);
     }
 
     // Connect actions..
-    connect(masterNodesWidget, &MasterNodesWidget::message, this, &FLSGUI::message);
-    connect(coldStakingWidget, &ColdStakingWidget::message, this, &FLSGUI::message);
-    connect(topBar, &TopBar::message, this, &FLSGUI::message);
-    connect(sendWidget, &SendWidget::message, this, &FLSGUI::message);
-    connect(receiveWidget, &ReceiveWidget::message, this, &FLSGUI::message);
-    connect(addressesWidget, &AddressesWidget::message, this, &FLSGUI::message);
-    connect(settingsWidget, &SettingsWidget::message, this, &FLSGUI::message);
+    connect(masterNodesWidget, &MasterNodesWidget::message, this, &DEVGUI::message);
+    connect(coldStakingWidget, &ColdStakingWidget::message, this, &DEVGUI::message);
+    connect(topBar, &TopBar::message, this, &DEVGUI::message);
+    connect(sendWidget, &SendWidget::message, this, &DEVGUI::message);
+    connect(receiveWidget, &ReceiveWidget::message, this, &DEVGUI::message);
+    connect(addressesWidget, &AddressesWidget::message, this, &DEVGUI::message);
+    connect(settingsWidget, &SettingsWidget::message, this, &DEVGUI::message);
 
     // Pass through transaction notifications
-    connect(dashboard, &DashboardWidget::incomingTransaction, this, &FLSGUI::incomingTransaction);
+    connect(dashboard, &DashboardWidget::incomingTransaction, this, &DEVGUI::incomingTransaction);
 
     return true;
 }
 
-bool FLSGUI::setCurrentWallet(const QString& name)
+bool DEVGUI::setCurrentWallet(const QString& name)
 {
     // Single wallet supported.
     return true;
 }
 
-void FLSGUI::removeAllWallets()
+void DEVGUI::removeAllWallets()
 {
     // Single wallet supported.
 }
 
-void FLSGUI::incomingTransaction(const QString& date, int unit, const CAmount& amount, const QString& type, const QString& address)
+void DEVGUI::incomingTransaction(const QString& date, int unit, const CAmount& amount, const QString& type, const QString& address)
 {
     // Only send notifications when not disabled
     if (!bdisableSystemnotifications) {
@@ -685,7 +685,7 @@ void FLSGUI::incomingTransaction(const QString& date, int unit, const CAmount& a
 #endif // ENABLE_WALLET
 
 
-static bool ThreadSafeMessageBox(FLSGUI* gui, const std::string& message, const std::string& caption, unsigned int style)
+static bool ThreadSafeMessageBox(DEVGUI* gui, const std::string& message, const std::string& caption, unsigned int style)
 {
     bool modal = (style & CClientUIInterface::MODAL);
     // The SECURE flag has no effect in the Qt GUI.
@@ -704,13 +704,13 @@ static bool ThreadSafeMessageBox(FLSGUI* gui, const std::string& message, const 
 }
 
 
-void FLSGUI::subscribeToCoreSignals()
+void DEVGUI::subscribeToCoreSignals()
 {
     // Connect signals to client
     uiInterface.ThreadSafeMessageBox.connect(boost::bind(ThreadSafeMessageBox, this, _1, _2, _3));
 }
 
-void FLSGUI::unsubscribeFromCoreSignals()
+void DEVGUI::unsubscribeFromCoreSignals()
 {
     // Disconnect signals from client
     uiInterface.ThreadSafeMessageBox.disconnect(boost::bind(ThreadSafeMessageBox, this, _1, _2, _3));

@@ -20,18 +20,18 @@ uint32_t ParseAccChecksum(uint256 nCheckpoint, const libzerocoin::CoinDenominati
     return nCheckpoint.Get32();
 }
 
-bool CLegacyzFLSStake::InitFromTxIn(const CTxIn& txin)
+bool CLegacyzDEVStake::InitFromTxIn(const CTxIn& txin)
 {
     // Construct the stakeinput object
     if (!txin.IsZerocoinSpend())
-        return error("%s: unable to initialize CLegacyzFLSStake from non zc-spend");
+        return error("%s: unable to initialize CLegacyzDEVStake from non zc-spend");
 
     // Check spend type
     libzerocoin::CoinSpend spend = TxInToZerocoinSpend(txin);
     if (spend.getSpendType() != libzerocoin::SpendType::STAKE)
         return error("%s : spend is using the wrong SpendType (%d)", __func__, (int)spend.getSpendType());
 
-    *this = CLegacyzFLSStake(spend);
+    *this = CLegacyzDEVStake(spend);
 
     // Find the pindex with the accumulator checksum
     if (!GetIndexFrom())
@@ -41,7 +41,7 @@ bool CLegacyzFLSStake::InitFromTxIn(const CTxIn& txin)
     return true;
 }
 
-CLegacyzFLSStake::CLegacyzFLSStake(const libzerocoin::CoinSpend& spend)
+CLegacyzDEVStake::CLegacyzDEVStake(const libzerocoin::CoinSpend& spend)
 {
     this->nChecksum = spend.getAccumulatorChecksum();
     this->denom = spend.getDenomination();
@@ -49,7 +49,7 @@ CLegacyzFLSStake::CLegacyzFLSStake(const libzerocoin::CoinSpend& spend)
     this->hashSerial = Hash(nSerial.begin(), nSerial.end());
 }
 
-CBlockIndex* CLegacyzFLSStake::GetIndexFrom()
+CBlockIndex* CLegacyzDEVStake::GetIndexFrom()
 {
     // First look in the legacy database
     int nHeightChecksum = 0;
@@ -77,12 +77,12 @@ CBlockIndex* CLegacyzFLSStake::GetIndexFrom()
     return nullptr;
 }
 
-CAmount CLegacyzFLSStake::GetValue() const
+CAmount CLegacyzDEVStake::GetValue() const
 {
     return denom * COIN;
 }
 
-CDataStream CLegacyzFLSStake::GetUniqueness() const
+CDataStream CLegacyzDEVStake::GetUniqueness() const
 {
     CDataStream ss(SER_GETHASH, 0);
     ss << hashSerial;
@@ -90,11 +90,11 @@ CDataStream CLegacyzFLSStake::GetUniqueness() const
 }
 
 // Verify stake contextual checks
-bool CLegacyzFLSStake::ContextCheck(int nHeight, uint32_t nTime)
+bool CLegacyzDEVStake::ContextCheck(int nHeight, uint32_t nTime)
 {
     const Consensus::Params& consensus = Params().GetConsensus();
     if (nHeight < consensus.height_start_ZC_SerialsV2 || nHeight >= consensus.height_last_ZC_AccumCheckpoint)
-        return error("%s : zFLS stake block: height %d outside range", __func__, nHeight);
+        return error("%s : zDEV stake block: height %d outside range", __func__, nHeight);
 
     // The checkpoint needs to be from 200 blocks ago
     const int cpHeight = nHeight - 1 - consensus.ZC_MinStakeDepth;

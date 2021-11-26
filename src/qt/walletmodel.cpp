@@ -615,7 +615,7 @@ bool WalletModel::mintCoins(CAmount value, CCoinControl* coinControl, std::strin
 }
 
 
-bool WalletModel::createzFLSSpend(
+bool WalletModel::createzDEVSpend(
     CWalletTx& wtxNew,
     std::vector<CZerocoinMint>& vMintsSelected,
     CZerocoinSpendReceipt& receipt,
@@ -629,7 +629,7 @@ bool WalletModel::createzFLSSpend(
     }
 
     if (wallet->IsLocked()) {
-        receipt.SetStatus("Error: Wallet locked, unable to create transaction!", ZFLS_WALLET_LOCKED);
+        receipt.SetStatus("Error: Wallet locked, unable to create transaction!", ZDEV_WALLET_LOCKED);
         return false;
     }
 
@@ -652,7 +652,7 @@ bool WalletModel::createzFLSSpend(
     return CheckTransaction(wtxNew, true, true, state, true);
 }
 
-bool WalletModel::sendzFLS(
+bool WalletModel::sendzDEV(
     std::vector<CZerocoinMint>& vMintsSelected,
     CZerocoinSpendReceipt& receipt,
     std::list<std::pair<CBitcoinAddress*, CAmount> > outputs,
@@ -674,7 +674,7 @@ bool WalletModel::sendzFLS(
         changeAdd);
 }
 
-bool WalletModel::convertBackzFLS(
+bool WalletModel::convertBackzDEV(
     CAmount value,
     std::vector<CZerocoinMint>& vMintsSelected,
     CZerocoinSpendReceipt& receipt)
@@ -855,9 +855,9 @@ static void NotifyZerocoinChanged(WalletModel* walletmodel, CWallet* wallet, con
         Q_ARG(int, status));
 }
 
-static void NotifyzFLSReset(WalletModel* walletmodel)
+static void NotifyzDEVReset(WalletModel* walletmodel)
 {
-    qDebug() << "NotifyzFLSReset";
+    qDebug() << "NotifyzDEVReset";
     QMetaObject::invokeMethod(walletmodel, "checkBalanceChanged", Qt::QueuedConnection);
 }
 
@@ -895,7 +895,7 @@ void WalletModel::subscribeToCoreSignals()
     wallet->NotifyWatchonlyChanged.connect(boost::bind(NotifyWatchonlyChanged, this, _1));
     wallet->NotifyMultiSigChanged.connect(boost::bind(NotifyMultiSigChanged, this, _1));
     wallet->NotifyZerocoinChanged.connect(boost::bind(NotifyZerocoinChanged, this, _1, _2, _3, _4));
-    wallet->NotifyzFLSReset.connect(boost::bind(NotifyzFLSReset, this));
+    wallet->NotifyzDEVReset.connect(boost::bind(NotifyzDEVReset, this));
     wallet->NotifyWalletBacked.connect(boost::bind(NotifyWalletBacked, this, _1, _2));
 }
 
@@ -909,7 +909,7 @@ void WalletModel::unsubscribeFromCoreSignals()
     wallet->NotifyWatchonlyChanged.disconnect(boost::bind(NotifyWatchonlyChanged, this, _1));
     wallet->NotifyMultiSigChanged.disconnect(boost::bind(NotifyMultiSigChanged, this, _1));
     wallet->NotifyZerocoinChanged.disconnect(boost::bind(NotifyZerocoinChanged, this, _1, _2, _3, _4));
-    wallet->NotifyzFLSReset.disconnect(boost::bind(NotifyzFLSReset, this));
+    wallet->NotifyzDEVReset.disconnect(boost::bind(NotifyzDEVReset, this));
     wallet->NotifyWalletBacked.disconnect(boost::bind(NotifyWalletBacked, this, _1, _2));
 }
 
@@ -985,19 +985,19 @@ PairResult WalletModel::getNewStakingAddress(CBitcoinAddress& ret, std::string l
     return wallet->getNewStakingAddress(ret, label);
 }
 
-bool WalletModel::whitelistAddressFromColdStaking(const QString& addreFLStr)
+bool WalletModel::whitelistAddressFromColdStaking(const QString& addreDEVtr)
 {
-    return updateAddressBookPurpose(addreFLStr, AddressBook::AddressBookPurpose::DELEGATOR);
+    return updateAddressBookPurpose(addreDEVtr, AddressBook::AddressBookPurpose::DELEGATOR);
 }
 
-bool WalletModel::blacklistAddressFromColdStaking(const QString& addreFLStr)
+bool WalletModel::blacklistAddressFromColdStaking(const QString& addreDEVtr)
 {
-    return updateAddressBookPurpose(addreFLStr, AddressBook::AddressBookPurpose::DELEGABLE);
+    return updateAddressBookPurpose(addreDEVtr, AddressBook::AddressBookPurpose::DELEGABLE);
 }
 
-bool WalletModel::updateAddressBookPurpose(const QString& addreFLStr, const std::string& purpose)
+bool WalletModel::updateAddressBookPurpose(const QString& addreDEVtr, const std::string& purpose)
 {
-    CBitcoinAddress address(addreFLStr.toStdString());
+    CBitcoinAddress address(addreDEVtr.toStdString());
     if (address.IsStakingAddress())
         return error("Invalid DEV address, cold staking address");
     CKeyID keyID;
@@ -1147,9 +1147,9 @@ bool WalletModel::isMine(CBitcoinAddress address)
     return IsMine(*wallet, address.Get());
 }
 
-bool WalletModel::isMine(const QString& addreFLStr)
+bool WalletModel::isMine(const QString& addreDEVtr)
 {
-    CBitcoinAddress address(addreFLStr.toStdString());
+    CBitcoinAddress address(addreDEVtr.toStdString());
     return IsMine(*wallet, address.Get());
 }
 

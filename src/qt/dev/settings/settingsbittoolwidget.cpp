@@ -19,7 +19,7 @@
 #include <vector>
 
 
-SettingsBitToolWidget::SettingsBitToolWidget(FLSGUI* _window, QWidget* parent) : PWidget(_window, parent),
+SettingsBitToolWidget::SettingsBitToolWidget(DEVGUI* _window, QWidget* parent) : PWidget(_window, parent),
                                                                                  ui(new Ui::SettingsBitToolWidget)
 {
     ui->setupUi(this);
@@ -43,7 +43,7 @@ SettingsBitToolWidget::SettingsBitToolWidget(FLSGUI* _window, QWidget* parent) :
 
     // Subtitle
     ui->labelSubtitle1->setText("Encrypt your DEV addresses (key pair actually) using BIP38 encryption.\nUsing this mechanism you can share your keys without middle-man risk, only need to store your passphrase safely.");
-    setCFLSubtitleScreen(ui->labelSubtitle1);
+    setCDEVubtitleScreen(ui->labelSubtitle1);
 
     // Key
     ui->labelSubtitleKey->setText(tr("Encrypted key"));
@@ -214,13 +214,13 @@ void SettingsBitToolWidget::onClearAll()
 
 void SettingsBitToolWidget::onAddressesClicked()
 {
-    int addreFLSize = walletModel->getAddressTableModel()->sizeRecv();
-    if (addreFLSize == 0) {
+    int addreDEVize = walletModel->getAddressTableModel()->sizeRecv();
+    if (addreDEVize == 0) {
         inform(tr("No addresses available, you can go to the receive screen and add some there!"));
         return;
     }
 
-    int height = (addreFLSize <= 2) ? ui->addressIn_ENC->height() * (2 * (addreFLSize + 1)) : ui->addressIn_ENC->height() * 4;
+    int height = (addreDEVize <= 2) ? ui->addressIn_ENC->height() * (2 * (addreDEVize + 1)) : ui->addressIn_ENC->height() * 4;
     int width = ui->containerAddressEnc->width();
 
     if (!menuContacts) {

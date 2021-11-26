@@ -11,7 +11,7 @@
 #include "qt/dev/prunnable.h"
 #include "walletmodel.h"
 
-class FLSGUI;
+class DEVGUI;
 class ClientModel;
 class WalletModel;
 class WorkerTask;
@@ -30,13 +30,13 @@ class PWidget : public QWidget, public Runnable, public Translator
 {
     Q_OBJECT
 public:
-    explicit PWidget(FLSGUI* _window = nullptr, QWidget *parent = nullptr);
+    explicit PWidget(DEVGUI* _window = nullptr, QWidget *parent = nullptr);
     explicit PWidget(PWidget *parent = nullptr);
 
     void setClientModel(ClientModel* model);
     void setWalletModel(WalletModel* model);
 
-    FLSGUI* getWindow() { return this->window; }
+    DEVGUI* getWindow() { return this->window; }
 
     void run(int type) override;
     void onError(QString error, int type) override;
@@ -56,7 +56,7 @@ protected Q_SLOTS:
     void onChangeTheme(bool isLightTheme, QString &theme);
 
 protected:
-    FLSGUI* window = nullptr;
+    DEVGUI* window = nullptr;
     ClientModel* clientModel = nullptr;
     WalletModel* walletModel = nullptr;
 

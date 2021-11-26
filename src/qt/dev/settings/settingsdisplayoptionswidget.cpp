@@ -13,7 +13,7 @@
 #include "bitcoinunits.h"
 #include "qt/dev/qtutils.h"
 
-SettingsDisplayOptionsWidget::SettingsDisplayOptionsWidget(FLSGUI* _window, QWidget *parent) :
+SettingsDisplayOptionsWidget::SettingsDisplayOptionsWidget(DEVGUI* _window, QWidget *parent) :
     PWidget(_window,parent),
     ui(new Ui::SettingsDisplayOptionsWidget)
 {
@@ -31,7 +31,7 @@ SettingsDisplayOptionsWidget::SettingsDisplayOptionsWidget(FLSGUI* _window, QWid
 
     // Subtitle
     ui->labelSubtitle1->setText(tr("Customize the display view options"));
-    setCFLSubtitleScreen(ui->labelSubtitle1);
+    setCDEVubtitleScreen(ui->labelSubtitle1);
 
     ui->labelTitleLanguage->setText(tr("Language"));
     ui->labelTitleLanguage->setProperty("cssClass", "text-main-settings");

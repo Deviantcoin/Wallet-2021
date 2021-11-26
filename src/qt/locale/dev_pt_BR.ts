@@ -176,8 +176,8 @@
         <translation>Confirmar criptografia de carteira</translation>
     </message>
     <message>
-        <source>DEV will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your FLSs from being stolen by malware infecting your computer.</source>
-        <translation>DEV vai fechar agora para finalizar o processo de criptografia. Lembre-se que encriptar sua carteira não pode proteger totalmente suas FLSs de serem roubadas por malwares infectando seu computador.</translation>
+        <source>DEV will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your DEVs from being stolen by malware infecting your computer.</source>
+        <translation>DEV vai fechar agora para finalizar o processo de criptografia. Lembre-se que encriptar sua carteira não pode proteger totalmente suas DEVs de serem roubadas por malwares infectando seu computador.</translation>
     </message>
     <message>
         <source>Are you sure you wish to encrypt your wallet?</source>
@@ -409,8 +409,8 @@
         <translation>Olhar histórico de transação</translation>
     </message>
     <message>
-        <source>Privacy Actions for zFLS</source>
-        <translation>Ações privadas para zFLS</translation>
+        <source>Privacy Actions for zDEV</source>
+        <translation>Ações privadas para zDEV</translation>
     </message>
     <message>
         <source>E&amp;xit</source>
@@ -1863,8 +1863,8 @@ https://www.transifex.com/CryptoDev-Project/CryptoDev-Project-translations</tran
         <translation>0</translation>
     </message>
     <message>
-        <source>zFLS</source>
-        <translation>zFLS</translation>
+        <source>zDEV</source>
+        <translation>zDEV</translation>
     </message>
     <message>
         <source>Reset</source>
@@ -1923,8 +1923,8 @@ https://www.transifex.com/CryptoDev-Project/CryptoDev-Project-translations</tran
         <translation>Estatísticas zerocoin:</translation>
     </message>
     <message>
-        <source>Total Balance including unconfirmed and immature zFLS</source>
-        <translation>Balanço Total incluindo não confirmadas e imaturas zFLS</translation>
+        <source>Total Balance including unconfirmed and immature zDEV</source>
+        <translation>Balanço Total incluindo não confirmadas e imaturas zDEV</translation>
     </message>
     <message>
         <source>Total Zerocoin  Balance:</source>
@@ -2611,8 +2611,8 @@ https://www.transifex.com/CryptoDev-Project/CryptoDev-Project-translations</tran
         <translation>Tempo de confirmação:</translation>
     </message>
     <message>
-        <source>If the custom fee is set to 1000 uFLSs and the transaction is only 250 bytes, then "per kilobyte" only pays 250 uFLSs in fee,&lt;br /&gt;while "at least" pays 1000 uFLSs. For transactions bigger than a kilobyte both pay by kilobyte.</source>
-        <translation>Se a taxa padrão estiver definida para 1000 uFLSs e a transação for somente de 250 bytes, então "por kilobyte" pagará somente 250 uFLSs em taxa,&lt;br /&gt; pagará pelo menos 1000 uFLSs. Para transações maiores que um kilobyte ambas pagam por kilobyte.</translation>
+        <source>If the custom fee is set to 1000 uDEVs and the transaction is only 250 bytes, then "per kilobyte" only pays 250 uDEVs in fee,&lt;br /&gt;while "at least" pays 1000 uDEVs. For transactions bigger than a kilobyte both pay by kilobyte.</source>
+        <translation>Se a taxa padrão estiver definida para 1000 uDEVs e a transação for somente de 250 bytes, então "por kilobyte" pagará somente 250 uDEVs em taxa,&lt;br /&gt; pagará pelo menos 1000 uDEVs. Para transações maiores que um kilobyte ambas pagam por kilobyte.</translation>
     </message>
     <message>
         <source>Paying only the minimum fee is just fine as long as there is less transaction volume than space in the blocks.&lt;br /&gt;But be aware that this can end up in a never confirming transaction once there is more demand for DEV transactions than the network can process.</source>
@@ -3515,7 +3515,7 @@ https://www.transifex.com/CryptoDev-Project/CryptoDev-Project-translations</tran
     </message>
 </context>
 <context>
-    <name>ZFlsControlDialog</name>
+    <name>ZDevControlDialog</name>
     <message>
         <source>Quantity</source>
         <translation>Quantia</translation>
@@ -3525,8 +3525,8 @@ https://www.transifex.com/CryptoDev-Project/CryptoDev-Project-translations</tran
         <translation>0</translation>
     </message>
     <message>
-        <source>zFLS</source>
-        <translation>zFLS</translation>
+        <source>zDEV</source>
+        <translation>zDEV</translation>
     </message>
     <message>
         <source>Select/Deselect All</source>

@@ -19,7 +19,7 @@
 
 #include <QClipboard>
 
-SettingsSignMessageWidgets::SettingsSignMessageWidgets(FLSGUI* _window, QWidget* parent) : PWidget(_window, parent),
+SettingsSignMessageWidgets::SettingsSignMessageWidgets(DEVGUI* _window, QWidget* parent) : PWidget(_window, parent),
                                                                                            ui(new Ui::SettingsSignMessageWidgets)
 {
     ui->setupUi(this);
@@ -274,13 +274,13 @@ void SettingsSignMessageWidgets::onVerifyMessage()
 
 void SettingsSignMessageWidgets::onAddressesClicked()
 {
-    int addreFLSize = walletModel->getAddressTableModel()->sizeRecv();
-    if (addreFLSize == 0) {
+    int addreDEVize = walletModel->getAddressTableModel()->sizeRecv();
+    if (addreDEVize == 0) {
         inform(tr("No addresses available, you can go to the receive screen and add some there!"));
         return;
     }
 
-    int height = (addreFLSize <= 2) ? ui->addressIn_SM->height() * (2 * (addreFLSize + 1)) : ui->addressIn_SM->height() * 4;
+    int height = (addreDEVize <= 2) ? ui->addressIn_SM->height() * (2 * (addreDEVize + 1)) : ui->addressIn_SM->height() * 4;
     int width = ui->containerAddress->width();
 
     if (!menuContacts) {

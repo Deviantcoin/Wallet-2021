@@ -62,13 +62,13 @@ class ZerocoinSpendTest(devTestFramework):
         def get_zerocoin_data(coin):
             return coin["s"], coin["r"], coin["k"], coin["id"], coin["d"], coin["t"]
 
-        def check_balances(denom, zdev_bal, FLS_bal):
+        def check_balances(denom, zdev_bal, DEV_bal):
             zdev_bal -= denom
             assert_equal(self.nodes[2].getzerocoinbalance()['Total'], zdev_bal)
-            FLS_bal += denom
+            DEV_bal += denom
             wi = self.nodes[2].getwalletinfo()
-            assert_equal(wi['balance'] + wi['immature_balance'], FLS_bal)
-            return zdev_bal, FLS_bal
+            assert_equal(wi['balance'] + wi['immature_balance'], DEV_bal)
+            return zdev_bal, DEV_bal
 
         def stake_4_blocks(block_time):
             for peer in range(2):

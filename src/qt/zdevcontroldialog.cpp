@@ -10,20 +10,20 @@
 #include "walletmodel.h"
 
 
-std::set<std::string> zFLSControlDialog::setSelectedMints;
-std::set<CMintMeta> zFLSControlDialog::setMints;
+std::set<std::string> zDEVControlDialog::setSelectedMints;
+std::set<CMintMeta> zDEVControlDialog::setMints;
 
-bool CzFLSControlWidgetItem::operator<(const QTreeWidgetItem& other) const
+bool CzDEVControlWidgetItem::operator<(const QTreeWidgetItem& other) const
 {
     int column = treeWidget()->sortColumn();
-    if (column == zFLSControlDialog::COLUMN_DENOMINATION || column == zFLSControlDialog::COLUMN_VERSION || column == zFLSControlDialog::COLUMN_CONFIRMATIONS)
+    if (column == zDEVControlDialog::COLUMN_DENOMINATION || column == zDEVControlDialog::COLUMN_VERSION || column == zDEVControlDialog::COLUMN_CONFIRMATIONS)
         return data(column, Qt::UserRole).toLongLong() < other.data(column, Qt::UserRole).toLongLong();
     return QTreeWidgetItem::operator<(other);
 }
 
 
-zFLSControlDialog::zFLSControlDialog(QWidget* parent) : QDialog(parent, Qt::WindowSystemMenuHint | Qt::WindowTitleHint | Qt::WindowCloseButtonHint),
-                                                        ui(new Ui::zFLSControlDialog),
+zDEVControlDialog::zDEVControlDialog(QWidget* parent) : QDialog(parent, Qt::WindowSystemMenuHint | Qt::WindowTitleHint | Qt::WindowCloseButtonHint),
+                                                        ui(new Ui::zDEVControlDialog),
                                                         model(0)
 {
     ui->setupUi(this);
@@ -40,8 +40,8 @@ zFLSControlDialog::zFLSControlDialog(QWidget* parent) : QDialog(parent, Qt::Wind
 
 
     // Label Style
-    ui->labelzFLS->setProperty("cssClass", "text-main-purple");
-    ui->labelzFLS_int->setProperty("cssClass", "text-main-purple");
+    ui->labelzDEV->setProperty("cssClass", "text-main-purple");
+    ui->labelzDEV_int->setProperty("cssClass", "text-main-purple");
     ui->labelQuantity->setProperty("cssClass", "text-main-purple");
     ui->labelQuantity_int->setProperty("cssClass", "text-main-purple");
 
@@ -55,17 +55,17 @@ zFLSControlDialog::zFLSControlDialog(QWidget* parent) : QDialog(parent, Qt::Wind
     ui->pushButtonAll->setProperty("cssClass", "btn-check");
 
     // click on checkbox
-    connect(ui->treeWidget, &QTreeWidget::itemChanged, this, &zFLSControlDialog::updateSelection);
+    connect(ui->treeWidget, &QTreeWidget::itemChanged, this, &zDEVControlDialog::updateSelection);
     // push select/deselect all button
-    connect(ui->pushButtonAll, &QPushButton::clicked, this, &zFLSControlDialog::ButtonAllClicked);
+    connect(ui->pushButtonAll, &QPushButton::clicked, this, &zDEVControlDialog::ButtonAllClicked);
 }
 
-zFLSControlDialog::~zFLSControlDialog()
+zDEVControlDialog::~zDEVControlDialog()
 {
     delete ui;
 }
 
-void zFLSControlDialog::setModel(WalletModel* model)
+void zDEVControlDialog::setModel(WalletModel* model)
 {
     this->model = model;
     updateList();
@@ -73,7 +73,7 @@ void zFLSControlDialog::setModel(WalletModel* model)
 
 
 //Update the tree widget
-void zFLSControlDialog::updateList()
+void zDEVControlDialog::updateList()
 {
     // need to prevent the slot from being called each time something is changed
     ui->treeWidget->blockSignals(true);
@@ -83,7 +83,7 @@ void zFLSControlDialog::updateList()
     QFlags<Qt::ItemFlag> flgTristate = Qt::ItemIsEnabled | Qt::ItemIsUserCheckable | Qt::ItemIsTristate;
     std::map<libzerocoin::CoinDenomination, int> mapDenomPosition;
     for (auto denom : libzerocoin::zerocoinDenomList) {
-        CzFLSControlWidgetItem* itemDenom(new CzFLSControlWidgetItem);
+        CzDEVControlWidgetItem* itemDenom(new CzDEVControlWidgetItem);
         ui->treeWidget->addTopLevelItem(itemDenom);
 
         //keep track of where this is positioned in tree widget
@@ -104,7 +104,7 @@ void zFLSControlDialog::updateList()
     for (const CMintMeta& mint : setMints) {
         // assign this mint to the correct denomination in the tree view
         libzerocoin::CoinDenomination denom = mint.denom;
-        CzFLSControlWidgetItem* itemMint = new CzFLSControlWidgetItem(ui->treeWidget->topLevelItem(mapDenomPosition.at(denom)));
+        CzDEVControlWidgetItem* itemMint = new CzDEVControlWidgetItem(ui->treeWidget->topLevelItem(mapDenomPosition.at(denom)));
 
         // if the mint is already selected, then it needs to have the checkbox checked
         std::string strPubCoinHash = mint.hashPubcoin.GetHex();
@@ -167,7 +167,7 @@ void zFLSControlDialog::updateList()
 }
 
 // Update the list when a checkbox is clicked
-void zFLSControlDialog::updateSelection(QTreeWidgetItem* item, int column)
+void zDEVControlDialog::updateSelection(QTreeWidgetItem* item, int column)
 {
     // only want updates from non top level items that are available to spend
     if (item->parent() && column == COLUMN_CHECKBOX && !item->isDisabled()) {
@@ -188,7 +188,7 @@ void zFLSControlDialog::updateSelection(QTreeWidgetItem* item, int column)
 }
 
 // Update the Quantity and Amount display
-void zFLSControlDialog::updateLabels()
+void zDEVControlDialog::updateLabels()
 {
     int64_t nAmount = 0;
     for (const CMintMeta& mint : setMints) {
@@ -197,14 +197,14 @@ void zFLSControlDialog::updateLabels()
     }
 
     //update this dialog's labels
-    ui->labelzFLS_int->setText(QString::number(nAmount));
+    ui->labelzDEV_int->setText(QString::number(nAmount));
     ui->labelQuantity_int->setText(QString::number(setSelectedMints.size()));
 
     //update PrivacyDialog labels
-    //privacyDialog->setzFLSControlLabels(nAmount, setSelectedMints.size());
+    //privacyDialog->setzDEVControlLabels(nAmount, setSelectedMints.size());
 }
 
-std::vector<CMintMeta> zFLSControlDialog::GetSelectedMints()
+std::vector<CMintMeta> zDEVControlDialog::GetSelectedMints()
 {
     std::vector<CMintMeta> listReturn;
     for (const CMintMeta& mint : setMints) {
@@ -216,7 +216,7 @@ std::vector<CMintMeta> zFLSControlDialog::GetSelectedMints()
 }
 
 // select or deselect all of the mints
-void zFLSControlDialog::ButtonAllClicked()
+void zDEVControlDialog::ButtonAllClicked()
 {
     ui->treeWidget->blockSignals(true);
     Qt::CheckState state = Qt::Checked;

@@ -324,7 +324,7 @@ void SendCoinsDialog::on_sendButton_clicked()
     // will call relock
     WalletModel::EncryptionStatus encStatus = model->getEncryptionStatus();
     if (encStatus == model->Locked || encStatus == model->UnlockedForAnonymizationOnly) {
-        WalletModel::UnlockContext ctx(model->requestUnlock(AskPassphraseDialog::Context::Send_FLS, true));
+        WalletModel::UnlockContext ctx(model->requestUnlock(AskPassphraseDialog::Context::Send_DEV, true));
         if (!ctx.isValid()) {
             // Unlock wallet was cancelled
             fNewRecipientAllowed = true;
@@ -348,7 +348,7 @@ void SendCoinsDialog::send(QList<SendCoinsRecipient> recipients, QString strFee,
         prepareStatus = model->prepareTransaction(currentTransaction);
 
     // process prepareStatus and on error generate message shown to user
-    proceFLSendCoinsReturn(prepareStatus,
+    proceDEVendCoinsReturn(prepareStatus,
         BitcoinUnits::formatWithUnit(model->getOptionsModel()->getDisplayUnit(), currentTransaction.getTransactionFee()), true);
 
     if (prepareStatus.status != WalletModel::OK) {
@@ -415,7 +415,7 @@ void SendCoinsDialog::send(QList<SendCoinsRecipient> recipients, QString strFee,
     // now send the prepared transaction
     WalletModel::SendCoinsReturn sendStatus = model->sendCoins(currentTransaction);
     // process sendStatus and on error generate message shown to user
-    proceFLSendCoinsReturn(sendStatus);
+    proceDEVendCoinsReturn(sendStatus);
 
     if (sendStatus.status == WalletModel::OK) {
         accept();
@@ -605,7 +605,7 @@ void SendCoinsDialog::updateSwiftTX()
     coinControlUpdateLabels();
 }
 
-void SendCoinsDialog::proceFLSendCoinsReturn(const WalletModel::SendCoinsReturn& sendCoinsReturn, const QString& msgArg, bool fPrepare)
+void SendCoinsDialog::proceDEVendCoinsReturn(const WalletModel::SendCoinsReturn& sendCoinsReturn, const QString& msgArg, bool fPrepare)
 {
     bool fAskForUnlock = false;
 

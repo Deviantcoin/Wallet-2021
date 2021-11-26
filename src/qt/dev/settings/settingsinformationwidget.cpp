@@ -14,7 +14,7 @@
 
 #include <QDir>
 
-SettingsInformationWidget::SettingsInformationWidget(FLSGUI* _window,QWidget *parent) :
+SettingsInformationWidget::SettingsInformationWidget(DEVGUI* _window,QWidget *parent) :
     PWidget(_window,parent),
     ui(new Ui::SettingsInformationWidget)
 {

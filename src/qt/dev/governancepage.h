@@ -18,7 +18,7 @@
 #include <QTimer>
 #include <QWidget>
 
-class FLSGUI;
+class DEVGUI;
 class CBudgetProposal;
 
 namespace Ui
@@ -35,7 +35,7 @@ class GovernancePage : public PWidget
     Q_OBJECT
 
 public:
-    explicit GovernancePage(FLSGUI* parent = nullptr);
+    explicit GovernancePage(DEVGUI* parent = nullptr);
     ~GovernancePage();
 
     void setExtendedProposal(CBudgetProposal* proposal);

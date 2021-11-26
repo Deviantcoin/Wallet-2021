@@ -8,7 +8,7 @@
 #include <QWidget>
 #include "qt/dev/pwidget.h"
 
-class FLSGUI;
+class DEVGUI;
 
 namespace Ui {
 class NavMenuWidget;
@@ -19,7 +19,7 @@ class NavMenuWidget : public PWidget
     Q_OBJECT
 
 public:
-    explicit NavMenuWidget(FLSGUI* mainWindow, QWidget *parent = nullptr);
+    explicit NavMenuWidget(DEVGUI* mainWindow, QWidget *parent = nullptr);
     ~NavMenuWidget();
 
     void loadWalletModel() override;

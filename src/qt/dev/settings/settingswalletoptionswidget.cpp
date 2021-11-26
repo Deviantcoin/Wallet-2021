@@ -9,7 +9,7 @@
 #include "clientmodel.h"
 #include "qt/dev/qtutils.h"
 
-SettingsWalletOptionsWidget::SettingsWalletOptionsWidget(FLSGUI* _window, QWidget *parent) :
+SettingsWalletOptionsWidget::SettingsWalletOptionsWidget(DEVGUI* _window, QWidget *parent) :
     PWidget(_window, parent),
     ui(new Ui::SettingsWalletOptionsWidget)
 {
@@ -26,7 +26,7 @@ SettingsWalletOptionsWidget::SettingsWalletOptionsWidget(FLSGUI* _window, QWidge
     ui->labelTitle->setText(tr("Wallet"));
     ui->labelSubtitle1->setText(tr("Customize the internal wallet options"));
     setCssTitleScreen(ui->labelTitle);
-    setCFLSubtitleScreen(ui->labelSubtitle1);
+    setCDEVubtitleScreen(ui->labelSubtitle1);
 
     // Combobox
     ui->labelTitleStake->setText(tr("Stake split threshold:"));
@@ -43,7 +43,7 @@ SettingsWalletOptionsWidget::SettingsWalletOptionsWidget(FLSGUI* _window, QWidge
     ui->labelTitleNetwork->setText(tr("Network"));
     ui->labelSubtitleNetwork->setText(tr("Customize the node network options"));
     setCssTitleScreen(ui->labelTitleNetwork);
-    setCFLSubtitleScreen(ui->labelSubtitleNetwork);
+    setCDEVubtitleScreen(ui->labelSubtitleNetwork);
 
     // Proxy
     ui->labelSubtitleProxy->setText(tr("Proxy IP:"));

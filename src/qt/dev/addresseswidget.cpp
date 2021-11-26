@@ -59,7 +59,7 @@ public:
 };
 
 
-AddressesWidget::AddressesWidget(FLSGUI* parent) : PWidget(parent),
+AddressesWidget::AddressesWidget(DEVGUI* parent) : PWidget(parent),
                                                    ui(new Ui::AddressesWidget)
 {
     ui->setupUi(this);
@@ -82,7 +82,7 @@ AddressesWidget::AddressesWidget(FLSGUI* parent) : PWidget(parent),
     ui->labelTitle->setText(tr("Contacts"));
     ui->labelSubtitle1->setText(tr("You can add a new one in the options menu to the side."));
     setCssTitleScreen(ui->labelTitle);
-    setCFLSubtitleScreen(ui->labelSubtitle1);
+    setCDEVubtitleScreen(ui->labelSubtitle1);
 
     // Change address option
     ui->btnAddContact->setTitleClassAndText("btn-title-grey", "Add new contact");
@@ -104,7 +104,7 @@ AddressesWidget::AddressesWidget(FLSGUI* parent) : PWidget(parent),
     SortEdit* lineEditOrder = new SortEdit(ui->comboBoxSortOrder);
     connect(lineEditOrder, &SortEdit::Mouse_Pressed, [this]() { ui->comboBoxSortOrder->showPopup(); });
     connect(ui->comboBoxSortOrder, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this, &AddressesWidget::onSortOrderChanged);
-    fillAddreFLSortControls(lineEdit, lineEditOrder, ui->comboBoxSort, ui->comboBoxSortOrder);
+    fillAddreDEVortControls(lineEdit, lineEditOrder, ui->comboBoxSort, ui->comboBoxSortOrder);
 
     //Empty List
     ui->emptyContainer->setVisible(false);
@@ -195,8 +195,8 @@ void AddressesWidget::onStoreContactClicked()
             return;
         }
 
-        CBitcoinAddress FLSAdd = CBitcoinAddress(address.toUtf8().constData());
-        if (walletModel->isMine(FLSAdd)) {
+        CBitcoinAddress DEVAdd = CBitcoinAddress(address.toUtf8().constData());
+        if (walletModel->isMine(DEVAdd)) {
             setCssEditLine(ui->lineEditAddress, false, true);
             inform(tr("Cannot store your own address as contact"));
             return;
@@ -209,8 +209,8 @@ void AddressesWidget::onStoreContactClicked()
             return;
         }
 
-        if (walletModel->updateAddressBookLabels(FLSAdd.Get(), label.toUtf8().constData(),
-                FLSAdd.IsStakingAddress() ? AddressBook::AddressBookPurpose::COLD_STAKING_SEND : AddressBook::AddressBookPurpose::SEND)) {
+        if (walletModel->updateAddressBookLabels(DEVAdd.Get(), label.toUtf8().constData(),
+                DEVAdd.IsStakingAddress() ? AddressBook::AddressBookPurpose::COLD_STAKING_SEND : AddressBook::AddressBookPurpose::SEND)) {
             ui->lineEditAddress->setText("");
             ui->lineEditName->setText("");
             setCssEditLine(ui->lineEditAddress, true, true);

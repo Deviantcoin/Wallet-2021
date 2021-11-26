@@ -571,14 +571,14 @@ bool AddressTableModel::isWhitelisted(const std::string& address) const
  */
 QString AddressTableModel::getAddressToShow() const
 {
-    QString addreFLStr;
+    QString addreDEVtr;
     LOCK(wallet->cs_wallet);
     if (!wallet->mapAddressBook.empty()) {
         for (auto it = wallet->mapAddressBook.rbegin(); it != wallet->mapAddressBook.rend(); ++it) {
             if (it->second.purpose == AddressBook::AddressBookPurpose::RECEIVE) {
                 const CBitcoinAddress& address = it->first;
                 if (address.IsValid() && IsMine(*wallet, address.Get())) {
-                    addreFLStr = QString::fromStdString(address.ToString());
+                    addreDEVtr = QString::fromStdString(address.ToString());
                 }
             }
         }
@@ -586,10 +586,10 @@ QString AddressTableModel::getAddressToShow() const
         // For some reason we don't have any address in our address book, let's create one
         CBitcoinAddress newAddress;
         if (walletModel->getNewAddress(newAddress, "Default").result) {
-            addreFLStr = QString::fromStdString(newAddress.ToString());
+            addreDEVtr = QString::fromStdString(newAddress.ToString());
         }
     }
-    return addreFLStr;
+    return addreDEVtr;
 }
 
 void AddressTableModel::emitDataChanged(int idx)

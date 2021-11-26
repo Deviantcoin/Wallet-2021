@@ -209,7 +209,7 @@ public:
     /// Get process return value
     int getReturnValue() { return returnValue; }
 
-    /// Get window identifier of QMainWindow (FLSGUI)
+    /// Get window identifier of QMainWindow (DEVGUI)
     WId getMainWinId() const;
 
 public Q_SLOTS:
@@ -230,7 +230,7 @@ private:
     QThread* coreThread;
     OptionsModel* optionsModel;
     ClientModel* clientModel;
-    FLSGUI* window;
+    DEVGUI* window;
     QTimer* pollShutdownTimer;
 #ifdef ENABLE_WALLET
     PaymentServer* paymentServer;
@@ -360,10 +360,10 @@ void BitcoinApplication::createOptionsModel()
 
 void BitcoinApplication::createWindow(const NetworkStyle* networkStyle)
 {
-    window = new FLSGUI(networkStyle, 0);
+    window = new DEVGUI(networkStyle, 0);
 
     pollShutdownTimer = new QTimer(window);
-    connect(pollShutdownTimer, &QTimer::timeout, window, &FLSGUI::detectShutdown);
+    connect(pollShutdownTimer, &QTimer::timeout, window, &DEVGUI::detectShutdown);
     pollShutdownTimer->start(200);
 }
 
@@ -412,7 +412,7 @@ void BitcoinApplication::startThread()
     connect(executor, &BitcoinCore::runawayException, this, &BitcoinApplication::handleRunawayException);
     connect(this, &BitcoinApplication::requestedInitialize, executor, &BitcoinCore::initialize);
     connect(this, &BitcoinApplication::requestedShutdown, executor, &BitcoinCore::shutdown);
-    connect(window, &FLSGUI::requestedRestart, executor, &BitcoinCore::restart);
+    connect(window, &DEVGUI::requestedRestart, executor, &BitcoinCore::restart);
     /*  make sure executor object is deleted in its own thread */
     connect(this, &BitcoinApplication::stopThread, executor, &QObject::deleteLater);
     connect(this, &BitcoinApplication::stopThread, coreThread, &QThread::quit);
@@ -474,8 +474,8 @@ void BitcoinApplication::initializeResult(int retval)
         if (pwalletMain) {
             walletModel = new WalletModel(pwalletMain, optionsModel);
 
-            window->addWallet(FLSGUI::DEFAULT_WALLET, walletModel);
-            window->setCurrentWallet(FLSGUI::DEFAULT_WALLET);
+            window->addWallet(DEVGUI::DEFAULT_WALLET, walletModel);
+            window->setCurrentWallet(DEVGUI::DEFAULT_WALLET);
 
             connect(walletModel, &WalletModel::coinsSent,
                 paymentServer, &PaymentServer::fetchPaymentACK);
@@ -493,8 +493,8 @@ void BitcoinApplication::initializeResult(int retval)
 #ifdef ENABLE_WALLET
         // Now that initialization/startup is done, process any command-line
         // DEV: URIs or payment requests:
-        //connect(paymentServer, &PaymentServer::receivedPaymentRequest, window, &FLSGUI::handlePaymentRequest);
-        connect(window, &FLSGUI::receivedURI, paymentServer, &PaymentServer::handleURIOrFile);
+        //connect(paymentServer, &PaymentServer::receivedPaymentRequest, window, &DEVGUI::handlePaymentRequest);
+        connect(window, &DEVGUI::receivedURI, paymentServer, &PaymentServer::handleURIOrFile);
         connect(paymentServer, &PaymentServer::message, [this](const QString& title, const QString& message, unsigned int style) {
             window->message(title, message, style);
         });
@@ -513,7 +513,7 @@ void BitcoinApplication::shutdownResult(int retval)
 
 void BitcoinApplication::handleRunawayException(const QString& message)
 {
-    QMessageBox::critical(0, "Runaway exception", FLSGUI::tr("A fatal error occurred. DEV can no longer continue safely and will quit.") + QString("\n\n") + message);
+    QMessageBox::critical(0, "Runaway exception", DEVGUI::tr("A fatal error occurred. DEV can no longer continue safely and will quit.") + QString("\n\n") + message);
     ::exit(1);
 }
 

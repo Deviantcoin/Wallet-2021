@@ -6,7 +6,7 @@
 #include "qt/dev/settings/forms/ui_settingswalletrepairwidget.h"
 #include "qt/dev/qtutils.h"
 
-SettingsWalletRepairWidget::SettingsWalletRepairWidget(FLSGUI* _window, QWidget *parent) :
+SettingsWalletRepairWidget::SettingsWalletRepairWidget(DEVGUI* _window, QWidget *parent) :
     PWidget(_window, parent),
     ui(new Ui::SettingsWalletRepairWidget)
 {
@@ -156,7 +156,7 @@ void SettingsWalletRepairWidget::buildParameterlist(QString arg)
     // Append repair parameter to command line.
     args.append(arg);
 
-    // Send command-line arguments to FLSGUI::handleRestart()
+    // Send command-line arguments to DEVGUI::handleRestart()
     Q_EMIT handleRestart(args);
 }
 

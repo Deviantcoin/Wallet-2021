@@ -11,7 +11,7 @@
 #include "qt/dev/snackbar.h"
 
 class WalletModel;
-class FLSGUI;
+class DEVGUI;
 
 namespace Ui {
 class RequestDialog;

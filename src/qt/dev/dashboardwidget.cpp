@@ -23,7 +23,7 @@
 #define REQUEST_LOAD_TASK 1
 #define CHART_LOAD_MIN_TIME_INTERVAL 15
 
-DashboardWidget::DashboardWidget(FLSGUI* parent) : PWidget(parent),
+DashboardWidget::DashboardWidget(DEVGUI* parent) : PWidget(parent),
                                                    ui(new Ui::DashboardWidget)
 {
     ui->setupUi(this);
@@ -48,17 +48,17 @@ DashboardWidget::DashboardWidget(FLSGUI* parent) : PWidget(parent),
 
     /* Subtitle */
     ui->labelSubtitle->setText(tr("You can view your account's history"));
-    setCFLSubtitleScreen(ui->labelSubtitle);
+    setCDEVubtitleScreen(ui->labelSubtitle);
 
     // Staking Information
     ui->labelMessage->setText(tr("Amount of DEV staked."));
-    setCFLSubtitleScreen(ui->labelMessage);
-    setCssProperty(ui->labelSquareFLS, "square-chart-DEV");
-    ui->labelSquarezFLS->setVisible(false);
-    setCssProperty(ui->labelSquarezFLS, "square-chart-zdev");
-    ui->labelzFLS->setVisible(false);
-    setCssProperty(ui->labelFLS, "text-chart-DEV");
-    setCssProperty(ui->labelzFLS, "text-chart-zdev");
+    setCDEVubtitleScreen(ui->labelMessage);
+    setCssProperty(ui->labelSquareDEV, "square-chart-DEV");
+    ui->labelSquarezDEV->setVisible(false);
+    setCssProperty(ui->labelSquarezDEV, "square-chart-zdev");
+    ui->labelzDEV->setVisible(false);
+    setCssProperty(ui->labelDEV, "text-chart-DEV");
+    setCssProperty(ui->labelzDEV, "text-chart-zdev");
 
     // Staking Amount
     QFont fontBold;
@@ -66,11 +66,11 @@ DashboardWidget::DashboardWidget(FLSGUI* parent) : PWidget(parent),
 
     setCssProperty(ui->labelChart, "legend-chart");
 
-    ui->labelAmountzFLS->setText("0 zDEV");
-    ui->labelAmountzFLS->setVisible(false);
-    ui->labelAmountFLS->setText("0 DEV");
-    setCssProperty(ui->labelAmountFLS, "text-stake-deviant-disable");
-    setCssProperty(ui->labelAmountzFLS, "text-stake-zdev-disable");
+    ui->labelAmountzDEV->setText("0 zDEV");
+    ui->labelAmountzDEV->setVisible(false);
+    ui->labelAmountDEV->setText("0 DEV");
+    setCssProperty(ui->labelAmountDEV, "text-stake-deviant-disable");
+    setCssProperty(ui->labelAmountzDEV, "text-stake-zdev-disable");
 
     setCssProperty({ui->pushButtonAll, ui->pushButtonMonth, ui->pushButtonYear}, "btn-check-time");
     setCssProperty({ui->comboBoxMonths, ui->comboBoxYears}, "btn-combo-chart-selected");
@@ -140,7 +140,7 @@ DashboardWidget::DashboardWidget(FLSGUI* parent) : PWidget(parent),
 
     setCssProperty(ui->labelEmptyChart, "text-empty");
     ui->labelMessageEmpty->setText(tr("You can verify the staking activity in the status bar at the top right of the wallet.\nIt will start automatically as soon as the wallet has enough confirmations on any unspent balances, and the wallet has synced."));
-    setCFLSubtitleScreen(ui->labelMessageEmpty);
+    setCDEVubtitleScreen(ui->labelMessageEmpty);
 
     // Chart State
     ui->layoutChart->setVisible(false);
@@ -158,7 +158,7 @@ DashboardWidget::DashboardWidget(FLSGUI* parent) : PWidget(parent),
     connect(ui->pushButtonMonth, &QPushButton::clicked, [this]() { setChartShow(MONTH); });
     connect(ui->pushButtonAll, &QPushButton::clicked, [this]() { setChartShow(ALL); });
     if (window)
-        connect(window, &FLSGUI::windowResizeEvent, this, &DashboardWidget::windowResizeEvent);
+        connect(window, &DEVGUI::windowResizeEvent, this, &DashboardWidget::windowResizeEvent);
 #endif
 
     if (hasCharts) {
@@ -208,8 +208,8 @@ void DashboardWidget::loadWalletModel()
             ui->comboBoxSort->setVisible(false);
         }
 
-        connect(ui->pushImgEmpty, &QPushButton::clicked, window, &FLSGUI::openFAQ);
-        connect(ui->btnHowTo, &QPushButton::clicked, window, &FLSGUI::openFAQ);
+        connect(ui->pushImgEmpty, &QPushButton::clicked, window, &DEVGUI::openFAQ);
+        connect(ui->btnHowTo, &QPushButton::clicked, window, &DEVGUI::openFAQ);
         connect(txModel, &TransactionTableModel::txArrived, this, &DashboardWidget::onTxArrived);
 
         // Notification pop-up for new transaction
@@ -499,7 +499,7 @@ void DashboardWidget::updateStakeFilter()
     }
 }
 
-// pair DEV, zFLS
+// pair DEV, zDEV
 const QMap<int, std::pair<qint64, qint64> > DashboardWidget::getAmountBy()
 {
     updateStakeFilter();
@@ -510,7 +510,7 @@ const QMap<int, std::pair<qint64, qint64> > DashboardWidget::getAmountBy()
         QModelIndex modelIndex = stakesFilter->index(i, TransactionTableModel::ToAddress);
         qint64 amount = llabs(modelIndex.data(TransactionTableModel::AmountRole).toLongLong());
         QDate date = modelIndex.data(TransactionTableModel::DateRole).toDateTime().date();
-        bool isFLS = modelIndex.data(TransactionTableModel::TypeRole).toInt() != TransactionRecord::StakeZFLS;
+        bool isDEV = modelIndex.data(TransactionTableModel::TypeRole).toInt() != TransactionRecord::StakeZDEV;
 
         int time = 0;
         switch (chartShow) {
@@ -531,16 +531,16 @@ const QMap<int, std::pair<qint64, qint64> > DashboardWidget::getAmountBy()
             return amountBy;
         }
         if (amountBy.contains(time)) {
-            if (isFLS) {
+            if (isDEV) {
                 amountBy[time].first += amount;
             } else
                 amountBy[time].second += amount;
         } else {
-            if (isFLS) {
+            if (isDEV) {
                 amountBy[time] = std::make_pair(amount, 0);
             } else {
                 amountBy[time] = std::make_pair(0, amount);
-                haszFLSStakes = true;
+                haszDEVStakes = true;
             }
         }
     }
@@ -555,7 +555,7 @@ bool DashboardWidget::loadChartData(bool withMonthNames)
     }
 
     chartData = new ChartData();
-    chartData->amountsByCache = getAmountBy(); // pair DEV, zFLS
+    chartData->amountsByCache = getAmountBy(); // pair DEV, zDEV
 
     std::pair<int, int> range = getChartRange(chartData->amountsByCache);
     if (range.first == 0 && range.second == 0) {
@@ -574,14 +574,14 @@ bool DashboardWidget::loadChartData(bool withMonthNames)
             std::pair<qint64, qint64> pair = chartData->amountsByCache[num];
             DEV = (pair.first != 0) ? pair.first / 100000000 : 0;
             zdev = (pair.second != 0) ? pair.second / 100000000 : 0;
-            chartData->totalFLS += pair.first;
-            chartData->totalzFLS += pair.second;
+            chartData->totalDEV += pair.first;
+            chartData->totalzDEV += pair.second;
         }
 
         chartData->xLabels << ((withMonthNames) ? monthsNames[num - 1] : QString::number(num));
 
-        chartData->valuesFLS.append(DEV);
-        chartData->valueszFLS.append(zdev);
+        chartData->valuesDEV.append(DEV);
+        chartData->valueszDEV.append(zdev);
 
         int max = std::max(DEV, zdev);
         if (max > chartData->maxValue) {
@@ -652,24 +652,24 @@ void DashboardWidget::onChartRefreshed()
     series->attachAxis(axisX);
     series->attachAxis(axisY);
 
-    set0->append(chartData->valuesFLS);
-    set1->append(chartData->valueszFLS);
+    set0->append(chartData->valuesDEV);
+    set1->append(chartData->valueszDEV);
 
     // Total
     nDisplayUnit = walletModel->getOptionsModel()->getDisplayUnit();
-    if (chartData->totalFLS > 0 || chartData->totalzFLS > 0) {
-        setCssProperty(ui->labelAmountFLS, "text-stake-DEV");
-        setCssProperty(ui->labelAmountzFLS, "text-stake-zdev");
+    if (chartData->totalDEV > 0 || chartData->totalzDEV > 0) {
+        setCssProperty(ui->labelAmountDEV, "text-stake-DEV");
+        setCssProperty(ui->labelAmountzDEV, "text-stake-zdev");
     } else {
-        setCssProperty(ui->labelAmountFLS, "text-stake-deviant-disable");
-        setCssProperty(ui->labelAmountzFLS, "text-stake-zdev-disable");
+        setCssProperty(ui->labelAmountDEV, "text-stake-deviant-disable");
+        setCssProperty(ui->labelAmountzDEV, "text-stake-zdev-disable");
     }
-    forceUpdateStyle({ui->labelAmountFLS, ui->labelAmountzFLS});
-    ui->labelAmountFLS->setText(GUIUtil::formatBalance(chartData->totalFLS, nDisplayUnit));
-    ui->labelAmountzFLS->setText(GUIUtil::formatBalance(chartData->totalzFLS, nDisplayUnit, true));
+    forceUpdateStyle({ui->labelAmountDEV, ui->labelAmountzDEV});
+    ui->labelAmountDEV->setText(GUIUtil::formatBalance(chartData->totalDEV, nDisplayUnit));
+    ui->labelAmountzDEV->setText(GUIUtil::formatBalance(chartData->totalzDEV, nDisplayUnit, true));
 
     series->append(set0);
-    if (haszFLSStakes)
+    if (haszDEVStakes)
         series->append(set1);
 
     // bar width

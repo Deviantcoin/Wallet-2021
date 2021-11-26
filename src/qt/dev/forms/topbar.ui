@@ -108,7 +108,7 @@
              <number>0</number>
             </property>
             <item alignment="Qt::AlignTop">
-             <widget class="QLabel" name="labelAmountTopFLS">
+             <widget class="QLabel" name="labelAmountTopDEV">
               <property name="minimumSize">
                <size>
                 <width>0</width>
@@ -180,7 +180,7 @@ border:none;</string>
              </spacer>
             </item>
             <item alignment="Qt::AlignTop">
-             <widget class="QLabel" name="labelAmountTopzFLS">
+             <widget class="QLabel" name="labelAmountTopzDEV">
               <property name="minimumSize">
                <size>
                 <width>0</width>
@@ -406,7 +406,7 @@ border:none;</string>
                 </widget>
                </item>
                <item>
-                <widget class="QLabel" name="labelAmountFLS">
+                <widget class="QLabel" name="labelAmountDEV">
                  <property name="text">
                   <string notr="true">480.0685 DEV</string>
                  </property>
@@ -429,7 +429,7 @@ border:none;</string>
                   </widget>
                  </item>
                  <item>
-                  <widget class="QLabel" name="labelPendingFLS">
+                  <widget class="QLabel" name="labelPendingDEV">
                    <property name="text">
                     <string notr="true">6.943 DEV</string>
                    </property>
@@ -463,7 +463,7 @@ border:none;</string>
                   </widget>
                  </item>
                  <item>
-                  <widget class="QLabel" name="labelImmatureFLS">
+                  <widget class="QLabel" name="labelImmatureDEV">
                    <property name="text">
                     <string notr="true">10 DEV</string>
                    </property>
@@ -520,14 +520,14 @@ border:none;</string>
               <item>
                <layout class="QVBoxLayout" name="verticalLayout">
                 <item>
-                 <widget class="QLabel" name="labelTitleAvailablezFLS">
+                 <widget class="QLabel" name="labelTitleAvailablezDEV">
                   <property name="text">
                    <string>Available</string>
                   </property>
                  </widget>
                 </item>
                 <item>
-                 <widget class="QLabel" name="labelAvailablezFLS">
+                 <widget class="QLabel" name="labelAvailablezDEV">
                   <property name="text">
                    <string notr="true">1,000 zDEV</string>
                   </property>
@@ -543,14 +543,14 @@ border:none;</string>
                 <item>
                  <layout class="QVBoxLayout" name="verticalLayout_5">
                   <item>
-                   <widget class="QLabel" name="labelTitlePendingzFLS">
+                   <widget class="QLabel" name="labelTitlePendingzDEV">
                     <property name="text">
                      <string>Pending</string>
                     </property>
                    </widget>
                   </item>
                   <item>
-                   <widget class="QLabel" name="labelPendingzFLS">
+                   <widget class="QLabel" name="labelPendingzDEV">
                     <property name="text">
                      <string notr="true">60 zDEV</string>
                     </property>
@@ -577,14 +577,14 @@ border:none;</string>
                 <item>
                  <layout class="QVBoxLayout" name="verticalLayout_6">
                   <item>
-                   <widget class="QLabel" name="labelTitleImmaturezFLS">
+                   <widget class="QLabel" name="labelTitleImmaturezDEV">
                     <property name="text">
                      <string>Immature</string>
                     </property>
                    </widget>
                   </item>
                   <item>
-                   <widget class="QLabel" name="labelImmaturezFLS">
+                   <widget class="QLabel" name="labelImmaturezDEV">
                     <property name="text">
                      <string notr="true">10 zDEV</string>
                     </property>

@@ -565,7 +565,7 @@
            <number>0</number>
           </property>
           <item>
-           <widget class="QLabel" name="labelAmountFLS">
+           <widget class="QLabel" name="labelAmountDEV">
             <property name="text">
              <string>TextLabel</string>
             </property>
@@ -575,7 +575,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QLabel" name="labelAmountzFLS">
+           <widget class="QLabel" name="labelAmountzDEV">
             <property name="text">
              <string>TextLabel</string>
             </property>
@@ -673,7 +673,7 @@
                  </spacer>
                 </item>
                 <item>
-                 <widget class="QLabel" name="labelSquareFLS">
+                 <widget class="QLabel" name="labelSquareDEV">
                   <property name="minimumSize">
                    <size>
                     <width>14</width>
@@ -692,7 +692,7 @@
                  </widget>
                 </item>
                 <item>
-                 <widget class="QLabel" name="labelFLS">
+                 <widget class="QLabel" name="labelDEV">
                   <property name="text">
                    <string>DEV</string>
                   </property>
@@ -715,7 +715,7 @@
                  </spacer>
                 </item>
                 <item>
-                 <widget class="QLabel" name="labelSquarezFLS">
+                 <widget class="QLabel" name="labelSquarezDEV">
                   <property name="minimumSize">
                    <size>
                     <width>14</width>
@@ -734,7 +734,7 @@
                  </widget>
                 </item>
                 <item>
-                 <widget class="QLabel" name="labelzFLS">
+                 <widget class="QLabel" name="labelzDEV">
                   <property name="text">
                    <string>zDEV</string>
                   </property>

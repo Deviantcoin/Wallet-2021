@@ -1,13 +1,13 @@
-FLSolutions Core version 2.3.1 is now available from:
+DEVolutions Core version 2.3.1 is now available from:
 
-  <https://github.com/FLSolutions-project/FLSolutions/releases>
+  <https://github.com/DEVolutions-project/DEVolutions/releases>
 
 This is a new minor version release, including various bug fixes and
 performance improvements, as well as updated translations.
 
 Please report bugs using the issue tracker at github:
 
-  <https://github.com/FLSolutions-project/FLSolutions/issues>
+  <https://github.com/DEVolutions-project/DEVolutions/issues>
 
 How to Upgrade
 ==============
@@ -17,7 +17,7 @@ If you are running an older version, shut it down. Wait until it has completely 
 Compatibility
 ==============
 
-FLSolutions Core is extensively tested on multiple operating systems using
+DEVolutions Core is extensively tested on multiple operating systems using
 the Linux kernel, macOS 10.8+, and Windows Vista and later.
 
 Microsoft ended support for Windows XP on [April 8th, 2014](https://www.microsoft.com/en-us/WindowsForBusiness/end-of-xp-support),
@@ -25,7 +25,7 @@ No attempt is made to prevent installing or running the software on Windows XP, 
 can still do so at your own risk but be aware that there are known instabilities and issues.
 Please do not report issues about Windows XP to the issue tracker.
 
-FLSolutions Core should also work on most other Unix-like systems but is not
+DEVolutions Core should also work on most other Unix-like systems but is not
 frequently tested on them.
 
 Notable Changes
@@ -159,7 +159,7 @@ Result:
     "BlockEnd": n,                (numeric) Proposal ending block
     "TotalPaymentCount": n,       (numeric) Number of payments
     "RemainingPaymentCount": n,   (numeric) Number of remaining payments
-    "PaymentAddress": "xxxx",     (string) FLSolutions address of payment
+    "PaymentAddress": "xxxx",     (string) DEVolutions address of payment
     "Ratio": x.xxx,               (numeric) Ratio of yeas vs nays
     "Yeas": n,                    (numeric) Number of yea votes
     "Nays": n,                    (numeric) Number of nay votes
@@ -210,4 +210,4 @@ Thanks to everyone who directly contributed to this release:
 - Mrs-X
 - amirabrams
 
-As well as everyone that helped translating on [Transifex](https://www.transifex.com/projects/p/FLSolutions-project-translations/).
+As well as everyone that helped translating on [Transifex](https://www.transifex.com/projects/p/DEVolutions-project-translations/).

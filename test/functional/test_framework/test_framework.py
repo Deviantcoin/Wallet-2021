@@ -801,7 +801,7 @@ class devTestFramework():
         block_txes = []
         for uniqueness in spendingPrevOuts:
             if is_zerocoin(uniqueness):
-                # spend zFLS
+                # spend zDEV
                 _, serialHash, _ = spendingPrevOuts[uniqueness]
                 raw_spend = rpc_conn.createrawzerocoinspend(serialHash, "", False)
             else:
@@ -908,7 +908,7 @@ class devTestFramework():
         # Don't add tx doublespending the coinstake input, unless fDoubleSpend=True
         for tx in vtx:
             if not fDoubleSpend:
-                # assume txes don't double spend zFLS inputs when fDoubleSpend is false. It needs to
+                # assume txes don't double spend zDEV inputs when fDoubleSpend is false. It needs to
                 # be checked outside until a convenient tx.spends(zerocoin) is added to the framework.
                 if not isZPoS and tx.spends(prevout):
                     continue

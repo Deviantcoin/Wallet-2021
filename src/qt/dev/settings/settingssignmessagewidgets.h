@@ -18,7 +18,7 @@ class SettingsSignMessageWidgets : public PWidget
     Q_OBJECT
 
 public:
-    explicit SettingsSignMessageWidgets(FLSGUI* _window, QWidget *parent = nullptr);
+    explicit SettingsSignMessageWidgets(DEVGUI* _window, QWidget *parent = nullptr);
     ~SettingsSignMessageWidgets();
 
     void setAddress_SM(const QString& address);

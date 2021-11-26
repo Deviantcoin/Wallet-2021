@@ -158,7 +158,7 @@ SettingsMultisendWidget::SettingsMultisendWidget(PWidget* parent) : PWidget(pare
     setCssTitleScreen(ui->labelTitle);
 
     ui->labelSubtitle1->setText(tr("MultiSend allows you to automatically send up to 100% of your stake or masternode reward to a list of other DEV addresses after it matures."));
-    setCFLSubtitleScreen(ui->labelSubtitle1);
+    setCDEVubtitleScreen(ui->labelSubtitle1);
 
     //Button Group
     ui->pushLeft->setText(tr("Active"));

@@ -19,7 +19,7 @@
 
 static const int MAX_SEND_POPUP_ENTRIES = 8;
 
-class FLSGUI;
+class DEVGUI;
 class ClientModel;
 class WalletModel;
 class WalletModelTransaction;
@@ -34,7 +34,7 @@ class SendWidget : public PWidget
     Q_OBJECT
 
 public:
-    explicit SendWidget(FLSGUI* parent);
+    explicit SendWidget(DEVGUI* parent);
     ~SendWidget();
 
     void addEntry();
@@ -60,7 +60,7 @@ protected:
     void showEvent(QShowEvent *event) override;
 
 private Q_SLOTS:
-    void onFLSSelected(bool _isFLS);
+    void onDEVSelected(bool _isDEV);
     void onSendClicked();
     void onContactsClicked(SendMultiRow* entry);
     void onMenuClicked(SendMultiRow* entry);
@@ -93,12 +93,12 @@ private:
     // Current focus entry
     SendMultiRow* focusedEntry = nullptr;
 
-    bool isFLS = true;
+    bool isDEV = true;
     void resizeMenu();
     QString recipientsToString(QList<SendCoinsRecipient> recipients);
     SendMultiRow* createEntry();
     bool send(QList<SendCoinsRecipient> recipients);
-    bool sendzFLS(QList<SendCoinsRecipient> recipients);
+    bool sendzDEV(QList<SendCoinsRecipient> recipients);
     void setFocusOnLastEntry();
     void showHideCheckBoxDelegations();
     void updateEntryLabels(QList<SendCoinsRecipient> recipients);

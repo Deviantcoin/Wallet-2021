@@ -65,7 +65,7 @@ public:
     MNRow* cachedRow = nullptr;
 };
 
-MasterNodesWidget::MasterNodesWidget(FLSGUI* parent) : PWidget(parent),
+MasterNodesWidget::MasterNodesWidget(DEVGUI* parent) : PWidget(parent),
                                                        ui(new Ui::MasterNodesWidget),
                                                        isLoading(false)
 {
@@ -95,7 +95,7 @@ MasterNodesWidget::MasterNodesWidget(FLSGUI* parent) : PWidget(parent),
     ui->labelTitle->setFont(fontLight);
 
     ui->labelSubtitle1->setText(tr("Full nodes that incentivize node operators to perform the core consensus functions\nand vote on the treasury system receiving a periodic reward."));
-    setCFLSubtitleScreen(ui->labelSubtitle1);
+    setCDEVubtitleScreen(ui->labelSubtitle1);
 
     /* Buttons */
     ui->pushButtonSave->setText(tr("Create Masternode Controller"));

@@ -1,4 +1,4 @@
-We have found that a runtime error that has caused the FLSolutions wallet on certain operating systems to get stuck at block 908000. This build of the wallet fixes the runtime error.
+We have found that a runtime error that has caused the DEVolutions wallet on certain operating systems to get stuck at block 908000. This build of the wallet fixes the runtime error.
 
 If you are stuck on block 908000:
 - Download the 3.0.5.1 wallet (the file names do not display the "build" version and cutoff the 1)
@@ -6,7 +6,7 @@ If you are stuck on block 908000:
 
 If you are stuck on a block before 908000:
 - Download the 3.0.5.1 wallet (the file names do not display the "build" version and cutoff the 1)
-- Start the wallet with `reindexaccumulators=1` in your `FLSolutions.conf` file (you can figure out the location of your `FLSolutions.conf` [here](https://FLSolutions.freshdesk.com/support/solutions/articles/30000004664-where-are-my-wallet-dat-blockchain-and-configuration-conf-files-located-) )
-- After starting the wallet, remove `reindexaccumulators=1` from your `FLSolutions.conf` or else it will perform this operation each time you start your wallet.
+- Start the wallet with `reindexaccumulators=1` in your `DEVolutions.conf` file (you can figure out the location of your `DEVolutions.conf` [here](https://DEVolutions.freshdesk.com/support/solutions/articles/30000004664-where-are-my-wallet-dat-blockchain-and-configuration-conf-files-located-) )
+- After starting the wallet, remove `reindexaccumulators=1` from your `DEVolutions.conf` or else it will perform this operation each time you start your wallet.
 
-If both of those solutions failed you can use the [blockchain snapshot](http://178.254.23.111/~pub/FLSolutions/Daily-Snapshots-Html/FLSolutions-Daily-Snapshots.html). If using the snapshot, please carefully follow the instructions on the snapshot page.
+If both of those solutions failed you can use the [blockchain snapshot](http://178.254.23.111/~pub/DEVolutions/Daily-Snapshots-Html/DEVolutions-Daily-Snapshots.html). If using the snapshot, please carefully follow the instructions on the snapshot page.

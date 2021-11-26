@@ -6,7 +6,7 @@ and tests weren't explicitly disabled.
 
 After configuring, they can be run with 'make check'.
 
-To run the deviantd tests manually, launch src/test/test_FLSolutions .
+To run the deviantd tests manually, launch src/test/test_DEVolutions .
 
 To add more deviantd tests, add `BOOST_AUTO_TEST_CASE` functions to the existing
 .cpp files in the test/ directory or add new .cpp files that

@@ -99,7 +99,7 @@ unsigned int nCoinCacheSize = 5000;
 /* If the tip is older than this (in seconds), the node is considered to be in initial block download. */
 int64_t nMaxTipAge = DEFAULT_MAX_TIP_AGE;
 
-/** Fees smaller than this (in uFLS) are considered zero fee (for relaying and mining)
+/** Fees smaller than this (in uDEV) are considered zero fee (for relaying and mining)
  * We are ~100 times smaller then bitcoin now (2015-06-23), set minRelayTxFee only 10 times higher
  * so it's still 10 times lower comparing to bitcoin.
  */
@@ -1038,7 +1038,7 @@ bool AcceptToMemoryPool(CTxMemPool& pool, CValidationState& state, const CTransa
             //Check that txid is not already in the chain
             int nHeightTx = 0;
             if (IsTransactionInChain(tx.GetHash(), nHeightTx))
-                return state.Invalid(error("%s : zFLS spend tx %s already in block %d",
+                return state.Invalid(error("%s : zDEV spend tx %s already in block %d",
                         __func__, tx.GetHash().GetHex(), nHeightTx), REJECT_DUPLICATE, "bad-txns-inputs-spent");
 
             //Check for double spending of serial #'s
@@ -1050,7 +1050,7 @@ bool AcceptToMemoryPool(CTxMemPool& pool, CValidationState& state, const CTransa
 
                 libzerocoin::ZerocoinParams* params = consensus.Zerocoin_Params(false);
                 PublicCoinSpend publicSpend(params);
-                if (!ZFLSModule::ParseZerocoinPublicSpend(txIn, tx, state, publicSpend)){
+                if (!ZDEVModule::ParseZerocoinPublicSpend(txIn, tx, state, publicSpend)){
                     return false;
                 }
                 if (!ContextualCheckZerocoinSpend(tx, &publicSpend, chainHeight, UINT256_ZERO))
@@ -1090,9 +1090,9 @@ bool AcceptToMemoryPool(CTxMemPool& pool, CValidationState& state, const CTransa
                 }
             }
 
-            // Reject legacy zFLS mints
+            // Reject legacy zDEV mints
             if (!Params().IsRegTestNet() && tx.HasZerocoinMintOutputs())
-                return state.Invalid(error("%s : tried to include zFLS mint output in tx %s",
+                return state.Invalid(error("%s : tried to include zDEV mint output in tx %s",
                         __func__, tx.GetHash().GetHex()), REJECT_INVALID, "bad-txns-invalid-outputs");
 
             // are the actual inputs available?
@@ -1876,7 +1876,7 @@ void AddInvalidSpendsToMap(const CBlock& block)
                 if (isPublicSpend) {
                     PublicCoinSpend publicSpend(params);
                     CValidationState state;
-                    if (!ZFLSModule::ParseZerocoinPublicSpend(in, tx, state, publicSpend)){
+                    if (!ZDEVModule::ParseZerocoinPublicSpend(in, tx, state, publicSpend)){
                         throw std::runtime_error("Failed to parse public spend");
                     }
                     spend = &publicSpend;
@@ -2095,9 +2095,9 @@ bool DisconnectBlock(CBlock& block, CValidationState& state, CBlockIndex* pindex
     if (blockUndo.vtxundo.size() + 1 != block.vtx.size())
         return error("DisconnectBlock() : block and undo data inconsistent");
 
-    //Track zFLS money supply
-    if (!UpdateZFLSSupplyDisconnect(block, pindex))
-        return error("%s: Failed to calculate new zFLS supply", __func__);
+    //Track zDEV money supply
+    if (!UpdateZDEVSupplyDisconnect(block, pindex))
+        return error("%s: Failed to calculate new zDEV supply", __func__);
 
     // undo transactions in reverse order
     for (int i = block.vtx.size() - 1; i >= 0; i--) {
@@ -2118,7 +2118,7 @@ bool DisconnectBlock(CBlock& block, CValidationState& state, CBlockIndex* pindex
                         if (isPublicSpend) {
                             PublicCoinSpend publicSpend(params);
                             CValidationState state;
-                            if (!ZFLSModule::ParseZerocoinPublicSpend(txin, tx, state, publicSpend)) {
+                            if (!ZDEVModule::ParseZerocoinPublicSpend(txin, tx, state, publicSpend)) {
                                 return error("Failed to parse public spend");
                             }
                             serial = publicSpend.getCoinSerialNumber();
@@ -2408,7 +2408,7 @@ bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockIndex* pin
                 if (isPublicSpend) {
                     libzerocoin::ZerocoinParams* params = consensus.Zerocoin_Params(false);
                     PublicCoinSpend publicSpend(params);
-                    if (!ZFLSModule::ParseZerocoinPublicSpend(txIn, tx, state, publicSpend)){
+                    if (!ZDEVModule::ParseZerocoinPublicSpend(txIn, tx, state, publicSpend)){
                         return false;
                     }
                     nValueIn += publicSpend.getDenomination() * COIN;
@@ -2518,7 +2518,7 @@ bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockIndex* pin
         setDirtyBlockIndex.insert(pindex);
     }
 
-    //Record zFLS serials
+    //Record zDEV serials
     if (pwalletMain) {
         std::set<uint256> setAddedTx;
         for (const std::pair<libzerocoin::CoinSpend, uint256>& pSpend : vSpends) {
@@ -2561,16 +2561,16 @@ bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockIndex* pin
     // add this block to the view's block chain
     view.SetBestBlock(pindex->GetBlockHash());
 
-    // Update zFLS money supply map
-    if (!UpdateZFLSSupplyConnect(block, pindex, fJustCheck)) {
-        return state.DoS(100, error("%s: Failed to calculate new zFLS supply for block=%s height=%d", __func__,
+    // Update zDEV money supply map
+    if (!UpdateZDEVSupplyConnect(block, pindex, fJustCheck)) {
+        return state.DoS(100, error("%s: Failed to calculate new zDEV supply for block=%s height=%d", __func__,
                                     block.GetHash().GetHex(), pindex->nHeight), REJECT_INVALID);
     }
 
-    // A one-time event where the zFLS supply was off (due to serial duplication off-chain on main net)
+    // A one-time event where the zDEV supply was off (due to serial duplication off-chain on main net)
     if (Params().NetworkID() == CBaseChainParams::MAIN && pindex->nHeight == consensus.height_last_ZC_WrappedSerials + 1
             && GetZerocoinSupply() != consensus.ZC_WrappedSerialsSupply + GetWrapppedSerialInflationAmount()) {
-        RecalculateFLSSupply(consensus.height_start_ZC, false);
+        RecalculateDEVSupply(consensus.height_start_ZC, false);
     }
 
     // Add fraudulent funds to the supply and remove any recovered funds.
@@ -3668,7 +3668,7 @@ bool CheckBlock(const CBlock& block, CValidationState& state, bool fCheckPOW, bo
         ))
             return error("%s : CheckTransaction failed", __func__);
 
-        // double check that there are no double spent zFLS spends in this block
+        // double check that there are no double spent zDEV spends in this block
         if (tx.HasZerocoinSpendInputs()) {
             for (const CTxIn& txIn : tx.vin) {
                 bool isPublicSpend = txIn.IsZerocoinPublicSpend();
@@ -3677,7 +3677,7 @@ bool CheckBlock(const CBlock& block, CValidationState& state, bool fCheckPOW, bo
                     if (isPublicSpend) {
                         libzerocoin::ZerocoinParams* params = Params().GetConsensus().Zerocoin_Params(false);
                         PublicCoinSpend publicSpend(params);
-                        if (!ZFLSModule::ParseZerocoinPublicSpend(txIn, tx, state, publicSpend)){
+                        if (!ZDEVModule::ParseZerocoinPublicSpend(txIn, tx, state, publicSpend)){
                             return false;
                         }
                         spend = publicSpend;
@@ -3690,7 +3690,7 @@ bool CheckBlock(const CBlock& block, CValidationState& state, bool fCheckPOW, bo
                         spend = TxInToZerocoinSpend(txIn);
                     }
                     if (std::count(vBlockSerials.begin(), vBlockSerials.end(), spend.getCoinSerialNumber()))
-                        return state.DoS(100, error("%s : Double spending of zFLS serial %s in block\n Block: %s",
+                        return state.DoS(100, error("%s : Double spending of zDEV serial %s in block\n Block: %s",
                                                     __func__, spend.getCoinSerialNumber().GetHex(), block.ToString()));
                     vBlockSerials.emplace_back(spend.getCoinSerialNumber());
                 }
@@ -3733,7 +3733,7 @@ bool CheckWork(const CBlock block, CBlockIndex* const pindexPrev)
     if (block.nBits != nBitsRequired) {
         // dev Specific reference to the block with the wrong threshold was used.
         const Consensus::Params& consensus = Params().GetConsensus();
-        if (block.nTime >= (uint32_t) consensus.nFLSBadBlockTime){
+        if (block.nTime >= (uint32_t) consensus.nDEVBadBlockTime){
             // accept DEV block minted with incorrect proof of work threshold
         return error("%s : incorrect proof of work at %d", __func__, pindexPrev->nHeight + 1);
         }
@@ -3996,18 +3996,18 @@ bool AcceptBlock(CBlock& block, CValidationState& state, CBlockIndex** ppindex, 
         CTransaction &stakeTxIn = block.vtx[1];
 
         // Inputs
-        std::vector<CTxIn> FLSInputs;
-        std::vector<CTxIn> zFLSInputs;
+        std::vector<CTxIn> DEVInputs;
+        std::vector<CTxIn> zDEVInputs;
 
         for (const CTxIn& stakeIn : stakeTxIn.vin) {
             if(stakeIn.IsZerocoinSpend()){
-                zFLSInputs.push_back(stakeIn);
+                zDEVInputs.push_back(stakeIn);
             }else{
-                FLSInputs.push_back(stakeIn);
+                DEVInputs.push_back(stakeIn);
             }
         }
-        const bool hasFLSInputs = !FLSInputs.empty();
-        const bool hasZFLSInputs = !zFLSInputs.empty();
+        const bool hasDEVInputs = !DEVInputs.empty();
+        const bool hasZDEVInputs = !zDEVInputs.empty();
 
         // ZC started after PoS.
         // Check for serial double spent on the same block, TODO: Move this to the proper method..
@@ -4029,7 +4029,7 @@ bool AcceptBlock(CBlock& block, CValidationState& state, CBlockIndex** ppindex, 
                         if (isPublicSpend) {
                             libzerocoin::ZerocoinParams* params = Params().GetConsensus().Zerocoin_Params(false);
                             PublicCoinSpend publicSpend(params);
-                            if (!ZFLSModule::ParseZerocoinPublicSpend(in, tx, state, publicSpend)){
+                            if (!ZDEVModule::ParseZerocoinPublicSpend(in, tx, state, publicSpend)){
                                 return false;
                             }
                             spend = publicSpend;
@@ -4045,10 +4045,10 @@ bool AcceptBlock(CBlock& block, CValidationState& state, CBlockIndex** ppindex, 
                     }
                 }
                 if(tx.IsCoinStake()) continue;
-                if(hasFLSInputs) {
+                if(hasDEVInputs) {
                     // Check if coinstake input is double spent inside the same block
-                    for (const CTxIn& FLSIn : FLSInputs)
-                        if(FLSIn.prevout == in.prevout)
+                    for (const CTxIn& DEVIn : DEVInputs)
+                        if(DEVIn.prevout == in.prevout)
                             // double spent coinstake input inside block
                             return error("%s: double spent coinstake input inside block", __func__);
                 }
@@ -4087,12 +4087,12 @@ bool AcceptBlock(CBlock& block, CValidationState& state, CBlockIndex** ppindex, 
                     for (const CTxIn& in: t.vin) {
                         // If this input is a zerocoin spend, and the coinstake has zerocoin inputs
                         // then store the serials for later check
-                        if(hasZFLSInputs && in.IsZerocoinSpend())
+                        if(hasZDEVInputs && in.IsZerocoinSpend())
                             vBlockSerials.push_back(TxInToZerocoinSpend(in).getCoinSerialNumber());
 
                         // Loop through every input of the staking tx
-                        if (hasFLSInputs) {
-                            for (const CTxIn& stakeIn : FLSInputs)
+                        if (hasDEVInputs) {
+                            for (const CTxIn& stakeIn : DEVInputs)
                                 // check if the tx input is double spending any coinstake input
                                 if (stakeIn.prevout == in.prevout)
                                     return state.DoS(100, error("%s: input already spent on a previous block", __func__));
@@ -4111,10 +4111,10 @@ bool AcceptBlock(CBlock& block, CValidationState& state, CBlockIndex** ppindex, 
             // Split height
             splitHeight = prev->nHeight;
 
-            // Now that this loop if completed. Check if we have zFLS inputs.
-            if(hasZFLSInputs) {
-                for (const CTxIn& zFLSInput : zFLSInputs) {
-                    libzerocoin::CoinSpend spend = TxInToZerocoinSpend(zFLSInput);
+            // Now that this loop if completed. Check if we have zDEV inputs.
+            if(hasZDEVInputs) {
+                for (const CTxIn& zDEVInput : zDEVInputs) {
+                    libzerocoin::CoinSpend spend = TxInToZerocoinSpend(zDEVInput);
 
                     // First check if the serials were not already spent on the forked blocks.
                     CBigNum coinSerial = spend.getCoinSerialNumber();
@@ -4161,8 +4161,8 @@ bool AcceptBlock(CBlock& block, CValidationState& state, CBlockIndex** ppindex, 
             }
         } else {
             if(!isBlockFromFork)
-                for (const CTxIn& zFLSInput : zFLSInputs) {
-                        libzerocoin::CoinSpend spend = TxInToZerocoinSpend(zFLSInput);
+                for (const CTxIn& zDEVInput : zDEVInputs) {
+                        libzerocoin::CoinSpend spend = TxInToZerocoinSpend(zDEVInput);
                         if (!ContextualCheckZerocoinSpend(stakeTxIn, &spend, pindex->nHeight, UINT256_ZERO))
                             return state.DoS(100,error("%s: main chain ContextualCheckZerocoinSpend failed for tx %s", __func__,
                                     stakeTxIn.GetHash().GetHex()), REJECT_INVALID, "bad-txns-invalid-zdev");
@@ -5342,7 +5342,7 @@ bool static ProcessMessage(CNode* pfrom, std::string strCommand, CDataStream& vR
 
         // Change version
         pfrom->PushMessage("verack");
-        pfrom->FLSend.SetVersion(std::min(pfrom->nVersion, PROTOCOL_VERSION));
+        pfrom->DEVend.SetVersion(std::min(pfrom->nVersion, PROTOCOL_VERSION));
 
         if (!pfrom->fInbound) {
             // Advertise our address
@@ -6040,7 +6040,7 @@ bool static ProcessMessage(CNode* pfrom, std::string strCommand, CDataStream& vR
         budget.ProcessMessage(pfrom, strCommand, vRecv);
         masternodePayments.ProcessMessageMasternodePayments(pfrom, strCommand, vRecv);
         ProcessMessageSwiftTX(pfrom, strCommand, vRecv);
-        sporkManager.ProceFLSpork(pfrom, strCommand, vRecv);
+        sporkManager.ProceDEVpork(pfrom, strCommand, vRecv);
         masternodeSync.ProcessMessage(pfrom, strCommand, vRecv);
     }
 

@@ -176,7 +176,7 @@
         <translation>Patvirtinkite piniginės užšifravimą.</translation>
     </message>
     <message>
-        <source>DEV will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your FLSs from being stolen by malware infecting your computer.</source>
+        <source>DEV will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your DEVs from being stolen by malware infecting your computer.</source>
         <translation>Dabar DEV išsijungs, kad būtų užbaigtas šifravimo procesas. Atminkite, kad jūsų piniginės užšifravimas negali visiškai apsaugoti jūsų DEV nuo kenkėjiškų programų, užkrėsto jūsų kompiuterio.</translation>
     </message>
     <message>
@@ -255,7 +255,7 @@
     </message>
     <message>
         <source>Enter a DEV Address that you would like to encrypt using BIP 38. Enter a passphrase in the middle box. Press encrypt to compute the encrypted private key.</source>
-        <translation>Įveskite Fls adresą, kurį norėtumėte užšifruoti naudojant BIP 38. Vidiniame laukelyje įrašykite slaptą frazę. Paspauskite užšifruoti, jei norite gauti užšifruotą privatųjį raktą.</translation>
+        <translation>Įveskite Dev adresą, kurį norėtumėte užšifruoti naudojant BIP 38. Vidiniame laukelyje įrašykite slaptą frazę. Paspauskite užšifruoti, jei norite gauti užšifruotą privatųjį raktą.</translation>
     </message>
     <message>
         <source>The DEV address to encrypt</source>
@@ -433,8 +433,8 @@
         <translation>Naršyti pavedimų istoriją</translation>
     </message>
     <message>
-        <source>Privacy Actions for zFLS</source>
-        <translation>zFLS Saugumo Veiksmai </translation>
+        <source>Privacy Actions for zDEV</source>
+        <translation>zDEV Saugumo Veiksmai </translation>
     </message>
     <message>
         <source>E&amp;xit</source>
@@ -1776,24 +1776,24 @@ https://www.transifex.com/CryptoDev-Project/CryptoDev-Project-translations</tran
         <translation>Įrašyti prievadą naudojant &amp;UPnP</translation>
     </message>
     <message>
-        <source>Enable automatic minting of DEV units to zFLS</source>
-        <translation>Įgalinti automatinį konvertavimą iš DEV į zFLS</translation>
+        <source>Enable automatic minting of DEV units to zDEV</source>
+        <translation>Įgalinti automatinį konvertavimą iš DEV į zDEV</translation>
     </message>
     <message>
-        <source>Enable zFLS Automint</source>
-        <translation>Įgalinti zFLS Automatinį nukaldinima</translation>
+        <source>Enable zDEV Automint</source>
+        <translation>Įgalinti zDEV Automatinį nukaldinima</translation>
     </message>
     <message>
-        <source>Percentage of incoming DEV which get automatically converted to zFLS via Zerocoin Protocol (min: 10%)</source>
-        <translation>Procentas gauto DEV, kuris automatiškai bus konvertuotas į zFLS naudojant Zerocoin Protokolą (min: 10%)</translation>
+        <source>Percentage of incoming DEV which get automatically converted to zDEV via Zerocoin Protocol (min: 10%)</source>
+        <translation>Procentas gauto DEV, kuris automatiškai bus konvertuotas į zDEV naudojant Zerocoin Protokolą (min: 10%)</translation>
     </message>
     <message>
-        <source>Percentage of autominted zFLS</source>
-        <translation>Automatiškai sukurtų zFLS procentas</translation>
+        <source>Percentage of autominted zDEV</source>
+        <translation>Automatiškai sukurtų zDEV procentas</translation>
     </message>
     <message>
-        <source>Preferred Automint zFLS Denomination</source>
-        <translation>Pageidautinas zFLS Automatinio Nukaldinimo Nominalas</translation>
+        <source>Preferred Automint zDEV Denomination</source>
+        <translation>Pageidautinas zDEV Automatinio Nukaldinimo Nominalas</translation>
     </message>
     <message>
         <source>Connect to the DEV network through a SOCKS5 proxy.</source>
@@ -1943,14 +1943,14 @@ https://www.transifex.com/CryptoDev-Project/CryptoDev-Project-translations</tran
         <translation>Jūsų dabartinis DEV balansas, įskaitant nepatvirtintus ir nesubrendusius sandorius</translation>
     </message>
     <message>
-        <source>zFLS Balance</source>
-        <translation>zFLS Balansas</translation>
+        <source>zDEV Balance</source>
+        <translation>zDEV Balansas</translation>
     </message>
     <message>
         <source>Mature: more than 20 confirmation and more than 1 mint of the same denomination after it was minted.
-These zFLS are spendable.</source>
+These zDEV are spendable.</source>
         <translation>Subrendę: daugiau nei 20 patvirtinimų ir daugiau nei 1 konvertacija to pačio nominalo, kai jis jau buvo konvertuotas.
-Šiuos zFLS galima išleisti.</translation>
+Šiuos zDEV galima išleisti.</translation>
     </message>
     <message>
         <source>Unconfirmed: less than 20 confirmations
@@ -2003,8 +2003,8 @@ Nesubrendusios: patvirtintos, bet mažiau nei 1 konvertacijos to pačio nominalo
         <translation>Prienamas išleidimui:</translation>
     </message>
     <message>
-        <source>Locked DEV or Masternode collaterals. These are excluded from zFLS minting.</source>
-        <translation>Užrakinti DEV arba Masternode užstatai. Jie yra neįtraukti į zFLS kalimą.</translation>
+        <source>Locked DEV or Masternode collaterals. These are excluded from zDEV minting.</source>
+        <translation>Užrakinti DEV arba Masternode užstatai. Jie yra neįtraukti į zDEV kalimą.</translation>
     </message>
     <message>
         <source>Locked:</source>
@@ -2108,8 +2108,8 @@ Nesubrendusios: patvirtintos, bet mažiau nei 1 konvertacijos to pačio nominalo
         <translation>0</translation>
     </message>
     <message>
-        <source>zFLS</source>
-        <translation>zFLS</translation>
+        <source>zDEV</source>
+        <translation>zDEV</translation>
     </message>
     <message>
         <source>Reset</source>
@@ -2128,12 +2128,12 @@ Nesubrendusios: patvirtintos, bet mažiau nei 1 konvertacijos to pačio nominalo
         <translation>PRIVATUMAS</translation>
     </message>
     <message>
-        <source>zFLS Control</source>
-        <translation>zFls Kontrolė</translation>
+        <source>zDEV Control</source>
+        <translation>zDev Kontrolė</translation>
     </message>
     <message>
-        <source>zFLS Selected:</source>
-        <translation>Pasirinkta zFLS:</translation>
+        <source>zDEV Selected:</source>
+        <translation>Pasirinkta zDEV:</translation>
     </message>
     <message>
         <source>Quantity Selected:</source>
@@ -2152,8 +2152,8 @@ Nesubrendusios: patvirtintos, bet mažiau nei 1 konvertacijos to pačio nominalo
         <translation>Prieinamas Balansas: </translation>
     </message>
     <message>
-        <source>0 zFLS</source>
-        <translation>0 zFLS</translation>
+        <source>0 zDEV</source>
+        <translation>0 zDEV</translation>
     </message>
     <message>
         <source>Pay &amp;To:</source>
@@ -2192,8 +2192,8 @@ Nesubrendusios: patvirtintos, bet mažiau nei 1 konvertacijos to pačio nominalo
         <translation>Zerocoin Statistika:</translation>
     </message>
     <message>
-        <source>Total Balance including unconfirmed and immature zFLS</source>
-        <translation>Bendras balansas, įskaitant nepatvirtintą ir nesubrendusį zFLS</translation>
+        <source>Total Balance including unconfirmed and immature zDEV</source>
+        <translation>Bendras balansas, įskaitant nepatvirtintą ir nesubrendusį zDEV</translation>
     </message>
     <message>
         <source>Total Zerocoin  Balance:</source>
@@ -2362,12 +2362,12 @@ Nesubrendusios: patvirtintos, bet mažiau nei 1 konvertacijos to pačio nominalo
         <translation>Konvertavimo Statusas: Geras</translation>
     </message>
     <message>
-        <source>zFLS Spend #: </source>
-        <translation>zFLS Išleidimas #:</translation>
+        <source>zDEV Spend #: </source>
+        <translation>zDEV Išleidimas #:</translation>
     </message>
     <message>
-        <source>zFLS Mint</source>
-        <translation>zFLS Konvertavimas</translation>
+        <source>zDEV Mint</source>
+        <translation>zDEV Konvertavimas</translation>
     </message>
     <message>
         <source> &lt;b&gt;enabled&lt;/b&gt;.</source>
@@ -2446,8 +2446,8 @@ Nesubrendusios: patvirtintos, bet mažiau nei 1 konvertacijos to pačio nominalo
         <translation>Nomin. &lt;b&gt;5000&lt;/b&gt;:</translation>
     </message>
     <message>
-        <source>Invalid Fls Address</source>
-        <translation>Netinkamas Fls Adresas</translation>
+        <source>Invalid Dev Address</source>
+        <translation>Netinkamas Dev Adresas</translation>
     </message>
     <message>
         <source>Invalid Send Amount</source>
@@ -3298,14 +3298,14 @@ Nesubrendusios: patvirtintos, bet mažiau nei 1 konvertacijos to pačio nominalo
     </message>
     </context>
 <context>
-    <name>ZFlsControlDialog</name>
+    <name>ZDevControlDialog</name>
     <message>
         <source>0</source>
         <translation>0</translation>
     </message>
     <message>
-        <source>zFLS</source>
-        <translation>zFLS</translation>
+        <source>zDEV</source>
+        <translation>zDEV</translation>
     </message>
     </context>
 <context>

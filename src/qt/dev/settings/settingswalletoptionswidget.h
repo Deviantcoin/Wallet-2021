@@ -17,7 +17,7 @@ class SettingsWalletOptionsWidget : public PWidget
     Q_OBJECT
 
 public:
-    explicit SettingsWalletOptionsWidget(FLSGUI* _window, QWidget *parent = nullptr);
+    explicit SettingsWalletOptionsWidget(DEVGUI* _window, QWidget *parent = nullptr);
     ~SettingsWalletOptionsWidget();
 
     void setMapper(QDataWidgetMapper *mapper);

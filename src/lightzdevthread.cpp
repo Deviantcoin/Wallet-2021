@@ -10,7 +10,7 @@
 #include "main.h"
 
 /****** Thread ********/
-void CLightWorker::ThreadLightZFLSSimplified() {
+void CLightWorker::ThreadLightZDEVSimplified() {
     RenameThread("deviant-light-thread");
     isWorkerRunning = true;
     while (true) {
@@ -62,7 +62,7 @@ void CLightWorker::ThreadLightZFLSSimplified() {
                         );
 
                     } catch (NotEnoughMintsException e) {
-                        LogPrintStr(std::string("ThreadLightZFLSSimplified: ") + e.message + "\n");
+                        LogPrintStr(std::string("ThreadLightZDEVSimplified: ") + e.message + "\n");
                         rejectWork(genWit, blockHeight, NOT_ENOUGH_MINTS);
                         continue;
                     }

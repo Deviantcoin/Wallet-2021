@@ -43,11 +43,11 @@
     </message>
     <message>
         <source>Choose the address to send coins to</source>
-        <translation>選擇要匯出FLS幣的位址</translation>
+        <translation>選擇要匯出DEV幣的位址</translation>
     </message>
     <message>
         <source>Choose the address to receive coins with</source>
-        <translation>選擇要接收FLS幣的位址</translation>
+        <translation>選擇要接收DEV幣的位址</translation>
     </message>
     <message>
         <source>C&amp;hoose</source>
@@ -164,7 +164,7 @@
         <translation>錢包確認加密</translation>
     </message>
     <message>
-        <source>DEV will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your FLSs from being stolen by malware infecting your computer.</source>
+        <source>DEV will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your DEVs from being stolen by malware infecting your computer.</source>
         <translation>DEV 現在會關閉程式來處理加密流程, 請注意, 僅僅是加密你的錢包並不能完全保護你的 DEV 幣被可疑軟體或病毒偷走的風險.</translation>
     </message>
     <message>
@@ -626,7 +626,7 @@
     </message>
     <message>
         <source>Open a DEV: URI or payment request</source>
-        <translation>打開FLS: 位址或付款請求 </translation>
+        <translation>打開DEV: 位址或付款請求 </translation>
     </message>
     <message>
         <source>&amp;Blockchain explorer</source>
@@ -968,7 +968,7 @@
     </message>
     </context>
 <context>
-    <name>ZFlsControlDialog</name>
+    <name>ZDevControlDialog</name>
     </context>
 <context>
     <name>deviant-core</name>

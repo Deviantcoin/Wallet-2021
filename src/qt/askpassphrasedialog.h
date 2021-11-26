@@ -12,7 +12,7 @@
 #include <QCheckBox>
 
 class WalletModel;
-class FLSGUI;
+class DEVGUI;
 
 namespace Ui
 {
@@ -43,9 +43,9 @@ public:
         Encrypt,        /** Encrypt unencrypted wallet */
         ToggleLock,     /** Toggle wallet lock state */
         ChangePass,     /** Change passphrase */
-        Send_FLS,       /** Send DEV */
-        Send_zFLS,      /** Send zFLS */
-        Mint_zFLS,      /** Mint zFLS */
+        Send_DEV,       /** Send DEV */
+        Send_zDEV,      /** Send zDEV */
+        Mint_zDEV,      /** Mint zDEV */
         BIP_38,         /** BIP38 menu */
         Multi_Sig,      /** Multi-Signature dialog */
         Sign_Message,   /** Sign/verify message dialog */

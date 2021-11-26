@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 //
-#ifndef FLS_ZFLSMODULE_H
-#define FLS_ZFLSMODULE_H
+#ifndef DEV_ZDEVMODULE_H
+#define DEV_ZDEVMODULE_H
 
 #include "libzerocoin/bignum.h"
 #include "libzerocoin/Denominations.h"
@@ -80,7 +80,7 @@ public:
 
 class CValidationState;
 
-namespace ZFLSModule {
+namespace ZDEVModule {
     CDataStream ScriptSigToSerializedSpend(const CScript& scriptSig);
     bool createInput(CTxIn &in, CZerocoinMint& mint, uint256 hashTxOut, const int spendVersion);
     PublicCoinSpend parseCoinSpend(const CTxIn &in);
@@ -99,4 +99,4 @@ namespace ZFLSModule {
 };
 
 
-#endif //FLS_ZFLSMODULE_H
+#endif //DEV_ZDEVMODULE_H

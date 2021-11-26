@@ -9,7 +9,7 @@
 #include "qt/dev/qtutils.h"
 #include <QTimer>
 
-TooltipMenu::TooltipMenu(FLSGUI *_window, QWidget *parent) :
+TooltipMenu::TooltipMenu(DEVGUI *_window, QWidget *parent) :
     PWidget(_window, parent),
     ui(new Ui::TooltipMenu)
 {

@@ -2,18 +2,18 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef FLS_ZFLSTRACKER_H
-#define FLS_ZFLSTRACKER_H
+#ifndef DEV_ZDEVTRACKER_H
+#define DEV_ZDEVTRACKER_H
 
 #include "zerocoin.h"
 #include "sync.h"
 #include <list>
 
 class CDeterministicMint;
-class CzFLSWallet;
+class CzDEVWallet;
 class CWallet;
 
-class CzFLSTracker
+class CzDEVTracker
 {
 private:
     bool fInitialized;
@@ -23,9 +23,9 @@ private:
     std::map<uint256, uint256> mapPendingSpends; //serialhash, txid of spend
     bool UpdateStatusInternal(const std::set<uint256>& setMempool, CMintMeta& mint);
 public:
-    CzFLSTracker(CWallet* parent);
-    ~CzFLSTracker();
-    void Add(const CDeterministicMint& dMint, bool isNew = false, bool isArchived = false, CzFLSWallet* zFLSWallet = NULL);
+    CzDEVTracker(CWallet* parent);
+    ~CzDEVTracker();
+    void Add(const CDeterministicMint& dMint, bool isNew = false, bool isArchived = false, CzDEVWallet* zDEVWallet = NULL);
     void Add(const CZerocoinMint& mint, bool isNew = false, bool isArchived = false);
     bool Archive(CMintMeta& meta);
     bool HasPubcoin(const CBigNum& bnValue) const;
@@ -52,4 +52,4 @@ public:
     void Clear();
 };
 
-#endif //FLS_ZFLSTRACKER_H
+#endif //DEV_ZDEVTRACKER_H

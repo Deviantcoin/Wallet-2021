@@ -20,7 +20,7 @@
 #include "zdev/deterministicmint.h"
 #include "zdevcontroldialog.h"
 
-SendWidget::SendWidget(FLSGUI* parent) : PWidget(parent),
+SendWidget::SendWidget(DEVGUI* parent) : PWidget(parent),
                                          ui(new Ui::send),
                                          coinIcon(new QPushButton()),
                                          btnContacts(new QPushButton())
@@ -139,8 +139,8 @@ SendWidget::SendWidget(FLSGUI* parent) : PWidget(parent),
     setCustomFeeSelected(false);
 
     // Connect
-    connect(ui->pushLeft, &QPushButton::clicked, [this]() { onFLSSelected(true); });
-    connect(ui->pushRight, &QPushButton::clicked, [this]() { onFLSSelected(false); });
+    connect(ui->pushLeft, &QPushButton::clicked, [this]() { onDEVSelected(true); });
+    connect(ui->pushRight, &QPushButton::clicked, [this]() { onDEVSelected(false); });
     connect(ui->pushButtonSave, &QPushButton::clicked, this, &SendWidget::onSendClicked);
     connect(ui->pushButtonAddRecipient, &QPushButton::clicked, this, &SendWidget::onAddEntryClicked);
     connect(ui->pushButtonClear, &QPushButton::clicked, [this]() { clearAll(true); });
@@ -165,10 +165,10 @@ void SendWidget::refreshAmounts()
             total += amount;
     }
 
-    bool iszFLS = ui->pushRight->isChecked();
+    bool iszDEV = ui->pushRight->isChecked();
     nDisplayUnit = walletModel->getOptionsModel()->getDisplayUnit();
 
-    ui->labelAmountSend->setText(GUIUtil::formatBalance(total, nDisplayUnit, iszFLS));
+    ui->labelAmountSend->setText(GUIUtil::formatBalance(total, nDisplayUnit, iszDEV));
 
     CAmount totalAmount = 0;
     if (CoinControlDialog::coinControl->HasSelected()) {
@@ -177,7 +177,7 @@ void SendWidget::refreshAmounts()
         ui->labelTitleTotalRemaining->setText(tr("Total remaining from the selected UTXO"));
     } else {
         // Wallet's balance
-        totalAmount = (iszFLS ?
+        totalAmount = (iszDEV ?
                               walletModel->getZerocoinBalance() :
                               walletModel->getBalance(nullptr, fDelegationsChecked)) -
                       total;
@@ -187,7 +187,7 @@ void SendWidget::refreshAmounts()
         GUIUtil::formatBalance(
             totalAmount,
             nDisplayUnit,
-            iszFLS));
+            iszDEV));
     // show or hide delegations checkbox if need be
     showHideCheckBoxDelegations();
 }
@@ -342,16 +342,16 @@ void SendWidget::setFocusOnLastEntry()
 void SendWidget::showHideCheckBoxDelegations()
 {
     // Show checkbox only when there is any available owned delegation,
-    // coincontrol is not selected, and we are trying to spend DEV (not zFLS)
-    const bool iszFLS = ui->pushRight->isChecked();
+    // coincontrol is not selected, and we are trying to spend DEV (not zDEV)
+    const bool iszDEV = ui->pushRight->isChecked();
     const bool isCControl = CoinControlDialog::coinControl->HasSelected();
     const bool hasDel = cachedDelegatedBalance > 0;
 
-    const bool showCheckBox = !iszFLS && !isCControl && hasDel;
+    const bool showCheckBox = !iszDEV && !isCControl && hasDel;
     ui->checkBoxDelegations->setVisible(showCheckBox);
     if (showCheckBox)
         ui->checkBoxDelegations->setToolTip(
-            tr("Possibly spend coins delegated for cold-staking (currently available: %1").arg(GUIUtil::formatBalance(cachedDelegatedBalance, nDisplayUnit, iszFLS)));
+            tr("Possibly spend coins delegated for cold-staking (currently available: %1").arg(GUIUtil::formatBalance(cachedDelegatedBalance, nDisplayUnit, iszDEV)));
 }
 
 void SendWidget::onSendClicked()
@@ -377,7 +377,7 @@ void SendWidget::onSendClicked()
         return;
     }
 
-    bool sendFLS = ui->pushLeft->isChecked();
+    bool sendDEV = ui->pushLeft->isChecked();
 
     WalletModel::UnlockContext ctx(walletModel->requestUnlock());
     if (!ctx.isValid()) {
@@ -386,7 +386,7 @@ void SendWidget::onSendClicked()
         return;
     }
 
-    if ((sendFLS) ? send(recipients) : sendzFLS(recipients)) {
+    if ((sendDEV) ? send(recipients) : sendzDEV(recipients)) {
         updateEntryLabels(recipients);
     }
     setFocusOnLastEntry();
@@ -401,7 +401,7 @@ bool SendWidget::send(QList<SendCoinsRecipient> recipients)
     prepareStatus = walletModel->prepareTransaction(currentTransaction, CoinControlDialog::coinControl, fDelegationsChecked);
 
     // process prepareStatus and on error generate message shown to user
-    GuiTransactionsUtils::ProceFLSendCoinsReturnAndInform(
+    GuiTransactionsUtils::ProceDEVendCoinsReturnAndInform(
         this,
         prepareStatus,
         walletModel,
@@ -430,7 +430,7 @@ bool SendWidget::send(QList<SendCoinsRecipient> recipients)
         // now send the prepared transaction
         WalletModel::SendCoinsReturn sendStatus = dialog->getStatus();
         // process sendStatus and on error generate message shown to user
-        GuiTransactionsUtils::ProceFLSendCoinsReturnAndInform(
+        GuiTransactionsUtils::ProceDEVendCoinsReturnAndInform(
             this,
             sendStatus,
             walletModel);
@@ -450,7 +450,7 @@ bool SendWidget::send(QList<SendCoinsRecipient> recipients)
     return false;
 }
 
-bool SendWidget::sendzFLS(QList<SendCoinsRecipient> recipients)
+bool SendWidget::sendzDEV(QList<SendCoinsRecipient> recipients)
 {
     if (!walletModel || !walletModel->getOptionsModel())
         return false;
@@ -467,11 +467,11 @@ bool SendWidget::sendzFLS(QList<SendCoinsRecipient> recipients)
         outputs.push_back(std::pair<CBitcoinAddress*, CAmount>(new CBitcoinAddress(rec.address.toStdString()), rec.amount));
     }
 
-    // use mints from zFLS selector if applicable
+    // use mints from zDEV selector if applicable
     std::vector<CMintMeta> vMintsToFetch;
     std::vector<CZerocoinMint> vMintsSelected;
-    if (!zFLSControlDialog::setSelectedMints.empty()) {
-        vMintsToFetch = zFLSControlDialog::GetSelectedMints();
+    if (!zDEVControlDialog::setSelectedMints.empty()) {
+        vMintsToFetch = zDEVControlDialog::GetSelectedMints();
 
         for (auto& meta : vMintsToFetch) {
             CZerocoinMint mint;
@@ -509,22 +509,22 @@ bool SendWidget::sendzFLS(QList<SendCoinsRecipient> recipients)
         changeAddress = walletModel->getAddressTableModel()->getAddressToShow().toStdString();
     }
 
-    if (walletModel->sendzFLS(
+    if (walletModel->sendzDEV(
             vMintsSelected,
             receipt,
             outputs,
             changeAddress)) {
         inform(tr("zDEV transaction sent!"));
-        zFLSControlDialog::setSelectedMints.clear();
+        zDEVControlDialog::setSelectedMints.clear();
         clearAll(false);
         return true;
     } else {
         QString body;
-        if (receipt.GetStatus() == ZFLS_SPEND_V1_SEC_LEVEL) {
+        if (receipt.GetStatus() == ZDEV_SPEND_V1_SEC_LEVEL) {
             body = tr("Version 1 zDEV require a security level of 100 to successfully spend.");
         } else {
             int nNeededSpends = receipt.GetNeededSpends();                    // Number of spends we would need for this transaction
-            const int nMaxSpends = Params().GetConsensus().ZC_MaxSpendsPerTx; // Maximum possible spends for one zFLS transaction
+            const int nMaxSpends = Params().GetConsensus().ZC_MaxSpendsPerTx; // Maximum possible spends for one zDEV transaction
             if (nNeededSpends > nMaxSpends) {
                 body = tr("Too much inputs (") + QString::number(nNeededSpends, 10) +
                        tr(") needed.\nMaximum allowed: ") + QString::number(nMaxSpends, 10);
@@ -642,7 +642,7 @@ void SendWidget::onChangeCustomFeeClicked()
 
 void SendWidget::onCoinControlClicked()
 {
-    if (isFLS) {
+    if (isDEV) {
         if (walletModel->getBalance() > 0) {
             if (!coinControlDialog) {
                 coinControlDialog = new CoinControlDialog();
@@ -658,11 +658,11 @@ void SendWidget::onCoinControlClicked()
         }
     } else {
         if (walletModel->getZerocoinBalance() > 0) {
-            zFLSControlDialog* zFLSControl = new zFLSControlDialog(this);
-            zFLSControl->setModel(walletModel);
-            zFLSControl->exec();
-            ui->btnCoinControl->setActive(!zFLSControlDialog::setSelectedMints.empty());
-            zFLSControl->deleteLater();
+            zDEVControlDialog* zDEVControl = new zDEVControlDialog(this);
+            zDEVControl->setModel(walletModel);
+            zDEVControl->exec();
+            ui->btnCoinControl->setActive(!zDEVControlDialog::setSelectedMints.empty());
+            zDEVControl->deleteLater();
         } else {
             inform(tr("You don't have any zDEV in your balance to select."));
         }
@@ -683,10 +683,10 @@ void SendWidget::onCheckBoxChanged()
     }
 }
 
-void SendWidget::onFLSSelected(bool _isFLS)
+void SendWidget::onDEVSelected(bool _isDEV)
 {
-    isFLS = _isFLS;
-    setCssProperty(coinIcon, _isFLS ? "coin-icon-DEV" : "coin-icon-zdev");
+    isDEV = _isDEV;
+    setCssProperty(coinIcon, _isDEV ? "coin-icon-DEV" : "coin-icon-zdev");
     refreshView();
     updateStyle(coinIcon);
 }
@@ -780,8 +780,8 @@ void SendWidget::onContactMultiClicked()
             inform(tr("Invalid address"));
             return;
         }
-        CBitcoinAddress FLSAdd = CBitcoinAddress(address.toStdString());
-        if (walletModel->isMine(FLSAdd)) {
+        CBitcoinAddress DEVAdd = CBitcoinAddress(address.toStdString());
+        if (walletModel->isMine(DEVAdd)) {
             inform(tr("Cannot store your own address as contact"));
             return;
         }
@@ -801,7 +801,7 @@ void SendWidget::onContactMultiClicked()
             if (label == dialog->getLabel()) {
                 return;
             }
-            if (walletModel->updateAddressBookLabels(FLSAdd.Get(), dialog->getLabel().toStdString(),
+            if (walletModel->updateAddressBookLabels(DEVAdd.Get(), dialog->getLabel().toStdString(),
                     AddressBook::AddressBookPurpose::SEND)) {
                 inform(tr("New Contact Stored"));
             } else {

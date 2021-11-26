@@ -77,7 +77,7 @@ public:
         Other,
         Generated,
         StakeMint,
-        StakeZFLS,
+        StakeZDEV,
         SendToAddress,
         SendToOther,
         RecvWithAddress,
@@ -87,7 +87,7 @@ public:
         ZerocoinMint,
         ZerocoinSpend,
         RecvFromZerocoinSpend,
-        ZerocoinSpend_Change_zFLS,
+        ZerocoinSpend_Change_zDEV,
         ZerocoinSpend_FromMe,
         StakeDelegated, // Received cold stake (owner)
         StakeHot, // Staked via a delegated P2CS.
@@ -120,7 +120,7 @@ public:
     static QList<TransactionRecord> decomposeTransaction(const CWallet* wallet, const CWalletTx& wtx);
 
     /// Helpers
-    static bool ExtractAddress(const CScript& scriptPubKey, bool fColdStake, std::string& addreFLStr);
+    static bool ExtractAddress(const CScript& scriptPubKey, bool fColdStake, std::string& addreDEVtr);
     static void loadHotOrColdStakeOrContract(const CWallet* wallet, const CWalletTx& wtx,
                                             TransactionRecord& record, bool isContract = false);
     static void loadUnlockColdStake(const CWallet* wallet, const CWalletTx& wtx, TransactionRecord& record);

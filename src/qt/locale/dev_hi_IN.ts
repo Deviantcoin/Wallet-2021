@@ -324,7 +324,7 @@
     <name>WalletView</name>
     </context>
 <context>
-    <name>ZFlsControlDialog</name>
+    <name>ZDevControlDialog</name>
     </context>
 <context>
     <name>deviant-core</name>

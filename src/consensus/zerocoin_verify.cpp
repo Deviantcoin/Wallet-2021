@@ -56,7 +56,7 @@ bool CheckZerocoinSpend(const CTransaction& tx, bool fVerifySignature, CValidati
             }
             libzerocoin::ZerocoinParams* params = consensus.Zerocoin_Params(false);
             PublicCoinSpend publicSpend(params);
-            if (!ZFLSModule::parseCoinSpend(txin, tx, prevOut, publicSpend)){
+            if (!ZDEVModule::parseCoinSpend(txin, tx, prevOut, publicSpend)){
                 return state.DoS(100, error("CheckZerocoinSpend(): public zerocoin spend parse failed"));
             }
             newSpend = publicSpend;
@@ -79,7 +79,7 @@ bool CheckZerocoinSpend(const CTransaction& tx, bool fVerifySignature, CValidati
         if (isPublicSpend) {
             libzerocoin::ZerocoinParams* params = consensus.Zerocoin_Params(false);
             PublicCoinSpend ret(params);
-            if (!ZFLSModule::validateInput(txin, prevOut, tx, ret)){
+            if (!ZDEVModule::validateInput(txin, prevOut, tx, ret)){
                 return state.DoS(100, error("CheckZerocoinSpend(): public zerocoin spend did not verify"));
             }
         }
@@ -142,7 +142,7 @@ bool ContextualCheckZerocoinSpend(const CTransaction& tx, const libzerocoin::Coi
     //Reject serial's that are already in the blockchain
     int nHeightTx = 0;
     if (IsSerialInBlockchain(spend->getCoinSerialNumber(), nHeightTx))
-        return error("%s : zFLS spend with serial %s is already in block %d\n", __func__,
+        return error("%s : zDEV spend with serial %s is already in block %d\n", __func__,
                      spend->getCoinSerialNumber().GetHex(), nHeightTx);
 
     return true;
@@ -151,11 +151,11 @@ bool ContextualCheckZerocoinSpend(const CTransaction& tx, const libzerocoin::Coi
 bool ContextualCheckZerocoinSpendNoSerialCheck(const CTransaction& tx, const libzerocoin::CoinSpend* spend, int nHeight, const uint256& hashBlock)
 {
     const Consensus::Params& consensus = Params().GetConsensus();
-    //Check to see if the zFLS is properly signed
+    //Check to see if the zDEV is properly signed
     if (nHeight >= consensus.height_start_ZC_SerialsV2) {
         try {
             if (!spend->HasValidSignature())
-                return error("%s: V2 zFLS spend does not have a valid signature\n", __func__);
+                return error("%s: V2 zDEV spend does not have a valid signature\n", __func__);
         } catch (const libzerocoin::InvalidSerialException& e) {
             // Check if we are in the range of the attack
             if(!isBlockBetweenFakeSerialAttackRange(nHeight))
@@ -168,7 +168,7 @@ bool ContextualCheckZerocoinSpendNoSerialCheck(const CTransaction& tx, const lib
         if (tx.IsCoinStake())
             expectedType = libzerocoin::SpendType::STAKE;
         if (spend->getSpendType() != expectedType) {
-            return error("%s: trying to spend zFLS without the correct spend type. txid=%s\n", __func__,
+            return error("%s: trying to spend zDEV without the correct spend type. txid=%s\n", __func__,
                          tx.GetHash().GetHex());
         }
     }
@@ -179,7 +179,7 @@ bool ContextualCheckZerocoinSpendNoSerialCheck(const CTransaction& tx, const lib
     if (!spend->HasValidSerial(consensus.Zerocoin_Params(fUseV1Params)))  {
         // Up until this block our chain was not checking serials correctly..
         if (!isBlockBetweenFakeSerialAttackRange(nHeight))
-            return error("%s : zFLS spend with serial %s from tx %s is not in valid range\n", __func__,
+            return error("%s : zDEV spend with serial %s from tx %s is not in valid range\n", __func__,
                      spend->getCoinSerialNumber().GetHex(), tx.GetHash().GetHex());
         else
             LogPrintf("%s:: HasValidSerial :: Invalid serial detected within range in block %d\n", __func__, nHeight);
@@ -189,7 +189,7 @@ bool ContextualCheckZerocoinSpendNoSerialCheck(const CTransaction& tx, const lib
     return true;
 }
 
-bool RecalculateFLSSupply(int nHeightStart, bool fSkipzFLS)
+bool RecalculateDEVSupply(int nHeightStart, bool fSkipzDEV)
 {
     AssertLockHeld(cs_main);
 
@@ -202,7 +202,7 @@ bool RecalculateFLSSupply(int nHeightStart, bool fSkipzFLS)
     if (nHeightStart == consensus.height_start_ZC)
         nMoneySupply = CAmount(5449796547496199);
 
-    if (!fSkipzFLS) {
+    if (!fSkipzDEV) {
         // initialize supply to 0
         mapZerocoinSupply.clear();
         for (auto& denom : libzerocoin::zerocoinDenomList) mapZerocoinSupply.insert(std::make_pair(denom, 0));
@@ -250,8 +250,8 @@ bool RecalculateFLSSupply(int nHeightStart, bool fSkipzFLS)
         nMoneySupply += (nValueOut - nValueIn);
 
         // Rewrite zdev supply too
-        if (!fSkipzFLS && pindex->nHeight >= consensus.height_start_ZC) {
-            UpdateZFLSSupplyConnect(block, pindex, true);
+        if (!fSkipzDEV && pindex->nHeight >= consensus.height_start_ZC) {
+            UpdateZDEVSupplyConnect(block, pindex, true);
         }
 
         // Add fraudulent funds to the supply and remove any recovered funds.

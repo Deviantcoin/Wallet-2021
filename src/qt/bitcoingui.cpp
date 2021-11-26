@@ -343,7 +343,7 @@ void BitcoinGUI::createActions(const NetworkStyle* networkStyle)
     tabGroup->addAction(historyAction);
 
     //     privacyAction = new QAction(QIcon(":/icons/privacy"), tr("&Privacy"), this);
-    //     privacyAction->setStatusTip(tr("Privacy Actions for zFLS"));
+    //     privacyAction->setStatusTip(tr("Privacy Actions for zDEV"));
     //     privacyAction->setToolTip(privacyAction->statusTip());
     //     privacyAction->setCheckable(true);
     // #ifdef Q_OS_MAC

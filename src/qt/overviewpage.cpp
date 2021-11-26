@@ -148,7 +148,7 @@ OverviewPage::~OverviewPage()
     delete ui;
 }
 
-void OverviewPage::getPercentage(CAmount nUnlockedBalance, CAmount nZerocoinBalance, QString& sFLSPercentage, QString& szdevPercentage)
+void OverviewPage::getPercentage(CAmount nUnlockedBalance, CAmount nZerocoinBalance, QString& sDEVPercentage, QString& szdevPercentage)
 {
     int nPrecision = 2;
     double dzPercentage = 0.0;
@@ -166,7 +166,7 @@ void OverviewPage::getPercentage(CAmount nUnlockedBalance, CAmount nZerocoinBala
     double dPercentage = 100.0 - dzPercentage;
 
     szdevPercentage = "(" + QLocale(QLocale::system()).toString(dzPercentage, 'f', nPrecision) + " %)";
-    sFLSPercentage = "(" + QLocale(QLocale::system()).toString(dPercentage, 'f', nPrecision) + " %)";
+    sDEVPercentage = "(" + QLocale(QLocale::system()).toString(dPercentage, 'f', nPrecision) + " %)";
 }
 
 void OverviewPage::setBalance(const CAmount& balance, const CAmount& unconfirmedBalance, const CAmount& immatureBalance, const CAmount& zerocoinBalance, const CAmount& unconfirmedZerocoinBalance, const CAmount& immatureZerocoinBalance, const CAmount& watchOnlyBalance, const CAmount& watchUnconfBalance, const CAmount& watchImmatureBalance)
@@ -190,7 +190,7 @@ void OverviewPage::setBalance(const CAmount& balance, const CAmount& unconfirmed
 
     // DEV Balance
     CAmount nTotalBalance = balance + unconfirmedBalance;
-    CAmount FLSAvailableBalance = balance - immatureBalance - nLockedBalance;
+    CAmount DEVAvailableBalance = balance - immatureBalance - nLockedBalance;
     CAmount nUnlockedBalance = nTotalBalance - nLockedBalance;
 
     // DEV Watch-Only Balance
@@ -205,11 +205,11 @@ void OverviewPage::setBalance(const CAmount& balance, const CAmount& unconfirmed
     QString sPercentage = "";
     getPercentage(nUnlockedBalance, zerocoinBalance, sPercentage, szPercentage);
     // Combined balances
-    CAmount availableTotalBalance = FLSAvailableBalance + matureZerocoinBalance;
+    CAmount availableTotalBalance = DEVAvailableBalance + matureZerocoinBalance;
     CAmount sumTotalBalance = nTotalBalance + zerocoinBalance;
 
     // DEV labels
-    ui->labelBalance->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, FLSAvailableBalance, false, BitcoinUnits::separatorAlways));
+    ui->labelBalance->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, DEVAvailableBalance, false, BitcoinUnits::separatorAlways));
     ui->labelUnconfirmed->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, unconfirmedBalance, false, BitcoinUnits::separatorAlways));
     ui->labelImmature->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, immatureBalance, false, BitcoinUnits::separatorAlways));
     ui->labelLockedBalance->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, nLockedBalance, false, BitcoinUnits::separatorAlways));
@@ -233,7 +233,7 @@ void OverviewPage::setBalance(const CAmount& balance, const CAmount& unconfirmed
     ui->labelTotalz->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, sumTotalBalance, false, BitcoinUnits::separatorAlways));
 
     // Percentage labels
-    ui->labelFLSPercent->setText(sPercentage);
+    ui->labelDEVPercent->setText(sPercentage);
     ui->labelzdevPercent->setText(szPercentage);
 
     // Adjust bubble-help according to AutoMint settings
@@ -258,32 +258,32 @@ void OverviewPage::setBalance(const CAmount& balance, const CAmount& unconfirmed
     bool showWatchOnly = nTotalWatchBalance != 0;
 
     // DEV Available
-    bool showFLSAvailable = settingShowAllBalances || FLSAvailableBalance != nTotalBalance;
-    bool showWatchOnlyFLSAvailable = showFLSAvailable || nAvailableWatchBalance != nTotalWatchBalance;
-    ui->labelBalanceText->setVisible(showFLSAvailable || showWatchOnlyFLSAvailable);
-    ui->labelBalance->setVisible(showFLSAvailable || showWatchOnlyFLSAvailable);
-    ui->labelWatchAvailable->setVisible(showWatchOnlyFLSAvailable && showWatchOnly);
+    bool showDEVAvailable = settingShowAllBalances || DEVAvailableBalance != nTotalBalance;
+    bool showWatchOnlyDEVAvailable = showDEVAvailable || nAvailableWatchBalance != nTotalWatchBalance;
+    ui->labelBalanceText->setVisible(showDEVAvailable || showWatchOnlyDEVAvailable);
+    ui->labelBalance->setVisible(showDEVAvailable || showWatchOnlyDEVAvailable);
+    ui->labelWatchAvailable->setVisible(showWatchOnlyDEVAvailable && showWatchOnly);
 
     // DEV Pending
-    bool showFLSPending = settingShowAllBalances || unconfirmedBalance != 0;
-    bool showWatchOnlyFLSPending = showFLSPending || watchUnconfBalance != 0;
-    ui->labelPendingText->setVisible(showFLSPending || showWatchOnlyFLSPending);
-    ui->labelUnconfirmed->setVisible(showFLSPending || showWatchOnlyFLSPending);
-    ui->labelWatchPending->setVisible(showWatchOnlyFLSPending && showWatchOnly);
+    bool showDEVPending = settingShowAllBalances || unconfirmedBalance != 0;
+    bool showWatchOnlyDEVPending = showDEVPending || watchUnconfBalance != 0;
+    ui->labelPendingText->setVisible(showDEVPending || showWatchOnlyDEVPending);
+    ui->labelUnconfirmed->setVisible(showDEVPending || showWatchOnlyDEVPending);
+    ui->labelWatchPending->setVisible(showWatchOnlyDEVPending && showWatchOnly);
 
     // DEV Immature
-    bool showFLSImmature = settingShowAllBalances || immatureBalance != 0;
-    bool showWatchOnlyImmature = showFLSImmature || watchImmatureBalance != 0;
-    ui->labelImmatureText->setVisible(showFLSImmature || showWatchOnlyImmature);
-    ui->labelImmature->setVisible(showFLSImmature || showWatchOnlyImmature);    // for symmetry reasons also show immature label when the watch-only one is shown
+    bool showDEVImmature = settingShowAllBalances || immatureBalance != 0;
+    bool showWatchOnlyImmature = showDEVImmature || watchImmatureBalance != 0;
+    ui->labelImmatureText->setVisible(showDEVImmature || showWatchOnlyImmature);
+    ui->labelImmature->setVisible(showDEVImmature || showWatchOnlyImmature);    // for symmetry reasons also show immature label when the watch-only one is shown
     ui->labelWatchImmature->setVisible(showWatchOnlyImmature && showWatchOnly); // show watch-only immature balance
 
     // DEV Locked
-    bool showFLSLocked = settingShowAllBalances || nLockedBalance != 0;
-    bool showWatchOnlyFLSLocked = showFLSLocked || nWatchOnlyLockedBalance != 0;
-    ui->labelLockedBalanceText->setVisible(showFLSLocked || showWatchOnlyFLSLocked);
-    ui->labelLockedBalance->setVisible(showFLSLocked || showWatchOnlyFLSLocked);
-    ui->labelWatchLocked->setVisible(showWatchOnlyFLSLocked && showWatchOnly);
+    bool showDEVLocked = settingShowAllBalances || nLockedBalance != 0;
+    bool showWatchOnlyDEVLocked = showDEVLocked || nWatchOnlyLockedBalance != 0;
+    ui->labelLockedBalanceText->setVisible(showDEVLocked || showWatchOnlyDEVLocked);
+    ui->labelLockedBalance->setVisible(showDEVLocked || showWatchOnlyDEVLocked);
+    ui->labelWatchLocked->setVisible(showWatchOnlyDEVLocked && showWatchOnly);
 
     // zdev
     bool showzdevAvailable = settingShowAllBalances || zerocoinBalance != matureZerocoinBalance;
@@ -298,7 +298,7 @@ void OverviewPage::setBalance(const CAmount& balance, const CAmount& unconfirmed
 
     // Percent split
     bool showPercentages = !(zerocoinBalance == 0 && nTotalBalance == 0);
-    ui->labelFLSPercent->setVisible(showPercentages);
+    ui->labelDEVPercent->setVisible(showPercentages);
     ui->labelzdevPercent->setVisible(showPercentages);
 
     static int cachedTxLocks = 0;

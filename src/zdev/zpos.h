@@ -2,14 +2,14 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef FLS_LEGACY_ZPOS_H
-#define FLS_LEGACY_ZPOS_H
+#ifndef DEV_LEGACY_ZPOS_H
+#define DEV_LEGACY_ZPOS_H
 
 #include "stakeinput.h"
 #include "main.h"
 #include "txdb.h"
 
-class CLegacyzFLSStake : public CStakeInput
+class CLegacyzDEVStake : public CStakeInput
 {
 private:
     uint32_t nChecksum;
@@ -17,11 +17,11 @@ private:
     uint256 hashSerial;
 
 public:
-    CLegacyzFLSStake() {}
+    CLegacyzDEVStake() {}
 
-    explicit CLegacyzFLSStake(const libzerocoin::CoinSpend& spend);
+    explicit CLegacyzDEVStake(const libzerocoin::CoinSpend& spend);
     bool InitFromTxIn(const CTxIn& txin) override;
-    bool IsZFLS() const override { return true; }
+    bool IsZDEV() const override { return true; }
     uint32_t GetChecksum() const { return nChecksum; }
     CBlockIndex* GetIndexFrom() override;
     CAmount GetValue() const override;
@@ -33,4 +33,4 @@ public:
     virtual bool ContextCheck(int nHeight, uint32_t nTime) override;
 };
 
-#endif //FLS_LEGACY_ZPOS_H
+#endif //DEV_LEGACY_ZPOS_H

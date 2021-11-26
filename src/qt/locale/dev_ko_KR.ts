@@ -176,8 +176,8 @@
         <translation>지갑 암호화 확인</translation>
     </message>
     <message>
-        <source>DEV will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your FLSs from being stolen by malware infecting your computer.</source>
-        <translation>FLS는 이제 암호화 프로세스를 마치기 위해 닫힐것입니다. 지갑을 암호화하더라도 맬웨어로 인한 FLSs 의 도난당하는 것을 완벽하게 보호 할 수는 없습니다.</translation>
+        <source>DEV will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your DEVs from being stolen by malware infecting your computer.</source>
+        <translation>DEV는 이제 암호화 프로세스를 마치기 위해 닫힐것입니다. 지갑을 암호화하더라도 맬웨어로 인한 DEVs 의 도난당하는 것을 완벽하게 보호 할 수는 없습니다.</translation>
     </message>
     <message>
         <source>Are you sure you wish to encrypt your wallet?</source>
@@ -185,7 +185,7 @@
     </message>
     <message>
         <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR DEV&lt;/b&gt;!</source>
-        <translation>경고: 지갑 암호화 후 암호를 분실하게 되면 &lt;b&gt;모든 FLS를 잃게 됩니다&lt;/b&gt;!</translation>
+        <translation>경고: 지갑 암호화 후 암호를 분실하게 되면 &lt;b&gt;모든 DEV를 잃게 됩니다&lt;/b&gt;!</translation>
     </message>
     <message>
         <source>Wallet encrypted</source>
@@ -433,8 +433,8 @@
         <translation>겨래내역 보기</translation>
     </message>
     <message>
-        <source>Privacy Actions for zFLS</source>
-        <translation>zFLS 생성 및 관리</translation>
+        <source>Privacy Actions for zDEV</source>
+        <translation>zDEV 생성 및 관리</translation>
     </message>
     <message>
         <source>E&amp;xit</source>
@@ -678,7 +678,7 @@
     </message>
     <message>
         <source>Modify configuration options for DEV</source>
-        <translation>FLS에 대한 구성 옵션 수정</translation>
+        <translation>DEV에 대한 구성 옵션 수정</translation>
     </message>
     <message>
         <source>Sign messages with your DEV addresses to prove you own them</source>
@@ -1633,7 +1633,7 @@ Please be patient after clicking import.</source>
     </message>
     <message>
         <source>Add destinations to send DEV to</source>
-        <translation>FLS를 보낼 목적지 추가</translation>
+        <translation>DEV를 보낼 목적지 추가</translation>
     </message>
     <message>
         <source>Add &amp;Destination</source>
@@ -1787,7 +1787,7 @@ Please be patient after clicking import.</source>
     </message>
     <message>
         <source>Automatically start DEV after logging in to the system.</source>
-        <translation>시스템 로그인 후 FLS을 자동으로 시작합니다.</translation>
+        <translation>시스템 로그인 후 DEV을 자동으로 시작합니다.</translation>
     </message>
     <message>
         <source>&amp;Start DEV on system login</source>
@@ -1819,7 +1819,7 @@ Please be patient after clicking import.</source>
     </message>
     <message>
         <source>The user interface language can be set here. This setting will take effect after restarting DEV.</source>
-        <translation>사용자 인터페이스 언어를 설정할 수 있습니다. 이 설정은 FLS을 다시 시작한 후에 적용됩니다.</translation>
+        <translation>사용자 인터페이스 언어를 설정할 수 있습니다. 이 설정은 DEV을 다시 시작한 후에 적용됩니다.</translation>
     </message>
     <message>
         <source>Language missing or translation incomplete? Help contributing translations here:
@@ -1832,28 +1832,28 @@ https://www.transifex.com/CryptoDev-Project/CryptoDev-Project-translations</tran
         <translation>&amp;UPnp를 사용하여 포트 매핑</translation>
     </message>
     <message>
-        <source>Enable automatic minting of DEV units to zFLS</source>
-        <translation>보상받은 FLS를 zFLS로 자동변환 활성화</translation>
+        <source>Enable automatic minting of DEV units to zDEV</source>
+        <translation>보상받은 DEV를 zDEV로 자동변환 활성화</translation>
     </message>
     <message>
-        <source>Enable zFLS Automint</source>
-        <translation>zFLS 자동생성 활성화</translation>
+        <source>Enable zDEV Automint</source>
+        <translation>zDEV 자동생성 활성화</translation>
     </message>
     <message>
-        <source>Percentage of incoming DEV which get automatically converted to zFLS via Zerocoin Protocol (min: 10%)</source>
-        <translation>FLS수신시 자동변환 zFLS 비율 (최소값:10%)</translation>
+        <source>Percentage of incoming DEV which get automatically converted to zDEV via Zerocoin Protocol (min: 10%)</source>
+        <translation>DEV수신시 자동변환 zDEV 비율 (최소값:10%)</translation>
     </message>
     <message>
-        <source>Percentage of autominted zFLS</source>
-        <translation>자동 변환되는 zFLS 비율</translation>
+        <source>Percentage of autominted zDEV</source>
+        <translation>자동 변환되는 zDEV 비율</translation>
     </message>
     <message>
         <source>Wait with automatic conversion to Zerocoin until enough DEV for this denomination is available</source>
-        <translation>이 디노미네이션의 FLS가 충분해질 때까지 Zerocoin으로 자동전환은 보류됩니다.</translation>
+        <translation>이 디노미네이션의 DEV가 충분해질 때까지 Zerocoin으로 자동전환은 보류됩니다.</translation>
     </message>
     <message>
-        <source>Preferred Automint zFLS Denomination</source>
-        <translation>선호하는 자동생성 zFLS 디노미네이션 </translation>
+        <source>Preferred Automint zDEV Denomination</source>
+        <translation>선호하는 자동생성 zDEV 디노미네이션 </translation>
     </message>
     <message>
         <source>Stake split threshold:</source>
@@ -2039,14 +2039,14 @@ https://www.transifex.com/CryptoDev-Project/CryptoDev-Project-translations</tran
         <translation>현재 DEV 잔액, 미확정, 생성중인 코인 포함</translation>
     </message>
     <message>
-        <source>zFLS Balance</source>
-        <translation>zFLS 잔액</translation>
+        <source>zDEV Balance</source>
+        <translation>zDEV 잔액</translation>
     </message>
     <message>
         <source>Mature: more than 20 confirmation and more than 1 mint of the same denomination after it was minted.
-These zFLS are spendable.</source>
+These zDEV are spendable.</source>
         <translation>성숙한 : 그것이 발행 된 후 같은 명칭의 20 개 이상의 확인 및 1 개 민트.
-이 zFLS는 쓸만합니다.</translation>
+이 zDEV는 쓸만합니다.</translation>
     </message>
     <message>
         <source>Unconfirmed: less than 20 confirmations
@@ -2099,8 +2099,8 @@ Immature: confirmed, but less than 1 mint of the same denomination after it was 
         <translation>출금 가능 액수:</translation>
     </message>
     <message>
-        <source>Locked DEV or Masternode collaterals. These are excluded from zFLS minting.</source>
-        <translation>잠금 DEV 또는 Masternode collaterals. 이들은 zFLS minting에서 제외됩니다.</translation>
+        <source>Locked DEV or Masternode collaterals. These are excluded from zDEV minting.</source>
+        <translation>잠금 DEV 또는 Masternode collaterals. 이들은 zDEV minting에서 제외됩니다.</translation>
     </message>
     <message>
         <source>Locked:</source>
@@ -2111,8 +2111,8 @@ Immature: confirmed, but less than 1 mint of the same denomination after it was 
         <translation>미승인:</translation>
     </message>
     <message>
-        <source>Your current zFLS balance, unconfirmed and immature zFLS included.</source>
-        <translation>zFLS 잔액, 미확정, 생성중인 zFLS 포함.</translation>
+        <source>Your current zDEV balance, unconfirmed and immature zDEV included.</source>
+        <translation>zDEV 잔액, 미확정, 생성중인 zDEV 포함.</translation>
     </message>
     <message>
         <source>Recent transactions</source>
@@ -2123,10 +2123,10 @@ Immature: confirmed, but less than 1 mint of the same denomination after it was 
         <translation>동기화되지 않음</translation>
     </message>
     <message>
-        <source>Current percentage of zFLS.
+        <source>Current percentage of zDEV.
 If AutoMint is enabled this percentage will settle around the configured AutoMint percentage (default = 10%).
 </source>
-        <translation>현재 zFLS의 백분율 .
+        <translation>현재 zDEV의 백분율 .
 자동 저장 기능이 활성화 된 경우이 비율은 구성된 자동 저장 비율 (기본값 = 10 %)을 기준으로 정해집니다.</translation>
     </message>
     <message>
@@ -2168,7 +2168,7 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in dev.conf</
     </message>
     <message>
         <source>Cannot start dev: click-to-pay handler</source>
-        <translation>FLS을 시작할 수 없습니다: 결제하기 위한 클릭 처리</translation>
+        <translation>DEV을 시작할 수 없습니다: 결제하기 위한 클릭 처리</translation>
     </message>
     <message>
         <source>URI cannot be parsed! This can be caused by an invalid DEV address or malformed URI parameters.</source>
@@ -2269,8 +2269,8 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in dev.conf</
         <translation>0</translation>
     </message>
     <message>
-        <source>zFLS</source>
-        <translation>zFLS</translation>
+        <source>zDEV</source>
+        <translation>zDEV</translation>
     </message>
     <message>
         <source>Reset Zerocoin Wallet DB. Deletes transactions that did not make it into the blockchain.</source>
@@ -2297,12 +2297,12 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in dev.conf</
         <translation>프라이버시</translation>
     </message>
     <message>
-        <source>zFLS Control</source>
-        <translation>zFLS 컨트롤</translation>
+        <source>zDEV Control</source>
+        <translation>zDEV 컨트롤</translation>
     </message>
     <message>
-        <source>zFLS Selected:</source>
-        <translation>선택된 zFLS :</translation>
+        <source>zDEV Selected:</source>
+        <translation>선택된 zDEV :</translation>
     </message>
     <message>
         <source>Quantity Selected:</source>
@@ -2317,24 +2317,24 @@ To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in dev.conf</
         <translation>제로코인 보내기</translation>
     </message>
     <message>
-        <source>Available (mature and spendable) zFLS for spending</source>
-        <translation>전송 가능한 zFLS</translation>
+        <source>Available (mature and spendable) zDEV for spending</source>
+        <translation>전송 가능한 zDEV</translation>
     </message>
     <message>
         <source>Available Balance:</source>
         <translation>가능한 잔액:</translation>
     </message>
     <message>
-        <source>Available (mature and spendable) zFLS for spending
+        <source>Available (mature and spendable) zDEV for spending
 
-zFLS are mature when they have more than 20 confirmations AND more than 2 mints of the same denomination after them were minted</source>
-        <translation>지출에 사용할 수있는 성숙한 소비재 zFLS
+zDEV are mature when they have more than 20 confirmations AND more than 2 mints of the same denomination after them were minted</source>
+        <translation>지출에 사용할 수있는 성숙한 소비재 zDEV
 
-zFLS는 성명서가 20 개 이상 있고 명칭이 동일하지 않은 2 개 이상의 민트가 작성되었을 때 성숙합니다.</translation>
+zDEV는 성명서가 20 개 이상 있고 명칭이 동일하지 않은 2 개 이상의 민트가 작성되었을 때 성숙합니다.</translation>
     </message>
     <message>
-        <source>0 zFLS</source>
-        <translation>0 zFLS</translation>
+        <source>0 zDEV</source>
+        <translation>0 zDEV</translation>
     </message>
     <message>
         <source>Pay &amp;To:</source>
@@ -2342,7 +2342,7 @@ zFLS는 성명서가 20 개 이상 있고 명칭이 동일하지 않은 2 개 �
     </message>
     <message>
         <source>The DEV address to send the payment to. Creates local payment to yourself when empty.</source>
-        <translation>FLS를 전송할 DEV 주소입니다. 비어있을 때 자신에게 지불할 주소를 생성합니다.</translation>
+        <translation>DEV를 전송할 DEV 주소입니다. 비어있을 때 자신에게 지불할 주소를 생성합니다.</translation>
     </message>
     <message>
         <source>Choose previously used address</source>
@@ -2393,7 +2393,7 @@ zFLS는 성명서가 20 개 이상 있고 명칭이 동일하지 않은 2 개 �
         <translation>제로코인 상태 :</translation>
     </message>
     <message>
-        <source>Total Balance including unconfirmed and immature zFLS</source>
+        <source>Total Balance including unconfirmed and immature zDEV</source>
         <translation>승인중이거나, 생성중인 제로코인도 포함된 전체 잔액입니다.</translation>
     </message>
     <message>
@@ -2415,24 +2415,24 @@ Immature: confirmed, but less than 1 mint of the same denomination after it was 
 미성숙 : 확인되었지만 발행 된 후 같은 종파 1 개 미만</translation>
     </message>
     <message>
-        <source>Show the current status of automatic zFLS minting.
+        <source>Show the current status of automatic zDEV minting.
 
 To change the status (restart required):
 - enable: add 'enablezeromint=1' to dev.conf
 - disable: add 'enablezeromint=0' to dev.conf
 
 To change the percentage (no restart required):
-- menu Settings-&gt;Options-&gt;Percentage of autominted zFLS
+- menu Settings-&gt;Options-&gt;Percentage of autominted zDEV
 
 </source>
-        <translation>현재 zFLS 자동 생성 상태를 보여줍니다.
+        <translation>현재 zDEV 자동 생성 상태를 보여줍니다.
 
 자동생성 상태를 변경하시려면 (지갑 재시작 필요함):
 - 활성화: 'enablezeromint=1' 를 dev.conf 파일에 추가
 - 비활성화: 'enablezeromint=0' 를 dev.conf 파일에 추가
 
 자동 생성 비율 변경하시려면 (지갑 재시작 필요없음):
-- 메뉴 설정-&gt;옵션-&gt;zFLS 자동생성 비율
+- 메뉴 설정-&gt;옵션-&gt;zDEV 자동생성 비율
 
 </translation>
     </message>
@@ -2607,12 +2607,12 @@ Please be patient...</source>
 기다려주세요...</translation>
     </message>
     <message>
-        <source>zFLS Spend #: </source>
-        <translation>zFLS 전송 # :</translation>
+        <source>zDEV Spend #: </source>
+        <translation>zDEV 전송 # :</translation>
     </message>
     <message>
-        <source>zFLS Mint</source>
-        <translation>zFLS 생성</translation>
+        <source>zDEV Mint</source>
+        <translation>zDEV 생성</translation>
     </message>
     <message>
         <source> &lt;b&gt;enabled&lt;/b&gt;.</source>
@@ -2627,12 +2627,12 @@ Please be patient...</source>
         <translation> 구성된 목표 비율 : &lt;b&gt;</translation>
     </message>
     <message>
-        <source>zFLS is currently disabled due to maintenance.</source>
-        <translation>zFLS는 현재 점검중이라 사용하실수 없습니다.</translation>
+        <source>zDEV is currently disabled due to maintenance.</source>
+        <translation>zDEV는 현재 점검중이라 사용하실수 없습니다.</translation>
     </message>
     <message>
-        <source>zFLS is currently undergoing maintenance.</source>
-        <translation>zFLS는 현재 점검중입니다.</translation>
+        <source>zDEV is currently undergoing maintenance.</source>
+        <translation>zDEV는 현재 점검중입니다.</translation>
     </message>
     <message>
         <source>Denom. with value &lt;b&gt;1&lt;/b&gt;:</source>
@@ -2721,7 +2721,7 @@ Please be patient...</source>
         <translation>주소를 입력하지 않아, 신규 주소를 생성합니다.</translation>
     </message>
     <message>
-        <source>Invalid Fls Address</source>
+        <source>Invalid Dev Address</source>
         <translation>잘못된 DEV 주소</translation>
     </message>
     <message>
@@ -3077,8 +3077,8 @@ Please be patient...</source>
         <translation>맞춤 백업 경로 :</translation>
     </message>
     <message>
-        <source>Custom zFLS Backup Path:</source>
-        <translation>맞춤 zFLS 백업 경로 :</translation>
+        <source>Custom zDEV Backup Path:</source>
+        <translation>맞춤 zDEV 백업 경로 :</translation>
     </message>
     <message>
         <source>Custom Backups Threshold:</source>
@@ -3582,12 +3582,12 @@ Please be patient...</source>
         <translation>자동으로 선택됩니다.</translation>
     </message>
     <message>
-        <source>If the custom fee is set to 1000 uFLSs and the transaction is only 250 bytes, then "per kilobyte" only pays 250 uFLSs in fee,&lt;br /&gt;while "at least" pays 1000 uFLSs. For transactions bigger than a kilobyte both pay by kilobyte.</source>
-        <translation>트랜잭션이 250바이트 인 경우 사용자 지정 수수료가 1000 uFLSs로 설정되고,&lt;br /&gt;1000 uFLSs 안에는 최소 "킬로바이트당" 250 uFLSs 만 지불합니다. 1 킬로바이트보다 큰 트랜잭션의 경우 모두 킬로바이트 단위로 지불합니다.</translation>
+        <source>If the custom fee is set to 1000 uDEVs and the transaction is only 250 bytes, then "per kilobyte" only pays 250 uDEVs in fee,&lt;br /&gt;while "at least" pays 1000 uDEVs. For transactions bigger than a kilobyte both pay by kilobyte.</source>
+        <translation>트랜잭션이 250바이트 인 경우 사용자 지정 수수료가 1000 uDEVs로 설정되고,&lt;br /&gt;1000 uDEVs 안에는 최소 "킬로바이트당" 250 uDEVs 만 지불합니다. 1 킬로바이트보다 큰 트랜잭션의 경우 모두 킬로바이트 단위로 지불합니다.</translation>
     </message>
     <message>
-        <source>If the custom fee is set to 1000 uFLSs and the transaction is only 250 bytes, then "per kilobyte" only pays 250 uFLSs in fee,&lt;br /&gt;while "total at least" pays 1000 uFLSs. For transactions bigger than a kilobyte both pay by kilobyte.</source>
-        <translation>트랜잭션이 250바이트 인 경우 사용자 지정 수수료가 1000 uFLSs로 설정되고,&lt;br /&gt;1000 uFLSs 안에는 전체에서 최소 "킬로바이트당" 250 uFLSs 만 지불합니다. 1 킬로바이트보다 큰 트랜잭션의 경우 모두 킬로바이트 단위로 지불합니다.</translation>
+        <source>If the custom fee is set to 1000 uDEVs and the transaction is only 250 bytes, then "per kilobyte" only pays 250 uDEVs in fee,&lt;br /&gt;while "total at least" pays 1000 uDEVs. For transactions bigger than a kilobyte both pay by kilobyte.</source>
+        <translation>트랜잭션이 250바이트 인 경우 사용자 지정 수수료가 1000 uDEVs로 설정되고,&lt;br /&gt;1000 uDEVs 안에는 전체에서 최소 "킬로바이트당" 250 uDEVs 만 지불합니다. 1 킬로바이트보다 큰 트랜잭션의 경우 모두 킬로바이트 단위로 지불합니다.</translation>
     </message>
     <message>
         <source>Paying only the minimum fee is just fine as long as there is less transaction volume than space in the blocks.&lt;br /&gt;But be aware that this can end up in a never confirming transaction once there is more demand for DEV transactions than the network can process.</source>
@@ -4287,8 +4287,8 @@ Please be patient...</source>
         <translation>DEV stake</translation>
     </message>
     <message>
-        <source>zFLS Stake</source>
-        <translation>zFLS stake</translation>
+        <source>zDEV Stake</source>
+        <translation>zDEV stake</translation>
     </message>
     <message>
         <source>Obfuscation Denominate</source>
@@ -4307,32 +4307,32 @@ Please be patient...</source>
         <translation>난독화 표시 만들기</translation>
     </message>
     <message>
-        <source>Converted DEV to zFLS</source>
-        <translation>FLS를 zFLS로 변환</translation>
+        <source>Converted DEV to zDEV</source>
+        <translation>DEV를 zDEV로 변환</translation>
     </message>
     <message>
-        <source>Spent zFLS</source>
-        <translation>zFLS 사용</translation>
+        <source>Spent zDEV</source>
+        <translation>zDEV 사용</translation>
     </message>
     <message>
-        <source>Received DEV from zFLS</source>
-        <translation>zFLS를 FLS로 받음</translation>
+        <source>Received DEV from zDEV</source>
+        <translation>zDEV를 DEV로 받음</translation>
     </message>
     <message>
-        <source>Minted Change as zFLS from zFLS Spend</source>
-        <translation>zFLS 전송후 남은 zFLS로 잔돈 생성</translation>
+        <source>Minted Change as zDEV from zDEV Spend</source>
+        <translation>zDEV 전송후 남은 zDEV로 잔돈 생성</translation>
     </message>
     <message>
-        <source>Converted zFLS to DEV</source>
-        <translation>zFLS를 FLS로 변환</translation>
+        <source>Converted zDEV to DEV</source>
+        <translation>zDEV를 DEV로 변환</translation>
     </message>
     <message>
-        <source>Anonymous (zFLS Transaction)</source>
-        <translation>Anonymous (zFLS 거래)</translation>
+        <source>Anonymous (zDEV Transaction)</source>
+        <translation>Anonymous (zDEV 거래)</translation>
     </message>
     <message>
-        <source>Anonymous (zFLS Stake)</source>
-        <translation>Anonymous (zFLS 스테이킹)</translation>
+        <source>Anonymous (zDEV Stake)</source>
+        <translation>Anonymous (zDEV 스테이킹)</translation>
     </message>
     <message>
         <source>Sent to</source>
@@ -4542,12 +4542,12 @@ Please be patient...</source>
         <translation>내보내기 성공</translation>
     </message>
     <message>
-        <source>Received DEV from zFLS</source>
-        <translation>zFLS를 FLS로 받음</translation>
+        <source>Received DEV from zDEV</source>
+        <translation>zDEV를 DEV로 받음</translation>
     </message>
     <message>
-        <source>Zerocoin Spend, Change in zFLS</source>
-        <translation>제로코인 전송, 잔돈은 zFLS</translation>
+        <source>Zerocoin Spend, Change in zDEV</source>
+        <translation>제로코인 전송, 잔돈은 zDEV</translation>
     </message>
     <message>
         <source>The transaction history was successfully saved to %1.</source>
@@ -4584,7 +4584,7 @@ Please be patient...</source>
     </message>
     <message>
         <source>SwiftX doesn't support sending values that high yet. Transactions are currently limited to %1 DEV.</source>
-        <translation>SwiftTX는 아직 높은 값을 전송하는 것을 지원하지 않습니다. 트랜잭션은 현재 %1 FLS로 제한됩니다.</translation>
+        <translation>SwiftTX는 아직 높은 값을 전송하는 것을 지원하지 않습니다. 트랜잭션은 현재 %1 DEV로 제한됩니다.</translation>
     </message>
 </context>
 <context>
@@ -4615,10 +4615,10 @@ Please be patient...</source>
     </message>
 </context>
 <context>
-    <name>ZFlsControlDialog</name>
+    <name>ZDevControlDialog</name>
     <message>
-        <source>Select zFLS to Spend</source>
-        <translation>사용할 zFLS 선택</translation>
+        <source>Select zDEV to Spend</source>
+        <translation>사용할 zDEV 선택</translation>
     </message>
     <message>
         <source>Quantity</source>
@@ -4629,8 +4629,8 @@ Please be patient...</source>
         <translation>0</translation>
     </message>
     <message>
-        <source>zFLS</source>
-        <translation>zFLS</translation>
+        <source>zDEV</source>
+        <translation>zDEV</translation>
     </message>
     <message>
         <source>Select/Deselect All</source>
@@ -4692,16 +4692,16 @@ Please be patient...</source>
         <translation>MIT 소프트웨어 라이센스에 따라 배포, 첨부 파일 COPYING 또는 &lt;http://www.opensource.org/licenses/mit-license.php&gt; 를 참조하십시오.</translation>
     </message>
     <message>
-        <source>Enable automatic wallet backups triggered after each zFLS minting (0-1, default: %u)</source>
-        <translation>Enable automatic wallet backups triggered after each zFLS minting (0-1, default: %u)</translation>
+        <source>Enable automatic wallet backups triggered after each zDEV minting (0-1, default: %u)</source>
+        <translation>Enable automatic wallet backups triggered after each zDEV minting (0-1, default: %u)</translation>
     </message>
     <message>
         <source>Enable or disable staking functionality for DEV inputs (0-1, default: %u)</source>
         <translation>Enable or disable staking functionality for DEV inputs (0-1, default: %u)</translation>
     </message>
     <message>
-        <source>Enable or disable staking functionality for zFLS inputs (0-1, default: %u)</source>
-        <translation>Enable or disable staking functionality for zFLS inputs (0-1, default: %u)</translation>
+        <source>Enable or disable staking functionality for zDEV inputs (0-1, default: %u)</source>
+        <translation>Enable or disable staking functionality for zDEV inputs (0-1, default: %u)</translation>
     </message>
     <message>
         <source>Enable spork administration functionality with the appropriate private key.</source>
@@ -4845,11 +4845,11 @@ Please be patient...</source>
     </message>
     <message>
         <source>Unable to locate enough Obfuscation non-denominated funds for this transaction that are not equal 1000 DEV.</source>
-        <translation>이 트랜잭션를 위해 난독화 표기가 안된 충분한 금액을 찾을 수 없습니다. 1000 FLS과 일치하지 않음.</translation>
+        <translation>이 트랜잭션를 위해 난독화 표기가 안된 충분한 금액을 찾을 수 없습니다. 1000 DEV과 일치하지 않음.</translation>
     </message>
     <message>
         <source>Unable to locate enough funds for this transaction that are not equal 1000 DEV.</source>
-        <translation>트랜잭션에 대한 충분한 금액을 찾을 수 없습니다. 1000 FLS와 같지 않음</translation>
+        <translation>트랜잭션에 대한 충분한 금액을 찾을 수 없습니다. 1000 DEV와 같지 않음</translation>
     </message>
     <message>
         <source>Use separate SOCKS5 proxy to reach peers via Tor hidden services (default: %s)</source>
@@ -5233,11 +5233,11 @@ Please be patient...</source>
     </message>
     <message>
         <source>Percentage of automatically minted Zerocoin  (1-100, default: %u)</source>
-        <translation>자동생성 zFLS 비율  (1-100, default: %u)</translation>
+        <translation>자동생성 zDEV 비율  (1-100, default: %u)</translation>
     </message>
     <message>
-        <source>Reindex the DEV and zFLS money supply statistics</source>
-        <translation>DEV 및 zFLS 공급량 다시 색인</translation>
+        <source>Reindex the DEV and zDEV money supply statistics</source>
+        <translation>DEV 및 zDEV 공급량 다시 색인</translation>
     </message>
     <message>
         <source>Reindexing zerocoin database...</source>
@@ -5277,7 +5277,7 @@ Please be patient...</source>
     </message>
     <message>
         <source>Disable all DEV specific functionality (Masternodes, Zerocoin, SwiftX, Budgeting) (0-1, default: %u)</source>
-        <translation>FLS의 모든 특정 기능들을 비활성화합니다(마스터노드, 난독화, SwiftTX, Budgeting) (0-1, 기본값: %u)</translation>
+        <translation>DEV의 모든 특정 기능들을 비활성화합니다(마스터노드, 난독화, SwiftTX, Budgeting) (0-1, 기본값: %u)</translation>
     </message>
     <message>
         <source>Enable SwiftX, show confirmations for locked transactions (bool, default: %s)</source>
@@ -5312,8 +5312,8 @@ Please be patient...</source>
         <translation>자동생성 제로코인 선호 디노미네이션 (1/5/10/50/100/500/1000/5000) 0사용안됨, 기본값 : %u)</translation>
     </message>
     <message>
-        <source>Specify custom backup path to add a copy of any automatic zFLS backup. If set as dir, every backup generates a timestamped file. If set as file, will rewrite to that file every backup. If backuppath is set as well, 4 backups will happen</source>
-        <translation>Specify custom backup path to add a copy of any automatic zFLS backup. If set as dir, every backup generates a timestamped file. If set as file, will rewrite to that file every backup. If backuppath is set as well, 4 backups will happen</translation>
+        <source>Specify custom backup path to add a copy of any automatic zDEV backup. If set as dir, every backup generates a timestamped file. If set as file, will rewrite to that file every backup. If backuppath is set as well, 4 backups will happen</source>
+        <translation>Specify custom backup path to add a copy of any automatic zDEV backup. If set as dir, every backup generates a timestamped file. If set as file, will rewrite to that file every backup. If backuppath is set as well, 4 backups will happen</translation>
     </message>
     <message>
         <source>Specify custom backup path to add a copy of any wallet backup. If set as dir, every backup generates a timestamped file. If set as file, will rewrite to that file every backup.</source>
@@ -5724,8 +5724,8 @@ Please be patient...</source>
         <translation>sporks와 동기화 중입니다...</translation>
     </message>
     <message>
-        <source>Syncing zFLS wallet...</source>
-        <translation>zFLS 지갑 동기화중...</translation>
+        <source>Syncing zDEV wallet...</source>
+        <translation>zDEV 지갑 동기화중...</translation>
     </message>
     <message>
         <source>The coin spend has been used</source>
@@ -5832,8 +5832,8 @@ Please be patient...</source>
         <translation>JSON-RPC 연결 사용자 이름</translation>
     </message>
     <message>
-        <source>Value is below the smallest available denomination (= 1) of zFLS</source>
-        <translation>Value is below the smallest available denomination (= 1) of zFLS</translation>
+        <source>Value is below the smallest available denomination (= 1) of zDEV</source>
+        <translation>Value is below the smallest available denomination (= 1) of zDEV</translation>
     </message>
     <message>
         <source>Verifying blocks...</source>
@@ -5877,7 +5877,7 @@ Please be patient...</source>
     </message>
     <message>
         <source>You don't have enough Zerocoins in your wallet</source>
-        <translation>지갑에 zFLS 가 부족합니다.</translation>
+        <translation>지갑에 zDEV 가 부족합니다.</translation>
     </message>
     <message>
         <source>You need to rebuild the database using -reindex to change -txindex</source>

@@ -33,11 +33,11 @@ const QString RESYNC("-resync");
 extern Qt::Modifier SHORT_KEY;
 
 bool openDialog(QDialog* widget, QWidget* gui);
-void closeDialog(QDialog* widget, FLSGUI* gui);
+void closeDialog(QDialog* widget, DEVGUI* gui);
 void openDialogFullScreen(QWidget* parent, QWidget* dialog);
-bool openDialogWithOpaqueBackgroundY(QDialog* widget, FLSGUI* gui, double posX = 3, int posY = 5);
-bool openDialogWithOpaqueBackground(QDialog* widget, FLSGUI* gui, double posX = 3);
-bool openDialogWithOpaqueBackgroundFullScreen(QDialog* widget, FLSGUI* gui);
+bool openDialogWithOpaqueBackgroundY(QDialog* widget, DEVGUI* gui, double posX = 3, int posY = 5);
+bool openDialogWithOpaqueBackground(QDialog* widget, DEVGUI* gui, double posX = 3);
+bool openDialogWithOpaqueBackgroundFullScreen(QDialog* widget, DEVGUI* gui);
 
 //
 QPixmap encodeToQr(QString str, QString& errorStr, QColor qrColor = Qt::black);
@@ -59,7 +59,7 @@ bool isLightTheme();
 void setTheme(bool isLight);
 
 void initComboBox(QComboBox* combo, QLineEdit* lineEdit = nullptr, QString cssClass = "btn-combo");
-void fillAddreFLSortControls(SortEdit* seType, SortEdit* seOrder, QComboBox* boxType, QComboBox* boxOrder);
+void fillAddreDEVortControls(SortEdit* seType, SortEdit* seOrder, QComboBox* boxType, QComboBox* boxOrder);
 void initCssEditLine(QLineEdit* edit, bool isDialog = false);
 void setCssEditLine(QLineEdit* edit, bool isValid, bool forceUpdate = false);
 void setCssEditLineDialog(QLineEdit* edit, bool isValid, bool forceUpdate = false);
@@ -68,7 +68,7 @@ void setShadow(QWidget* edit);
 void setCssBtnPrimary(QPushButton* btn, bool forceUpdate = false);
 void setCssBtnSecondary(QPushButton* btn, bool forceUpdate = false);
 void setCssTitleScreen(QLabel* label);
-void setCFLSubtitleScreen(QWidget* wid);
+void setCDEVubtitleScreen(QWidget* wid);
 void setCssTextBodyDialog(std::initializer_list<QWidget*> args);
 void setCssTextBodyDialog(QWidget* widget);
 void setCssProperty(std::initializer_list<QWidget*> args, QString value);

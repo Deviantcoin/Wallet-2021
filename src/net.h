@@ -297,7 +297,7 @@ public:
     // socket
     uint64_t nServices;
     SOCKET hSocket;
-    CDataStream FLSend;
+    CDataStream DEVend;
     size_t nSendSize;   // total size of all vSendMsg entries
     size_t nSendOffset; // offset inside the first vSendMsg already sent
     uint64_t nSendBytes;
@@ -356,7 +356,7 @@ protected:
     static RecursiveMutex cs_vWhitelistedRange;
 
     // Basic fuzz-testing
-    void Fuzz(int nChance); // modifies FLSend
+    void Fuzz(int nChance); // modifies DEVend
 
 public:
     uint256 hashContinue;
@@ -509,7 +509,7 @@ public:
     {
         try {
             BeginMessage(pszCommand);
-            FLSend << a1;
+            DEVend << a1;
             EndMessage();
         } catch (...) {
             AbortMessage();
@@ -522,7 +522,7 @@ public:
     {
         try {
             BeginMessage(pszCommand);
-            FLSend << a1 << a2;
+            DEVend << a1 << a2;
             EndMessage();
         } catch (...) {
             AbortMessage();
@@ -535,7 +535,7 @@ public:
     {
         try {
             BeginMessage(pszCommand);
-            FLSend << a1 << a2 << a3;
+            DEVend << a1 << a2 << a3;
             EndMessage();
         } catch (...) {
             AbortMessage();
@@ -548,7 +548,7 @@ public:
     {
         try {
             BeginMessage(pszCommand);
-            FLSend << a1 << a2 << a3 << a4;
+            DEVend << a1 << a2 << a3 << a4;
             EndMessage();
         } catch (...) {
             AbortMessage();
@@ -561,7 +561,7 @@ public:
     {
         try {
             BeginMessage(pszCommand);
-            FLSend << a1 << a2 << a3 << a4 << a5;
+            DEVend << a1 << a2 << a3 << a4 << a5;
             EndMessage();
         } catch (...) {
             AbortMessage();
@@ -574,7 +574,7 @@ public:
     {
         try {
             BeginMessage(pszCommand);
-            FLSend << a1 << a2 << a3 << a4 << a5 << a6;
+            DEVend << a1 << a2 << a3 << a4 << a5 << a6;
             EndMessage();
         } catch (...) {
             AbortMessage();
@@ -587,7 +587,7 @@ public:
     {
         try {
             BeginMessage(pszCommand);
-            FLSend << a1 << a2 << a3 << a4 << a5 << a6 << a7;
+            DEVend << a1 << a2 << a3 << a4 << a5 << a6 << a7;
             EndMessage();
         } catch (...) {
             AbortMessage();
@@ -600,7 +600,7 @@ public:
     {
         try {
             BeginMessage(pszCommand);
-            FLSend << a1 << a2 << a3 << a4 << a5 << a6 << a7 << a8;
+            DEVend << a1 << a2 << a3 << a4 << a5 << a6 << a7 << a8;
             EndMessage();
         } catch (...) {
             AbortMessage();
@@ -613,7 +613,7 @@ public:
     {
         try {
             BeginMessage(pszCommand);
-            FLSend << a1 << a2 << a3 << a4 << a5 << a6 << a7 << a8 << a9;
+            DEVend << a1 << a2 << a3 << a4 << a5 << a6 << a7 << a8 << a9;
             EndMessage();
         } catch (...) {
             AbortMessage();
@@ -626,7 +626,7 @@ public:
     {
         try {
             BeginMessage(pszCommand);
-            FLSend << a1 << a2 << a3 << a4 << a5 << a6 << a7 << a8 << a9 << a10;
+            DEVend << a1 << a2 << a3 << a4 << a5 << a6 << a7 << a8 << a9 << a10;
             EndMessage();
         } catch (...) {
             AbortMessage();
@@ -639,7 +639,7 @@ public:
     {
         try {
             BeginMessage(pszCommand);
-            FLSend << a1 << a2 << a3 << a4 << a5 << a6 << a7 << a8 << a9 << a10 << a11;
+            DEVend << a1 << a2 << a3 << a4 << a5 << a6 << a7 << a8 << a9 << a10 << a11;
             EndMessage();
         } catch (...) {
             AbortMessage();
@@ -652,7 +652,7 @@ public:
     {
         try {
             BeginMessage(pszCommand);
-            FLSend << a1 << a2 << a3 << a4 << a5 << a6 << a7 << a8 << a9 << a10 << a11 << a12;
+            DEVend << a1 << a2 << a3 << a4 << a5 << a6 << a7 << a8 << a9 << a10 << a11 << a12;
             EndMessage();
         } catch (...) {
             AbortMessage();

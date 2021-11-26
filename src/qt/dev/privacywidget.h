@@ -15,7 +15,7 @@
 #include <QLabel>
 #include <QWidget>
 
-class FLSGUI;
+class DEVGUI;
 class WalletModel;
 
 namespace Ui {
@@ -31,7 +31,7 @@ class PrivacyWidget : public PWidget
     Q_OBJECT
 
 public:
-    explicit PrivacyWidget(FLSGUI* parent);
+    explicit PrivacyWidget(DEVGUI* parent);
     ~PrivacyWidget();
 
     void loadWalletModel() override;
@@ -40,7 +40,7 @@ private Q_SLOTS:
     void onCoinControlClicked();
     void onRescanMintsClicked();
     void onResetZeroClicked();
-    void onTotalzFLSClicked();
+    void onTotalzDEVClicked();
     void updateDisplayUnit();
     void showList();
     void onSendClicked();
