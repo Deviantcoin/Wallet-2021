@@ -4,10 +4,10 @@
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 """Test the invalidateblock RPC."""
 
-from test_framework.test_framework import flsestFramework
+from test_framework.test_framework import devestFramework
 from test_framework.util import *
 
-class InvalidateTest(flsestFramework):
+class InvalidateTest(devestFramework):
     def set_test_params(self):
         self.setup_clean_chain = True
         self.num_nodes = 3

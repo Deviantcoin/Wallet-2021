@@ -10,9 +10,9 @@ but not on the fork branch. These blocks must be accepted.
 
 from time import sleep
 
-from fake_stake.base_test import flits_FakeStakeTest
+from fake_stake.base_test import deviant_FakeStakeTest
 
-class PoSFakeStakeAccepted(flits_FakeStakeTest):
+class PoSFakeStakeAccepted(deviant_FakeStakeTest):
 
     def run_test(self):
         self.description = "Covers the scenario of a valid PoS block where the coinstake input prevout is spent on main chain, but not on the fork branch. These blocks must be accepted."

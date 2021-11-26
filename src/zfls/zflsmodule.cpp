@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "zfls/zflsmodule.h"
-#include "zflschain.h"
+#include "zdev/zdevmodule.h"
+#include "zdevchain.h"
 #include "libzerocoin/Commitment.h"
 #include "libzerocoin/Coin.h"
 #include "hash.h"
@@ -230,7 +230,7 @@ namespace ZFLSModule {
         }
         if (!ZFLSModule::parseCoinSpend(txIn, tx, prevOut, publicSpend)) {
             return state.Invalid(error("%s: invalid public coin spend parse %s\n", __func__,
-                                       tx.GetHash().GetHex()), REJECT_INVALID, "bad-txns-invalid-zfls");
+                                       tx.GetHash().GetHex()), REJECT_INVALID, "bad-txns-invalid-zdev");
         }
         return true;
     }

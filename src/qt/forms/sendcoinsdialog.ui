@@ -1016,7 +1016,7 @@
                     </size>
                    </property>
                    <property name="toolTip">
-                    <string>SwiftX technology allows for near instant transactions - A flat fee of 0.01 FLS applies</string>
+                    <string>SwiftX technology allows for near instant transactions - A flat fee of 0.01 DEV applies</string>
                    </property>
                    <property name="text">
                     <string>SwiftX</string>
@@ -1397,7 +1397,7 @@
                       <item>
                        <widget class="QCheckBox" name="checkBoxMinimumFee">
                         <property name="toolTip">
-                         <string>Paying only the minimum fee is just fine as long as there is less transaction volume than space in the blocks.&lt;br /&gt;But be aware that this can end up in a never confirming transaction once there is more demand for flits transactions than the network can process.</string>
+                         <string>Paying only the minimum fee is just fine as long as there is less transaction volume than space in the blocks.&lt;br /&gt;But be aware that this can end up in a never confirming transaction once there is more demand for deviant transactions than the network can process.</string>
                         </property>
                         <property name="text">
                          <string/>
@@ -1410,7 +1410,7 @@
                          <bool>true</bool>
                         </property>
                         <property name="toolTip">
-                         <string>Paying only the minimum fee is just fine as long as there is less transaction volume than space in the blocks.&lt;br /&gt;But be aware that this can end up in a never confirming transaction once there is more demand for flits transactions than the network can process.</string>
+                         <string>Paying only the minimum fee is just fine as long as there is less transaction volume than space in the blocks.&lt;br /&gt;But be aware that this can end up in a never confirming transaction once there is more demand for deviant transactions than the network can process.</string>
                         </property>
                         <property name="text">
                          <string>(read the tooltip)</string>
@@ -1709,12 +1709,12 @@
               <number>3</number>
              </property>
              <item>
-              <widget class="QCheckBox" name="checkzfls">
+              <widget class="QCheckBox" name="checkzdev">
                <property name="enabled">
                 <bool>false</bool>
                </property>
                <property name="text">
-                <string>Anonymized FLS</string>
+                <string>Anonymized DEV</string>
                </property>
               </widget>
              </item>
@@ -1770,7 +1770,7 @@
   </customwidget>
  </customwidgets>
  <resources>
-  <include location="../flits.qrc"/>
+  <include location="../deviant.qrc"/>
  </resources>
  <connections/>
  <buttongroups>

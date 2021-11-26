@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
-# Copyright (c) 2019 The flitsdevelopers
+# Copyright (c) 2019 The deviantdevelopers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 import time
 
-from test_framework.test_framework import flsestFramework
+from test_framework.test_framework import devestFramework
 from test_framework.util import (
     assert_equal,
     connect_nodes,
@@ -16,7 +16,7 @@ def connect_nodes_bi(nodes, a, b):
     connect_nodes(nodes[a], b)
     connect_nodes(nodes[b], a)
 
-class TimeOffsetTest(flsestFramework):
+class TimeOffsetTest(devestFramework):
     def set_test_params(self):
         self.setup_clean_chain = True
         self.num_nodes = 8

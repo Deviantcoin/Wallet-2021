@@ -8,7 +8,7 @@
 #define BITCOIN_RPCSERVER_H
 
 #include "amount.h"
-#include "zfls/zerocoin.h"
+#include "zdev/zerocoin.h"
 #include "rpc/protocol.h"
 #include "uint256.h"
 
@@ -129,7 +129,7 @@ public:
 };
 
 /**
- * FLS RPC command dispatcher.
+ * DEV RPC command dispatcher.
  */
 class CRPCTable
 {
@@ -280,11 +280,11 @@ extern UniValue importzerocoins(const UniValue& params, bool fHelp);
 extern UniValue exportzerocoins(const UniValue& params, bool fHelp);
 extern UniValue reconsiderzerocoins(const UniValue& params, bool fHelp);
 extern UniValue getspentzerocoinamount(const UniValue& params, bool fHelp);
-extern UniValue setzflsseed(const UniValue& params, bool fHelp);
-extern UniValue getzflsseed(const UniValue& params, bool fHelp);
+extern UniValue setzdevseed(const UniValue& params, bool fHelp);
+extern UniValue getzdevseed(const UniValue& params, bool fHelp);
 extern UniValue generatemintlist(const UniValue& params, bool fHelp);
-extern UniValue searchdzfls(const UniValue& params, bool fHelp);
-extern UniValue dzflsstate(const UniValue& params, bool fHelp);
+extern UniValue searchdzdev(const UniValue& params, bool fHelp);
+extern UniValue dzdevstate(const UniValue& params, bool fHelp);
 
 extern UniValue getrawtransaction(const UniValue& params, bool fHelp); // in rpc/rawtransaction.cpp
 extern UniValue listunspent(const UniValue& params, bool fHelp);

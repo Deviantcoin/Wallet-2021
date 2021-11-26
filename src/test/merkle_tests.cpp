@@ -1,10 +1,10 @@
 // Copyright (c) 2015 The Bitcoin Core developers
-// Copyright (c) 2019 The Flits developers
+// Copyright (c) 2019 The Deviant developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include "consensus/merkle.h"
-#include "test/test_flits.h"
+#include "test/test_deviant.h"
 
 #include <boost/test/unit_test.hpp>
 

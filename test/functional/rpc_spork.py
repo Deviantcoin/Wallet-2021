@@ -1,16 +1,16 @@
 #!/usr/bin/env python3
-# Copyright (c) 2019 The flitsdevelopers
+# Copyright (c) 2019 The deviantdevelopers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 # -*- coding: utf-8 -*-
 
 from time import sleep
 
-from test_framework.test_framework import flsestFramework
+from test_framework.test_framework import devestFramework
 from test_framework.util import set_node_times, assert_equal
 
 
-class FLS_RPCSporkTest(flsestFramework):
+class FLS_RPCSporkTest(devestFramework):
 
     def set_test_params(self):
         self.setup_clean_chain = True

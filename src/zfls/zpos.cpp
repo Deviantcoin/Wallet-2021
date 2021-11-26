@@ -1,9 +1,9 @@
-// Copyright (c) 2017-2019 The flitsdevelopers
+// Copyright (c) 2017-2019 The deviantdevelopers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "zfls/zpos.h"
-#include "zflschain.h"
+#include "zdev/zpos.h"
+#include "zdevchain.h"
 
 
 /*
@@ -35,7 +35,7 @@ bool CLegacyzFLSStake::InitFromTxIn(const CTxIn& txin)
 
     // Find the pindex with the accumulator checksum
     if (!GetIndexFrom())
-        return error("%s : Failed to find the block index for zfls stake origin", __func__);
+        return error("%s : Failed to find the block index for zdev stake origin", __func__);
 
     // All good
     return true;

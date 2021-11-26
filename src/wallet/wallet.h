@@ -20,7 +20,7 @@
 #include "pairresult.h"
 #include "primitives/block.h"
 #include "primitives/transaction.h"
-#include "zfls/zerocoin.h"
+#include "zdev/zerocoin.h"
 #include "guiinterface.h"
 #include "util.h"
 #include "util/memory.h"
@@ -28,9 +28,9 @@
 #include "wallet/wallet_ismine.h"
 #include "wallet/scriptpubkeyman.h"
 #include "wallet/walletdb.h"
-#include "zfls/zflsmodule.h"
-#include "zfls/zflswallet.h"
-#include "zfls/zflstracker.h"
+#include "zdev/zdevmodule.h"
+#include "zdev/zdevwallet.h"
+#include "zdev/zdevtracker.h"
 
 #include <algorithm>
 #include <map>
@@ -292,7 +292,7 @@ public:
     // Staker status (last hashed block and time)
     CStakerStatus* pStakerStatus = nullptr;
 
-    // User-defined fee FLS/kb
+    // User-defined fee DEV/kb
     bool fUseCustomFee;
     CAmount nCustomFee;
 
@@ -361,7 +361,7 @@ public:
 
     std::map<CBitcoinAddress, std::vector<COutput> > AvailableCoinsByAddress(bool fConfirmed = true, CAmount maxCoinValue = 0);
 
-    /// Get 1000 FLS output and keys which can be used for the Masternode
+    /// Get 1000 DEV output and keys which can be used for the Masternode
     bool GetMasternodeVinAndKeys(CTxIn& txinRet, CPubKey& pubKeyRet, CKey& keyRet, std::string strTxHash = "", std::string strOutputIndex = "");
     /// Extract txin information and keys from output
     bool GetVinAndKeysFromOutput(COutput out, CTxIn& txinRet, CPubKey& pubKeyRet, CKey& keyRet, bool fColdStake = false);
@@ -611,7 +611,7 @@ public:
 
     // zFLS wallet
     CzFLSWallet* zwalletMain{nullptr};
-    std::unique_ptr<CzFLSTracker> zflsTracker{nullptr};
+    std::unique_ptr<CzFLSTracker> zdevTracker{nullptr};
     void setZWallet(CzFLSWallet* zwallet);
     CzFLSWallet* getZWallet();
     bool IsMyZerocoinSpend(const CBigNum& bnSerial) const;

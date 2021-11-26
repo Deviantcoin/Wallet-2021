@@ -14,7 +14,7 @@
 #include "uint256.h"
 #include "util.h"
 #include "utilstrencodings.h"
-#include "test/test_flits.h"
+#include "test/test_deviant.h"
 
 #include <boost/test/unit_test.hpp>
 

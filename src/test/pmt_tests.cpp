@@ -9,7 +9,7 @@
 #include "uint256.h"
 #include "version.h"
 #include "consensus/merkle.h"
-#include "test/test_flits.h"
+#include "test/test_deviant.h"
 
 #include <vector>
 

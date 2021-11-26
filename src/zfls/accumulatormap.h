@@ -1,9 +1,9 @@
-// Copyright (c) 2017-2019 The Flits-Core developers
+// Copyright (c) 2017-2019 The Deviant-Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef flits_ACCUMULATORMAP_H
-#define flits_ACCUMULATORMAP_H
+#ifndef deviant_ACCUMULATORMAP_H
+#define deviant_ACCUMULATORMAP_H
 
 #include "libzerocoin/Accumulator.h"
 #include "libzerocoin/Coin.h"
@@ -26,4 +26,4 @@ public:
     void Reset();
     void Reset(libzerocoin::ZerocoinParams* params2);
 };
-#endif //flits_ACCUMULATORMAP_H
+#endif //deviant_ACCUMULATORMAP_H

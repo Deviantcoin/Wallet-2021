@@ -7,8 +7,8 @@ from .messages import msg_getheaders, msg_headers, CBlockHeader
 from .mininode import P2PInterface, mininode_lock
 from .util import wait_until
 
-## FLS Test Node
-class flsTestNode(P2PInterface):
+## DEV Test Node
+class devTestNode(P2PInterface):
     def __init__(self):
         super().__init__()
         self.last_sendcmpct = []

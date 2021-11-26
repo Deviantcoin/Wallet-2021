@@ -10,7 +10,7 @@
 #include "uint256.h"
 #include "util.h"
 #include "utilstrencodings.h"
-#include "test_flits.h"
+#include "test_deviant.h"
 
 #include <string>
 #include <vector>

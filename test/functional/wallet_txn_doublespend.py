@@ -4,11 +4,11 @@
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 """Test the wallet accounts properly when there is a double-spend conflict."""
 
-from test_framework.test_framework import flsTestFramework
+from test_framework.test_framework import devTestFramework
 from test_framework.util import *
 import time
 
-class TxnMallTest(flsTestFramework):
+class TxnMallTest(devTestFramework):
     def set_test_params(self):
         self.num_nodes = 4
 
@@ -23,7 +23,7 @@ class TxnMallTest(flsTestFramework):
         disconnect_nodes(self.nodes[2], 1)
 
     def run_test(self):
-        # All nodes should start with 6,250 FLS:
+        # All nodes should start with 6,250 DEV:
         starting_balance = 6250
         for i in range(4):
             assert_equal(self.nodes[i].getbalance(), starting_balance)

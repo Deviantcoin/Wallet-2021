@@ -5,18 +5,18 @@ and tests weren't explicitly disabled.
 
 After configuring, they can be run with `make check`.
 
-To run the flitsd tests manually, launch `src/test/test_FLS`. To recompile
+To run the deviantd tests manually, launch `src/test/test_FLS`. To recompile
 after a test file was modified, run `make` and then run the test again. If you
 modify a non-test file, use `make -C src/test` to recompile only what's needed
-to run the flitsd tests.
+to run the deviantd tests.
 
-To add more flitsd tests, add `BOOST_AUTO_TEST_CASE` functions to the existing
+To add more deviantd tests, add `BOOST_AUTO_TEST_CASE` functions to the existing
 .cpp files in the `test/` directory or add new .cpp files that
 implement new BOOST_FIXTURE_TEST_SUITE sections.
 
-To run the flits-qt tests manually, launch `src/qt/test/test_flits-qt`
+To run the deviant-qt tests manually, launch `src/qt/test/test_deviant-qt`
 
-To add more flits-qt tests, add them to the `src/qt/test/` directory and
+To add more deviant-qt tests, add them to the `src/qt/test/` directory and
 the `src/qt/test/test_main.cpp` file.
 
 ### Running individual tests
@@ -35,7 +35,7 @@ Run `test_FLS --help` for the full list.
 ### Note on adding test cases
 
 The sources in this directory are unit test cases.  Boost includes a
-unit testing framework, and since FLS already uses boost, it makes
+unit testing framework, and since DEV already uses boost, it makes
 sense to simply use this framework rather than require developers to
 configure some other framework (we want as few impediments to creating
 unit tests as possible).

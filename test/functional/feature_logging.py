@@ -7,9 +7,9 @@
 
 import os
 
-from test_framework.test_framework import flsTestFramework
+from test_framework.test_framework import devTestFramework
 
-class LoggingTest(flsTestFramework):
+class LoggingTest(devTestFramework):
     def set_test_params(self):
         self.num_nodes = 1
         self.setup_clean_chain = True

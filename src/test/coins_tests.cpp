@@ -7,7 +7,7 @@
 #include "script/standard.h"
 #include "uint256.h"
 #include "utilstrencodings.h"
-#include "test/test_flits.h"
+#include "test/test_deviant.h"
 
 #include <vector>
 #include <map>

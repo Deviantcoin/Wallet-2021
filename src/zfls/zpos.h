@@ -1,4 +1,4 @@
-// Copyright (c) 2020 The flitsdevelopers
+// Copyright (c) 2020 The deviantdevelopers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 

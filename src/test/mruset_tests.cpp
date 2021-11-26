@@ -7,7 +7,7 @@
 
 #include "random.h"
 #include "util.h"
-#include "test/test_flits.h"
+#include "test/test_deviant.h"
 
 #include <set>
 

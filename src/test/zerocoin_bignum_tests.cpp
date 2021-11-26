@@ -9,7 +9,7 @@
 #include "libzerocoin/Denominations.h"
 #include "libzerocoin/CoinSpend.h"
 #include "libzerocoin/Accumulator.h"
-#include "zfls/zerocoin.h"
+#include "zdev/zerocoin.h"
 
 
 bool testRandKBitBignum(int k_bits)

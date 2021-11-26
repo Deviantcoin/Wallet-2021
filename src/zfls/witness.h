@@ -1,5 +1,5 @@
-#ifndef flits_WITNESS_H
-#define flits_WITNESS_H
+#ifndef deviant_WITNESS_H
+#define deviant_WITNESS_H
 
 
 #include <libzerocoin/Accumulator.h>
@@ -75,4 +75,4 @@ public:
         READWRITE(accumulatorDenom);
     };
 };
-#endif //flits_WITNESS_H
+#endif //deviant_WITNESS_H

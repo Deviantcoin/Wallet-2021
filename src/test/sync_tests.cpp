@@ -3,7 +3,7 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include "sync.h"
-#include "test/test_flits.h"
+#include "test/test_deviant.h"
 
 #include <boost/test/unit_test.hpp>
 

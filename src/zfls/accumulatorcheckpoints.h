@@ -1,9 +1,9 @@
-// Copyright (c) 2018 The Flits-Core developers
+// Copyright (c) 2018 The Deviant-Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef flits_ACCUMULATORCHECKPOINTS_H
-#define flits_ACCUMULATORCHECKPOINTS_H
+#ifndef deviant_ACCUMULATORCHECKPOINTS_H
+#define deviant_ACCUMULATORCHECKPOINTS_H
 
 #include <libzerocoin/bignum.h>
 #include <univalue/include/univalue.h>
@@ -18,4 +18,4 @@ namespace AccumulatorCheckpoints
     Checkpoint GetClosestCheckpoint(const int& nHeight, int& nHeightCheckpoint);
 }
 
-#endif //flits_ACCUMULATORCHECKPOINTS_H
+#endif //deviant_ACCUMULATORCHECKPOINTS_H

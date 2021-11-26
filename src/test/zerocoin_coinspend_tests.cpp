@@ -1,13 +1,13 @@
-// Copyright (c) 2017-2019 The Flits-Core developers
+// Copyright (c) 2017-2019 The Deviant-Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include "libzerocoin/Denominations.h"
 #include "libzerocoin/CoinSpend.h"
 #include "libzerocoin/Accumulator.h"
-#include "zfls/zerocoin.h"
-#include "zfls/deterministicmint.h"
-#include "zfls/zflswallet.h"
+#include "zdev/zerocoin.h"
+#include "zdev/deterministicmint.h"
+#include "zdev/zdevwallet.h"
 #include "libzerocoin/Coin.h"
 #include "amount.h"
 #include "chainparams.h"
@@ -40,7 +40,7 @@ BOOST_AUTO_TEST_CASE(zerocoin_wrapped_serial_spend_test)
     string strWalletFile = "unittestwallet.dat";
     CWalletDB walletdb(strWalletFile, "cr+");
     CWallet wallet(strWalletFile);
-    CzflsWallet *czflsWallet = new CzflsWallet(wallet.strWalletFile);
+    CzdevWallet *czdevWallet = new CzdevWallet(wallet.strWalletFile);
 
     // Get the 5 created mints.
     CoinDenomination denom = CoinDenomination::ZQ_FIFTY;
@@ -48,8 +48,8 @@ BOOST_AUTO_TEST_CASE(zerocoin_wrapped_serial_spend_test)
     for (unsigned int i = 0; i < TESTS_COINS_TO_ACCUMULATE; i++) {
         PrivateCoin coin(ZCParams, denom, false);
         CDeterministicMint dMint;
-        czflsWallet->GenerateDeterministiczfls(denom, coin, dMint, true);
-        czflsWallet->UpdateCount();
+        czdevWallet->GenerateDeterministiczdev(denom, coin, dMint, true);
+        czdevWallet->UpdateCount();
         vCoins.emplace_back(coin);
     }
 

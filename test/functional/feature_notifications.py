@@ -5,14 +5,14 @@
 """Test the -alertnotify, -blocknotify and -walletnotify options."""
 import os
 
-from test_framework.test_framework import flsTestFramework
+from test_framework.test_framework import devTestFramework
 from test_framework.util import (
     assert_equal,
     wait_until,
     connect_nodes,
 )
 
-class NotificationsTest(flsTestFramework):
+class NotificationsTest(devTestFramework):
     def set_test_params(self):
         self.num_nodes = 2
         self.setup_clean_chain = True
@@ -70,7 +70,7 @@ class NotificationsTest(flsTestFramework):
         self.nodes[1].generate(51)
         self.sync_all()
 
-        # Give flitsd 10 seconds to write the alert notification
+        # Give deviantd 10 seconds to write the alert notification
         wait_until(lambda: os.path.isfile(self.alert_filename) and os.path.getsize(self.alert_filename), timeout=10)
 
         with open(self.alert_filename, 'r', encoding='utf8') as f:

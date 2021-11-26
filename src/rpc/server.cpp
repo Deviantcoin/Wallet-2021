@@ -1,7 +1,7 @@
 // Copyright (c) 2010 Satoshi Nakamoto
 // Copyright (c) 2009-2014 The Bitcoin developers
 // Copyright (c) 2014-2015 The Dash developers
-// Copyright (c) 2015-2020 The Flits developers
+// Copyright (c) 2015-2020 The Deviant developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -269,11 +269,11 @@ UniValue stop(const UniValue& params, bool fHelp)
     if (fHelp || params.size() > 1)
         throw std::runtime_error(
             "stop\n"
-            "\nStop FLS server.");
+            "\nStop DEV server.");
     // Event loop will exit after current HTTP requests have been handled, so
     // this reply will get back to the client.
     StartShutdown();
-    return "FLS server stopping";
+    return "DEV server stopping";
 }
 
 
@@ -362,35 +362,35 @@ static const CRPCCommand vRPCCommands[] =
         { "hidden",             "waitforblock",           &waitforblock,           true,  true,  false  },
         { "hidden",             "waitforblockheight",     &waitforblockheight,     true,  true,  false  },
 
-        /* FLS features */
-        {"fls", "listmasternodes", &listmasternodes, true, true, false},
-        {"fls", "getmasternodecount", &getmasternodecount, true, true, false},
-        {"fls", "masternodeconnect", &masternodeconnect, true, true, false},
-        {"fls", "createmasternodebroadcast", &createmasternodebroadcast, true, true, false},
-        {"fls", "decodemasternodebroadcast", &decodemasternodebroadcast, true, true, false},
-        {"fls", "relaymasternodebroadcast", &relaymasternodebroadcast, true, true, false},
-        {"fls", "masternodecurrent", &masternodecurrent, true, true, false},
-        {"fls", "masternodedebug", &masternodedebug, true, true, false},
-        {"fls", "startmasternode", &startmasternode, true, true, false},
-        {"fls", "reloadmasternodeconfig", &reloadmasternodeconfig, true, true, false},
-        {"fls", "createmasternodekey", &createmasternodekey, true, true, false},
-        {"fls", "getmasternodeoutputs", &getmasternodeoutputs, true, true, false},
-        {"fls", "listmasternodeconf", &listmasternodeconf, true, true, false},
-        {"fls", "getmasternodestatus", &getmasternodestatus, true, true, false},
-        {"fls", "getmasternodewinners", &getmasternodewinners, true, true, false},
-        {"fls", "getmasternodescores", &getmasternodescores, true, true, false},
-        {"fls", "preparebudget", &preparebudget, true, true, false},
-        {"fls", "submitbudget", &submitbudget, true, true, false},
-        {"fls", "mnbudgetvote", &mnbudgetvote, true, true, false},
-        {"fls", "getbudgetvotes", &getbudgetvotes, true, true, false},
-        {"fls", "getnextsuperblock", &getnextsuperblock, true, true, false},
-        {"fls", "getbudgetprojection", &getbudgetprojection, true, true, false},
-        {"fls", "getbudgetinfo", &getbudgetinfo, true, true, false},
-        {"fls", "mnbudgetrawvote", &mnbudgetrawvote, true, true, false},
-        {"fls", "mnfinalbudget", &mnfinalbudget, true, true, false},
-        {"fls", "checkbudgets", &checkbudgets, true, true, false},
-        {"fls", "mnsync", &mnsync, true, true, false},
-        {"fls", "spork", &spork, true, true, false},
+        /* DEV features */
+        {"dev", "listmasternodes", &listmasternodes, true, true, false},
+        {"dev", "getmasternodecount", &getmasternodecount, true, true, false},
+        {"dev", "masternodeconnect", &masternodeconnect, true, true, false},
+        {"dev", "createmasternodebroadcast", &createmasternodebroadcast, true, true, false},
+        {"dev", "decodemasternodebroadcast", &decodemasternodebroadcast, true, true, false},
+        {"dev", "relaymasternodebroadcast", &relaymasternodebroadcast, true, true, false},
+        {"dev", "masternodecurrent", &masternodecurrent, true, true, false},
+        {"dev", "masternodedebug", &masternodedebug, true, true, false},
+        {"dev", "startmasternode", &startmasternode, true, true, false},
+        {"dev", "reloadmasternodeconfig", &reloadmasternodeconfig, true, true, false},
+        {"dev", "createmasternodekey", &createmasternodekey, true, true, false},
+        {"dev", "getmasternodeoutputs", &getmasternodeoutputs, true, true, false},
+        {"dev", "listmasternodeconf", &listmasternodeconf, true, true, false},
+        {"dev", "getmasternodestatus", &getmasternodestatus, true, true, false},
+        {"dev", "getmasternodewinners", &getmasternodewinners, true, true, false},
+        {"dev", "getmasternodescores", &getmasternodescores, true, true, false},
+        {"dev", "preparebudget", &preparebudget, true, true, false},
+        {"dev", "submitbudget", &submitbudget, true, true, false},
+        {"dev", "mnbudgetvote", &mnbudgetvote, true, true, false},
+        {"dev", "getbudgetvotes", &getbudgetvotes, true, true, false},
+        {"dev", "getnextsuperblock", &getnextsuperblock, true, true, false},
+        {"dev", "getbudgetprojection", &getbudgetprojection, true, true, false},
+        {"dev", "getbudgetinfo", &getbudgetinfo, true, true, false},
+        {"dev", "mnbudgetrawvote", &mnbudgetrawvote, true, true, false},
+        {"dev", "mnfinalbudget", &mnfinalbudget, true, true, false},
+        {"dev", "checkbudgets", &checkbudgets, true, true, false},
+        {"dev", "mnsync", &mnsync, true, true, false},
+        {"dev", "spork", &spork, true, true, false},
 
 #ifdef ENABLE_WALLET
         /* Wallet */
@@ -472,11 +472,11 @@ static const CRPCCommand vRPCCommands[] =
         {"zerocoin", "exportzerocoins", &exportzerocoins, false, false, true},
         {"zerocoin", "reconsiderzerocoins", &reconsiderzerocoins, false, false, true},
         {"zerocoin", "getspentzerocoinamount", &getspentzerocoinamount, false, false, false},
-        {"zerocoin", "getzflsseed", &getzflsseed, false, false, true},
-        {"zerocoin", "setzflsseed", &setzflsseed, false, false, true},
+        {"zerocoin", "getzdevseed", &getzdevseed, false, false, true},
+        {"zerocoin", "setzdevseed", &setzdevseed, false, false, true},
         {"zerocoin", "generatemintlist", &generatemintlist, false, false, true},
-        {"zerocoin", "searchdzfls", &searchdzfls, false, false, true},
-        {"zerocoin", "dzflsstate", &dzflsstate, false, false, true},
+        {"zerocoin", "searchdzdev", &searchdzdev, false, false, true},
+        {"zerocoin", "dzdevstate", &dzdevstate, false, false, true},
 
 #endif // ENABLE_WALLET
 };
@@ -640,7 +640,7 @@ std::vector<std::string> CRPCTable::listCommands() const
 
 std::string HelpExampleCli(std::string methodname, std::string args)
 {
-    return "> flits-cli " + methodname + " " + args + "\n";
+    return "> deviant-cli " + methodname + " " + args + "\n";
 }
 
 std::string HelpExampleRpc(std::string methodname, std::string args)

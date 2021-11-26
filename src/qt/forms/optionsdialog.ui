@@ -30,7 +30,7 @@
        <item>
         <widget class="QCheckBox" name="bitcoinAtStartup">
          <property name="toolTip">
-          <string>Automatically start FLS after logging in to the system.</string>
+          <string>Automatically start DEV after logging in to the system.</string>
          </property>
          <property name="text">
           <string>&amp;Start DEV on system login</string>
@@ -150,7 +150,7 @@
             <item>
              <widget class="QCheckBox" name="checkBoxZeromintEnable">
               <property name="toolTip">
-               <string>Enable automatic minting of FLS units to zFLS</string>
+               <string>Enable automatic minting of DEV units to zFLS</string>
               </property>
               <property name="layoutDirection">
                <enum>Qt::LeftToRight</enum>
@@ -180,7 +180,7 @@
             <item>
              <widget class="QLabel" name="percentage_label">
               <property name="toolTip">
-               <string>Percentage of incoming FLS which get automatically converted to zFLS via Zerocoin Protocol (min: 10%)</string>
+               <string>Percentage of incoming DEV which get automatically converted to zFLS via Zerocoin Protocol (min: 10%)</string>
               </property>
               <property name="text">
                <string>Percentage of autominted zDEV</string>
@@ -213,7 +213,7 @@
                </size>
               </property>
               <property name="toolTip">
-               <string>Wait with automatic conversion to Zerocoin until enough FLS for this denomination is available</string>
+               <string>Wait with automatic conversion to Zerocoin until enough DEV for this denomination is available</string>
               </property>
               <property name="text">
                <string>Preferred Automint zDEV Denomination</string>
@@ -229,7 +229,7 @@
                </size>
               </property>
               <property name="toolTip">
-               <string>Wait with automatic conversion to Zerocoin until enough FLS for this denomination is available</string>
+               <string>Wait with automatic conversion to Zerocoin until enough DEV for this denomination is available</string>
               </property>
               <property name="maxVisibleItems">
                <number>9</number>
@@ -334,7 +334,7 @@
        <item>
         <widget class="QCheckBox" name="mapPortUpnp">
          <property name="toolTip">
-          <string>Automatically open the FLS client port on the router. This only works when your router supports UPnP and it is enabled.</string>
+          <string>Automatically open the DEV client port on the router. This only works when your router supports UPnP and it is enabled.</string>
          </property>
          <property name="text">
           <string>Map port using &amp;UPnP</string>
@@ -354,7 +354,7 @@
        <item>
         <widget class="QCheckBox" name="connectSocks">
          <property name="toolTip">
-          <string>Connect to the FLS network through a SOCKS5 proxy.</string>
+          <string>Connect to the DEV network through a SOCKS5 proxy.</string>
          </property>
          <property name="text">
           <string>&amp;Connect through SOCKS5 proxy (default proxy):</string>
@@ -520,7 +520,7 @@
          <item>
           <widget class="QValueComboBox" name="lang">
            <property name="toolTip">
-            <string>The user interface language can be set here. This setting will take effect after restarting FLS.</string>
+            <string>The user interface language can be set here. This setting will take effect after restarting DEV.</string>
            </property>
           </widget>
          </item>
@@ -542,7 +542,7 @@
          </property>
          <property name="text">
           <string>Language missing or translation incomplete? Help contributing translations here:
-https://www.transifex.com/flits-core/flits-core-translations</string>
+https://www.transifex.com/deviant-core/deviant-core-translations</string>
          </property>
          <property name="wordWrap">
           <bool>true</bool>
@@ -570,8 +570,8 @@ https://www.transifex.com/flits-core/flits-core-translations</string>
         </layout>
        </item>
        <item>
-        <widget class="QWidget" name="verticalzflsolutionsdisplayWidget" native="true">
-         <layout class="QVBoxLayout" name="verticalzflsolutionsdisplayLayout">
+        <widget class="QWidget" name="verticalzdevolutionsdisplayWidget" native="true">
+         <layout class="QVBoxLayout" name="verticalzdevolutionsdisplayLayout">
           <property name="leftMargin">
            <number>0</number>
           </property>

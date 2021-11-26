@@ -8,7 +8,7 @@
 #include <string>
 #include <map>
 #include <univalue.h>
-#include "test/test_flits.h"
+#include "test/test_deviant.h"
 
 #include <boost/test/unit_test.hpp>
 

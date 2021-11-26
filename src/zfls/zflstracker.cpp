@@ -2,15 +2,15 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include <zfls/deterministicmint.h>
-#include "zflstracker.h"
+#include <zdev/deterministicmint.h>
+#include "zdevtracker.h"
 #include "util.h"
 #include "sync.h"
 #include "main.h"
 #include "txdb.h"
 #include "wallet/wallet.h"
 #include "wallet/walletdb.h"
-#include "zfls/zflswallet.h"
+#include "zdev/zdevwallet.h"
 
 
 CzFLSTracker::CzFLSTracker(CWallet* parent)
@@ -451,7 +451,7 @@ std::set<CMintMeta> CzFLSTracker::ListMints(bool fUnusedOnly, bool fMatureOnly, 
                 continue;
             Add(dMint, false, false, wallet->zwalletMain);
         }
-        LogPrint(BCLog::LEGACYZC, "%s: added %d dzfls from DB\n", __func__, listDeterministicDB.size());
+        LogPrint(BCLog::LEGACYZC, "%s: added %d dzdev from DB\n", __func__, listDeterministicDB.size());
     }
 
     std::vector<CMintMeta> vOverWrite;

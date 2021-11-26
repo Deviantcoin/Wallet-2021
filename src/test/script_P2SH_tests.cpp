@@ -10,7 +10,7 @@
 #include "script/script.h"
 #include "script/script_error.h"
 #include "script/sign.h"
-#include "test_flits.h"
+#include "test_deviant.h"
 
 #ifdef ENABLE_WALLET
 #include "wallet/wallet_ismine.h"

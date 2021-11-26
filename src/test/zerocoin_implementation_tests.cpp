@@ -1,4 +1,4 @@
-// Copyright (c) 2017-2019 The Flits-Core developers
+// Copyright (c) 2017-2019 The Deviant-Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -7,16 +7,16 @@
 #include "chainparams.h"
 #include "main.h"
 #include "txdb.h"
-#include "zfls/deterministicmint.h"
+#include "zdev/deterministicmint.h"
 #include "key.h"
-#include "zfls/accumulatorcheckpoints.h"
+#include "zdev/accumulatorcheckpoints.h"
 #include "libzerocoin/bignum.h"
 #include <boost/test/unit_test.hpp>
 #include <iostream>
-#include <zfls/accumulators.h>
+#include <zdev/accumulators.h>
 #include "wallet/wallet.h"
-#include "zfls/zflswallet.h"
-#include "zflschain.h"
+#include "zdev/zdevwallet.h"
+#include "zdevchain.h"
 
 using namespace libzerocoin;
 
@@ -513,7 +513,7 @@ BOOST_AUTO_TEST_CASE(deterministic_tests)
     CWalletDB walletdb(strWalletFile, "cr+");
 
     CWallet wallet(strWalletFile);
-    CzflsWallet zWallet(wallet.strWalletFile);
+    CzdevWallet zWallet(wallet.strWalletFile);
     zWallet.SetMasterSeed(seedMaster);
     wallet.setZWallet(&zWallet);
 
@@ -525,7 +525,7 @@ BOOST_AUTO_TEST_CASE(deterministic_tests)
     for (int i = 0; i < nTests; i++) {
         PrivateCoin coin(Params().Zerocoin_Params(false), denom, false);
         CDeterministicMint dMint;
-        zWallet.GenerateDeterministiczfls(denom, coin, dMint);
+        zWallet.GenerateDeterministiczdev(denom, coin, dMint);
         vCoins.emplace_back(coin);
     }
 

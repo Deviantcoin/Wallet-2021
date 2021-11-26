@@ -17,7 +17,7 @@
 #include "uint256.h"
 #include <streams.h>
 #include <utilstrencodings.h>
-#include "zfls/zerocoin.h"
+#include "zdev/zerocoin.h"
 #include "chainparams.h"
 
 static int const PUBSPEND_SCHNORR = 4;

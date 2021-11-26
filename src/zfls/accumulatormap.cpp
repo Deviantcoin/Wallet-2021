@@ -1,4 +1,4 @@
-// Copyright (c) 2017-2019 The Flits-Core developers
+// Copyright (c) 2017-2019 The Deviant-Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 

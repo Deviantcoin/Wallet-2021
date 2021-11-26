@@ -8,7 +8,7 @@
 #include "script/script.h"
 #include "script/standard.h"
 #include "uint256.h"
-#include "test_flits.h"
+#include "test_deviant.h"
 
 #include <vector>
 

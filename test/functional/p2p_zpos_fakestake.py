@@ -12,9 +12,9 @@ from time import sleep
 
 from test_framework.authproxy import JSONRPCException
 
-from fake_stake.base_test import flits_FakeStakeTest
+from fake_stake.base_test import deviant_FakeStakeTest
 
-class zPoSFakeStake(flits_FakeStakeTest):
+class zPoSFakeStake(deviant_FakeStakeTest):
 
     def run_test(self):
         self.description = "Covers the scenario of a zPoS block where the coinstake input is a zerocoin spend of an already spent coin."

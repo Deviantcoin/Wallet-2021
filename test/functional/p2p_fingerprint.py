@@ -21,12 +21,12 @@ from test_framework.mininode import (
     network_thread_start,
     wait_until,
 )
-from test_framework.test_framework import flsestFramework
+from test_framework.test_framework import devestFramework
 from test_framework.util import (
     assert_equal,
 )
 
-class P2PFingerprintTest(flsestFramework):
+class P2PFingerprintTest(devestFramework):
     def set_test_params(self):
         self.setup_clean_chain = True
         self.num_nodes = 1

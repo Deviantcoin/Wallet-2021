@@ -3,7 +3,7 @@
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-from test_framework.test_framework import flsTestFramework
+from test_framework.test_framework import devTestFramework
 from test_framework.util import (
     assert_equal,
     assert_fee_amount,
@@ -22,7 +22,7 @@ def get_unspent(listunspent, amount):
     raise AssertionError('Could not find unspent with amount={}'.format(amount))
 
 
-class RawTransactionsTest(flsTestFramework):
+class RawTransactionsTest(devTestFramework):
 
     def __init__(self):
         super().__init__()
@@ -209,9 +209,9 @@ class RawTransactionsTest(flsTestFramework):
 
         try:
             self.nodes[2].fundrawtransaction(rawtx, {'changeAddress': 'foobar'})
-            raise AssertionError("Accepted invalid fls address")
+            raise AssertionError("Accepted invalid dev address")
         except JSONRPCException as e:
-            assert("changeAddress must be a valid fls address" in e.error['message'])
+            assert("changeAddress must be a valid dev address" in e.error['message'])
 
 
         ############################################################

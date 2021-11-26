@@ -1,12 +1,12 @@
 // Copyright (c) 2012-2014 The Bitcoin Core developers
 // Copyright (c) 2014-2015 The Dash Core developers
 // Copyright (c) 2015-2019 The PIVX developers
-// Copyright (c) 2020 The Flits developers
+// Copyright (c) 2020 The Deviant developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include "netbase.h"
-#include "test/test_flits.h"
+#include "test/test_deviant.h"
 
 #include <string>
 

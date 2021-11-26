@@ -10,7 +10,7 @@
 #include "checkpoints.h"
 
 #include "uint256.h"
-#include "test_flits.h"
+#include "test_deviant.h"
 
 #include <boost/test/unit_test.hpp>
 

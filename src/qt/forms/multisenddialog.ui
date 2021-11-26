@@ -37,7 +37,7 @@
         <number>1</number>
        </property>
        <property name="text">
-        <string>MultiSend allows you to automatically send up to 100% of your stake or masternode reward to a list of other flits addresses after it matures.
+        <string>MultiSend allows you to automatically send up to 100% of your stake or masternode reward to a list of other deviant addresses after it matures.
 To Add: enter percentage to give and deviant address to add to the MultiSend vector.
 To Delete: Enter address to delete and press delete.
 MultiSend will not be activated unless you have clicked Activate</string>
@@ -328,7 +328,7 @@ MultiSend will not be activated unless you have clicked Activate</string>
   </layout>
  </widget>
  <resources>
-  <include location="../flits.qrc"/>
+  <include location="../deviant.qrc"/>
  </resources>
  <connections/>
 </ui>

@@ -6,7 +6,7 @@
 #include "serialize.h"
 #include "streams.h"
 #include "hash.h"
-#include "test/test_flits.h"
+#include "test/test_deviant.h"
 
 #include <stdint.h>
 
