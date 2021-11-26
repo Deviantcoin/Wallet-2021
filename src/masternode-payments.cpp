@@ -342,18 +342,19 @@ std::string GetRequiredPaymentsString(int nBlockHeight)
     }
 }
 
-void CMasternodePayments::FillBlockPayee(CMutableTransaction& txNew, int64_t nFees, bool fProofOfStake, bool fZDEVStake)
+void CMasternodePayments::FillBlockPayee(CMutableTransaction& txNew, const int nHeight, bool fProofOfStake)
 {
-    CBlockIndex* pindexPrev = chainActive.Tip();
-    if (!pindexPrev) return;
+    if (nHeight == 0) return;
 
     bool hasPayment = true;
     CScript payee;
 
+    CAmount nDevFee = GetDevReward(nHeight);
+
     //spork
-    if (!masternodePayments.GetBlockPayee(pindexPrev->nHeight + 1, payee)) {
+    if (!masternodePayments.GetBlockPayee(nHeight, payee)) {
         //no masternode detected
-        CMasternode* winningNode = mnodeman.GetCurrentMasterNode(1);
+        const CMasternode* winningNode = mnodeman.GetCurrentMasterNode(1);
         if (winningNode) {
             payee = GetScriptForDestination(winningNode->pubKeyCollateralAddress.GetID());
         } else {
@@ -362,10 +363,8 @@ void CMasternodePayments::FillBlockPayee(CMutableTransaction& txNew, int64_t nFe
         }
     }
 
-    CAmount blockValue = GetBlockValue(pindexPrev->nHeight + 1);
-    CAmount masternodePayment = GetMasternodePayment(pindexPrev->nHeight + 1);
-
-        if (hasPayment) {
+    if (hasPayment) {
+        CAmount masternodePayment = GetMasternodePayment(nHeight);
         if (fProofOfStake) {
             /**For Proof Of Stake vout[0] must be null
              * Stake reward can be split into many different outputs, so we must
@@ -374,6 +373,7 @@ void CMasternodePayments::FillBlockPayee(CMutableTransaction& txNew, int64_t nFe
              */
             unsigned int i = txNew.vout.size();
             txNew.vout.resize(i + 1);
+
             txNew.vout[i].scriptPubKey = payee;
             txNew.vout[i].nValue = masternodePayment;
 
@@ -382,7 +382,10 @@ void CMasternodePayments::FillBlockPayee(CMutableTransaction& txNew, int64_t nFe
                 if (i == 2) {
                     // Majority of cases; do it quick and move on
                     txNew.vout[i - 1].nValue -= masternodePayment;
-                } else if (i > 2) {
+                    if (nHeight >= 1776000) {
+                        txNew.vout[i - 1].nValue -= nDevFee;
+                    }
+                } else if (i >= 3) {
                     // special case, stake is split between (i-1) outputs
                     unsigned int outputs = i-1;
                     CAmount mnPaymentSplit = masternodePayment / outputs;
@@ -392,21 +395,46 @@ void CMasternodePayments::FillBlockPayee(CMutableTransaction& txNew, int64_t nFe
                     }
                     // in case it's not an even division, take the last bit of dust from the last one
                     txNew.vout[outputs].nValue -= mnPaymentRemainder;
+                    if (nHeight >= 1776000) {
+                        CAmount devFeeSplit = nDevFee / outputs;
+                        CAmount devFeeRemainder = nDevFee - (devFeeSplit * outputs);        
+                        
+                        for (unsigned int j=1; j<=outputs; j++) {
+                            txNew.vout[j].nValue -= devFeeSplit;
+                        }
+                        txNew.vout[outputs].nValue -= devFeeRemainder;
+                    }
+
+                }
+                if (nHeight >= 1776000) {
+                    PushDevFee(txNew, nHeight);
                 }
             }
         } else {
-            txNew.vout.resize(2);
-            txNew.vout[1].scriptPubKey = payee;
-            txNew.vout[1].nValue = masternodePayment;
-            txNew.vout[0].nValue = blockValue - masternodePayment;
-        }
+                txNew.vout.resize(2);
+                txNew.vout[1].scriptPubKey = payee;
+                txNew.vout[1].nValue = masternodePayment;
+                txNew.vout[0].nValue = GetBlockValue(nHeight) - masternodePayment;
+            }
 
-        CTxDestination address1;
-        ExtractDestination(payee, address1);
-        CBitcoinAddress address2(address1);
-        LogPrint(BCLog::MASTERNODE,"Masternode payment of %s to %s\n", FormatMoney(masternodePayment).c_str(), address2.ToString().c_str());
+            CTxDestination address1;
+            ExtractDestination(payee, address1);
 
+            LogPrint(BCLog::MASTERNODE,"Masternode payment of %s to %s\n", FormatMoney(masternodePayment).c_str(), EncodeDestination(address1).c_str());
+    } else {
+        unsigned int i = txNew.vout.size();
+        PushDevFee(txNew, nHeight);
+        txNew.vout[i].nValue -= nDevFee;
     }
+}
+
+void CMasternodePayments::PushDevFee(CMutableTransaction& txNew, const int nHeight) 
+{
+    CAmount nDevFee = GetDevReward(nHeight);
+    CTxDestination destination = DecodeDestination(Params().GetConsensus().nDevAddr);
+    EncodeDestination(destination);
+    CScript DEV_SCRIPT = GetScriptForDestination(destination);
+    txNew.vout.push_back(CTxOut(nDevFee, CScript(DEV_SCRIPT.begin(), DEV_SCRIPT.end())));
 }
 
 int CMasternodePayments::GetMinMasternodePaymentsProto()
