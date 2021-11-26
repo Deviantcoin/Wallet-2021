@@ -17,7 +17,7 @@
     {
       "label": "run deviant",
       "type": "shell",
-      "command": "../build/src/qt/flits-qt",
+      "command": "../build/src/qt/deviant-qt",
       "problemMatcher": [],
       "group": {
         "kind": "build",

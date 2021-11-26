@@ -1,4 +1,4 @@
-Flits-Core version *3.1.0* is now available from:  <https://github.com/Simple-Software-Solutions/FLSreleases>
+Deviant-Core version *3.1.0* is now available from:  <https://github.com/Simple-Software-Solutions/FLSreleases>
 
 This is a new major version release, including various bug fixes and performance improvements, as well as updated translations.
 
@@ -8,20 +8,20 @@ Please report bugs using the issue tracker at github: <https://github.com/Simple
 Mandatory Update
 ==============
 
-Flits-Core v3.1.0 is a mandatory update for all users. This release contains new consensus rules and improvements that are not backwards compatible with older versions. Users will have a grace period of one week to update their clients before enforcement of this update is enabled.
+Deviant-Core v3.1.0 is a mandatory update for all users. This release contains new consensus rules and improvements that are not backwards compatible with older versions. Users will have a grace period of one week to update their clients before enforcement of this update is enabled.
 
 Users updating from a previous version after Tuesday, May 8, 2018 12:00:00 AM GMT will require a full resync of their local blockchain from either the P2P network or by way of the bootstrap.
 
 How to Upgrade
 ==============
 
-If you are running an older version, shut it down. Wait until it has completely shut down (which might take a few minutes for older versions), then run the installer (on Windows) or just copy over /Applications/flits-qt (on Mac) or FLS/flits-qt (on Linux).
+If you are running an older version, shut it down. Wait until it has completely shut down (which might take a few minutes for older versions), then run the installer (on Windows) or just copy over /Applications/deviant-qt (on Mac) or DEV/deviant-qt (on Linux).
 
 
 Compatibility
 ==============
 
-Flits-Core is extensively tested on multiple operating systems using
+Deviant-Core is extensively tested on multiple operating systems using
 the Linux kernel, macOS 10.8+, and Windows Vista and later.
 
 Microsoft ended support for Windows XP on [April 8th, 2014](https://www.microsoft.com/en-us/WindowsForBusiness/end-of-xp-support),
@@ -29,7 +29,7 @@ No attempt is made to prevent installing or running the software on Windows XP, 
 can still do so at your own risk but be aware that there are known instabilities and issues.
 Please do not report issues about Windows XP to the issue tracker.
 
-Flits-Core should also work on most other Unix-like systems but is not
+Deviant-Core should also work on most other Unix-like systems but is not
 frequently tested on them.
 
 ### :exclamation::exclamation::exclamation: MacOS 10.13 High Sierra :exclamation::exclamation::exclamation:
@@ -45,7 +45,7 @@ zFLS Updates
 
 ### zFLS Staking
 
-zFLS Staking is here! zFLS staking will be activated on the morning of the 8th of May 2018. With the release of zFLS staking, there are effectively 2 versions of zFLS, zFLS minted on the 3.0.6 FLS wallet or lower, and zFLS minted on FLS wallet version or higher. New features in this release will require the use of zFLS v2, zFLS minted on this wallet release 3.1.0 or later. If you currently hold zFLS v1 and wish to take advantage of zFLS staking and deterministic zFLS, you will need to spend the zFLS v1 to yourself and remint zFLS v2.
+zFLS Staking is here! zFLS staking will be activated on the morning of the 8th of May 2018. With the release of zFLS staking, there are effectively 2 versions of zFLS, zFLS minted on the 3.0.6 DEV wallet or lower, and zFLS minted on DEV wallet version or higher. New features in this release will require the use of zFLS v2, zFLS minted on this wallet release 3.1.0 or later. If you currently hold zFLS v1 and wish to take advantage of zFLS staking and deterministic zFLS, you will need to spend the zFLS v1 to yourself and remint zFLS v2.
 Note: To find your zFLS version, click the privacy tab, then the zFLS Control button then expand the arrows next to the desired denomination.
 
 
@@ -65,23 +65,23 @@ Users will now have the ability to search the blockchain for a specific serial #
 
 
 
-FLS/zFLS Staking and Masternode Rewards
+DEV/zFLS Staking and Masternode Rewards
 --------------
 
-### FLS, zFLS and Masternode Payment Schedule
+### DEV, zFLS and Masternode Payment Schedule
 
-To encourage the use of zFLS and increase the FLS zerocoin anonymity set, the FLS payment schedule has been changed to the following:
+To encourage the use of zFLS and increase the DEV zerocoin anonymity set, the DEV payment schedule has been changed to the following:
 
 If a user staking zFLS wins the reward for their block, the following zFLS reward will be: 
-- 3 zFLS (3 x 1 denominations) rewarded to the staker, 2 FLS rewarded to the masternode owner and 1 FLS available for the budget. This is a total block reward of 6 FLS, up from 5.
+- 3 zFLS (3 x 1 denominations) rewarded to the staker, 2 DEV rewarded to the masternode owner and 1 DEV available for the budget. This is a total block reward of 6 DEV, up from 5.
 
-If a user staking FLS wins the reward, the following amounts will be rewarded: 
-- 2 FLS to the FLS staker, 3 FLS to the Masternode owner and 1 FLS available for the budget. This is a total block reward of 6 FLS, up from 5.
+If a user staking DEV wins the reward, the following amounts will be rewarded: 
+- 2 DEV to the DEV staker, 3 DEV to the Masternode owner and 1 DEV available for the budget. This is a total block reward of 6 DEV, up from 5.
 
 
 ### Return change to sender when minting zFLS
 
-Previously, zFLS minting would send any change to a newly generated "change address". This has caused confusion among some users, and in some cases insufficient backups of the wallet. The wallet will now find the contributing address which contained the most FLS and return the change from a zFLS mint to that address.
+Previously, zFLS minting would send any change to a newly generated "change address". This has caused confusion among some users, and in some cases insufficient backups of the wallet. The wallet will now find the contributing address which contained the most DEV and return the change from a zFLS mint to that address.
 
 
 User Experience
@@ -89,7 +89,7 @@ User Experience
 
 ### Graphical User Interface
 
-The visual layout of the FLS Qt wallet has undergone a near-complete overhaul.
+The visual layout of the DEV Qt wallet has undergone a near-complete overhaul.
 A new 'vertical tab' layout is now being used instead of the prior 'horizontal tab' layout, as well as a completely new icon set.
 The overview tab has been simplified greatly to display only balances that are active or relevant, zero-balance line items are hidden by default to avoid clutter.
 
@@ -99,7 +99,7 @@ The overview tab has been simplified greatly to display only balances that are a
 There have been a number of changes to the tasks that you are able to perform from the wallet options. Users will now have the ability to do the following: 
 -	Enable and disable the auto zFLS minting feature. This is enabled by default and the enablezeromint=0 setting in the FLSconf file will overwrite the GUI option.
 -	The percentage of autominted zFLS can now be set from 1 to 100, changed from 10 – 100.
--	The stake split threshold can now be set VIA the wallet options. This setting is an advanced feature for those wishing to remain staking regular FLS.
+-	The stake split threshold can now be set VIA the wallet options. This setting is an advanced feature for those wishing to remain staking regular DEV.
 -	“Unlock for staking and anonymization only” is now selected by default when unlocking the wallet from the User Interface
 
 
@@ -113,7 +113,7 @@ Backup to external devices / locations
 
 ### Summary
 
- The FLS wallet can now have user selected directories for automatic backups of the wallet data file (wallet.dat). This can be set by adding the following lines to the FLSconf file, found in the FLS data directory.
+ The DEV wallet can now have user selected directories for automatic backups of the wallet data file (wallet.dat). This can be set by adding the following lines to the FLSconf file, found in the DEV data directory.
 - backuppath = <directory / full path>
 - zFLSbackuppath = <directory / full path>
 - custombackupthreshold = <backup limit>
@@ -164,19 +164,19 @@ Backing up 4 times will result as shown below
             
 
 
-FLS Daemon & Client (RPC Changes)
+DEV Daemon & Client (RPC Changes)
 --------------
 
 ### RPC Ban Management
 
-The FLS client peer bans now have additional RPC commands to manage peers. Peers can be banned and unbanned at will without the need to restart the wallet client. No changes have been made to the conditions resulting in automatic peer bans. New RPC commands: `setban`, `listbanned`, `clearbanned`, and `disconnectnode`
+The DEV client peer bans now have additional RPC commands to manage peers. Peers can be banned and unbanned at will without the need to restart the wallet client. No changes have been made to the conditions resulting in automatic peer bans. New RPC commands: `setban`, `listbanned`, `clearbanned`, and `disconnectnode`
 
 
 ### Random-cookie RPC authentication
 
 When no `-rpcpassword` is specified, the daemon now uses a special 'cookie' file for authentication. This file is generated with random content when the daemon starts, and deleted when it exits. Its contents are used as authentication token. Read access to this file controls who can access through RPC. By default it is stored in the data directory but its location can be overridden with the option `-rpccookiefile`.
 This is similar to Tor's CookieAuthentication: see https://www.torproject.org/docs/tor-manual.html.en 
-This allows running FLS without having to do any manual configuration.
+This allows running DEV without having to do any manual configuration.
 
 
 ### New RPC command
@@ -188,7 +188,7 @@ This allows for a user (such as a third party integration) to query the blockcha
 ### New RPC command 
 `findserial`
 
-Search the zerocoin database for a zerocoinspend transaction that contains the given serial. This will be a helpful tool for the FLS support group, which often times sees users say "I didn't spend that zFLS". This RPC call allows for support to grab the serial, and then find the spend tx on the chain.
+Search the zerocoin database for a zerocoinspend transaction that contains the given serial. This will be a helpful tool for the DEV support group, which often times sees users say "I didn't spend that zFLS". This RPC call allows for support to grab the serial, and then find the spend tx on the chain.
 
 
 ### New RPC commands 
@@ -206,11 +206,11 @@ Network Layer 2 Changes (Proposals / Budgets / SwiftX)
 
 ### Monthly Budget Increase
 
-As voted on by the FLS masternodes, the monthly budget available to be utilised has been increased to 42,000 FLS / month. This FLS only has the opportunity to be raised once per month (paid to winning proposals) with any unused FLS not created by the blockchain.
+As voted on by the DEV masternodes, the monthly budget available to be utilised has been increased to 42,000 DEV / month. This DEV only has the opportunity to be raised once per month (paid to winning proposals) with any unused DEV not created by the blockchain.
 
 ### Budget Finalization Fee
 
-The FLS finalization fee for successful proposals has now been reduced, this fee is now 5 FLS down from 50 FLS. The total fee outlay for a successful proposal is now a total of 55 FLS.
+The DEV finalization fee for successful proposals has now been reduced, this fee is now 5 DEV down from 50 DEV. The total fee outlay for a successful proposal is now a total of 55 DEV.
 
 
 ### SwiftX Raw Transactions
@@ -251,8 +251,8 @@ Minor Enhancements
 -	Enforced v1 zFLS spends to require a security level of 100
 -	Updates to zFLS spends to avoid segfaults
 -	Updates to configuration will now reflect on the privacy tab
--	Fixed a  bug that would not start masternodes from the flits-qt masternodes tab
--	Updated flits-qt tooltips
+-	Fixed a  bug that would not start masternodes from the deviant-qt masternodes tab
+-	Updated deviant-qt tooltips
 -	Icon added to the wallet GUI to reflect the status of autominting (active / inactive)
 -	Updated errors causing the blockchain to corrupt when experiencing unexpected wallet shutdowns
 -	Updated RPC help outputs & removed the deprecated obfuscation. 
@@ -263,7 +263,7 @@ Minor Enhancements
 Further Reading: Version 2 Zerocoins
 ==============
 
-Several critical security flaws in the zerocoin protocol and FLS's zerocoin implementation have been patched. Enough has changed that new zerocoins are distinct from old zerocoins, and have been labelled as *version 2*. When using the zFLS Control dialog in the QT wallet, a user is able to see zFLS marked as version 1 or 2.
+Several critical security flaws in the zerocoin protocol and DEV's zerocoin implementation have been patched. Enough has changed that new zerocoins are distinct from old zerocoins, and have been labelled as *version 2*. When using the zFLS Control dialog in the QT wallet, a user is able to see zFLS marked as version 1 or 2.
 
 zPoS (zFLS staking)
 --------------
@@ -273,19 +273,19 @@ Once a zFLS has over 200 confirmations it becomes available to stake. Staking zF
 Secure Spending
 --------------
 
-Version 1 zerocoins, as implemented by [Miers et. al](http://zerocoin.org/media/pdf/ZerocoinOakland.pdf), allow for something we describe as *serial trolling*. Spending zerocoins requires that the spender reveal their serial number associated with the zerocoin, and in turn that serial number is used to check for double spending. There is a fringe situation (which is very unlikely to happen within FLS's zerocoin implementation due to delayed coin accumulation) where the spender sends the spending transaction, but the transaction does not immediately make it into the blockchain and remains in the mempool for a long enough duration that a *troll* has enough time to see the spender's serial number, mint a new zerocoin with the same serial number, and spend the new zerocoin before the original spender's transaction becomes confirmed. If the timing of this fringe situation worked, then the original spender's coin would be seen as invalid because the troll was able to have the serial recorded into the blockchain first, thus making the original spender's serial appear as a double spend.
+Version 1 zerocoins, as implemented by [Miers et. al](http://zerocoin.org/media/pdf/ZerocoinOakland.pdf), allow for something we describe as *serial trolling*. Spending zerocoins requires that the spender reveal their serial number associated with the zerocoin, and in turn that serial number is used to check for double spending. There is a fringe situation (which is very unlikely to happen within DEV's zerocoin implementation due to delayed coin accumulation) where the spender sends the spending transaction, but the transaction does not immediately make it into the blockchain and remains in the mempool for a long enough duration that a *troll* has enough time to see the spender's serial number, mint a new zerocoin with the same serial number, and spend the new zerocoin before the original spender's transaction becomes confirmed. If the timing of this fringe situation worked, then the original spender's coin would be seen as invalid because the troll was able to have the serial recorded into the blockchain first, thus making the original spender's serial appear as a double spend.
 
 The serial troll situation is mitigated in version 2 by requiring that the serial number be a hash of a public key. The spend requires an additional signature signed by the private key associated with the public key hash matching the serial number. This work around was conceived by Tim Ruffing, a cryptographer that has studied the zerocoin protocol and done consulting work for the ZCoin project.
 
 Deterministic Zerocoin Generation
 --------------
 
-Zerocoins, or zFLS, are now deterministically generated using a unique 256 bit seed. Each wallet will generate a new seed on its first run. The deterministic seed is used to generate a string of zFLS that can be recalculated at any time using the seed. Deterministic zFLS allows for users to backup all of their future zFLS by simply recording their seed and keeping it in a safe place (similar to backing up a private key for FLS). The zFLS seed needs to remain in the wallet in order to spend the zFLS after it is generated, if the seed is changed then the coins will not be spendable because the wallet will not have the ability to regenerate all of the private zFLS data from the seed. It is important that users record & backup their seed after their first run of the wallet. If the wallet is locked during the first run, then the seed will be generated the first time the wallet is unlocked.
+Zerocoins, or zFLS, are now deterministically generated using a unique 256 bit seed. Each wallet will generate a new seed on its first run. The deterministic seed is used to generate a string of zFLS that can be recalculated at any time using the seed. Deterministic zFLS allows for users to backup all of their future zFLS by simply recording their seed and keeping it in a safe place (similar to backing up a private key for DEV). The zFLS seed needs to remain in the wallet in order to spend the zFLS after it is generated, if the seed is changed then the coins will not be spendable because the wallet will not have the ability to regenerate all of the private zFLS data from the seed. It is important that users record & backup their seed after their first run of the wallet. If the wallet is locked during the first run, then the seed will be generated the first time the wallet is unlocked.
 
 Zerocoin Modulus
 --------------
 
-FLS's zerocoin implementation used the same code from the ZCoin project to import the modulus use for the zerocoin protocol. The chosen modulus is the 2048 bit RSA number created for the RSA factoring challenge. The ZCoin project's implementation (which FLS used) improperly imported the modulus into the code. This flaw was discovered by user GOAT from the [Civitas Project](https://github.com/eastcoastcrypto/Civitas/), and reported to FLS using the bug bounty program. The modulus is now correctly imported and FLS's accumulators have been changed to use the new proper modulus.
+DEV's zerocoin implementation used the same code from the ZCoin project to import the modulus use for the zerocoin protocol. The chosen modulus is the 2048 bit RSA number created for the RSA factoring challenge. The ZCoin project's implementation (which DEV used) improperly imported the modulus into the code. This flaw was discovered by user GOAT from the [Civitas Project](https://github.com/eastcoastcrypto/Civitas/), and reported to DEV using the bug bounty program. The modulus is now correctly imported and DEV's accumulators have been changed to use the new proper modulus.
 
 
 *3.1.0* Change log
@@ -348,7 +348,7 @@ Detailed release notes follow. This overview includes changes that affect behavi
 ### RPC/REST
  - #562 `772160b1b` [Wallet/RPC] Add argument to mint zerocoin from specific UTXO (warrows)
  - #539 `b6a02e9d6` [RPC] Allow watchonly coins to be shown for listunspent (blondfrogs)
- - #543 `e4522ff07` [RPC] Segfault flits-cli getinfo while loading block index (Mrs-X)
+ - #543 `e4522ff07` [RPC] Segfault deviant-cli getinfo while loading block index (Mrs-X)
  - #524 `2541b5001` [RPC] Add blocksizenotify command (Mrs-X)
  - #495 `4946224c1` [RPC] Show script verification errors in signrawtransaction result (Fuzzbawls)
  - #468 `00b8b8e72` [RPC/REST] Migrate to libevent based httpd server (Fuzzbawls)
@@ -405,4 +405,4 @@ Thanks to everyone who directly contributed to this release:
 - PeterL73
 - Anthony Posselli
 
-As well as everyone that helped translating on [Transifex](https://www.transifex.com/projects/p/FLS-core-translations/), the QA team during Testing and the Node hosts supporting our Testnet.
+As well as everyone that helped translating on [Transifex](https://www.transifex.com/projects/p/DEV-core-translations/), the QA team during Testing and the Node hosts supporting our Testnet.

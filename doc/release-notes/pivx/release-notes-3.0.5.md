@@ -13,7 +13,7 @@ Please report bugs using the issue tracker at github:
 Mandatory Update
 ==============
 
-FLSolutions Core v3.0.5 is a mandatory update for all users. This release contains various updates/fixes pertaining to the zFLS protocol, supply tracking, block transmission and relaying, as well as usability and quality-of-life updates to the GUI. Users are required to update before block `908000` which is when the accumulators will be refactored. Shortly after that block, zFLS transactions will be enabled. **When zFLS is enabled, autominting will also be enabled.** If you would like to disable automatic conversion of 10% of your FLS balance to zFLS, then you will need to add `enablezeromint=0` to your `FLSolutions.conf` file. For information about where to find your FLSolutions.conf you can visit this link from [FLSolutions Support](https://FLSolutions.freshdesk.com/support/solutions/articles/30000004664-where-are-my-wallet-dat-blockchain-and-configuration-conf-files-located-).
+FLSolutions Core v3.0.5 is a mandatory update for all users. This release contains various updates/fixes pertaining to the zFLS protocol, supply tracking, block transmission and relaying, as well as usability and quality-of-life updates to the GUI. Users are required to update before block `908000` which is when the accumulators will be refactored. Shortly after that block, zFLS transactions will be enabled. **When zFLS is enabled, autominting will also be enabled.** If you would like to disable automatic conversion of 10% of your DEV balance to zFLS, then you will need to add `enablezeromint=0` to your `FLSolutions.conf` file. For information about where to find your FLSolutions.conf you can visit this link from [FLSolutions Support](https://FLSolutions.freshdesk.com/support/solutions/articles/30000004664-where-are-my-wallet-dat-blockchain-and-configuration-conf-files-located-).
 
 Users will have a grace period to update their clients before versions prior to this release are no longer allowed to connect to this (and future) version(s).
 
@@ -21,7 +21,7 @@ Users will have a grace period to update their clients before versions prior to 
 How to Upgrade
 ==============
 
-If you are running an older version, shut it down. Wait until it has completely shut down (which might take a few minutes for older versions), then run the installer (on Windows) or just copy over /Applications/flits-qt (on Mac) or flitsd/flits-qt (on Linux).
+If you are running an older version, shut it down. Wait until it has completely shut down (which might take a few minutes for older versions), then run the installer (on Windows) or just copy over /Applications/deviant-qt (on Mac) or deviantd/deviant-qt (on Linux).
 
 
 Compatibility
@@ -60,7 +60,7 @@ Handling the above noted libzerocoin exploit required the FLSolutions team to im
 
 Money Supply Indexing
 ---------------------
-The exploit in libzerocoin threw off some of the wallet's internal money supply calculations for both the zFLS supply and the FLS supply. User's wallet's will automatically recalculate the supply on block `908001`. User's also have the ability to recalculate supply using the startup flag `reindexmoneysupply`.
+The exploit in libzerocoin threw off some of the wallet's internal money supply calculations for both the zFLS supply and the DEV supply. User's wallet's will automatically recalculate the supply on block `908001`. User's also have the ability to recalculate supply using the startup flag `reindexmoneysupply`.
 
 More Extensive Tracking of zFLS Supply Through RPC
 ---------------------

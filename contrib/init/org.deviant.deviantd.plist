@@ -3,10 +3,10 @@
 <plist version="1.0">
 <dict>
 	<key>Label</key>
-	<string>org.fls.flitsd</string>
+	<string>org.dev.deviantd</string>
 	<key>ProgramArguments</key>
 	<array>
-		<string>/usr/local/bin/flitsd</string>
+		<string>/usr/local/bin/deviantd</string>
 	</array>
 	<key>RunAtLoad</key>
 	<true/>

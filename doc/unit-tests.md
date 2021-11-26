@@ -6,13 +6,13 @@ and tests weren't explicitly disabled.
 
 After configuring, they can be run with 'make check'.
 
-To run the flitsd tests manually, launch src/test/test_FLSolutions .
+To run the deviantd tests manually, launch src/test/test_FLSolutions .
 
-To add more flitsd tests, add `BOOST_AUTO_TEST_CASE` functions to the existing
+To add more deviantd tests, add `BOOST_AUTO_TEST_CASE` functions to the existing
 .cpp files in the test/ directory or add new .cpp files that
 implement new BOOST_AUTO_TEST_SUITE sections.
 
-To run the flits-qt tests manually, launch src/qt/test/flits-qt_test
+To run the deviant-qt tests manually, launch src/qt/test/deviant-qt_test
 
-To add more flits-qt tests, add them to the `src/qt/test/` directory and
+To add more deviant-qt tests, add them to the `src/qt/test/` directory and
 the `src/qt/test/test_main.cpp` file.

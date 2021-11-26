@@ -5,19 +5,19 @@
 # See "man systemd.service" for details.
 
 # Note that almost all daemon options could be specified in
-# /etc/fls/fls.conf
+# /etc/dev/dev.conf
 
 [Unit]
-Description=FLS daemon
+Description=DEV daemon
 After=network.target
 
 [Service]
-ExecStart=/usr/bin/flitsd -daemon -conf=/etc/fls/fls.conf -pid=/run/flitsd/flitsd.pid
-# Creates /run/flitsd owned by fls
-RuntimeDirectory=flitsd
-User=fls
+ExecStart=/usr/bin/deviantd -daemon -conf=/etc/dev/dev.conf -pid=/run/deviantd/deviantd.pid
+# Creates /run/deviantd owned by dev
+RuntimeDirectory=deviantd
+User=dev
 Type=forking
-PIDFile=/run/flitsd/flitsd.pid
+PIDFile=/run/deviantd/deviantd.pid
 Restart=on-failure
 
 # Hardening measures

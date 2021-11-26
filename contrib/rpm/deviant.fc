@@ -1,0 +1,8 @@
+/usr/bin/deviant-cli		--	gen_context(system_u:object_r:dev_exec_t,s0)
+/usr/sbin/deviantd		--	gen_context(system_u:object_r:dev_exec_t,s0)
+/usr/lib(64)?/dev/deviantd		--	gen_context(system_u:object_r:dev_exec_t,s0)
+
+/etc/dev(/.*)?		gen_context(system_u:object_r:dev_conf_t,s0)
+/var/lib/dev(/.*)?		gen_context(system_u:object_r:dev_var_lib_t,s0)
+
+(/var)?/run/deviantd(/.*)?   gen_context(system_u:object_r:dev_var_run_t,s0)

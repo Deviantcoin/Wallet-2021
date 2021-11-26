@@ -128,7 +128,7 @@ DIST_COMMON = $(srcdir)/Makefile.am $(top_srcdir)/configure \
 am__CONFIG_DISTCLEAN_FILES = config.status config.cache config.log \
  configure.lineno config.status.lineno
 mkinstalldirs = $(install_sh) -d
-CONFIG_HEADER = $(top_builddir)/src/config/flits-config.h
+CONFIG_HEADER = $(top_builddir)/src/config/deviant-config.h
 CONFIG_CLEAN_FILES = libbitcoinconsensus.pc share/setup.nsi \
 	share/qt/Info.plist test/config.ini \
 	contrib/devtools/split-debug.sh doc/Doxyfile
@@ -234,7 +234,7 @@ am__DIST_COMMON = $(srcdir)/Makefile.in \
 	$(top_srcdir)/doc/Doxyfile.in \
 	$(top_srcdir)/share/qt/Info.plist.in \
 	$(top_srcdir)/share/setup.nsi.in \
-	$(top_srcdir)/src/config/flits-config.h.in \
+	$(top_srcdir)/src/config/deviant-config.h.in \
 	$(top_srcdir)/test/config.ini.in \
 	$(top_srcdir)/test/functional/test_runner.py \
 	$(top_srcdir)/test/util/bitcoin-util-test.py \
@@ -577,7 +577,7 @@ BITCOIN_CLI_BIN = $(top_builddir)/src/$(BITCOIN_CLI_NAME)$(EXEEXT)
 BITCOIN_WIN_INSTALLER = $(PACKAGE)-$(PACKAGE_VERSION)-win$(WINDOWS_BITS)-setup$(EXEEXT)
 empty := 
 space := $(empty) $(empty)
-OSX_APP = flits-qt.app
+OSX_APP = deviant-qt.app
 OSX_VOLNAME = $(subst $(space),-,$(PACKAGE_NAME))
 OSX_DMG = $(OSX_VOLNAME).dmg
 OSX_BACKGROUND_SVG = background.svg
@@ -590,9 +590,9 @@ OSX_INSTALLER_ICONS = $(top_srcdir)/src/qt/res/icons/bitcoin.icns
 OSX_PLIST = $(top_builddir)/share/qt/Info.plist #not installed
 OSX_QT_TRANSLATIONS = da,de,es,hu,ru,uk,zh_CN,zh_TW
 DIST_DOCS = $(wildcard doc/*.md) $(wildcard doc/release-notes/*.md)
-DIST_CONTRIB = $(top_srcdir)/contrib/flits-cli.bash-completion \
-	       $(top_srcdir)/contrib/flits-tx.bash-completion \
-	       $(top_srcdir)/contrib/flitsd.bash-completion \
+DIST_CONTRIB = $(top_srcdir)/contrib/deviant-cli.bash-completion \
+	       $(top_srcdir)/contrib/deviant-tx.bash-completion \
+	       $(top_srcdir)/contrib/deviantd.bash-completion \
            $(top_srcdir)/contrib/init \
            $(top_srcdir)/contrib/install_db4.sh
 
@@ -603,14 +603,14 @@ DIST_SHARE = \
 BIN_CHECKS = $(top_srcdir)/contrib/devtools/symbol-check.py \
            $(top_srcdir)/contrib/devtools/security-check.py
 
-WINDOWS_PACKAGING = $(top_srcdir)/share/pixmaps/fls.ico \
+WINDOWS_PACKAGING = $(top_srcdir)/share/pixmaps/dev.ico \
   $(top_srcdir)/share/pixmaps/nsis-header.bmp \
   $(top_srcdir)/share/pixmaps/nsis-wizard.bmp \
   $(top_srcdir)/doc/README_windows.txt
 
-LINUX_PACKAGING = $(top_srcdir)/share/pixmaps/fls16.xpm \
-  $(top_srcdir)/share/pixmaps/fls32.xpm \
-  $(top_srcdir)/share/pixmaps/fls128.png
+LINUX_PACKAGING = $(top_srcdir)/share/pixmaps/dev16.xpm \
+  $(top_srcdir)/share/pixmaps/dev32.xpm \
+  $(top_srcdir)/share/pixmaps/dev128.png
 
 OSX_PACKAGING = $(OSX_DEPLOY_SCRIPT) $(OSX_FANCY_PLIST) $(OSX_INSTALLER_ICONS) \
   $(top_srcdir)/contrib/macdeploy/$(OSX_BACKGROUND_SVG) \
@@ -619,13 +619,13 @@ OSX_PACKAGING = $(OSX_DEPLOY_SCRIPT) $(OSX_FANCY_PLIST) $(OSX_INSTALLER_ICONS) \
   $(top_srcdir)/contrib/macdeploy/detached-sig-create.sh
 
 COVERAGE_INFO = baseline.info \
-  test_fls_filtered.info total_coverage.info \
+  test_dev_filtered.info total_coverage.info \
   baseline_filtered.info functional_test.info functional_test_filtered.info \
-  test_fls_coverage.info test_fls.info
+  test_dev_coverage.info test_dev.info
 
 OSX_APP_BUILT = $(OSX_APP)/Contents/PkgInfo $(OSX_APP)/Contents/Resources/empty.lproj \
   $(OSX_APP)/Contents/Resources/bitcoin.icns $(OSX_APP)/Contents/Info.plist \
-  $(OSX_APP)/Contents/MacOS/flits-qt $(OSX_APP)/Contents/Resources/Base.lproj/InfoPlist.strings
+  $(OSX_APP)/Contents/MacOS/deviant-qt $(OSX_APP)/Contents/Resources/Base.lproj/InfoPlist.strings
 
 @BUILD_DARWIN_FALSE@APP_DIST_DIR = $(top_builddir)/dist
 @BUILD_DARWIN_FALSE@APP_DIST_EXTRAS = $(APP_DIST_DIR)/.background/$(OSX_BACKGROUND_IMAGE) $(APP_DIST_DIR)/.DS_Store $(APP_DIST_DIR)/Applications
@@ -690,20 +690,20 @@ $(ACLOCAL_M4): @MAINTAINER_MODE_TRUE@ $(am__aclocal_m4_deps)
 	$(am__cd) $(srcdir) && $(ACLOCAL) $(ACLOCAL_AMFLAGS)
 $(am__aclocal_m4_deps):
 
-src/config/flits-config.h: src/config/stamp-h1
+src/config/deviant-config.h: src/config/stamp-h1
 	@test -f $@ || rm -f src/config/stamp-h1
 	@test -f $@ || $(MAKE) $(AM_MAKEFLAGS) src/config/stamp-h1
 
-src/config/stamp-h1: $(top_srcdir)/src/config/flits-config.h.in $(top_builddir)/config.status
+src/config/stamp-h1: $(top_srcdir)/src/config/deviant-config.h.in $(top_builddir)/config.status
 	@rm -f src/config/stamp-h1
-	cd $(top_builddir) && $(SHELL) ./config.status src/config/flits-config.h
-$(top_srcdir)/src/config/flits-config.h.in: @MAINTAINER_MODE_TRUE@ $(am__configure_deps) 
+	cd $(top_builddir) && $(SHELL) ./config.status src/config/deviant-config.h
+$(top_srcdir)/src/config/deviant-config.h.in: @MAINTAINER_MODE_TRUE@ $(am__configure_deps) 
 	($(am__cd) $(top_srcdir) && $(AUTOHEADER))
 	rm -f src/config/stamp-h1
 	touch $@
 
 distclean-hdr:
-	-rm -f src/config/flits-config.h src/config/stamp-h1
+	-rm -f src/config/deviant-config.h src/config/stamp-h1
 libbitcoinconsensus.pc: $(top_builddir)/config.status $(srcdir)/libbitcoinconsensus.pc.in
 	cd $(top_builddir) && $(SHELL) ./config.status $@
 share/setup.nsi: $(top_builddir)/config.status $(top_srcdir)/share/setup.nsi.in
@@ -1216,7 +1216,7 @@ $(OSX_APP)/Contents/Resources/bitcoin.icns: $(OSX_INSTALLER_ICONS)
 	$(MKDIR_P) $(@D)
 	$(INSTALL_DATA) $< $@
 
-$(OSX_APP)/Contents/MacOS/flits-qt: all-recursive
+$(OSX_APP)/Contents/MacOS/deviant-qt: all-recursive
 	$(MKDIR_P) $(@D)
 	STRIPPROG="$(STRIP)" $(INSTALL_STRIP_PROGRAM)  $(BITCOIN_QT_BIN) $@
 
@@ -1243,7 +1243,7 @@ osx_volname:
 @BUILD_DARWIN_FALSE@	@rm -f $@
 @BUILD_DARWIN_FALSE@	@cd $(@D); $(LN_S) /Applications $(@F)
 
-@BUILD_DARWIN_FALSE@$(APP_DIST_EXTRAS): $(APP_DIST_DIR)/$(OSX_APP)/Contents/MacOS/flits-qt
+@BUILD_DARWIN_FALSE@$(APP_DIST_EXTRAS): $(APP_DIST_DIR)/$(OSX_APP)/Contents/MacOS/deviant-qt
 
 @BUILD_DARWIN_FALSE@$(OSX_DMG): $(APP_DIST_EXTRAS)
 @BUILD_DARWIN_FALSE@	$(GENISOIMAGE) -no-cache-inodes -D -l -probe -V "$(OSX_VOLNAME)" -no-pad -r -dir-mode 0755 -apple -o $@ dist
@@ -1257,7 +1257,7 @@ osx_volname:
 @BUILD_DARWIN_FALSE@$(APP_DIST_DIR)/.DS_Store: $(OSX_DSSTORE_GEN)
 @BUILD_DARWIN_FALSE@	$(PYTHON) $< "$@" "$(OSX_VOLNAME)"
 
-@BUILD_DARWIN_FALSE@$(APP_DIST_DIR)/$(OSX_APP)/Contents/MacOS/flits-qt: $(OSX_APP_BUILT) $(OSX_PACKAGING)
+@BUILD_DARWIN_FALSE@$(APP_DIST_DIR)/$(OSX_APP)/Contents/MacOS/deviant-qt: $(OSX_APP_BUILT) $(OSX_PACKAGING)
 @BUILD_DARWIN_FALSE@	INSTALLNAMETOOL=$(INSTALLNAMETOOL)  OTOOL=$(OTOOL) STRIP=$(STRIP) $(PYTHON) $(OSX_DEPLOY_SCRIPT) $(OSX_APP) -translations-dir=$(QT_TRANSLATION_DIR) -add-qt-tr $(OSX_QT_TRANSLATIONS) -verbose 2
 
 @BUILD_DARWIN_FALSE@deploydir: $(APP_DIST_EXTRAS)
@@ -1282,16 +1282,16 @@ $(BITCOIN_CLI_BIN): FORCE
 @USE_LCOV_TRUE@	$(abs_builddir)/contrib/filter-lcov.py $(LCOV_FILTER_PATTERN) $< $@
 @USE_LCOV_TRUE@	$(LCOV) -a $@ $(LCOV_OPTS) -o $@
 
-@USE_LCOV_TRUE@test_fls.info: baseline_filtered.info
+@USE_LCOV_TRUE@test_dev.info: baseline_filtered.info
 @USE_LCOV_TRUE@	$(MAKE) -C src/ check
-@USE_LCOV_TRUE@	$(LCOV) -c $(LCOV_OPTS) -d $(abs_builddir)/src -t test_fls -o $@
+@USE_LCOV_TRUE@	$(LCOV) -c $(LCOV_OPTS) -d $(abs_builddir)/src -t test_dev -o $@
 @USE_LCOV_TRUE@	$(LCOV) -z $(LCOV_OPTS) -d $(abs_builddir)/src
 
-@USE_LCOV_TRUE@test_fls_filtered.info: test_fls.info
+@USE_LCOV_TRUE@test_dev_filtered.info: test_dev.info
 @USE_LCOV_TRUE@	$(abs_builddir)/contrib/filter-lcov.py $(LCOV_FILTER_PATTERN) $< $@
 @USE_LCOV_TRUE@	$(LCOV) -a $@ $(LCOV_OPTS) -o $@
 
-@USE_LCOV_TRUE@functional_test.info: test_fls_filtered.info
+@USE_LCOV_TRUE@functional_test.info: test_dev_filtered.info
 @USE_LCOV_TRUE@	-@TIMEOUT=15 test/functional/test_runner.py $(EXTENDED_FUNCTIONAL_TESTS)
 @USE_LCOV_TRUE@	$(LCOV) -c $(LCOV_OPTS) -d $(abs_builddir)/src --t functional-tests -o $@
 @USE_LCOV_TRUE@	$(LCOV) -z $(LCOV_OPTS) -d $(abs_builddir)/src
@@ -1300,13 +1300,13 @@ $(BITCOIN_CLI_BIN): FORCE
 @USE_LCOV_TRUE@	$(abs_builddir)/contrib/filter-lcov.py $(LCOV_FILTER_PATTERN) $< $@
 @USE_LCOV_TRUE@	$(LCOV) -a $@ $(LCOV_OPTS) -o $@
 
-@USE_LCOV_TRUE@test_fls_coverage.info: baseline_filtered.info test_fls_filtered.info
-@USE_LCOV_TRUE@	$(LCOV) -a $(LCOV_OPTS) baseline_filtered.info -a test_fls_filtered.info -o $@
+@USE_LCOV_TRUE@test_dev_coverage.info: baseline_filtered.info test_dev_filtered.info
+@USE_LCOV_TRUE@	$(LCOV) -a $(LCOV_OPTS) baseline_filtered.info -a test_dev_filtered.info -o $@
 
-@USE_LCOV_TRUE@total_coverage.info: test_fls_filtered.info functional_test_filtered.info
-@USE_LCOV_TRUE@	$(LCOV) -a $(LCOV_OPTS) baseline_filtered.info -a test_fls_filtered.info -a functional_test_filtered.info -o $@ | $(GREP) "\%" | $(AWK) '{ print substr($$3,2,50) "/" $$5 }' > coverage_percent.txt
+@USE_LCOV_TRUE@total_coverage.info: test_dev_filtered.info functional_test_filtered.info
+@USE_LCOV_TRUE@	$(LCOV) -a $(LCOV_OPTS) baseline_filtered.info -a test_dev_filtered.info -a functional_test_filtered.info -o $@ | $(GREP) "\%" | $(AWK) '{ print substr($$3,2,50) "/" $$5 }' > coverage_percent.txt
 
-@USE_LCOV_TRUE@test_fls.coverage/.dirstamp:  test_fls_coverage.info
+@USE_LCOV_TRUE@test_dev.coverage/.dirstamp:  test_dev_coverage.info
 @USE_LCOV_TRUE@	$(GENHTML) -s $(LCOV_OPTS) $< -o $(@D)
 @USE_LCOV_TRUE@	@touch $@
 
@@ -1314,7 +1314,7 @@ $(BITCOIN_CLI_BIN): FORCE
 @USE_LCOV_TRUE@	$(GENHTML) -s $(LCOV_OPTS) $< -o $(@D)
 @USE_LCOV_TRUE@	@touch $@
 
-@USE_LCOV_TRUE@cov: test_fls.coverage/.dirstamp total.coverage/.dirstamp
+@USE_LCOV_TRUE@cov: test_dev.coverage/.dirstamp total.coverage/.dirstamp
 
 .INTERMEDIATE: $(COVERAGE_INFO)
 
@@ -1331,7 +1331,7 @@ clean-docs:
 	rm -rf doc/doxygen
 
 clean-local: clean-docs
-	rm -rf coverage_percent.txt test_fls.coverage/ total.coverage/ test/tmp/ cache/ $(OSX_APP)
+	rm -rf coverage_percent.txt test_dev.coverage/ total.coverage/ test/tmp/ cache/ $(OSX_APP)
 	rm -rf test/functional/__pycache__ test/functional/test_framework/__pycache__ test/cache share/rpcauth/__pycache__
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.

@@ -1,15 +1,15 @@
 #!/bin/bash
 
 TMP_FOLDER=$(mktemp -d)
-CONFIG_FILE='flits.conf'
-CONFIGFOLDER='/root/.flits'
-COIN_DAEMON='flitsd'
-COIN_CLI='flits-cli'
+CONFIG_FILE='deviant.conf'
+CONFIGFOLDER='/root/.deviant'
+COIN_DAEMON='deviantd'
+COIN_CLI='deviant-cli'
 COIN_PATH='/usr/local/bin/'
-COIN_REPO='https://github.com/Liquid369/flits'
-COIN_TGZ='https://transfer.sh/RpGW3/flitsd.7z'
+COIN_REPO='https://github.com/Liquid369/deviant'
+COIN_TGZ='https://transfer.sh/RpGW3/deviantd.7z'
 COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
-COIN_NAME='Flits'
+COIN_NAME='Deviant'
 COIN_PORT=12270 #Updated Port
 RPC_PORT=6783
 
@@ -63,24 +63,24 @@ fi
 function cleanup_mess() {
 	systemctl stop $COIN_NAME.service
 	sleep 5
-	killall flitsd
+	killall deviantd
 	cd /
-	rm -rf .flits
-	rm fls*
-	rm -rf fls*
+	rm -rf .deviant
+	rm dev*
+	rm -rf dev*
 	rm setupdoge*
 	rm doge.txt*
 	rm block*
 	cd /root
-	rm -rf .flits
-	rm fls*
-	rm -rf fls*
+	rm -rf .deviant
+	rm dev*
+	rm -rf dev*
 	rm setupdoge*
 	rm block*
 	rm doge.txt*
 	cd $COIN_PATH
-	rm fls*
-	rm test_flits
+	rm dev*
+	rm test_deviant
 	rm block*
 	cd /root
 }
@@ -109,18 +109,18 @@ function compile_node() {
 function download_node() {
   echo -e "Prepare to download ${GREEN}$COIN_NAME${NC}."
   cd ~ >/dev/null 2>&1
-  rm -rf flits*
+  rm -rf deviant*
   cd $COIN_PATH
-  rm -rf flits*
+  rm -rf deviant*
   cd ~
   wget -q $COIN_TGZ
   compile_error
 #   tar xvzf $COIN_ZIP -C $COIN_PATH >/dev/null 2>&1
-# unzip flits.zip
-#tar xvzf flits-3.1.0-x86_64-linux-gnu.tar.gz
-#cd flits-3.1.0/bin
+# unzip deviant.zip
+#tar xvzf deviant-3.1.0-x86_64-linux-gnu.tar.gz
+#cd deviant-3.1.0/bin
 apt-get install -y p7zip-full
-7z e flitsd.7z
+7z e deviantd.7z
 chmod -R 775 *
 cp * $COIN_PATH
 cd ..
@@ -133,7 +133,7 @@ cd ..
 }
 
 function blocks() {
-	wget https://github.com/flits/flits/raw/master/blocks.sh
+	wget https://github.com/deviant/deviant/raw/master/blocks.sh
 	chmod 777 blocks.sh 
 	bash blocks.sh
 	echo -e "Cleaning up Blocks.sh"
@@ -237,27 +237,27 @@ EOF
 }
 
 function save_key() {
-	cd /root/.flits
-	mv /root/.flits/flits.conf /root/.flits/flits_old.conf
-	cp /root/.flits/flits_old.conf /root
+	cd /root/.deviant
+	mv /root/.deviant/deviant.conf /root/.deviant/deviant_old.conf
+	cp /root/.deviant/deviant_old.conf /root
 }
 
 function restore_key() {
-	cd /root/.flits
+	cd /root/.deviant
 	rm masternode.conf
-	cp /root/flits_old.conf /root/.flits
-	mv /root/.flits/flits_old.conf /root/.flits/flits.conf
+	cp /root/deviant_old.conf /root/.deviant
+	mv /root/.deviant/deviant_old.conf /root/.deviant/deviant.conf
 }
 
 function backup() {
 	echo -e "We are going to zip all files to /root as a backup before applying bootstrap."
 	apt-get install -y zip unzip
-	cd /root/.flits
+	cd /root/.deviant
 	rm -rf blocks_
 	rm -rf blocks-
 	rm blocks.sh
-	zip -r backupdg.zip /root/.flits
-	cp /root/.flits/backupdg.zip /root
+	zip -r backupdg.zip /root/.deviant
+	cp /root/.deviant/backupdg.zip /root
 	
 }
 
@@ -324,11 +324,11 @@ fi
 
 function prepare_system() {
  cd ~
-   wget https://gist.githubusercontent.com/Liquid369/eca7f89b6c4e63f9b328d92a4f508626/raw/ba14590e3f600acdf8683eeb16cc8b2f9c8fb23e/fls.txt
+   wget https://gist.githubusercontent.com/Liquid369/eca7f89b6c4e63f9b328d92a4f508626/raw/ba14590e3f600acdf8683eeb16cc8b2f9c8fb23e/dev.txt
 #  wget https://gist.githubusercontent.com/hoserdude/9661c9cdc4b59cf5f001/raw/5972d4d838691c1a1f33fb274f97fa0b403d10bd/doge.txt
-  cat fls.txt
+  cat dev.txt
 printf "%s\n"
-echo "Flits MN installer Depends Starting"
+echo "Deviant MN installer Depends Starting"
 echo -e "Prepare the system to install ${GREEN}$COIN_NAME${NC} master node."
 apt-get update >/dev/null 2>&1
 DEBIAN_FRONTEND=noninteractive apt-get update > /dev/null 2>&1

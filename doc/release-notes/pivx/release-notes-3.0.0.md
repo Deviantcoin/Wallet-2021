@@ -19,7 +19,7 @@ Users updating from a previous version after the 13th of October will require a 
 How to Upgrade
 ==============
 
-If you are running an older version, shut it down. Wait until it has completely shut down (which might take a few minutes for older versions), then run the installer (on Windows) or just copy over /Applications/flits-qt (on Mac) or flitsd/flits-qt (on Linux).
+If you are running an older version, shut it down. Wait until it has completely shut down (which might take a few minutes for older versions), then run the installer (on Windows) or just copy over /Applications/deviant-qt (on Mac) or deviantd/deviant-qt (on Linux).
 
 Compatibility
 ==============
@@ -48,33 +48,33 @@ Zerocoin (zFLS) Protocol
 
 At long last, the zFLS release is here and the zerocoin protocol has been fully implemented! This allows users to send transactions with 100% fungible coins and absolutely zero history or link-ability to their previous owners.
 
-The Zerocoin protocol allows user to convert (mint) their *FLS* to zerocoins, which we call *zFLS*. When zFLS are converted back to FLS there is no trail associated with the coins being sent, such as who originally minted those coins. Essentially the only thing the receiver of the zFLS transaction will see is that it came from the zerocoin protocol.
+The Zerocoin protocol allows user to convert (mint) their *DEV* to zerocoins, which we call *zFLS*. When zFLS are converted back to DEV there is no trail associated with the coins being sent, such as who originally minted those coins. Essentially the only thing the receiver of the zFLS transaction will see is that it came from the zerocoin protocol.
 
 ### zFLS Denominations
 zFLS comes in specific denominations of 1, 5, 10, 50, 100, 500, 1000, and 5000. A denomination is a similar concept to paper currency, where you can hold a $100 bill but there is no available $99 bill for you to hold.
 
-Other implementations of the zerocoin protocol only allow for spending of one denomination/zerocoin at a time. The FLSolutions implementation of zerocoin allows users to spend any amount of zFLS they would like (with certain limitations). If a user held two denominations of 5 and they send 7.75 to a merchant, the wallet will automatically grab the two denominations of 5 and then issue 2.25 FLS in change to the spender. There is currently a limit of up to 6 individual zerocoin `coins` that can be combined into a spend, where each `coin` could be a different or similar denomination
+Other implementations of the zerocoin protocol only allow for spending of one denomination/zerocoin at a time. The FLSolutions implementation of zerocoin allows users to spend any amount of zFLS they would like (with certain limitations). If a user held two denominations of 5 and they send 7.75 to a merchant, the wallet will automatically grab the two denominations of 5 and then issue 2.25 DEV in change to the spender. There is currently a limit of up to 6 individual zerocoin `coins` that can be combined into a spend, where each `coin` could be a different or similar denomination
 
 The FLSolutions zerocoin implementation is structured in such a way that denominations aren't needed to be known by the average user.
 
 ### Fees
-zFLS transactions require more computation and disk space than typical FLSolutions transactions, and as such require a higher transaction fee in order to prevent network spam. Fees are only charged when minting zFLS, each minted denomination is charged a flat rate of 0.01 FLS. zFLS spends are not charged a transaction fee unless the change is minted into zFLS, see the *Minting Change* section for details on fees for zFLS spends with minted change.
+zFLS transactions require more computation and disk space than typical FLSolutions transactions, and as such require a higher transaction fee in order to prevent network spam. Fees are only charged when minting zFLS, each minted denomination is charged a flat rate of 0.01 DEV. zFLS spends are not charged a transaction fee unless the change is minted into zFLS, see the *Minting Change* section for details on fees for zFLS spends with minted change.
 
-### Converting FLS to zFLS (*zFLS Mint*)
-**GUI** - Conversion from FLS to zFLS can be done using the `Privacy Dialog` in the QT wallet. Enter the amount of FLS you would like to convert and click `Mint Zerocoin`.
+### Converting DEV to zFLS (*zFLS Mint*)
+**GUI** - Conversion from DEV to zFLS can be done using the `Privacy Dialog` in the QT wallet. Enter the amount of DEV you would like to convert and click `Mint Zerocoin`.
 
-**RPC** - Conversion from FLS to zFLS can be done using the `mintzerocoin` command.
+**RPC** - Conversion from DEV to zFLS can be done using the `mintzerocoin` command.
 
-**Automint** - The FLSolutions wallet is set to convert 10% of the wallets available FLS to zFLS automatically. This can be adjusted in the GUI within the Options dialog, which allows the preferred % to be adjusted as well as the ability to set the preferred zFLS denomination that will be minted. Automint is set to be triggered when additional blocks are added to the block chain and is programmed *not* to convert your coins all at once.
+**Automint** - The FLSolutions wallet is set to convert 10% of the wallets available DEV to zFLS automatically. This can be adjusted in the GUI within the Options dialog, which allows the preferred % to be adjusted as well as the ability to set the preferred zFLS denomination that will be minted. Automint is set to be triggered when additional blocks are added to the block chain and is programmed *not* to convert your coins all at once.
 
 Automint can be disabled by adding `enablezeromint=0` to the wallet configuration file. The preferred mint % and denomination can also be set by the configuration file using `zeromintpercentage=<n>` and `preferredDenom=<n>`.
 
-### Converting zFLS to FLS (*zFLS Spend*)
-Redeeming zFLS is done by converting it back to FLS. With the 3.0.0 software release, users are not able to send zFLS to each other directly in an atomic fashion.
+### Converting zFLS to DEV (*zFLS Spend*)
+Redeeming zFLS is done by converting it back to DEV. With the 3.0.0 software release, users are not able to send zFLS to each other directly in an atomic fashion.
 
-**GUI** - Conversion from zFLS to FLS can be done using the `Privacy Dialog` in the QT wallet. Enter a FLSolutions address that you would like to Pay To, enter the amount of FLS the receiver should be sent, click `Spend Zerocoin`.
+**GUI** - Conversion from zFLS to DEV can be done using the `Privacy Dialog` in the QT wallet. Enter a FLSolutions address that you would like to Pay To, enter the amount of DEV the receiver should be sent, click `Spend Zerocoin`.
 
-**RPC** - Conversion from zFLS to FLS can be done using the `spendzerocoin` command.
+**RPC** - Conversion from zFLS to DEV can be done using the `spendzerocoin` command.
 
 ### Advanced Use & Privacy Considerations
 **Security Level** - When spending zFLS, a user is prompted to enter a *Security Level* choosing from 1-100. In an indirect way, the Security Level parameter allows the user to choose how many coins to obfuscate their transaction with.
@@ -84,7 +84,7 @@ A Security Level of 1 for example would take all of the minted coins in the bloc
 The higher the Security Level, the more computation and time it will take to spend. Although it takes longer, a level of 100 is recommended for transactions that need maximum anonymity.
 
 
-**Minting Change** - The FLSolutions implementation of the zerocoin protocol also allows the spender to choose how to receive their leftover change from a Spend transaction. For maximum anonymity it is recommended that the spender choose to receive the change in zFLS, which prevents situations where change from a zFLS spend that is redeemed in FLS is accidentally mixed with the rest of the users FLS, thus linking transactions back to a FLSolutions address.
+**Minting Change** - The FLSolutions implementation of the zerocoin protocol also allows the spender to choose how to receive their leftover change from a Spend transaction. For maximum anonymity it is recommended that the spender choose to receive the change in zFLS, which prevents situations where change from a zFLS spend that is redeemed in DEV is accidentally mixed with the rest of the users DEV, thus linking transactions back to a FLSolutions address.
 
 Since the lowest denomination of zFLS is 1, and a fee is required to mint zFLS, in most situations a high fee will be paid to mint change. The fee is the remainder of the change that cannot be converted back to zFLS. For example this would mean a spending a denomination of 10 that yields change of 6.75 in change, would issue zFLS denominations of 5 and 1 back to the sender with the remaining 0.75 that is unmintable being contributed as a fee.
 

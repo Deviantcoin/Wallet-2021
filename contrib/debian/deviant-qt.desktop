@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=DEV
+Comment=DEV P2P Cryptocurrency
+Comment[fr]=DEV, monnaie virtuelle cryptographique pair à pair
+Comment[tr]=DEV, eşten eşe kriptografik sanal para birimi
+Exec=deviant-qt %u
+Terminal=false
+Type=Application
+Icon=dev128
+MimeType=x-scheme-handler/dev;
+Categories=Office;Finance;

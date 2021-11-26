@@ -1,11 +1,11 @@
 Sample configuration files for:
 ```
-SystemD: flitsd.service
-Upstart: flitsd.conf
-OpenRC:  flitsd.openrc
-         flitsd.openrcconf
-CentOS:  flitsd.init
-macOS:    org.FLS.flitsd.plist
+SystemD: deviantd.service
+Upstart: deviantd.conf
+OpenRC:  deviantd.openrc
+         deviantd.openrcconf
+CentOS:  deviantd.init
+macOS:    org.DEV.deviantd.plist
 ```
 have been made available to assist packagers in creating node packages here.
 

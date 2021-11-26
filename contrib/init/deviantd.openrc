@@ -2,26 +2,26 @@
 
 # backward compatibility for existing gentoo layout
 #
-if [ -d "/var/lib/fls/.fls" ]; then
-	BITCOIND_DEFAULT_DATADIR="/var/lib/fls/.fls"
+if [ -d "/var/lib/dev/.dev" ]; then
+	BITCOIND_DEFAULT_DATADIR="/var/lib/dev/.dev"
 else
-	BITCOIND_DEFAULT_DATADIR="/var/lib/flitsd"
+	BITCOIND_DEFAULT_DATADIR="/var/lib/deviantd"
 fi
 
-BITCOIND_CONFIGFILE=${BITCOIND_CONFIGFILE:-/etc/fls/fls.conf}
-BITCOIND_PIDDIR=${BITCOIND_PIDDIR:-/var/run/flitsd}
-BITCOIND_PIDFILE=${BITCOIND_PIDFILE:-${BITCOIND_PIDDIR}/flitsd.pid}
+BITCOIND_CONFIGFILE=${BITCOIND_CONFIGFILE:-/etc/dev/dev.conf}
+BITCOIND_PIDDIR=${BITCOIND_PIDDIR:-/var/run/deviantd}
+BITCOIND_PIDFILE=${BITCOIND_PIDFILE:-${BITCOIND_PIDDIR}/deviantd.pid}
 BITCOIND_DATADIR=${BITCOIND_DATADIR:-${BITCOIND_DEFAULT_DATADIR}}
-BITCOIND_USER=${BITCOIND_USER:-${BITCOIN_USER:-fls}
-BITCOIND_GROUP=${BITCOIND_GROUP:-fls}
-BITCOIND_BIN=${BITCOIND_BIN:-/usr/bin/flitsd}
+BITCOIND_USER=${BITCOIND_USER:-${BITCOIN_USER:-dev}
+BITCOIND_GROUP=${BITCOIND_GROUP:-dev}
+BITCOIND_BIN=${BITCOIND_BIN:-/usr/bin/deviantd}
 BITCOIND_NICE=${BITCOIND_NICE:-${NICELEVEL:-0}}
 BITCOIND_OPTS="${BITCOIND_OPTS:-${BITCOIN_OPTS}}"
 
-name="FLS Core Daemon"
-description="FLS crypto-currency p2p network daemon"
+name="DEV Core Daemon"
+description="DEV crypto-currency p2p network daemon"
 
-command="/usr/bin/flitsd"
+command="/usr/bin/deviantd"
 command_args="-pid=\"${BITCOIND_PIDFILE}\" \
 		-conf=\"${BITCOIND_CONFIGFILE}\" \
 		-datadir=\"${BITCOIND_DATADIR}\" \
@@ -71,7 +71,7 @@ checkconfig()
 {
 	if ! grep -qs '^rpcpassword=' "${BITCOIND_CONFIGFILE}" ; then
 		eerror ""
-		eerror "ERROR: You must set a secure rpcpassword to run flitsd."
+		eerror "ERROR: You must set a secure rpcpassword to run deviantd."
 		eerror "The setting must appear in ${BITCOIND_CONFIGFILE}"
 		eerror ""
 		eerror "This password is security critical to securing wallets "
@@ -84,7 +84,7 @@ checkconfig()
 		eerror "It is recommended that you also set alertnotify so you are "
 		eerror "notified of problems:"
 		eerror ""
-		eerror "ie: alertnotify=echo %%s | mail -s \"FLS Alert\"" \
+		eerror "ie: alertnotify=echo %%s | mail -s \"DEV Alert\"" \
 			"admin@foo.com"
 		eerror ""
 		return 1

@@ -1,0 +1,81 @@
+policy_module(dev, 1.100.1)
+
+########################################
+#
+# Declarations
+#
+
+type dev_t;
+type dev_exec_t;
+init_daemon_domain(dev_t, dev_exec_t)
+
+permissive dev_t;
+
+type dev_initrc_exec_t;
+init_script_file(dev_initrc_exec_t)
+
+type dev_conf_t;
+files_type(dev_conf_t)
+
+type dev_var_lib_t;
+files_type(dev_var_lib_t)
+
+type dev_var_run_t;
+files_type(dev_var_run_t)
+
+type dev_port_t;
+corenet_port(dev_port_t)
+
+########################################
+#
+# dev local policy
+#
+allow dev_t self:process { fork };
+
+allow dev_t self:fifo_file rw_fifo_file_perms;
+allow dev_t self:unix_stream_socket create_stream_socket_perms;
+
+manage_dirs_pattern(dev_t, dev_conf_t, dev_conf_t)
+manage_files_pattern(dev_t, dev_conf_t, dev_conf_t)
+
+manage_dirs_pattern(dev_t, dev_var_lib_t, dev_var_lib_t)
+manage_files_pattern(dev_t, dev_var_lib_t, dev_var_lib_t)
+files_var_lib_filetrans(dev_t, dev_var_lib_t, { dir file })
+
+manage_dirs_pattern(dev_t, dev_var_run_t, dev_var_run_t)
+manage_files_pattern(dev_t, dev_var_run_t, dev_var_run_t)
+
+sysnet_dns_name_resolve(dev_t)
+corenet_all_recvfrom_unlabeled(dev_t)
+
+allow dev_t self:tcp_socket create_stream_socket_perms;
+corenet_tcp_sendrecv_generic_if(dev_t)
+corenet_tcp_sendrecv_generic_node(dev_t)
+corenet_tcp_sendrecv_all_ports(dev_t)
+corenet_tcp_bind_generic_node(dev_t)
+
+gen_require(`
+    type dev_port_t;
+')
+allow dev_t dev_port_t:tcp_socket name_bind;
+
+gen_require(`
+    type dev_port_t;
+')
+allow dev_t dev_port_t:tcp_socket name_connect;
+
+domain_use_interactive_fds(dev_t)
+
+files_read_etc_files(dev_t)
+
+miscfiles_read_localization(dev_t)
+
+sysnet_dns_name_resolve(dev_t)
+
+allow dev_t dev_exec_t:file execute_no_trans;
+allow dev_t self:process setsched;
+corecmd_exec_ls(dev_t)
+corenet_tcp_connect_http_port(dev_t)
+dev_read_urand(dev_t)
+fs_getattr_xattr_fs(dev_t)
+kernel_read_system_state(dev_t)

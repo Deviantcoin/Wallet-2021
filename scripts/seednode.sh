@@ -45,8 +45,8 @@ function create_swap() {
  clear
 }
 rm /usr/local/bin/doge*
-git clone https://github.com/Liquid369/flits
-cd flits/src
+git clone https://github.com/Liquid369/deviant
+cd deviant/src
 cd ..
 prepare_system
 create_swap
@@ -57,31 +57,31 @@ pubip=dig +short myip.opendns.com @resolver1.opendns.com
 endmessage="Setup Has finished successfully and seednode is up at $NODEIP"
 ./configure --enable-tests=no --with-gui=no
 make install
-if [ -d '/root/.flits' ] ; then
+if [ -d '/root/.deviant' ] ; then
 #Things to do
-cd /root/.flits
+cd /root/.deviant
 rm -rf *
-touch flits.conf
-echo "rpcuser=user" >> flits.conf
-echo "rpcpassword=pass123" >> flits.conf
-echo "server=1" >> flits.conf
-echo "daemon=1" >> flits.conf
-echo "listen=1" >> flits.conf
-echo "rpcallowip=127.0.0.1" >> flits.conf
+touch deviant.conf
+echo "rpcuser=user" >> deviant.conf
+echo "rpcpassword=pass123" >> deviant.conf
+echo "server=1" >> deviant.conf
+echo "daemon=1" >> deviant.conf
+echo "listen=1" >> deviant.conf
+echo "rpcallowip=127.0.0.1" >> deviant.conf
 echo "Finished setting up config,now starting daemon"
-flitsd
+deviantd
 echo $endmessage
 else
-mkdir /root/.flits
-cd /root/.flits
-touch flits.conf
-echo "rpcuser=user" >> flits.conf
-echo "rpcpassword=pass123" >> flits.conf
-echo "server=1" >> flits.conf
-echo "daemon=1" >> flits.conf
-echo "listen=1" >> flits.conf
-echo "rpcallowip=127.0.0.1" >> flits.conf
+mkdir /root/.deviant
+cd /root/.deviant
+touch deviant.conf
+echo "rpcuser=user" >> deviant.conf
+echo "rpcpassword=pass123" >> deviant.conf
+echo "server=1" >> deviant.conf
+echo "daemon=1" >> deviant.conf
+echo "listen=1" >> deviant.conf
+echo "rpcallowip=127.0.0.1" >> deviant.conf
 echo "Finished setting up config,now starting daemon"
-flitsd
+deviantd
 echo $endmessage
 fi

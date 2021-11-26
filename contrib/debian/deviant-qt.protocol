@@ -1,6 +1,6 @@
 [Protocol]
-exec=flits-qt '%u'
-protocol=fls
+exec=deviant-qt '%u'
+protocol=dev
 input=none
 output=none
 helper=true

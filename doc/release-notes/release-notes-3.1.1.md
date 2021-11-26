@@ -1,24 +1,24 @@
-Flits-Core version *3.1.1* is now available from:  <https://github.com/Simple-Software-Solutions/FLS-Core/releases>
+Deviant-Core version *3.1.1* is now available from:  <https://github.com/Simple-Software-Solutions/DEV-Core/releases>
 
 This is a new minor version release, including various bug fixes and performance improvements, as well as updated translations.
 
-Please report bugs using the issue tracker at github: <https://github.com/Simple-Software-Solutions/FLS-Core/issues>
+Please report bugs using the issue tracker at github: <https://github.com/Simple-Software-Solutions/DEV-Core/issues>
 
 Non-Mandatory Update
 ==============
 
-Flits-Core v3.1.1 is a non-mandatory update to address bugs and introduce minor enhancements that do not require a network change.
+Deviant-Core v3.1.1 is a non-mandatory update to address bugs and introduce minor enhancements that do not require a network change.
 
 How to Upgrade
 ==============
 
-If you are running an older version, shut it down. Wait until it has completely shut down (which might take a few minutes for older versions), then run the installer (on Windows) or just copy over /Applications/flits-qt (on Mac) or flitsd/flits-qt (on Linux).
+If you are running an older version, shut it down. Wait until it has completely shut down (which might take a few minutes for older versions), then run the installer (on Windows) or just copy over /Applications/deviant-qt (on Mac) or deviantd/deviant-qt (on Linux).
 
 
 Compatibility
 ==============
 
-Flits-Core is extensively tested on multiple operating systems using
+Deviant-Core is extensively tested on multiple operating systems using
 the Linux kernel, macOS 10.8+, and Windows Vista and later.
 
 Microsoft ended support for Windows XP on [April 8th, 2014](https://www.microsoft.com/en-us/WindowsForBusiness/end-of-xp-support),
@@ -26,7 +26,7 @@ No attempt is made to prevent installing or running the software on Windows XP, 
 can still do so at your own risk but be aware that there are known instabilities and issues.
 Please do not report issues about Windows XP to the issue tracker.
 
-Flits-Core should also work on most other Unix-like systems but is not
+Deviant-Core should also work on most other Unix-like systems but is not
 frequently tested on them.
 
 ### :exclamation::exclamation::exclamation: MacOS 10.13 High Sierra :exclamation::exclamation::exclamation:
@@ -41,11 +41,11 @@ zFLS Updates
 
 ### Fix spending for v1 zFLS created before block 1050020
 
-The transition to v2 zFLS and reset of the accumulators caused blocks 1050000 - 1050010 to be accumulated twice. This was causing a number v1 zFLS to not create valid witnesses, and thus were not spendable. This problem is fixed by double accumulating blocks 1050000-1050010 when creating the witness. Any user that had issues spending zFLS v1 will now be able to convert that into FLS and then zFLS v2 (if desired).
+The transition to v2 zFLS and reset of the accumulators caused blocks 1050000 - 1050010 to be accumulated twice. This was causing a number v1 zFLS to not create valid witnesses, and thus were not spendable. This problem is fixed by double accumulating blocks 1050000-1050010 when creating the witness. Any user that had issues spending zFLS v1 will now be able to convert that into DEV and then zFLS v2 (if desired).
 
 ### Adjustment to staking properties to reduce orphaned blocks
 
-zFLS stake set to update more frequently and lowering the stake hashdrift to 30 seconds to reduce the number of orphans being experienced by FLS stakers.
+zFLS stake set to update more frequently and lowering the stake hashdrift to 30 seconds to reduce the number of orphans being experienced by DEV stakers.
 
 Further work is being done to improve the efficiently of zPoS beyond this, and will be available in a subsequent release at a later date.
 
@@ -67,7 +67,7 @@ When starting the wallet with `-reindexaccumulators` and/or `-reindexzerocoin`, 
 An icon is now shown for clients that are connected and operating over the TOR network. Included is a mouse-over tooltip showing the onion address associated with the client. This icon is only shown when a connection to the TOR network can be established, and will be hidden otherwise.
 
 
-FLS Daemon & Client (RPC Changes)
+DEV Daemon & Client (RPC Changes)
 --------------
 
 ### Fix listtransactions RPC function
@@ -81,7 +81,7 @@ Technical Changes
 
 ### Switch to libsecp256k1 signature verification
 
-Here is the long overdue update for FLS to let go of OpenSSL in its consensus code. The rationale behind it is to avoid depending on an external and changing library where our consensus code is affected. This is security and consensus critical. FLS users will experience quicker block validations and sync times as block transactions are verified under libsecp256k1.
+Here is the long overdue update for DEV to let go of OpenSSL in its consensus code. The rationale behind it is to avoid depending on an external and changing library where our consensus code is affected. This is security and consensus critical. DEV users will experience quicker block validations and sync times as block transactions are verified under libsecp256k1.
 
 The recent [CVE-2018-0495](https://www.nccgroup.trust/us/our-research/technical-advisory-return-of-the-hidden-number-problem/) brings into question a potential vulnerability with OpenSSL (and other crypto libraries) that libsecp256k1 is not susceptible to.
 
@@ -93,7 +93,7 @@ Secondary improvement area is in ConnectBlock() when multiple zerocoin transacti
 
 ### Resolution of excessive peer banning
 
-It was found that following a forced closure of the Flits-Core wallet (ungraceful), a situation could arise that left partial/incomplete data in the disk cache. This caused the client to fail a basic sanity test and ban any peer which was sending the (complete) data. This, in turn, was causing the wallet to become stuck. This issue has been resolved client side by guarding against this partial/incomplete data in the disk cache.
+It was found that following a forced closure of the Deviant-Core wallet (ungraceful), a situation could arise that left partial/incomplete data in the disk cache. This caused the client to fail a basic sanity test and ban any peer which was sending the (complete) data. This, in turn, was causing the wallet to become stuck. This issue has been resolved client side by guarding against this partial/incomplete data in the disk cache.
 
 *3.1.1* Change log
 --------------
@@ -151,4 +151,4 @@ Thanks to everyone who directly contributed to this release:
  - presstab
 
 
-As well as everyone that helped translating on [Transifex](https://www.transifex.com/projects/p/FLS-core-translations/).
+As well as everyone that helped translating on [Transifex](https://www.transifex.com/projects/p/DEV-core-translations/).

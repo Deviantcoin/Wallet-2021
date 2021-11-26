@@ -1,5 +1,5 @@
 ---
-name: "flits-dmg-signer"
+name: "deviant-dmg-signer"
 distro: "ubuntu"
 suites:
 - "bionic"
@@ -11,7 +11,7 @@ remotes:
 - "url": "https://github.com/DogeCash/detached-sigs.git"
   "dir": "signature"
 files:
-- "flits-osx-unsigned.tar.gz"
+- "deviant-osx-unsigned.tar.gz"
 script: |
   set -e -o pipefail
 
@@ -30,8 +30,8 @@ script: |
     chmod +x ${WRAP_DIR}/${prog}
   done
 
-  UNSIGNED=flits-osx-unsigned.tar.gz
-  SIGNED=flits-osx-signed.dmg
+  UNSIGNED=deviant-osx-unsigned.tar.gz
+  SIGNED=deviant-osx-signed.dmg
 
   tar -xf ${UNSIGNED}
   OSX_VOLNAME="$(cat osx_volname)"
