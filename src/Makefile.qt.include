@@ -466,7 +466,7 @@ RES_ICONS = \
   qt/dev/res/img/ic-radio-liliac-on.svg \
   qt/dev/res/img/img-empty-staking-off.svg \
   qt/dev/res/img/ic-arrow-drop-down.svg \
-  qt/dev/res/img/ic-coin-DEV.svg \
+  qt/dev/res/img/ic-coin-dev.svg \
   qt/dev/res/img/ic-receive-off.svg \
   qt/dev/res/img/img-empty-staking-on.svg \
   qt/dev/res/img/ic-arrow-drop-up-white.svg \

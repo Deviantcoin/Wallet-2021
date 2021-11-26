@@ -90,9 +90,9 @@ QString BitcoinUnits::description(int unit)
         case DEV:
             return QString("DEV");
         case mDEV:
-            return QString("Milli-DEV (1 / 1" THIN_SP_UTF8 "000)");
+            return QString("Milli-dev (1 / 1" THIN_SP_UTF8 "000)");
         case uDEV:
-            return QString("Micro-DEV (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
+            return QString("Micro-dev (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
         default:
             return QString("???");
         }

@@ -895,7 +895,7 @@ am__qt_libbitcoinqt_a_SOURCES_DIST = qt/bantablemodel.cpp \
 	qt/dev/res/img/ic-radio-liliac-on.svg \
 	qt/dev/res/img/img-empty-staking-off.svg \
 	qt/dev/res/img/ic-arrow-drop-down.svg \
-	qt/dev/res/img/ic-coin-DEV.svg \
+	qt/dev/res/img/ic-coin-dev.svg \
 	qt/dev/res/img/ic-receive-off.svg \
 	qt/dev/res/img/img-empty-staking-on.svg \
 	qt/dev/res/img/ic-arrow-drop-up-white.svg \
@@ -3702,7 +3702,7 @@ EXTRA_DIST =
 @ENABLE_QT_TRUE@  qt/dev/res/img/ic-radio-liliac-on.svg \
 @ENABLE_QT_TRUE@  qt/dev/res/img/img-empty-staking-off.svg \
 @ENABLE_QT_TRUE@  qt/dev/res/img/ic-arrow-drop-down.svg \
-@ENABLE_QT_TRUE@  qt/dev/res/img/ic-coin-DEV.svg \
+@ENABLE_QT_TRUE@  qt/dev/res/img/ic-coin-dev.svg \
 @ENABLE_QT_TRUE@  qt/dev/res/img/ic-receive-off.svg \
 @ENABLE_QT_TRUE@  qt/dev/res/img/img-empty-staking-on.svg \
 @ENABLE_QT_TRUE@  qt/dev/res/img/ic-arrow-drop-up-white.svg \

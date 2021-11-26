@@ -122,7 +122,7 @@ SendWidget::SendWidget(DEVGUI* parent) : PWidget(parent),
     coinIcon->show();
     coinIcon->raise();
 
-    setCssProperty(coinIcon, "coin-icon-DEV");
+    setCssProperty(coinIcon, "coin-icon-dev");
 
     QSize BUTTON_SIZE = QSize(24, 24);
     coinIcon->setMinimumSize(BUTTON_SIZE);
@@ -686,7 +686,7 @@ void SendWidget::onCheckBoxChanged()
 void SendWidget::onDEVSelected(bool _isDEV)
 {
     isDEV = _isDEV;
-    setCssProperty(coinIcon, _isDEV ? "coin-icon-DEV" : "coin-icon-zdev");
+    setCssProperty(coinIcon, _isDEV ? "coin-icon-dev" : "coin-icon-zdev");
     refreshView();
     updateStyle(coinIcon);
 }

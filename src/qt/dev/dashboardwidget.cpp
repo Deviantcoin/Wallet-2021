@@ -53,11 +53,11 @@ DashboardWidget::DashboardWidget(DEVGUI* parent) : PWidget(parent),
     // Staking Information
     ui->labelMessage->setText(tr("Amount of DEV staked."));
     setCDEVubtitleScreen(ui->labelMessage);
-    setCssProperty(ui->labelSquareDEV, "square-chart-DEV");
+    setCssProperty(ui->labelSquareDEV, "square-chart-dev");
     ui->labelSquarezDEV->setVisible(false);
     setCssProperty(ui->labelSquarezDEV, "square-chart-zdev");
     ui->labelzDEV->setVisible(false);
-    setCssProperty(ui->labelDEV, "text-chart-DEV");
+    setCssProperty(ui->labelDEV, "text-chart-dev");
     setCssProperty(ui->labelzDEV, "text-chart-zdev");
 
     // Staking Amount
@@ -658,7 +658,7 @@ void DashboardWidget::onChartRefreshed()
     // Total
     nDisplayUnit = walletModel->getOptionsModel()->getDisplayUnit();
     if (chartData->totalDEV > 0 || chartData->totalzDEV > 0) {
-        setCssProperty(ui->labelAmountDEV, "text-stake-DEV");
+        setCssProperty(ui->labelAmountDEV, "text-stake-dev");
         setCssProperty(ui->labelAmountzDEV, "text-stake-zdev");
     } else {
         setCssProperty(ui->labelAmountDEV, "text-stake-deviant-disable");
