@@ -1,5 +1,5 @@
 ---
-name: "dev-linux-4.1"
+name: "deviant-linux-4.1"
 enable_cache: true
 distro: "ubuntu"
 suites:

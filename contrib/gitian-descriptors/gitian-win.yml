@@ -1,5 +1,5 @@
 ---
-name: "dev-win-4.1"
+name: "deviant-win-4.1"
 enable_cache: true
 distro: "ubuntu"
 suites:
