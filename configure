@@ -3782,7 +3782,7 @@ fi
 
 
 # Define the identity of the package.
- PACKAGE='dev'
+ PACKAGE='deviant'
  VERSION='2.0.1'
 
 
