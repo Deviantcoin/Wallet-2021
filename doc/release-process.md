@@ -129,17 +129,17 @@ The gbuild invocations below <b>DO NOT DO THIS</b> by default.
     pushd ./gitian-builder
     ./bin/gbuild --num-make 2 --memory 3000 --commit DEV=v${VERSION} ../DEV/contrib/gitian-descriptors/gitian-linux.yml
     ./bin/gsign --signer "$SIGNER" --release ${VERSION}-linux --destination ../gitian.sigs/ ../DEV/contrib/gitian-descriptors/gitian-linux.yml
-    mv build/out/DEV-*.tar.gz build/out/src/DEV-*.tar.gz ../
+    mv build/out/deviant-*.tar.gz build/out/src/deviant-*.tar.gz ../
 
     ./bin/gbuild --num-make 2 --memory 3000 --commit DEV=v${VERSION} ../DEV/contrib/gitian-descriptors/gitian-win.yml
     ./bin/gsign --signer "$SIGNER" --release ${VERSION}-win-unsigned --destination ../gitian.sigs/ ../DEV/contrib/gitian-descriptors/gitian-win.yml
-    mv build/out/DEV-*-win-unsigned.tar.gz inputs/DEV-win-unsigned.tar.gz
-    mv build/out/DEV-*.zip build/out/DEV-*.exe ../
+    mv build/out/deviant-*-win-unsigned.tar.gz inputs/DEV-win-unsigned.tar.gz
+    mv build/out/deviant-*.zip build/out/deviant-*.exe ../
 
     ./bin/gbuild --num-make 2 --memory 3000 --commit DEV=v${VERSION} ../DEV/contrib/gitian-descriptors/gitian-osx.yml
     ./bin/gsign --signer "$SIGNER" --release ${VERSION}-osx-unsigned --destination ../gitian.sigs/ ../DEV/contrib/gitian-descriptors/gitian-osx.yml
-    mv build/out/DEV-*-osx-unsigned.tar.gz inputs/DEV-osx-unsigned.tar.gz
-    mv build/out/DEV-*.tar.gz build/out/DEV-*.dmg ../
+    mv build/out/deviant-*-osx-unsigned.tar.gz inputs/DEV-osx-unsigned.tar.gz
+    mv build/out/deviant-*.tar.gz build/out/deviant-*.dmg ../
     popd
 
 Build output expected:
@@ -228,7 +228,7 @@ Create (and optionally verify) the signed Windows binaries:
     ./bin/gbuild -i --commit signature=v${VERSION} ../DEV/contrib/gitian-descriptors/gitian-win-signer.yml
     ./bin/gsign --signer "$SIGNER" --release ${VERSION}-win-signed --destination ../gitian.sigs/ ../DEV/contrib/gitian-descriptors/gitian-win-signer.yml
     ./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-win-signed ../DEV/contrib/gitian-descriptors/gitian-win-signer.yml
-    mv build/out/DEV-*win64-setup.exe ../DEV-${VERSION}-win64-setup.exe
+    mv build/out/deviant-*win64-setup.exe ../DEV-${VERSION}-win64-setup.exe
     popd
 
 Commit your signature for the signed macOS/Windows binaries:
