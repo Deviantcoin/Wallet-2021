@@ -50,7 +50,7 @@ Check out the source code in the following directory hierarchy.
 
     cd /path/to/your/toplevel/build
     git clone https://github.com/Simple-Software-Solutions/gitian.sigs.git
-    git clone https://github.com/Simple-Software-Solutions/DEV-detached-sigs.git
+    git clone https://github.com/Simple-Software-Solutions/deviant-*detached-sigs.git
     git clone https://github.com/devrandom/gitian-builder.git
     git clone https://github.com/Simple-Software-Solutions/Deviant-Core.git
 
@@ -133,21 +133,21 @@ The gbuild invocations below <b>DO NOT DO THIS</b> by default.
 
     ./bin/gbuild --num-make 2 --memory 3000 --commit DEV=v${VERSION} ../DEV/contrib/gitian-descriptors/gitian-win.yml
     ./bin/gsign --signer "$SIGNER" --release ${VERSION}-win-unsigned --destination ../gitian.sigs/ ../DEV/contrib/gitian-descriptors/gitian-win.yml
-    mv build/out/deviant-*-win-unsigned.tar.gz inputs/DEV-win-unsigned.tar.gz
+    mv build/out/deviant-*-win-unsigned.tar.gz inputs/deviant-*win-unsigned.tar.gz
     mv build/out/deviant-*.zip build/out/deviant-*.exe ../
 
     ./bin/gbuild --num-make 2 --memory 3000 --commit DEV=v${VERSION} ../DEV/contrib/gitian-descriptors/gitian-osx.yml
     ./bin/gsign --signer "$SIGNER" --release ${VERSION}-osx-unsigned --destination ../gitian.sigs/ ../DEV/contrib/gitian-descriptors/gitian-osx.yml
-    mv build/out/deviant-*-osx-unsigned.tar.gz inputs/DEV-osx-unsigned.tar.gz
+    mv build/out/deviant-*-osx-unsigned.tar.gz inputs/deviant-*osx-unsigned.tar.gz
     mv build/out/deviant-*.tar.gz build/out/deviant-*.dmg ../
     popd
 
 Build output expected:
 
-  1. source tarball (`DEV-${VERSION}.tar.gz`)
-  2. linux 32-bit and 64-bit dist tarballs (`DEV-${VERSION}-linux[32|64].tar.gz`)
-  3. windows 32-bit and 64-bit unsigned installers and dist zips (`DEV-${VERSION}-win[32|64]-setup-unsigned.exe`, `DEV-${VERSION}-win[32|64].zip`)
-  4. macOS unsigned installer and dist tarball (`DEV-${VERSION}-osx-unsigned.dmg`, `DEV-${VERSION}-osx64.tar.gz`)
+  1. source tarball (`deviant-*${VERSION}.tar.gz`)
+  2. linux 32-bit and 64-bit dist tarballs (`deviant-*${VERSION}-linux[32|64].tar.gz`)
+  3. windows 32-bit and 64-bit unsigned installers and dist zips (`deviant-*${VERSION}-win[32|64]-setup-unsigned.exe`, `deviant-*${VERSION}-win[32|64].zip`)
+  4. macOS unsigned installer and dist tarball (`deviant-*${VERSION}-osx-unsigned.dmg`, `deviant-*${VERSION}-osx64.tar.gz`)
   5. Gitian signatures (in `gitian.sigs/${VERSION}-<linux|{win,osx}-unsigned>/(your Gitian key)/`)
 
 ### Verify other gitian builders signatures to your own. (Optional)
@@ -183,22 +183,22 @@ Codesigner only: Create Windows/macOS detached signatures:
 
 Codesigner only: Sign the macOS binary:
 
-    transfer DEV-osx-unsigned.tar.gz to macOS for signing
-    tar xf DEV-osx-unsigned.tar.gz
+    transfer deviant-*osx-unsigned.tar.gz to macOS for signing
+    tar xf deviant-*osx-unsigned.tar.gz
     ./detached-sig-create.sh -s "Key ID"
     Enter the keychain password and authorize the signature
     Move signature-osx.tar.gz back to the gitian host
 
 Codesigner only: Sign the windows binaries:
 
-    tar xf DEV-win-unsigned.tar.gz
+    tar xf deviant-*win-unsigned.tar.gz
     ./detached-sig-create.sh -key /path/to/codesign.key
     Enter the passphrase for the key when prompted
     signature-win.tar.gz will be created
 
 Codesigner only: Commit the detached codesign payloads:
 
-    cd ~/DEV-detached-sigs
+    cd ~/deviant-*detached-sigs
     checkout the appropriate branch for this release series
     rm -rf *
     tar xf signature-osx.tar.gz
@@ -211,7 +211,7 @@ Codesigner only: Commit the detached codesign payloads:
 Non-codesigners: wait for Windows/macOS detached signatures:
 
 - Once the Windows/macOS builds each have 3 matching signatures, they will be signed with their respective release keys.
-- Detached signatures will then be committed to the [DEV-detached-sigs](https://github.com/Simple-Software-Solutions/DEV-detached-sigs) repository, which can be combined with the unsigned apps to create signed binaries.
+- Detached signatures will then be committed to the [deviant-*detached-sigs](https://github.com/Simple-Software-Solutions/deviant-*detached-sigs) repository, which can be combined with the unsigned apps to create signed binaries.
 
 Create (and optionally verify) the signed macOS binary:
 
@@ -219,7 +219,7 @@ Create (and optionally verify) the signed macOS binary:
     ./bin/gbuild -i --commit signature=v${VERSION} ../DEV/contrib/gitian-descriptors/gitian-osx-signer.yml
     ./bin/gsign --signer "$SIGNER" --release ${VERSION}-osx-signed --destination ../gitian.sigs/ ../DEV/contrib/gitian-descriptors/gitian-osx-signer.yml
     ./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-osx-signed ../DEV/contrib/gitian-descriptors/gitian-osx-signer.yml
-    mv build/out/DEV-osx-signed.dmg ../DEV-${VERSION}-osx.dmg
+    mv build/out/deviant-*osx-signed.dmg ../deviant-*${VERSION}-osx.dmg
     popd
 
 Create (and optionally verify) the signed Windows binaries:
@@ -228,7 +228,7 @@ Create (and optionally verify) the signed Windows binaries:
     ./bin/gbuild -i --commit signature=v${VERSION} ../DEV/contrib/gitian-descriptors/gitian-win-signer.yml
     ./bin/gsign --signer "$SIGNER" --release ${VERSION}-win-signed --destination ../gitian.sigs/ ../DEV/contrib/gitian-descriptors/gitian-win-signer.yml
     ./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-win-signed ../DEV/contrib/gitian-descriptors/gitian-win-signer.yml
-    mv build/out/deviant-*win64-setup.exe ../DEV-${VERSION}-win64-setup.exe
+    mv build/out/deviant-*win64-setup.exe ../deviant-*${VERSION}-win64-setup.exe
     popd
 
 Commit your signature for the signed macOS/Windows binaries:
@@ -250,16 +250,16 @@ sha256sum * > SHA256SUMS
 
 The list of files should be:
 ```
-DEV-${VERSION}-aarch64-linux-gnu.tar.gz
-DEV-${VERSION}-arm-linux-gnueabihf.tar.gz
-DEV-${VERSION}-i686-pc-linux-gnu.tar.gz
-DEV-${VERSION}-riscv64-linux-gnu.tar.gz
-DEV-${VERSION}-x86_64-linux-gnu.tar.gz
-DEV-${VERSION}-osx64.tar.gz
-DEV-${VERSION}-osx.dmg
-DEV-${VERSION}.tar.gz
-DEV-${VERSION}-win64-setup.exe
-DEV-${VERSION}-win64.zip
+deviant-*${VERSION}-aarch64-linux-gnu.tar.gz
+deviant-*${VERSION}-arm-linux-gnueabihf.tar.gz
+deviant-*${VERSION}-i686-pc-linux-gnu.tar.gz
+deviant-*${VERSION}-riscv64-linux-gnu.tar.gz
+deviant-*${VERSION}-x86_64-linux-gnu.tar.gz
+deviant-*${VERSION}-osx64.tar.gz
+deviant-*${VERSION}-osx.dmg
+deviant-*${VERSION}.tar.gz
+deviant-*${VERSION}-win64-setup.exe
+deviant-*${VERSION}-win64.zip
 ```
 The `*-debug*` files generated by the gitian build contain debug symbols
 for troubleshooting by developers. It is assumed that anyone that is interested

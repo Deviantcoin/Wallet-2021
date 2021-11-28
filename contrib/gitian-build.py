@@ -152,21 +152,21 @@ def build():
         print('\nCompiling ' + args.version + ' Linux')
         subprocess.check_call(['bin/gbuild', '-j', args.jobs, '-m', args.memory, '--commit', 'Deviant-Core='+args.commit, '--url', 'Deviant-Core='+args.url, '../Deviant-Core/contrib/gitian-descriptors/gitian-linux.yml'])
         subprocess.check_call(['bin/gsign', '-p', args.sign_prog, '--signer', args.signer, '--release', args.version+'-linux', '--destination', '../gitian.sigs/', '../Deviant-Core/contrib/gitian-descriptors/gitian-linux.yml'])
-        subprocess.check_call('mv build/out/dev-*.tar.gz build/out/src/dev-*.tar.gz ../deviant-binaries/'+args.version, shell=True)
+        subprocess.check_call('mv build/out/deviant-**.tar.gz build/out/src/deviant-**.tar.gz ../deviant-binaries/'+args.version, shell=True)
 
     if args.windows:
         print('\nCompiling ' + args.version + ' Windows')
         subprocess.check_call(['bin/gbuild', '-j', args.jobs, '-m', args.memory, '--commit', 'Deviant-Core='+args.commit, '--url', 'Deviant-Core='+args.url, '../Deviant-Core/contrib/gitian-descriptors/gitian-win.yml'])
         subprocess.check_call(['bin/gsign', '-p', args.sign_prog, '--signer', args.signer, '--release', args.version+'-win-unsigned', '--destination', '../gitian.sigs/', '../Deviant-Core/contrib/gitian-descriptors/gitian-win.yml'])
-        subprocess.check_call('mv build/out/dev-*-win-unsigned.tar.gz inputs/', shell=True)
-        subprocess.check_call('mv build/out/dev-*.zip build/out/dev-*.exe build/out/src/dev-*.tar.gz ../deviant-binaries/'+args.version, shell=True)
+        subprocess.check_call('mv build/out/deviant-**-win-unsigned.tar.gz inputs/', shell=True)
+        subprocess.check_call('mv build/out/deviant-**.zip build/out/deviant-**.exe build/out/src/deviant-**.tar.gz ../deviant-binaries/'+args.version, shell=True)
 
     if args.macos:
         print('\nCompiling ' + args.version + ' MacOS')
         subprocess.check_call(['bin/gbuild', '-j', args.jobs, '-m', args.memory, '--commit', 'Deviant-Core='+args.commit, '--url', 'Deviant-Core='+args.url, '../Deviant-Core/contrib/gitian-descriptors/gitian-osx.yml'])
         subprocess.check_call(['bin/gsign', '-p', args.sign_prog, '--signer', args.signer, '--release', args.version+'-osx-unsigned', '--destination', '../gitian.sigs/', '../Deviant-Core/contrib/gitian-descriptors/gitian-osx.yml'])
-        subprocess.check_call('mv build/out/dev-*-osx-unsigned.tar.gz inputs/', shell=True)
-        subprocess.check_call('mv build/out/dev-*.tar.gz build/out/dev-*.dmg build/out/src/dev-*.tar.gz ../deviant-binaries/'+args.version, shell=True)
+        subprocess.check_call('mv build/out/deviant-**-osx-unsigned.tar.gz inputs/', shell=True)
+        subprocess.check_call('mv build/out/deviant-**.tar.gz build/out/deviant-**.dmg build/out/src/deviant-**.tar.gz ../deviant-binaries/'+args.version, shell=True)
 
     os.chdir(workdir)
 
@@ -189,14 +189,14 @@ def sign():
     #subprocess.check_call('cp inputs/Deviant-Core-' + args.version + '-win-unsigned.tar.gz inputs/deviant-win-unsigned.tar.gz', shell=True)
     #subprocess.check_call(['bin/gbuild', '--skip-image', '--upgrade', '--commit', 'signature='+args.commit, '../Deviant-Core/contrib/gitian-descriptors/gitian-win-signer.yml'])
     #subprocess.check_call(['bin/gsign', '-p', args.sign_prog, '--signer', args.signer, '--release', args.version+'-win-signed', '--destination', '../gitian.sigs/', '../Deviant-Core/contrib/gitian-descriptors/gitian-win-signer.yml'])
-    #subprocess.check_call('mv build/out/dev-*win64-setup.exe ../deviant-binaries/'+args.version, shell=True)
-    #subprocess.check_call('mv build/out/dev-*win32-setup.exe ../deviant-binaries/'+args.version, shell=True)
+    #subprocess.check_call('mv build/out/deviant-**win64-setup.exe ../deviant-binaries/'+args.version, shell=True)
+    #subprocess.check_call('mv build/out/deviant-**win32-setup.exe ../deviant-binaries/'+args.version, shell=True)
 
     print('\nSigning ' + args.version + ' MacOS')
-    subprocess.check_call('cp inputs/Deviant-Core-' + args.version + '-osx-unsigned.tar.gz inputs/dev-osx-unsigned.tar.gz', shell=True)
+    subprocess.check_call('cp inputs/Deviant-Core-' + args.version + '-osx-unsigned.tar.gz inputs/deviant-*osx-unsigned.tar.gz', shell=True)
     subprocess.check_call(['bin/gbuild', '--skip-image', '--upgrade', '--commit', 'signature='+args.commit, '../Deviant-Core/contrib/gitian-descriptors/gitian-osx-signer.yml'])
     subprocess.check_call(['bin/gsign', '-p', args.sign_prog, '--signer', args.signer, '--release', args.version+'-osx-signed', '--destination', '../gitian.sigs/', '../Deviant-Core/contrib/gitian-descriptors/gitian-osx-signer.yml'])
-    subprocess.check_call('mv build/out/dev-osx-signed.dmg ../deviant-binaries/'+args.version+'/dev-'+args.version+'-osx.dmg', shell=True)
+    subprocess.check_call('mv build/out/deviant-*osx-signed.dmg ../deviant-binaries/'+args.version+'/deviant-*'+args.version+'-osx.dmg', shell=True)
 
     os.chdir(workdir)
 
