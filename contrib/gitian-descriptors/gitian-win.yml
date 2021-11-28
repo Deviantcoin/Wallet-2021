@@ -24,8 +24,8 @@ packages:
 - "python3"
 - "rename"
 remotes:
-- "url": "https://github.com/deviantnode/Deviant-Core.git"
-  "dir": "Deviant-Core"
+- "url": "https://github.com/Deviantcoin/Wallet-4.1.x.git"
+  "dir": "deviant"
 files: []
 script: |
   set -e -o pipefail
