@@ -1583,6 +1583,7 @@ int64_t GetDevReward(int nHeight)
 
 int64_t GetBlockValue(int nHeight)
 {
+    int64_t nSubsidy = 0;
 	if (nHeight > 0 && nHeight < 501) {
         nSubsidy = 21400 * COIN;
     } else if (nHeight >= 501 && nHeight < 225650) {
