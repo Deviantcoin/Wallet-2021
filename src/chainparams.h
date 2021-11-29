@@ -80,7 +80,6 @@ public:
 
     // <DEV
     std::string DevAddress() const { return devAddress; }
-    std::string GetDevAddr() const { return nDevAddr; }
     std::string GovAddress() const { return govAddress; }
 
 
@@ -98,7 +97,6 @@ protected:
     std::vector<CAddress> vFixedSeeds;
     // <DEV
     std::string devAddress;
-    std::string nDevAddr;
     std::string govAddress;
 };
 
