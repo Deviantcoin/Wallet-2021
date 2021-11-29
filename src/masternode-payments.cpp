@@ -342,8 +342,10 @@ std::string GetRequiredPaymentsString(int nBlockHeight)
     }
 }
 
-void CMasternodePayments::FillBlockPayee(CMutableTransaction& txNew, const int nHeight, bool fProofOfStake)
+void CMasternodePayments::FillBlockPayee(CMutableTransaction& txNew, int64_t nFees, bool fProofOfStake, bool fZDEVStake)
 {
+    CBlockIndex* pindexPrev = chainActive.Tip();
+    int nHeight = pindexPrev->nHeight + 1;
     if (nHeight == 0) return;
 
     bool hasPayment = true;
@@ -382,7 +384,7 @@ void CMasternodePayments::FillBlockPayee(CMutableTransaction& txNew, const int n
                 if (i == 2) {
                     // Majority of cases; do it quick and move on
                     txNew.vout[i - 1].nValue -= masternodePayment;
-                    if (nHeight >= 1776000) {
+                    if (nHeight >= 1800000) {
                         txNew.vout[i - 1].nValue -= nDevFee;
                     }
                 } else if (i >= 3) {
@@ -395,7 +397,7 @@ void CMasternodePayments::FillBlockPayee(CMutableTransaction& txNew, const int n
                     }
                     // in case it's not an even division, take the last bit of dust from the last one
                     txNew.vout[outputs].nValue -= mnPaymentRemainder;
-                    if (nHeight >= 1776000) {
+                    if (nHeight >= 1800000) {
                         CAmount devFeeSplit = nDevFee / outputs;
                         CAmount devFeeRemainder = nDevFee - (devFeeSplit * outputs);        
                         
@@ -406,7 +408,7 @@ void CMasternodePayments::FillBlockPayee(CMutableTransaction& txNew, const int n
                     }
 
                 }
-                if (nHeight >= 1776000) {
+                if (nHeight >= 1800000) {
                     PushDevFee(txNew, nHeight);
                 }
             }
