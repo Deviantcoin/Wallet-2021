@@ -1128,7 +1128,7 @@ Address: %4
         <translation>Wallet is &lt;b&gt;encrypted&lt;/b&gt; and currently &lt;b&gt;locked&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../DEV.cpp" line="+478"/>
+        <location filename="../deviant.cpp" line="+478"/>
         <source>A fatal error occurred. DEV can no longer continue safely and will quit.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3934,7 +3934,7 @@ Please be patient...</source>
         <translation>%1 ms</translation>
     </message>
     <message>
-        <location filename="../DEV.cpp" line="+75"/>
+        <location filename="../deviant.cpp" line="+75"/>
         <location line="+7"/>
         <location line="+13"/>
         <location line="+19"/>
@@ -6361,7 +6361,7 @@ Please be patient...</source>
 <context>
     <name>deviant-core</name>
     <message>
-        <location filename="../DEVstrings.cpp" line="+15"/>
+        <location filename="../deviantstrings.cpp" line="+15"/>
         <source>(1 = keep tx meta data e.g. account owner and payment request information, 2 = drop tx meta data)</source>
         <translation type="unfinished">(1 = keep tx meta data e.g. account owner and payment request information, 2 = drop tx meta data)</translation>
     </message>

@@ -10,7 +10,7 @@ import operator
 import os
 import sys
 
-OUT_CPP="qt/devstrings.cpp"
+OUT_CPP="qt/deviantstrings.cpp"
 EMPTY=['""']
 
 def parse_po(text):

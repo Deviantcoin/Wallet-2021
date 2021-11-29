@@ -1220,7 +1220,7 @@ am__qt_libbitcoinqt_a_SOURCES_DIST = qt/bantablemodel.cpp \
 @ENABLE_QT_TRUE@am__objects_16 =  \
 @ENABLE_QT_TRUE@	qt/libbitcoinqt_a-qrc_deviant.$(OBJEXT)
 @ENABLE_QT_TRUE@am__objects_17 =  \
-@ENABLE_QT_TRUE@	qt/libbitcoinqt_a-qrc_dev_locale.$(OBJEXT)
+@ENABLE_QT_TRUE@	qt/libbitcoinqt_a-qrc_deviant_locale.$(OBJEXT)
 @ENABLE_QT_TRUE@nodist_qt_libbitcoinqt_a_OBJECTS = $(am__objects_13) \
 @ENABLE_QT_TRUE@	$(am__objects_14) $(am__objects_15) \
 @ENABLE_QT_TRUE@	$(am__objects_3) $(am__objects_16) \
@@ -1734,7 +1734,7 @@ am__depfiles_remade = ./$(DEPDIR)/deviant_cli-deviant-cli.Po \
 	qt/$(DEPDIR)/libbitcoinqt_a-peertablemodel.Po \
 	qt/$(DEPDIR)/libbitcoinqt_a-platformstyle.Po \
 	qt/$(DEPDIR)/libbitcoinqt_a-qrc_deviant.Po \
-	qt/$(DEPDIR)/libbitcoinqt_a-qrc_dev_locale.Po \
+	qt/$(DEPDIR)/libbitcoinqt_a-qrc_deviant_locale.Po \
 	qt/$(DEPDIR)/libbitcoinqt_a-qvalidatedlineedit.Po \
 	qt/$(DEPDIR)/libbitcoinqt_a-qvaluecombobox.Po \
 	qt/$(DEPDIR)/libbitcoinqt_a-recentrequeststablemodel.Po \
@@ -3417,7 +3417,7 @@ EXTRA_DIST =
 
 @ENABLE_QT_TRUE@QT_QRC_CPP = qt/qrc_deviant.cpp
 @ENABLE_QT_TRUE@QT_QRC = qt/deviant.qrc
-@ENABLE_QT_TRUE@QT_QRC_LOCALE_CPP = qt/qrc_dev_locale.cpp
+@ENABLE_QT_TRUE@QT_QRC_LOCALE_CPP = qt/qrc_deviant_locale.cpp
 @ENABLE_QT_TRUE@QT_QRC_LOCALE = qt/deviant_locale.qrc
 @ENABLE_QT_TRUE@PROTOBUF_CC = qt/paymentrequest.pb.cc
 @ENABLE_QT_TRUE@PROTOBUF_H = qt/paymentrequest.pb.h
@@ -5027,7 +5027,7 @@ qt/libbitcoinqt_a-paymentrequest.pb.$(OBJEXT): qt/$(am__dirstamp) \
 	qt/$(DEPDIR)/$(am__dirstamp)
 qt/libbitcoinqt_a-qrc_deviant.$(OBJEXT): qt/$(am__dirstamp) \
 	qt/$(DEPDIR)/$(am__dirstamp)
-qt/libbitcoinqt_a-qrc_dev_locale.$(OBJEXT): qt/$(am__dirstamp) \
+qt/libbitcoinqt_a-qrc_deviant_locale.$(OBJEXT): qt/$(am__dirstamp) \
 	qt/$(DEPDIR)/$(am__dirstamp)
 
 qt/libbitcoinqt.a: $(qt_libbitcoinqt_a_OBJECTS) $(qt_libbitcoinqt_a_DEPENDENCIES) $(EXTRA_qt_libbitcoinqt_a_DEPENDENCIES) qt/$(am__dirstamp)
@@ -5488,7 +5488,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@qt/$(DEPDIR)/libbitcoinqt_a-peertablemodel.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@qt/$(DEPDIR)/libbitcoinqt_a-platformstyle.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@qt/$(DEPDIR)/libbitcoinqt_a-qrc_deviant.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@qt/$(DEPDIR)/libbitcoinqt_a-qrc_dev_locale.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@qt/$(DEPDIR)/libbitcoinqt_a-qrc_deviant_locale.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@qt/$(DEPDIR)/libbitcoinqt_a-qvalidatedlineedit.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@qt/$(DEPDIR)/libbitcoinqt_a-qvaluecombobox.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@qt/$(DEPDIR)/libbitcoinqt_a-recentrequeststablemodel.Po@am__quote@ # am--include-marker
@@ -11109,19 +11109,19 @@ qt/libbitcoinqt_a-qrc_deviant.obj: qt/qrc_deviant.cpp
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(qt_libbitcoinqt_a_CPPFLAGS) $(CPPFLAGS) $(qt_libbitcoinqt_a_CXXFLAGS) $(CXXFLAGS) -c -o qt/libbitcoinqt_a-qrc_deviant.obj `if test -f 'qt/qrc_deviant.cpp'; then $(CYGPATH_W) 'qt/qrc_deviant.cpp'; else $(CYGPATH_W) '$(srcdir)/qt/qrc_deviant.cpp'; fi`
 
-qt/libbitcoinqt_a-qrc_dev_locale.o: qt/qrc_dev_locale.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(qt_libbitcoinqt_a_CPPFLAGS) $(CPPFLAGS) $(qt_libbitcoinqt_a_CXXFLAGS) $(CXXFLAGS) -MT qt/libbitcoinqt_a-qrc_dev_locale.o -MD -MP -MF qt/$(DEPDIR)/libbitcoinqt_a-qrc_dev_locale.Tpo -c -o qt/libbitcoinqt_a-qrc_dev_locale.o `test -f 'qt/qrc_dev_locale.cpp' || echo '$(srcdir)/'`qt/qrc_dev_locale.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) qt/$(DEPDIR)/libbitcoinqt_a-qrc_dev_locale.Tpo qt/$(DEPDIR)/libbitcoinqt_a-qrc_dev_locale.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='qt/qrc_dev_locale.cpp' object='qt/libbitcoinqt_a-qrc_dev_locale.o' libtool=no @AMDEPBACKSLASH@
+qt/libbitcoinqt_a-qrc_deviant_locale.o: qt/qrc_deviant_locale.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(qt_libbitcoinqt_a_CPPFLAGS) $(CPPFLAGS) $(qt_libbitcoinqt_a_CXXFLAGS) $(CXXFLAGS) -MT qt/libbitcoinqt_a-qrc_deviant_locale.o -MD -MP -MF qt/$(DEPDIR)/libbitcoinqt_a-qrc_deviant_locale.Tpo -c -o qt/libbitcoinqt_a-qrc_deviant_locale.o `test -f 'qt/qrc_deviant_locale.cpp' || echo '$(srcdir)/'`qt/qrc_deviant_locale.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) qt/$(DEPDIR)/libbitcoinqt_a-qrc_deviant_locale.Tpo qt/$(DEPDIR)/libbitcoinqt_a-qrc_deviant_locale.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='qt/qrc_deviant_locale.cpp' object='qt/libbitcoinqt_a-qrc_deviant_locale.o' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(qt_libbitcoinqt_a_CPPFLAGS) $(CPPFLAGS) $(qt_libbitcoinqt_a_CXXFLAGS) $(CXXFLAGS) -c -o qt/libbitcoinqt_a-qrc_dev_locale.o `test -f 'qt/qrc_dev_locale.cpp' || echo '$(srcdir)/'`qt/qrc_dev_locale.cpp
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(qt_libbitcoinqt_a_CPPFLAGS) $(CPPFLAGS) $(qt_libbitcoinqt_a_CXXFLAGS) $(CXXFLAGS) -c -o qt/libbitcoinqt_a-qrc_deviant_locale.o `test -f 'qt/qrc_deviant_locale.cpp' || echo '$(srcdir)/'`qt/qrc_deviant_locale.cpp
 
-qt/libbitcoinqt_a-qrc_dev_locale.obj: qt/qrc_dev_locale.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(qt_libbitcoinqt_a_CPPFLAGS) $(CPPFLAGS) $(qt_libbitcoinqt_a_CXXFLAGS) $(CXXFLAGS) -MT qt/libbitcoinqt_a-qrc_dev_locale.obj -MD -MP -MF qt/$(DEPDIR)/libbitcoinqt_a-qrc_dev_locale.Tpo -c -o qt/libbitcoinqt_a-qrc_dev_locale.obj `if test -f 'qt/qrc_dev_locale.cpp'; then $(CYGPATH_W) 'qt/qrc_dev_locale.cpp'; else $(CYGPATH_W) '$(srcdir)/qt/qrc_dev_locale.cpp'; fi`
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) qt/$(DEPDIR)/libbitcoinqt_a-qrc_dev_locale.Tpo qt/$(DEPDIR)/libbitcoinqt_a-qrc_dev_locale.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='qt/qrc_dev_locale.cpp' object='qt/libbitcoinqt_a-qrc_dev_locale.obj' libtool=no @AMDEPBACKSLASH@
+qt/libbitcoinqt_a-qrc_deviant_locale.obj: qt/qrc_deviant_locale.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(qt_libbitcoinqt_a_CPPFLAGS) $(CPPFLAGS) $(qt_libbitcoinqt_a_CXXFLAGS) $(CXXFLAGS) -MT qt/libbitcoinqt_a-qrc_deviant_locale.obj -MD -MP -MF qt/$(DEPDIR)/libbitcoinqt_a-qrc_deviant_locale.Tpo -c -o qt/libbitcoinqt_a-qrc_deviant_locale.obj `if test -f 'qt/qrc_deviant_locale.cpp'; then $(CYGPATH_W) 'qt/qrc_deviant_locale.cpp'; else $(CYGPATH_W) '$(srcdir)/qt/qrc_deviant_locale.cpp'; fi`
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) qt/$(DEPDIR)/libbitcoinqt_a-qrc_deviant_locale.Tpo qt/$(DEPDIR)/libbitcoinqt_a-qrc_deviant_locale.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='qt/qrc_deviant_locale.cpp' object='qt/libbitcoinqt_a-qrc_deviant_locale.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(qt_libbitcoinqt_a_CPPFLAGS) $(CPPFLAGS) $(qt_libbitcoinqt_a_CXXFLAGS) $(CXXFLAGS) -c -o qt/libbitcoinqt_a-qrc_dev_locale.obj `if test -f 'qt/qrc_dev_locale.cpp'; then $(CYGPATH_W) 'qt/qrc_dev_locale.cpp'; else $(CYGPATH_W) '$(srcdir)/qt/qrc_dev_locale.cpp'; fi`
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(qt_libbitcoinqt_a_CPPFLAGS) $(CPPFLAGS) $(qt_libbitcoinqt_a_CXXFLAGS) $(CXXFLAGS) -c -o qt/libbitcoinqt_a-qrc_deviant_locale.obj `if test -f 'qt/qrc_deviant_locale.cpp'; then $(CYGPATH_W) 'qt/qrc_deviant_locale.cpp'; else $(CYGPATH_W) '$(srcdir)/qt/qrc_deviant_locale.cpp'; fi`
 
 libbitcoinconsensus_la-allocators.lo: allocators.cpp
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libbitcoinconsensus_la_CPPFLAGS) $(CPPFLAGS) $(libbitcoinconsensus_la_CXXFLAGS) $(CXXFLAGS) -MT libbitcoinconsensus_la-allocators.lo -MD -MP -MF $(DEPDIR)/libbitcoinconsensus_la-allocators.Tpo -c -o libbitcoinconsensus_la-allocators.lo `test -f 'allocators.cpp' || echo '$(srcdir)/'`allocators.cpp
@@ -12806,7 +12806,7 @@ distclean: distclean-recursive
 	-rm -f qt/$(DEPDIR)/libbitcoinqt_a-peertablemodel.Po
 	-rm -f qt/$(DEPDIR)/libbitcoinqt_a-platformstyle.Po
 	-rm -f qt/$(DEPDIR)/libbitcoinqt_a-qrc_deviant.Po
-	-rm -f qt/$(DEPDIR)/libbitcoinqt_a-qrc_dev_locale.Po
+	-rm -f qt/$(DEPDIR)/libbitcoinqt_a-qrc_deviant_locale.Po
 	-rm -f qt/$(DEPDIR)/libbitcoinqt_a-qvalidatedlineedit.Po
 	-rm -f qt/$(DEPDIR)/libbitcoinqt_a-qvaluecombobox.Po
 	-rm -f qt/$(DEPDIR)/libbitcoinqt_a-recentrequeststablemodel.Po
@@ -13309,7 +13309,7 @@ maintainer-clean: maintainer-clean-recursive
 	-rm -f qt/$(DEPDIR)/libbitcoinqt_a-peertablemodel.Po
 	-rm -f qt/$(DEPDIR)/libbitcoinqt_a-platformstyle.Po
 	-rm -f qt/$(DEPDIR)/libbitcoinqt_a-qrc_deviant.Po
-	-rm -f qt/$(DEPDIR)/libbitcoinqt_a-qrc_dev_locale.Po
+	-rm -f qt/$(DEPDIR)/libbitcoinqt_a-qrc_deviant_locale.Po
 	-rm -f qt/$(DEPDIR)/libbitcoinqt_a-qvalidatedlineedit.Po
 	-rm -f qt/$(DEPDIR)/libbitcoinqt_a-qvaluecombobox.Po
 	-rm -f qt/$(DEPDIR)/libbitcoinqt_a-recentrequeststablemodel.Po
@@ -13680,18 +13680,18 @@ check-security: $(bin_PROGRAMS)
 
 @ENABLE_QT_TRUE@SECONDARY: $(QT_QM)
 
-@ENABLE_QT_TRUE@$(srcdir)/qt/devstrings.cpp: $(libbitcoin_server_a_SOURCES) $(libbitcoin_wallet_a_SOURCES) $(libbitcoin_common_a_SOURCES) $(libbitcoin_zmq_a_SOURCES) $(libbitcoin_util_a_SOURCES)
+@ENABLE_QT_TRUE@$(srcdir)/qt/deviantstrings.cpp: $(libbitcoin_server_a_SOURCES) $(libbitcoin_wallet_a_SOURCES) $(libbitcoin_common_a_SOURCES) $(libbitcoin_zmq_a_SOURCES) $(libbitcoin_util_a_SOURCES)
 @ENABLE_QT_TRUE@	@test -n $(XGETTEXT) || echo "xgettext is required for updating translations"
 @ENABLE_QT_TRUE@	$(AM_V_GEN) cd $(srcdir); XGETTEXT=$(XGETTEXT) PACKAGE_NAME="$(PACKAGE_NAME)" $(PYTHON) ../share/qt/extract_strings_qt.py $^
 
-@ENABLE_QT_TRUE@translate: $(srcdir)/qt/devstrings.cpp $(QT_FORMS_UI) $(QT_FORMS_UI) $(BITCOIN_QT_BASE_CPP) qt/deviant.cpp $(BITCOIN_QT_WINDOWS_CPP) $(BITCOIN_QT_WALLET_CPP) $(BITCOIN_QT_H) $(BITCOIN_MM)
+@ENABLE_QT_TRUE@translate: $(srcdir)/qt/deviantstrings.cpp $(QT_FORMS_UI) $(QT_FORMS_UI) $(BITCOIN_QT_BASE_CPP) qt/deviant.cpp $(BITCOIN_QT_WINDOWS_CPP) $(BITCOIN_QT_WALLET_CPP) $(BITCOIN_QT_H) $(BITCOIN_MM)
 @ENABLE_QT_TRUE@	@test -n $(LUPDATE) || echo "lupdate is required for updating translations"
 @ENABLE_QT_TRUE@	$(AM_V_GEN) QT_SELECT=$(QT_SELECT) $(LUPDATE) $^ -locations relative -no-obsolete -ts $(srcdir)/qt/locale/dev_en.ts
 
 @ENABLE_QT_TRUE@$(QT_QRC_LOCALE_CPP): $(QT_QRC_LOCALE) $(QT_QM)
 @ENABLE_QT_TRUE@	@test -f $(RCC)
 @ENABLE_QT_TRUE@	@cp -f $< $(@D)/temp_$(<F)
-@ENABLE_QT_TRUE@	$(AM_V_GEN) QT_SELECT=$(QT_SELECT) $(RCC) -name dev_locale $(@D)/temp_$(<F) | \
+@ENABLE_QT_TRUE@	$(AM_V_GEN) QT_SELECT=$(QT_SELECT) $(RCC) -name deviant_locale $(@D)/temp_$(<F) | \
 @ENABLE_QT_TRUE@	  $(SED) -e '/^\*\*.*Created:/d' -e '/^\*\*.*by:/d' > $@
 @ENABLE_QT_TRUE@	@rm $(@D)/temp_$(<F)
 

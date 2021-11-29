@@ -162,10 +162,10 @@ set_source_files_properties(${QT_TRANSLATIONS_FILES} PROPERTIES OUTPUT_LOCATION 
 QT5_ADD_TRANSLATION(QM ${QT_TRANSLATIONS_FILES})
 add_custom_target(translations_target ALL DEPENDS ${QM})
 
-QT5_ADD_RESOURCES(QRC_RESOURCE dev.qrc)
-QT5_ADD_RESOURCES(QRC_LOCALE_RESOURCE dev_locale.qrc)
+QT5_ADD_RESOURCES(QRC_RESOURCE deviant.qrc)
+QT5_ADD_RESOURCES(QRC_LOCALE_RESOURCE deviant_locale.qrc)
 
-add_executable(deviant-qt dev.cpp ${QM} ${QRC_RESOURCE} ${QRC_LOCALE_RESOURCE})
+add_executable(deviant-qt deviant.cpp ${QM} ${QRC_RESOURCE} ${QRC_LOCALE_RESOURCE})
 add_dependencies(deviant-qt translations_target libunivalue libsecp256k1 leveldb leveldb_sse42 memenv)
 target_link_libraries(deviant-qt
         qt_stuff
