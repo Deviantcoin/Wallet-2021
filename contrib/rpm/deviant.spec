@@ -33,7 +33,7 @@ Source22:	https://raw.githubusercontent.com/deviantnode/dev/v%{version}/doc/man/
 
 #selinux
 Source30:	https://raw.githubusercontent.com/deviantnode/dev/v%{version}/contrib/rpm/dev.te
-# Source31 - what about deviant-tx and bench_dev ???
+# Source31 - what about deviant-tx and bench_deviant ???
 Source31:	https://raw.githubusercontent.com/deviantnode/dev/v%{version}/contrib/rpm/dev.fc
 Source32:	https://raw.githubusercontent.com/deviantnode/dev/v%{version}/contrib/rpm/dev.if
 
@@ -143,7 +143,7 @@ deviant-core daemon.
 
 The deviant-cli utility allows you to communicate and control a dev daemon
 over RPC, the deviant-tx utility allows you to create a custom transaction, and
-the bench_dev utility can be used to perform some benchmarks.
+the bench_deviant utility can be used to perform some benchmarks.
 
 This package contains utilities needed by the deviant-server package.
 
@@ -422,7 +422,7 @@ rm -rf %{buildroot}
 %doc COPYING dev.conf.example doc/README.md
 %attr(0755,root,root) %{_bindir}/deviant-cli
 %attr(0755,root,root) %{_bindir}/deviant-tx
-%attr(0755,root,root) %{_bindir}/bench_dev
+%attr(0755,root,root) %{_bindir}/bench_deviant
 %attr(0644,root,root) %{_mandir}/man1/deviant-cli.1*
 
 

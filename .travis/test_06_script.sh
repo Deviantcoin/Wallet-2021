@@ -52,7 +52,7 @@ fi
 
 if [ "$RUN_BENCH" = "true" ]; then
   BEGIN_FOLD bench
-  DOCKER_EXEC LD_LIBRARY_PATH=$TRAVIS_BUILD_DIR/depends/$HOST/lib $OUTDIR/bin/bench_dev -scaling=0.001
+  DOCKER_EXEC LD_LIBRARY_PATH=$TRAVIS_BUILD_DIR/depends/$HOST/lib $OUTDIR/bin/bench_deviant -scaling=0.001
   END_FOLD
 fi
 
