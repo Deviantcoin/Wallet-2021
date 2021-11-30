@@ -258,7 +258,7 @@ To enable LCOV report generation during test runs:
 make
 make cov
 
-# A coverage report will now be accessible at `./test_DEV.coverage/index.html`.
+# A coverage report will now be accessible at `./test_deviant.coverage/index.html`.
 ```
 
 Locking/mutex usage notes
