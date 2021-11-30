@@ -1284,7 +1284,7 @@ $(BITCOIN_CLI_BIN): FORCE
 
 @USE_LCOV_TRUE@test_deviant.info: baseline_filtered.info
 @USE_LCOV_TRUE@	$(MAKE) -C src/ check
-@USE_LCOV_TRUE@	$(LCOV) -c $(LCOV_OPTS) -d $(abs_builddir)/src -t test_dev -o $@
+@USE_LCOV_TRUE@	$(LCOV) -c $(LCOV_OPTS) -d $(abs_builddir)/src -t test_deviant -o $@
 @USE_LCOV_TRUE@	$(LCOV) -z $(LCOV_OPTS) -d $(abs_builddir)/src
 
 @USE_LCOV_TRUE@test_deviant_filtered.info: test_deviant.info

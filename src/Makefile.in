@@ -134,7 +134,7 @@ TESTS = $(am__EXEEXT_5)
 @EMBEDDED_LEVELDB_TRUE@@TARGET_WINDOWS_FALSE@am__append_18 = leveldb/port/port_posix.cc
 @EMBEDDED_LEVELDB_TRUE@@ENABLE_HWCRC32_TRUE@am__append_19 = -DLEVELDB_PLATFORM_POSIX_SSE
 @EMBEDDED_LEVELDB_TRUE@@ENABLE_HWCRC32_TRUE@am__append_20 = $(SSE42_CXXFLAGS)
-@ENABLE_TESTS_TRUE@am__append_21 = test/test_dev
+@ENABLE_TESTS_TRUE@am__append_21 = test/test_deviant
 @ENABLE_TESTS_TRUE@@ENABLE_WALLET_TRUE@am__append_22 = \
 @ENABLE_TESTS_TRUE@@ENABLE_WALLET_TRUE@  wallet/test/wallet_test_fixture.cpp \
 @ENABLE_TESTS_TRUE@@ENABLE_WALLET_TRUE@  wallet/test/wallet_test_fixture.h
@@ -206,7 +206,7 @@ CONFIG_CLEAN_VPATH_FILES =
 @BUILD_BITCOIND_TRUE@am__EXEEXT_1 = deviantd$(EXEEXT)
 @BUILD_BITCOIN_UTILS_TRUE@am__EXEEXT_2 = deviant-cli$(EXEEXT) \
 @BUILD_BITCOIN_UTILS_TRUE@	deviant-tx$(EXEEXT)
-@ENABLE_TESTS_TRUE@am__EXEEXT_3 = test/test_dev$(EXEEXT)
+@ENABLE_TESTS_TRUE@am__EXEEXT_3 = test/test_deviant$(EXEEXT)
 @ENABLE_QT_TRUE@am__EXEEXT_4 = qt/deviant-qt$(EXEEXT)
 @ENABLE_QT_TESTS_TRUE@am__EXEEXT_5 = qt/test/test_deviant-qt$(EXEEXT)
 am__installdirs = "$(DESTDIR)$(bindir)" "$(DESTDIR)$(libdir)" \
@@ -3135,7 +3135,7 @@ EXTRA_DIST =
 @EMBEDDED_LEVELDB_TRUE@	$(am__append_20)
 @EMBEDDED_LEVELDB_TRUE@leveldb_libleveldb_sse42_a_SOURCES = leveldb/port/port_posix_sse.cc
 @ENABLE_TESTS_TRUE@TEST_SRCDIR = test
-@ENABLE_TESTS_TRUE@TEST_BINARY = test/test_dev$(EXEEXT)
+@ENABLE_TESTS_TRUE@TEST_BINARY = test/test_deviant$(EXEEXT)
 @ENABLE_TESTS_TRUE@JSON_TEST_FILES = \
 @ENABLE_TESTS_TRUE@  test/data/script_valid.json \
 @ENABLE_TESTS_TRUE@  test/data/base58_keys_valid.json \
@@ -3153,7 +3153,7 @@ EXTRA_DIST =
 @ENABLE_TESTS_TRUE@BITCOIN_TEST_SUITE = test/test_deviant.h \
 @ENABLE_TESTS_TRUE@	test/test_deviant.cpp $(am__append_22)
 
-# test_dev binary #
+# test_deviant binary #
 @ENABLE_TESTS_TRUE@BITCOIN_TESTS =  \
 @ENABLE_TESTS_TRUE@	test/zerocoin_denomination_tests.cpp \
 @ENABLE_TESTS_TRUE@	test/zerocoin_transactions_tests.cpp \
@@ -5223,8 +5223,8 @@ wallet/test/test_test_deviant-*wallet_tests.$(OBJEXT):  \
 	wallet/test/$(am__dirstamp) \
 	wallet/test/$(DEPDIR)/$(am__dirstamp)
 
-test/test_dev$(EXEEXT): $(test_test_deviant_OBJECTS) $(test_test_deviant_DEPENDENCIES) $(EXTRA_test_test_deviant_DEPENDENCIES) test/$(am__dirstamp)
-	@rm -f test/test_dev$(EXEEXT)
+test/test_deviant$(EXEEXT): $(test_test_deviant_OBJECTS) $(test_test_deviant_DEPENDENCIES) $(EXTRA_test_test_deviant_DEPENDENCIES) test/$(am__dirstamp)
+	@rm -f test/test_deviant$(EXEEXT)
 	$(AM_V_CXXLD)$(test_test_deviant_LINK) $(test_test_deviant_OBJECTS) $(test_test_deviant_LDADD) $(LIBS)
 
 mostlyclean-compile:

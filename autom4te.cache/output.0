@@ -33475,7 +33475,7 @@ else
 fi
 
 
-{ $as_echo "$as_me:${as_lineno-$LINENO}: checking whether to build test_dev" >&5
+{ $as_echo "$as_me:${as_lineno-$LINENO}: checking whether to build test_deviant" >&5
 $as_echo_n "checking whether to build test_deviant... " >&6; }
 if test x$use_tests = xyes; then
   { $as_echo "$as_me:${as_lineno-$LINENO}: result: yes" >&5

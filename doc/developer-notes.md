@@ -239,9 +239,9 @@ which includes known Valgrind warnings in our dependencies that cannot be fixed
 in-tree. Example use:
 
 ```shell
-$ valgrind --suppressions=contrib/valgrind.supp src/test/test_DEV
+$ valgrind --suppressions=contrib/valgrind.supp src/test/test_deviant
 $ valgrind --suppressions=contrib/valgrind.supp --leak-check=full \
-      --show-leak-kinds=all src/test/test_DEV --log_level=test_suite
+      --show-leak-kinds=all src/test/test_deviant --log_level=test_suite
 $ valgrind -v --leak-check=full src/deviantd -printtoconsole
 ```
 
