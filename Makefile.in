@@ -621,7 +621,7 @@ OSX_PACKAGING = $(OSX_DEPLOY_SCRIPT) $(OSX_FANCY_PLIST) $(OSX_INSTALLER_ICONS) \
 COVERAGE_INFO = baseline.info \
   test_deviant_filtered.info total_coverage.info \
   baseline_filtered.info functional_test.info functional_test_filtered.info \
-  test_deviant_coverage.info test_dev.info
+  test_deviant_coverage.info test_deviant.info
 
 OSX_APP_BUILT = $(OSX_APP)/Contents/PkgInfo $(OSX_APP)/Contents/Resources/empty.lproj \
   $(OSX_APP)/Contents/Resources/bitcoin.icns $(OSX_APP)/Contents/Info.plist \
@@ -1282,12 +1282,12 @@ $(BITCOIN_CLI_BIN): FORCE
 @USE_LCOV_TRUE@	$(abs_builddir)/contrib/filter-lcov.py $(LCOV_FILTER_PATTERN) $< $@
 @USE_LCOV_TRUE@	$(LCOV) -a $@ $(LCOV_OPTS) -o $@
 
-@USE_LCOV_TRUE@test_dev.info: baseline_filtered.info
+@USE_LCOV_TRUE@test_deviant.info: baseline_filtered.info
 @USE_LCOV_TRUE@	$(MAKE) -C src/ check
 @USE_LCOV_TRUE@	$(LCOV) -c $(LCOV_OPTS) -d $(abs_builddir)/src -t test_dev -o $@
 @USE_LCOV_TRUE@	$(LCOV) -z $(LCOV_OPTS) -d $(abs_builddir)/src
 
-@USE_LCOV_TRUE@test_deviant_filtered.info: test_dev.info
+@USE_LCOV_TRUE@test_deviant_filtered.info: test_deviant.info
 @USE_LCOV_TRUE@	$(abs_builddir)/contrib/filter-lcov.py $(LCOV_FILTER_PATTERN) $< $@
 @USE_LCOV_TRUE@	$(LCOV) -a $@ $(LCOV_OPTS) -o $@
 
