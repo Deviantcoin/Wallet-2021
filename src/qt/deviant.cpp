@@ -538,7 +538,7 @@ int main(int argc, char* argv[])
 
     /// 2. Basic Qt initialization (not dependent on parameters or configuration)
     Q_INIT_RESOURCE(deviant_locale);
-    Q_INIT_RESOURCE(dev);
+    Q_INIT_RESOURCE(deviant);
 
     // Generate high-dpi pixmaps
     QApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
