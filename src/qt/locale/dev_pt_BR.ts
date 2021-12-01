@@ -3576,8 +3576,8 @@ https://www.transifex.com/CryptoDev-Project/CryptoDev-Project-translations</tran
         <translation>Define o tamanho máximo de transações de alta prioridade/taxa baixa em bytes (padrão: %d)</translation>
     </message>
     <message>
-        <source>Unable to locate enough funds for this transaction that are not equal 1000 DEV.</source>
-        <translation>Incapaz de localizar fundos para esta transação que não são iguais a 1000 DEV.</translation>
+        <source>Unable to locate enough funds for this transaction that are not equal 5000 DEV.</source>
+        <translation>Incapaz de localizar fundos para esta transação que não são iguais a 5000 DEV.</translation>
     </message>
     <message>
         <source>Use separate SOCKS5 proxy to reach peers via Tor hidden services (default: %s)</source>

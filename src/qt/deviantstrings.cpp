@@ -215,7 +215,7 @@ static const char UNUSED* deviant_strings[] = {
                                     "Unable to locate enough Obfuscation denominated funds for this transaction."),
     QT_TRANSLATE_NOOP("deviant-core", ""
                                     "Unable to locate enough Obfuscation non-denominated funds for this "
-                                    "transaction that are not equal 1000 DEV."),
+                                    "transaction that are not equal 5000 DEV."),
     QT_TRANSLATE_NOOP("deviant-core", ""
                                     "Unable to locate enough funds for this transaction that are not equal 1000 "
                                     "DEV."),

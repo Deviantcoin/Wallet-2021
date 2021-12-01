@@ -481,8 +481,8 @@ void MasterNodesWidget::onCreateMNClicked()
         return;
     }
 
-    if (walletModel->getBalance() <= (COIN * 1000)) {
-        inform(tr("Not enough balance to create a masternode, 1,000 DEV required."));
+    if (walletModel->getBalance() <= (COIN * 5000)) {
+        inform(tr("Not enough balance to create a masternode, 5,000 DEV required."));
         return;
     }
     showHideOp(true);
