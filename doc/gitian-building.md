@@ -112,7 +112,7 @@ gpg --output ${VERSION}-win-unsigned/$NAME/deviant-*win-${VERSION%\.*}-build.ass
 Uploading Signatures
 --------------------
 Make a Pull Request (both the `.assert` and `.assert.sig` files) to the
-[gitian.sigs](https://github.com/Simple-Software-Solutions/gitian.sigs/) repository:
+[gitian.sigs](https://github.com/deviantcoin/gitian.sigs/) repository:
 
 ```bash
 git checkout -b ${VERSION}-not-codesigned

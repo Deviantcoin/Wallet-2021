@@ -1,10 +1,10 @@
 (note: this is a temporary file, to be added-to by anybody, and moved to release-notes at release time)
 
-Deviant-Core version *version* is now available from:  <https://github.com/Simple-Software-Solutions/Deviant-Core/releases>
+Deviant-Core version *version* is now available from:  <https://github.com/deviantcoin/Deviant-Core/releases>
 
 This is a new major version release, including various bug fixes and performance improvements, as well as updated translations.
 
-Please report bugs using the issue tracker at github: <https://github.com/Simple-Software-Solutions/Deviant-Core/issues>
+Please report bugs using the issue tracker at github: <https://github.com/deviantcoin/Deviant-Core/issues>
 
 
 Mandatory Update
@@ -43,7 +43,7 @@ As well as new possibilities like the account extended public key that enables d
 
 This work includes a customization/extension to the [BIP44](https://github.com/bitcoin/bips/blob/master/bip-0044.mediawiki) standard. We have included an unique staking keys derivation path which introduced the deterministic generation/recovery of staking addresses.
 
-An extended description of this large work can be found in the PR [here](https://github.com/Simple-Software-Solutions/Deviant-Core/pull/1327).
+An extended description of this large work can be found in the PR [here](https://github.com/deviantcoin/Deviant-Core/pull/1327).
 
 #### HD Wallet FAQ
 
@@ -78,7 +78,7 @@ The default value for the stake-split threshold has been lowered from 2000 DEV, 
 Dependencies
 ------------
 
-The minimum required version of QT has been increased from 5.0 to 5.5.1 (the [depends system](https://github.com/Simple-Software-Solutions/Deviant-Core/blob/master/depends/README.md) provides 5.9.7)
+The minimum required version of QT has been increased from 5.0 to 5.5.1 (the [depends system](https://github.com/deviantcoin/Deviant-Core/blob/master/depends/README.md) provides 5.9.7)
 
 
 RPC Changes
@@ -171,24 +171,24 @@ Detailed release notes follow. This overview includes changes that affect behavi
 
 ### P2P Protocol and Network Code
 
-The p2p alert system has been removed in [PR #1372](https://github.com/Simple-Software-Solutions/Deviant-Core/pull/1372) and the 'alert' message is no longer supported.
+The p2p alert system has been removed in [PR #1372](https://github.com/deviantcoin/Deviant-Core/pull/1372) and the 'alert' message is no longer supported.
 
 ### GUI
 
-**Keyboard navigation**: dialogs can now be accepted with the `ENTER` (`RETURN`) key, and dismissed with the `ESC` key ([#1392](https://github.com/Simple-Software-Solutions/Deviant-Core/pull/1392)).
+**Keyboard navigation**: dialogs can now be accepted with the `ENTER` (`RETURN`) key, and dismissed with the `ESC` key ([#1392](https://github.com/deviantcoin/Deviant-Core/pull/1392)).
 
 
 **Address sorting**: address sorting in "My Addresses" / "Contacts" / "Cold Staking" can now be customized, setting it either by label (default), by address, or by creation date, ascending (default) or descending order.
-Addresses in the dropdown of the "Send Transaction" and "Send Delegation" widgets are now automatically sorted by label with ascending order ([#1393](https://github.com/Simple-Software-Solutions/Deviant-Core/pull/1393)).
+Addresses in the dropdown of the "Send Transaction" and "Send Delegation" widgets are now automatically sorted by label with ascending order ([#1393](https://github.com/deviantcoin/Deviant-Core/pull/1393)).
 
 
-**Custom Fee**: The custom fee selected when sending a transaction is now saved in the wallet database and persisted across multiple sends and wallet's restarts ([#1406](https://github.com/Simple-Software-Solutions/Deviant-Core/pull/1406)).
+**Custom Fee**: The custom fee selected when sending a transaction is now saved in the wallet database and persisted across multiple sends and wallet's restarts ([#1406](https://github.com/deviantcoin/Deviant-Core/pull/1406)).
 
 
-**Include delegations in send**: The send and cold-staking page present a checkbox ([#1391](https://github.com/Simple-Software-Solutions/Deviant-Core/pull/1391)) to make the automatic input selection algorithm include delegated (P2CS) utxos if needed. The option is unchecked by default.
+**Include delegations in send**: The send and cold-staking page present a checkbox ([#1391](https://github.com/deviantcoin/Deviant-Core/pull/1391)) to make the automatic input selection algorithm include delegated (P2CS) utxos if needed. The option is unchecked by default.
 
 
-**Staking Charts**: can now be hidden at startup (with a flag `--hidecharts`) or at runtime with a checkbox in settings --> options --> display ([PR #1475](https://github.com/Simple-Software-Solutions/Deviant-Core/pull/1475)).
+**Staking Charts**: can now be hidden at startup (with a flag `--hidecharts`) or at runtime with a checkbox in settings --> options --> display ([PR #1475](https://github.com/deviantcoin/Deviant-Core/pull/1475)).
 
 
 
@@ -197,14 +197,14 @@ Addresses in the dropdown of the "Send Transaction" and "Send Delegation" widget
 ### Wallet
 
 
-__Context Lock/Unlock__ [[PR #1387](https://github.com/Simple-Software-Solutions/Deviant-Core/pull/1387)]:<br>
+__Context Lock/Unlock__ [[PR #1387](https://github.com/deviantcoin/Deviant-Core/pull/1387)]:<br>
 Present the unlock dialog directly (instead of an error message), whenever an action on encrypted/locked wallet requires full unlock.<br>
 Restore the previous locking state ("locked" or "locked for staking only") when the action is completed.
 
 
 __Configuration Options__:
 
-- The `-reservebalance` configuration/startup option has been removed ([PR #1373](https://github.com/Simple-Software-Solutions/Deviant-Core/pull/1373)).
+- The `-reservebalance` configuration/startup option has been removed ([PR #1373](https://github.com/deviantcoin/Deviant-Core/pull/1373)).
 
 ### Miscellaneous
 

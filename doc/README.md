@@ -26,7 +26,7 @@ Drag deviant-qt to your applications folder, and then run deviant-qt.
 
 ### Need Help?
 
-* See the documentation at the [DEV Wiki](https://github.com/Simple-Software-Solutions/Deviant-Core/wiki)
+* See the documentation at the [DEV Wiki](https://github.com/deviantcoin/Deviant-Core/wiki)
 for help and more information.
 * Ask for help on [BitcoinTalk](https://bitcointalk.org/index.php?topic=1262920.0) or on the [DEV Forum](http://forum.deviantcoin.io/).
 * Join our Discord server [Discord Server](https://discord.deviantcoin.io)

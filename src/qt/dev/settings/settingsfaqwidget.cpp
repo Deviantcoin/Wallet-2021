@@ -82,7 +82,7 @@ SettingsFaqWidget::SettingsFaqWidget(DEVGUI* parent) : QDialog(parent),
     setCssProperty(ui->pushButtonExit, "btn-faq-exit");
 
     // Web Link
-    // ui->pushButtonWebLink->setText("https://deviantnode.app/");
+    // ui->pushButtonWebLink->setText("https://deviantcoin.io/");
     setCssProperty(ui->pushButtonWebLink, "btn-faq-web");
     setCssProperty(ui->containerButtons, "container-faq-buttons");
 

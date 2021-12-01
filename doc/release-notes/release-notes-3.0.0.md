@@ -1,13 +1,13 @@
 Deviant-Core version 3.0.0 is now available from:
 
-  <https://github.com/Simple-Software-Solutions/DEV-Core/releases>
+  <https://github.com/deviantcoin/DEV-Core/releases>
 
 This is a new major version release, including various bug fixes and
 performance improvements, as well as updated translations.
 
 Please report bugs using the issue tracker at github:
 
-  <https://github.com/Simple-Software-Solutions/DEV-Core/issues>
+  <https://github.com/deviantcoin/DEV-Core/issues>
 
 Mandatory Update
 ==============

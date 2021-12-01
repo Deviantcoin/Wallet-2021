@@ -1,13 +1,13 @@
 Deviant-Core version 2.2.1 is now available from:
 
-  <https://github.com/Simple-Software-Solutions/Deviant-Core/releases>
+  <https://github.com/deviantcoin/Deviant-Core/releases>
 
 This is a new minor version release, including various bug fixes and
 performance improvements, as well as updated translations.
 
 Please report bugs using the issue tracker at github:
 
-  <https://github.com/Simple-Software-Solutions/Deviant-Core/issues>
+  <https://github.com/deviantcoin/Deviant-Core/issues>
 
 Compatibility
 ==============
