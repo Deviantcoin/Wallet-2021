@@ -598,7 +598,7 @@ qt_libbitcoinqt_a_AR = $(AR) $(ARFLAGS)
 qt_libbitcoinqt_a_LIBADD =
 am__qt_libbitcoinqt_a_SOURCES_DIST = qt/bantablemodel.cpp \
 	qt/bitcoinaddressvalidator.cpp qt/bitcoinamountfield.cpp \
-	qt/dev/devgui.cpp qt/dev/proposaldialog.cpp \
+	qt/dev/deviantgui.cpp qt/dev/proposaldialog.cpp \
 	qt/bitcoinunits.cpp qt/clientmodel.cpp qt/csvmodelwriter.cpp \
 	qt/guiutil.cpp qt/intro.cpp qt/networkstyle.cpp \
 	qt/notificator.cpp qt/optionsdialog.cpp qt/optionsmodel.cpp \
@@ -656,7 +656,7 @@ am__qt_libbitcoinqt_a_SOURCES_DIST = qt/bantablemodel.cpp \
 	qt/addressbookpage.h qt/addresstablemodel.h \
 	qt/askpassphrasedialog.h qt/bantablemodel.h \
 	qt/bitcoinaddressvalidator.h qt/bitcoinamountfield.h \
-	qt/dev/devgui.h qt/bitcoinunits.h qt/clientmodel.h \
+	qt/dev/deviantgui.h qt/bitcoinunits.h qt/clientmodel.h \
 	qt/coincontroldialog.h qt/coincontroltreewidget.h \
 	qt/csvmodelwriter.h qt/editaddressdialog.h qt/guiconstants.h \
 	qt/guiutil.h qt/intro.h qt/macdockiconhandler.h \
@@ -1010,7 +1010,7 @@ am__qt_libbitcoinqt_a_SOURCES_DIST = qt/bantablemodel.cpp \
 @ENABLE_QT_TRUE@	qt/libbitcoinqt_a-bantablemodel.$(OBJEXT) \
 @ENABLE_QT_TRUE@	qt/libbitcoinqt_a-bitcoinaddressvalidator.$(OBJEXT) \
 @ENABLE_QT_TRUE@	qt/libbitcoinqt_a-bitcoinamountfield.$(OBJEXT) \
-@ENABLE_QT_TRUE@	qt/dev/libbitcoinqt_a-devgui.$(OBJEXT) \
+@ENABLE_QT_TRUE@	qt/dev/libbitcoinqt_a-deviantgui.$(OBJEXT) \
 @ENABLE_QT_TRUE@	qt/dev/libbitcoinqt_a-proposaldialog.$(OBJEXT) \
 @ENABLE_QT_TRUE@	qt/libbitcoinqt_a-bitcoinunits.$(OBJEXT) \
 @ENABLE_QT_TRUE@	qt/libbitcoinqt_a-clientmodel.$(OBJEXT) \
@@ -1127,7 +1127,7 @@ am__qt_libbitcoinqt_a_SOURCES_DIST = qt/bantablemodel.cpp \
 @ENABLE_QT_TRUE@	qt/libbitcoinqt_a-moc_bantablemodel.$(OBJEXT) \
 @ENABLE_QT_TRUE@	qt/libbitcoinqt_a-moc_bitcoinaddressvalidator.$(OBJEXT) \
 @ENABLE_QT_TRUE@	qt/libbitcoinqt_a-moc_bitcoinamountfield.$(OBJEXT) \
-@ENABLE_QT_TRUE@	qt/dev/libbitcoinqt_a-moc_devgui.$(OBJEXT) \
+@ENABLE_QT_TRUE@	qt/dev/libbitcoinqt_a-moc_deviantgui.$(OBJEXT) \
 @ENABLE_QT_TRUE@	qt/libbitcoinqt_a-moc_bitcoinunits.$(OBJEXT) \
 @ENABLE_QT_TRUE@	qt/libbitcoinqt_a-moc_clientmodel.$(OBJEXT) \
 @ENABLE_QT_TRUE@	qt/libbitcoinqt_a-moc_coincontroldialog.$(OBJEXT) \
@@ -1764,7 +1764,7 @@ am__depfiles_remade = ./$(DEPDIR)/deviant_cli-deviant-cli.Po \
 	qt/dev/$(DEPDIR)/libbitcoinqt_a-dashboardwidget.Po \
 	qt/dev/$(DEPDIR)/libbitcoinqt_a-defaultdialog.Po \
 	qt/dev/$(DEPDIR)/libbitcoinqt_a-expandablebutton.Po \
-	qt/dev/$(DEPDIR)/libbitcoinqt_a-devgui.Po \
+	qt/dev/$(DEPDIR)/libbitcoinqt_a-deviantgui.Po \
 	qt/dev/$(DEPDIR)/libbitcoinqt_a-furabstractlistitemdelegate.Po \
 	qt/dev/$(DEPDIR)/libbitcoinqt_a-governancepage.Po \
 	qt/dev/$(DEPDIR)/libbitcoinqt_a-guitransactionsutils.Po \
@@ -1787,7 +1787,7 @@ am__depfiles_remade = ./$(DEPDIR)/deviant_cli-deviant-cli.Po \
 	qt/dev/$(DEPDIR)/libbitcoinqt_a-moc_dashboardwidget.Po \
 	qt/dev/$(DEPDIR)/libbitcoinqt_a-moc_defaultdialog.Po \
 	qt/dev/$(DEPDIR)/libbitcoinqt_a-moc_expandablebutton.Po \
-	qt/dev/$(DEPDIR)/libbitcoinqt_a-moc_devgui.Po \
+	qt/dev/$(DEPDIR)/libbitcoinqt_a-moc_deviantgui.Po \
 	qt/dev/$(DEPDIR)/libbitcoinqt_a-moc_furabstractlistitemdelegate.Po \
 	qt/dev/$(DEPDIR)/libbitcoinqt_a-moc_governancepage.Po \
 	qt/dev/$(DEPDIR)/libbitcoinqt_a-moc_loadingdialog.Po \
@@ -3316,7 +3316,7 @@ EXTRA_DIST =
 @ENABLE_QT_TRUE@  qt/moc_bantablemodel.cpp \
 @ENABLE_QT_TRUE@  qt/moc_bitcoinaddressvalidator.cpp \
 @ENABLE_QT_TRUE@  qt/moc_bitcoinamountfield.cpp \
-@ENABLE_QT_TRUE@  qt/dev/moc_devgui.cpp \
+@ENABLE_QT_TRUE@  qt/dev/moc_deviantgui.cpp \
 @ENABLE_QT_TRUE@  qt/moc_bitcoinunits.cpp \
 @ENABLE_QT_TRUE@  qt/moc_clientmodel.cpp \
 @ENABLE_QT_TRUE@  qt/moc_coincontroldialog.cpp \
@@ -3429,7 +3429,7 @@ EXTRA_DIST =
 @ENABLE_QT_TRUE@  qt/bantablemodel.h \
 @ENABLE_QT_TRUE@  qt/bitcoinaddressvalidator.h \
 @ENABLE_QT_TRUE@  qt/bitcoinamountfield.h \
-@ENABLE_QT_TRUE@  qt/dev/devgui.h \
+@ENABLE_QT_TRUE@  qt/dev/deviantgui.h \
 @ENABLE_QT_TRUE@  qt/bitcoinunits.h \
 @ENABLE_QT_TRUE@  qt/clientmodel.h \
 @ENABLE_QT_TRUE@  qt/coincontroldialog.h \
@@ -3815,7 +3815,7 @@ EXTRA_DIST =
 @ENABLE_QT_TRUE@  qt/bantablemodel.cpp \
 @ENABLE_QT_TRUE@  qt/bitcoinaddressvalidator.cpp \
 @ENABLE_QT_TRUE@  qt/bitcoinamountfield.cpp \
-@ENABLE_QT_TRUE@  qt/dev/devgui.cpp \
+@ENABLE_QT_TRUE@  qt/dev/deviantgui.cpp \
 @ENABLE_QT_TRUE@  qt/dev/proposaldialog.cpp \
 @ENABLE_QT_TRUE@  qt/bitcoinunits.cpp \
 @ENABLE_QT_TRUE@  qt/clientmodel.cpp \
@@ -4611,7 +4611,7 @@ qt/dev/$(am__dirstamp):
 qt/dev/$(DEPDIR)/$(am__dirstamp):
 	@$(MKDIR_P) qt/dev/$(DEPDIR)
 	@: > qt/dev/$(DEPDIR)/$(am__dirstamp)
-qt/dev/libbitcoinqt_a-devgui.$(OBJEXT): qt/dev/$(am__dirstamp) \
+qt/dev/libbitcoinqt_a-deviantgui.$(OBJEXT): qt/dev/$(am__dirstamp) \
 	qt/dev/$(DEPDIR)/$(am__dirstamp)
 qt/dev/libbitcoinqt_a-proposaldialog.$(OBJEXT):  \
 	qt/dev/$(am__dirstamp) qt/dev/$(DEPDIR)/$(am__dirstamp)
@@ -4837,7 +4837,7 @@ qt/libbitcoinqt_a-moc_bitcoinaddressvalidator.$(OBJEXT):  \
 	qt/$(am__dirstamp) qt/$(DEPDIR)/$(am__dirstamp)
 qt/libbitcoinqt_a-moc_bitcoinamountfield.$(OBJEXT):  \
 	qt/$(am__dirstamp) qt/$(DEPDIR)/$(am__dirstamp)
-qt/dev/libbitcoinqt_a-moc_devgui.$(OBJEXT): qt/dev/$(am__dirstamp) \
+qt/dev/libbitcoinqt_a-moc_deviantgui.$(OBJEXT): qt/dev/$(am__dirstamp) \
 	qt/dev/$(DEPDIR)/$(am__dirstamp)
 qt/libbitcoinqt_a-moc_bitcoinunits.$(OBJEXT): qt/$(am__dirstamp) \
 	qt/$(DEPDIR)/$(am__dirstamp)
@@ -5518,7 +5518,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@qt/dev/$(DEPDIR)/libbitcoinqt_a-dashboardwidget.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@qt/dev/$(DEPDIR)/libbitcoinqt_a-defaultdialog.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@qt/dev/$(DEPDIR)/libbitcoinqt_a-expandablebutton.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@qt/dev/$(DEPDIR)/libbitcoinqt_a-devgui.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@qt/dev/$(DEPDIR)/libbitcoinqt_a-deviantgui.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@qt/dev/$(DEPDIR)/libbitcoinqt_a-furabstractlistitemdelegate.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@qt/dev/$(DEPDIR)/libbitcoinqt_a-governancepage.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@qt/dev/$(DEPDIR)/libbitcoinqt_a-guitransactionsutils.Po@am__quote@ # am--include-marker
@@ -5541,7 +5541,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@qt/dev/$(DEPDIR)/libbitcoinqt_a-moc_dashboardwidget.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@qt/dev/$(DEPDIR)/libbitcoinqt_a-moc_defaultdialog.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@qt/dev/$(DEPDIR)/libbitcoinqt_a-moc_expandablebutton.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@qt/dev/$(DEPDIR)/libbitcoinqt_a-moc_devgui.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@qt/dev/$(DEPDIR)/libbitcoinqt_a-moc_deviantgui.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@qt/dev/$(DEPDIR)/libbitcoinqt_a-moc_furabstractlistitemdelegate.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@qt/dev/$(DEPDIR)/libbitcoinqt_a-moc_governancepage.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@qt/dev/$(DEPDIR)/libbitcoinqt_a-moc_loadingdialog.Po@am__quote@ # am--include-marker
@@ -8435,19 +8435,19 @@ qt/libbitcoinqt_a-bitcoinamountfield.obj: qt/bitcoinamountfield.cpp
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(qt_libbitcoinqt_a_CPPFLAGS) $(CPPFLAGS) $(qt_libbitcoinqt_a_CXXFLAGS) $(CXXFLAGS) -c -o qt/libbitcoinqt_a-bitcoinamountfield.obj `if test -f 'qt/bitcoinamountfield.cpp'; then $(CYGPATH_W) 'qt/bitcoinamountfield.cpp'; else $(CYGPATH_W) '$(srcdir)/qt/bitcoinamountfield.cpp'; fi`
 
-qt/dev/libbitcoinqt_a-devgui.o: qt/dev/devgui.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(qt_libbitcoinqt_a_CPPFLAGS) $(CPPFLAGS) $(qt_libbitcoinqt_a_CXXFLAGS) $(CXXFLAGS) -MT qt/dev/libbitcoinqt_a-devgui.o -MD -MP -MF qt/dev/$(DEPDIR)/libbitcoinqt_a-devgui.Tpo -c -o qt/dev/libbitcoinqt_a-devgui.o `test -f 'qt/dev/devgui.cpp' || echo '$(srcdir)/'`qt/dev/devgui.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) qt/dev/$(DEPDIR)/libbitcoinqt_a-devgui.Tpo qt/dev/$(DEPDIR)/libbitcoinqt_a-devgui.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='qt/dev/devgui.cpp' object='qt/dev/libbitcoinqt_a-devgui.o' libtool=no @AMDEPBACKSLASH@
+qt/dev/libbitcoinqt_a-deviantgui.o: qt/dev/deviantgui.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(qt_libbitcoinqt_a_CPPFLAGS) $(CPPFLAGS) $(qt_libbitcoinqt_a_CXXFLAGS) $(CXXFLAGS) -MT qt/dev/libbitcoinqt_a-deviantgui.o -MD -MP -MF qt/dev/$(DEPDIR)/libbitcoinqt_a-deviantgui.Tpo -c -o qt/dev/libbitcoinqt_a-deviantgui.o `test -f 'qt/dev/deviantgui.cpp' || echo '$(srcdir)/'`qt/dev/deviantgui.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) qt/dev/$(DEPDIR)/libbitcoinqt_a-deviantgui.Tpo qt/dev/$(DEPDIR)/libbitcoinqt_a-deviantgui.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='qt/dev/deviantgui.cpp' object='qt/dev/libbitcoinqt_a-deviantgui.o' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(qt_libbitcoinqt_a_CPPFLAGS) $(CPPFLAGS) $(qt_libbitcoinqt_a_CXXFLAGS) $(CXXFLAGS) -c -o qt/dev/libbitcoinqt_a-devgui.o `test -f 'qt/dev/devgui.cpp' || echo '$(srcdir)/'`qt/dev/devgui.cpp
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(qt_libbitcoinqt_a_CPPFLAGS) $(CPPFLAGS) $(qt_libbitcoinqt_a_CXXFLAGS) $(CXXFLAGS) -c -o qt/dev/libbitcoinqt_a-deviantgui.o `test -f 'qt/dev/deviantgui.cpp' || echo '$(srcdir)/'`qt/dev/deviantgui.cpp
 
-qt/dev/libbitcoinqt_a-devgui.obj: qt/dev/devgui.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(qt_libbitcoinqt_a_CPPFLAGS) $(CPPFLAGS) $(qt_libbitcoinqt_a_CXXFLAGS) $(CXXFLAGS) -MT qt/dev/libbitcoinqt_a-devgui.obj -MD -MP -MF qt/dev/$(DEPDIR)/libbitcoinqt_a-devgui.Tpo -c -o qt/dev/libbitcoinqt_a-devgui.obj `if test -f 'qt/dev/devgui.cpp'; then $(CYGPATH_W) 'qt/dev/devgui.cpp'; else $(CYGPATH_W) '$(srcdir)/qt/dev/devgui.cpp'; fi`
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) qt/dev/$(DEPDIR)/libbitcoinqt_a-devgui.Tpo qt/dev/$(DEPDIR)/libbitcoinqt_a-devgui.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='qt/dev/devgui.cpp' object='qt/dev/libbitcoinqt_a-devgui.obj' libtool=no @AMDEPBACKSLASH@
+qt/dev/libbitcoinqt_a-deviantgui.obj: qt/dev/deviantgui.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(qt_libbitcoinqt_a_CPPFLAGS) $(CPPFLAGS) $(qt_libbitcoinqt_a_CXXFLAGS) $(CXXFLAGS) -MT qt/dev/libbitcoinqt_a-deviantgui.obj -MD -MP -MF qt/dev/$(DEPDIR)/libbitcoinqt_a-deviantgui.Tpo -c -o qt/dev/libbitcoinqt_a-deviantgui.obj `if test -f 'qt/dev/deviantgui.cpp'; then $(CYGPATH_W) 'qt/dev/deviantgui.cpp'; else $(CYGPATH_W) '$(srcdir)/qt/dev/deviantgui.cpp'; fi`
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) qt/dev/$(DEPDIR)/libbitcoinqt_a-deviantgui.Tpo qt/dev/$(DEPDIR)/libbitcoinqt_a-deviantgui.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='qt/dev/deviantgui.cpp' object='qt/dev/libbitcoinqt_a-deviantgui.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(qt_libbitcoinqt_a_CPPFLAGS) $(CPPFLAGS) $(qt_libbitcoinqt_a_CXXFLAGS) $(CXXFLAGS) -c -o qt/dev/libbitcoinqt_a-devgui.obj `if test -f 'qt/dev/devgui.cpp'; then $(CYGPATH_W) 'qt/dev/devgui.cpp'; else $(CYGPATH_W) '$(srcdir)/qt/dev/devgui.cpp'; fi`
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(qt_libbitcoinqt_a_CPPFLAGS) $(CPPFLAGS) $(qt_libbitcoinqt_a_CXXFLAGS) $(CXXFLAGS) -c -o qt/dev/libbitcoinqt_a-deviantgui.obj `if test -f 'qt/dev/deviantgui.cpp'; then $(CYGPATH_W) 'qt/dev/deviantgui.cpp'; else $(CYGPATH_W) '$(srcdir)/qt/dev/deviantgui.cpp'; fi`
 
 qt/dev/libbitcoinqt_a-proposaldialog.o: qt/dev/proposaldialog.cpp
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(qt_libbitcoinqt_a_CPPFLAGS) $(CPPFLAGS) $(qt_libbitcoinqt_a_CXXFLAGS) $(CXXFLAGS) -MT qt/dev/libbitcoinqt_a-proposaldialog.o -MD -MP -MF qt/dev/$(DEPDIR)/libbitcoinqt_a-proposaldialog.Tpo -c -o qt/dev/libbitcoinqt_a-proposaldialog.o `test -f 'qt/dev/proposaldialog.cpp' || echo '$(srcdir)/'`qt/dev/proposaldialog.cpp
@@ -9877,19 +9877,19 @@ qt/libbitcoinqt_a-moc_bitcoinamountfield.obj: qt/moc_bitcoinamountfield.cpp
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(qt_libbitcoinqt_a_CPPFLAGS) $(CPPFLAGS) $(qt_libbitcoinqt_a_CXXFLAGS) $(CXXFLAGS) -c -o qt/libbitcoinqt_a-moc_bitcoinamountfield.obj `if test -f 'qt/moc_bitcoinamountfield.cpp'; then $(CYGPATH_W) 'qt/moc_bitcoinamountfield.cpp'; else $(CYGPATH_W) '$(srcdir)/qt/moc_bitcoinamountfield.cpp'; fi`
 
-qt/dev/libbitcoinqt_a-moc_devgui.o: qt/dev/moc_devgui.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(qt_libbitcoinqt_a_CPPFLAGS) $(CPPFLAGS) $(qt_libbitcoinqt_a_CXXFLAGS) $(CXXFLAGS) -MT qt/dev/libbitcoinqt_a-moc_devgui.o -MD -MP -MF qt/dev/$(DEPDIR)/libbitcoinqt_a-moc_devgui.Tpo -c -o qt/dev/libbitcoinqt_a-moc_devgui.o `test -f 'qt/dev/moc_devgui.cpp' || echo '$(srcdir)/'`qt/dev/moc_devgui.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) qt/dev/$(DEPDIR)/libbitcoinqt_a-moc_devgui.Tpo qt/dev/$(DEPDIR)/libbitcoinqt_a-moc_devgui.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='qt/dev/moc_devgui.cpp' object='qt/dev/libbitcoinqt_a-moc_devgui.o' libtool=no @AMDEPBACKSLASH@
+qt/dev/libbitcoinqt_a-moc_deviantgui.o: qt/dev/moc_deviantgui.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(qt_libbitcoinqt_a_CPPFLAGS) $(CPPFLAGS) $(qt_libbitcoinqt_a_CXXFLAGS) $(CXXFLAGS) -MT qt/dev/libbitcoinqt_a-moc_deviantgui.o -MD -MP -MF qt/dev/$(DEPDIR)/libbitcoinqt_a-moc_deviantgui.Tpo -c -o qt/dev/libbitcoinqt_a-moc_deviantgui.o `test -f 'qt/dev/moc_deviantgui.cpp' || echo '$(srcdir)/'`qt/dev/moc_deviantgui.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) qt/dev/$(DEPDIR)/libbitcoinqt_a-moc_deviantgui.Tpo qt/dev/$(DEPDIR)/libbitcoinqt_a-moc_deviantgui.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='qt/dev/moc_deviantgui.cpp' object='qt/dev/libbitcoinqt_a-moc_deviantgui.o' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(qt_libbitcoinqt_a_CPPFLAGS) $(CPPFLAGS) $(qt_libbitcoinqt_a_CXXFLAGS) $(CXXFLAGS) -c -o qt/dev/libbitcoinqt_a-moc_devgui.o `test -f 'qt/dev/moc_devgui.cpp' || echo '$(srcdir)/'`qt/dev/moc_devgui.cpp
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(qt_libbitcoinqt_a_CPPFLAGS) $(CPPFLAGS) $(qt_libbitcoinqt_a_CXXFLAGS) $(CXXFLAGS) -c -o qt/dev/libbitcoinqt_a-moc_deviantgui.o `test -f 'qt/dev/moc_deviantgui.cpp' || echo '$(srcdir)/'`qt/dev/moc_deviantgui.cpp
 
-qt/dev/libbitcoinqt_a-moc_devgui.obj: qt/dev/moc_devgui.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(qt_libbitcoinqt_a_CPPFLAGS) $(CPPFLAGS) $(qt_libbitcoinqt_a_CXXFLAGS) $(CXXFLAGS) -MT qt/dev/libbitcoinqt_a-moc_devgui.obj -MD -MP -MF qt/dev/$(DEPDIR)/libbitcoinqt_a-moc_devgui.Tpo -c -o qt/dev/libbitcoinqt_a-moc_devgui.obj `if test -f 'qt/dev/moc_devgui.cpp'; then $(CYGPATH_W) 'qt/dev/moc_devgui.cpp'; else $(CYGPATH_W) '$(srcdir)/qt/dev/moc_devgui.cpp'; fi`
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) qt/dev/$(DEPDIR)/libbitcoinqt_a-moc_devgui.Tpo qt/dev/$(DEPDIR)/libbitcoinqt_a-moc_devgui.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='qt/dev/moc_devgui.cpp' object='qt/dev/libbitcoinqt_a-moc_devgui.obj' libtool=no @AMDEPBACKSLASH@
+qt/dev/libbitcoinqt_a-moc_deviantgui.obj: qt/dev/moc_deviantgui.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(qt_libbitcoinqt_a_CPPFLAGS) $(CPPFLAGS) $(qt_libbitcoinqt_a_CXXFLAGS) $(CXXFLAGS) -MT qt/dev/libbitcoinqt_a-moc_deviantgui.obj -MD -MP -MF qt/dev/$(DEPDIR)/libbitcoinqt_a-moc_deviantgui.Tpo -c -o qt/dev/libbitcoinqt_a-moc_deviantgui.obj `if test -f 'qt/dev/moc_deviantgui.cpp'; then $(CYGPATH_W) 'qt/dev/moc_deviantgui.cpp'; else $(CYGPATH_W) '$(srcdir)/qt/dev/moc_deviantgui.cpp'; fi`
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) qt/dev/$(DEPDIR)/libbitcoinqt_a-moc_deviantgui.Tpo qt/dev/$(DEPDIR)/libbitcoinqt_a-moc_deviantgui.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='qt/dev/moc_deviantgui.cpp' object='qt/dev/libbitcoinqt_a-moc_deviantgui.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(qt_libbitcoinqt_a_CPPFLAGS) $(CPPFLAGS) $(qt_libbitcoinqt_a_CXXFLAGS) $(CXXFLAGS) -c -o qt/dev/libbitcoinqt_a-moc_devgui.obj `if test -f 'qt/dev/moc_devgui.cpp'; then $(CYGPATH_W) 'qt/dev/moc_devgui.cpp'; else $(CYGPATH_W) '$(srcdir)/qt/dev/moc_devgui.cpp'; fi`
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(qt_libbitcoinqt_a_CPPFLAGS) $(CPPFLAGS) $(qt_libbitcoinqt_a_CXXFLAGS) $(CXXFLAGS) -c -o qt/dev/libbitcoinqt_a-moc_deviantgui.obj `if test -f 'qt/dev/moc_deviantgui.cpp'; then $(CYGPATH_W) 'qt/dev/moc_deviantgui.cpp'; else $(CYGPATH_W) '$(srcdir)/qt/dev/moc_deviantgui.cpp'; fi`
 
 qt/libbitcoinqt_a-moc_bitcoinunits.o: qt/moc_bitcoinunits.cpp
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(qt_libbitcoinqt_a_CPPFLAGS) $(CPPFLAGS) $(qt_libbitcoinqt_a_CXXFLAGS) $(CXXFLAGS) -MT qt/libbitcoinqt_a-moc_bitcoinunits.o -MD -MP -MF qt/$(DEPDIR)/libbitcoinqt_a-moc_bitcoinunits.Tpo -c -o qt/libbitcoinqt_a-moc_bitcoinunits.o `test -f 'qt/moc_bitcoinunits.cpp' || echo '$(srcdir)/'`qt/moc_bitcoinunits.cpp
@@ -12836,7 +12836,7 @@ distclean: distclean-recursive
 	-rm -f qt/dev/$(DEPDIR)/libbitcoinqt_a-dashboardwidget.Po
 	-rm -f qt/dev/$(DEPDIR)/libbitcoinqt_a-defaultdialog.Po
 	-rm -f qt/dev/$(DEPDIR)/libbitcoinqt_a-expandablebutton.Po
-	-rm -f qt/dev/$(DEPDIR)/libbitcoinqt_a-devgui.Po
+	-rm -f qt/dev/$(DEPDIR)/libbitcoinqt_a-deviantgui.Po
 	-rm -f qt/dev/$(DEPDIR)/libbitcoinqt_a-furabstractlistitemdelegate.Po
 	-rm -f qt/dev/$(DEPDIR)/libbitcoinqt_a-governancepage.Po
 	-rm -f qt/dev/$(DEPDIR)/libbitcoinqt_a-guitransactionsutils.Po
@@ -12859,7 +12859,7 @@ distclean: distclean-recursive
 	-rm -f qt/dev/$(DEPDIR)/libbitcoinqt_a-moc_dashboardwidget.Po
 	-rm -f qt/dev/$(DEPDIR)/libbitcoinqt_a-moc_defaultdialog.Po
 	-rm -f qt/dev/$(DEPDIR)/libbitcoinqt_a-moc_expandablebutton.Po
-	-rm -f qt/dev/$(DEPDIR)/libbitcoinqt_a-moc_devgui.Po
+	-rm -f qt/dev/$(DEPDIR)/libbitcoinqt_a-moc_deviantgui.Po
 	-rm -f qt/dev/$(DEPDIR)/libbitcoinqt_a-moc_furabstractlistitemdelegate.Po
 	-rm -f qt/dev/$(DEPDIR)/libbitcoinqt_a-moc_governancepage.Po
 	-rm -f qt/dev/$(DEPDIR)/libbitcoinqt_a-moc_loadingdialog.Po
@@ -13339,7 +13339,7 @@ maintainer-clean: maintainer-clean-recursive
 	-rm -f qt/dev/$(DEPDIR)/libbitcoinqt_a-dashboardwidget.Po
 	-rm -f qt/dev/$(DEPDIR)/libbitcoinqt_a-defaultdialog.Po
 	-rm -f qt/dev/$(DEPDIR)/libbitcoinqt_a-expandablebutton.Po
-	-rm -f qt/dev/$(DEPDIR)/libbitcoinqt_a-devgui.Po
+	-rm -f qt/dev/$(DEPDIR)/libbitcoinqt_a-deviantgui.Po
 	-rm -f qt/dev/$(DEPDIR)/libbitcoinqt_a-furabstractlistitemdelegate.Po
 	-rm -f qt/dev/$(DEPDIR)/libbitcoinqt_a-governancepage.Po
 	-rm -f qt/dev/$(DEPDIR)/libbitcoinqt_a-guitransactionsutils.Po
@@ -13362,7 +13362,7 @@ maintainer-clean: maintainer-clean-recursive
 	-rm -f qt/dev/$(DEPDIR)/libbitcoinqt_a-moc_dashboardwidget.Po
 	-rm -f qt/dev/$(DEPDIR)/libbitcoinqt_a-moc_defaultdialog.Po
 	-rm -f qt/dev/$(DEPDIR)/libbitcoinqt_a-moc_expandablebutton.Po
-	-rm -f qt/dev/$(DEPDIR)/libbitcoinqt_a-moc_devgui.Po
+	-rm -f qt/dev/$(DEPDIR)/libbitcoinqt_a-moc_deviantgui.Po
 	-rm -f qt/dev/$(DEPDIR)/libbitcoinqt_a-moc_furabstractlistitemdelegate.Po
 	-rm -f qt/dev/$(DEPDIR)/libbitcoinqt_a-moc_governancepage.Po
 	-rm -f qt/dev/$(DEPDIR)/libbitcoinqt_a-moc_loadingdialog.Po

@@ -4,7 +4,7 @@
 
 #include "qt/dev/navmenuwidget.h"
 #include "qt/dev/forms/ui_navmenuwidget.h"
-#include "qt/dev/devgui.h"
+#include "qt/dev/deviantgui.h"
 #include "qt/dev/qtutils.h"
 #include "clientversion.h"
 #include "optionsmodel.h"

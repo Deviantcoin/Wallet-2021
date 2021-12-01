@@ -2,7 +2,7 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "qt/dev/devgui.h"
+#include "qt/dev/deviantgui.h"
 
 #ifdef Q_OS_MAC
 #include "macdockiconhandler.h"

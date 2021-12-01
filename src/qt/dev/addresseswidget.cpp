@@ -10,7 +10,7 @@
 
 #include "guiutil.h"
 #include "qt/dev/addnewcontactdialog.h"
-#include "qt/dev/devgui.h"
+#include "qt/dev/deviantgui.h"
 #include "qt/dev/qtutils.h"
 #include "walletmodel.h"
 

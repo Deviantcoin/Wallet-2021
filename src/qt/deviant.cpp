@@ -9,7 +9,7 @@
 #include "config/deviant-config.h"
 #endif
 
-#include "qt/dev/devgui.h"
+#include "qt/dev/deviantgui.h"
 
 #include "clientmodel.h"
 #include "guiconstants.h"

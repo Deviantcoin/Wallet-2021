@@ -16,7 +16,7 @@
 #include "csvmodelwriter.h"
 #include "editaddressdialog.h"
 #include "guiutil.h"
-#include "qt/dev/devgui.h"
+#include "qt/dev/deviantgui.h"
 
 #include <QIcon>
 #include <QMenu>

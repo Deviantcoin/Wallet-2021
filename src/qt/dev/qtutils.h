@@ -5,7 +5,7 @@
 #ifndef QTUTILS_H
 #define QTUTILS_H
 
-#include "qt/dev/devgui.h"
+#include "qt/dev/deviantgui.h"
 
 #include <QAbstractAnimation>
 #include <QColor>

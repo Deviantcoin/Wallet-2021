@@ -12,7 +12,7 @@
 #include "guiconstants.h"
 #include "guiutil.h"
 #include "qt/dev/defaultdialog.h"
-#include "qt/dev/devgui.h"
+#include "qt/dev/deviantgui.h"
 #include "qt/dev/loadingdialog.h"
 #include "qt/dev/qtutils.h"
 #include "walletmodel.h"
