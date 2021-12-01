@@ -293,7 +293,7 @@ fs::path GetDefaultDataDir()
 // Unix: ~/.dev
 #ifdef WIN32
     // Windows
-    return GetSpecialFolderPath(CSIDL_APPDATA) / "DEV";
+    return GetSpecialFolderPath(CSIDL_APPDATA) / "Deviant";
 #else
     fs::path pathRet;
     char* pszHome = getenv("HOME");
@@ -305,10 +305,10 @@ fs::path GetDefaultDataDir()
     // Mac
     pathRet /= "Library/Application Support";
     TryCreateDirectory(pathRet);
-    return pathRet / "DEV";
+    return pathRet / "Deviant";
 #else
     // Unix
-    return pathRet / ".dev";
+    return pathRet / ".deviant";
 #endif
 #endif
 }
