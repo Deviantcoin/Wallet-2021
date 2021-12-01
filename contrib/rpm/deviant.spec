@@ -20,8 +20,8 @@ Summary:	Peer to Peer Cryptographic Currency
 
 Group:		Applications/System
 License:	MIT
-URL:		https://dev.org/
-Source0:	https://dev.org/bin/deviant-core-%{version}/deviant-%{version}.tar.gz
+URL:		https://deviantcoin.io/
+Source0:	https://deviantcoin.io/bin/deviant-core-%{version}/deviant-%{version}.tar.gz
 Source1:	http://download.oracle.com/berkeley-db/db-%{bdbv}.NC.tar.gz
 
 Source10:	https://raw.githubusercontent.com/deviantnode/dev/v%{version}/contrib/debian/examples/dev.conf

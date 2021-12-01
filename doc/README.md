@@ -3,7 +3,7 @@ Deviant-Core
 
 Setup
 ---------------------
-[Deviant-Core](http://DEV.org/wallet) is the original DEV client and it builds the backbone of the network. However, it downloads and stores the entire history of DEV transactions; depending on the speed of your computer and network connection, the synchronization process can take anywhere from a few hours to a day or more. Thankfully you only have to do this once.
+[Deviant-Core](http://deviantcoin.io/wallet) is the original DEV client and it builds the backbone of the network. However, it downloads and stores the entire history of DEV transactions; depending on the speed of your computer and network connection, the synchronization process can take anywhere from a few hours to a day or more. Thankfully you only have to do this once.
 
 Running
 ---------------------
@@ -28,8 +28,8 @@ Drag deviant-qt to your applications folder, and then run deviant-qt.
 
 * See the documentation at the [DEV Wiki](https://github.com/Simple-Software-Solutions/Deviant-Core/wiki)
 for help and more information.
-* Ask for help on [BitcoinTalk](https://bitcointalk.org/index.php?topic=1262920.0) or on the [DEV Forum](http://forum.DEV.org/).
-* Join our Discord server [Discord Server](https://discord.DEV.org)
+* Ask for help on [BitcoinTalk](https://bitcointalk.org/index.php?topic=1262920.0) or on the [DEV Forum](http://forum.deviantcoin.io/).
+* Join our Discord server [Discord Server](https://discord.deviantcoin.io)
 
 Building
 ---------------------
@@ -56,8 +56,8 @@ The DEV repo's [root README](/README.md) contains relevant information on the de
 - [Dnsseed Policy](dnsseed-policy.md)
 
 ### Resources
-* Discuss on the [BitcoinTalk](https://bitcointalk.org/index.php?topic=1262920.0) or the [DEV](http://forum.DEV.org/) forum.
-* Join the [DEV Discord](https://discord.DEV.org).
+* Discuss on the [BitcoinTalk](https://bitcointalk.org/index.php?topic=1262920.0) or the [DEV](http://forum.deviantcoin.io/) forum.
+* Join the [DEV Discord](https://discord.deviantcoin.io).
 
 ### Miscellaneous
 - [Assets Attribution](assets-attribution.md)
