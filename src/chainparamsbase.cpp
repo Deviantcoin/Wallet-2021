@@ -22,7 +22,7 @@ public:
     CBaseMainParams()
     {
         networkID = CBaseChainParams::MAIN;
-        nRPCPort = 12271;
+        nRPCPort = 22617;
     }
 };
 static CBaseMainParams mainParams;
