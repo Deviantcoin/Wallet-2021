@@ -774,34 +774,9 @@
             <item>
              <widget class="QStackedWidget" name="stackedWidget">
               <property name="currentIndex">
-               <number>2</number>
+               <number>0</number>
               </property>
-              <widget class="QWidget" name="page_0">
-               <layout class="QVBoxLayout" name="verticalLayout_4">
-                <property name="leftMargin">
-                 <number>40</number>
-                </property>
-                <property name="rightMargin">
-                 <number>40</number>
-                </property>
-                <item>
-                 <spacer name="verticalSpacer_1">
-                  <property name="orientation">
-                   <enum>Qt::Vertical</enum>
-                  </property>
-                  <property name="sizeType">
-                   <enum>QSizePolicy::Minimum</enum>
-                  </property>
-                  <property name="sizeHint" stdset="0">
-                   <size>
-                    <width>20</width>
-                    <height>60</height>
-                   </size>
-                  </property>
-                 </spacer>
-                </item>
-               </layout>
-              </widget>
+              <widget class="QWidget" name="page"/>
               <widget class="QWidget" name="page_1">
                <layout class="QVBoxLayout" name="verticalLayout_5" stretch="0,0,0,0,0">
                 <property name="spacing">
@@ -887,11 +862,20 @@
               </widget>
               <widget class="QWidget" name="page_2">
                <layout class="QVBoxLayout" name="verticalLayout_6">
+                <property name="spacing">
+                 <number>6</number>
+                </property>
                 <property name="leftMargin">
-                 <number>40</number>
+                 <number>140</number>
+                </property>
+                <property name="topMargin">
+                 <number>12</number>
                 </property>
                 <property name="rightMargin">
-                 <number>40</number>
+                 <number>140</number>
+                </property>
+                <property name="bottomMargin">
+                 <number>12</number>
                 </property>
                 <item>
                  <spacer name="verticalSpacer_5">
@@ -910,87 +894,72 @@
                  </spacer>
                 </item>
                 <item>
-                 <widget class="QWidget" name="widget_3" native="true">
-                  <layout class="QVBoxLayout" name="verticalLayout_7" stretch="1,0,1,0">
-                   <property name="spacing">
-                    <number>0</number>
-                   </property>
-                   <property name="leftMargin">
-                    <number>0</number>
-                   </property>
-                   <property name="topMargin">
-                    <number>0</number>
-                   </property>
-                   <property name="rightMargin">
-                    <number>0</number>
-                   </property>
-                   <property name="bottomMargin">
-                    <number>0</number>
-                   </property>
-                   <item alignment="Qt::AlignHCenter">
-                    <widget class="QLabel" name="labelTitle2">
-                     <property name="maximumSize">
-                      <size>
-                       <width>16777215</width>
-                       <height>60</height>
-                      </size>
-                     </property>
-                     <property name="styleSheet">
-                      <string notr="true">padding:1px;</string>
-                     </property>
-                     <property name="text">
-                      <string>Welcome to
+                 <widget class="QLabel" name="labelTitle2">
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>50</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
+                    <height>50</height>
+                   </size>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">padding:1px;</string>
+                  </property>
+                  <property name="text">
+                   <string>Welcome to
 Deviant Core Wallet</string>
-                     </property>
-                     <property name="alignment">
-                      <set>Qt::AlignCenter</set>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <spacer name="verticalSpacer_5_1">
-                     <property name="orientation">
-                      <enum>Qt::Vertical</enum>
-                     </property>
-                     <property name="sizeType">
-                      <enum>QSizePolicy::Fixed</enum>
-                     </property>
-                     <property name="sizeHint" stdset="0">
-                      <size>
-                       <width>20</width>
-                       <height>40</height>
-                      </size>
-                     </property>
-                    </spacer>
-                   </item>
-                   <item alignment="Qt::AlignHCenter">
-                    <widget class="QLabel" name="labelMessage2">
-                     <property name="text">
-                      <string>DEV is the world’s most innovative Proof of Stake blockchain based technology. Developed by a team of highly experienced developers and cryptographers.</string>
-                     </property>
-                     <property name="alignment">
-                      <set>Qt::AlignHCenter|Qt::AlignTop</set>
-                     </property>
-                     <property name="wordWrap">
-                      <bool>true</bool>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <spacer name="verticalSpacer_5_2">
-                     <property name="orientation">
-                      <enum>Qt::Vertical</enum>
-                     </property>
-                     <property name="sizeHint" stdset="0">
-                      <size>
-                       <width>20</width>
-                       <height>40</height>
-                      </size>
-                     </property>
-                    </spacer>
-                   </item>
-                  </layout>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
                  </widget>
+                </item>
+                <item>
+                 <spacer name="verticalSpacer_5_1">
+                  <property name="orientation">
+                   <enum>Qt::Vertical</enum>
+                  </property>
+                  <property name="sizeType">
+                   <enum>QSizePolicy::Fixed</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>20</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+                <item>
+                 <widget class="QLabel" name="labelMessage2">
+                  <property name="text">
+                   <string>DEV is the world’s most innovative Proof of Stake blockchain based technology. Developed by a team of highly experienced developers and cryptographers.</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignHCenter|Qt::AlignTop</set>
+                  </property>
+                  <property name="wordWrap">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <spacer name="verticalSpacer_5_2">
+                  <property name="orientation">
+                   <enum>Qt::Vertical</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>20</width>
+                    <height>179</height>
+                   </size>
+                  </property>
+                 </spacer>
                 </item>
                </layout>
               </widget>
