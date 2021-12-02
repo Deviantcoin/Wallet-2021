@@ -50,6 +50,19 @@ HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH*/
 }
 
 /*HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+HH        SNACK BAR
+HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH*/
+*[cssClass="container-snackbar"] {
+  background-color: #4d3c2d;
+  border-top: 2px solid #fbb03b;
+}
+
+*[cssClass="text-snackbar"] {
+  color: #ffffff;
+  font-size: 20px;
+}
+
+/*HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
 HH       NAVIGATION
 HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH*/
 *[cssClass="container-nav"] {
@@ -3393,19 +3406,6 @@ HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH*/
   border: 0px;
   background: #fbb03b;
   border-radius: 5px;
-}
-
-/*HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
-HH        SNACK BAR
-HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH*/
-*[cssClass="container-snackbar"] {
-  background-color: #4d3c2d;
-  border-top: 2px solid #fbb03b;
-}
-
-*[cssClass="text-snackbar"] {
-  color: #ffffff;
-  font-size: 20px;
 }
 
 /*HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
