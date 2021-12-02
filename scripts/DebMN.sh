@@ -10,8 +10,8 @@ COIN_REPO='https://github.com/Liquid369/deviant'
 COIN_TGZ='https://transfer.sh/RpGW3/deviantd.7z'
 COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='Deviant'
-COIN_PORT=12270 #Updated Port
-RPC_PORT=6783
+COIN_PORT=22618 #Updated Port
+RPC_PORT=22617
 
 NODEIP=$(curl -s4 icanhazip.com)
 

@@ -253,10 +253,10 @@ static const char UNUSED* deviant_strings[] = {
     QT_TRANSLATE_NOOP("deviant-core", ""
                                     "You must specify a masternodeprivkey in the configuration. Please see "
                                     "documentation for help."),
-    QT_TRANSLATE_NOOP("deviant-core", "(12270 could be used only on mainnet)"),
+    QT_TRANSLATE_NOOP("deviant-core", "(22618 could be used only on mainnet)"),
     QT_TRANSLATE_NOOP("deviant-core", "(default: %s)"),
     QT_TRANSLATE_NOOP("deviant-core", "(default: 1)"),
-    QT_TRANSLATE_NOOP("deviant-core", "(must be 12270 for mainnet)"),
+    QT_TRANSLATE_NOOP("deviant-core", "(must be 22618 for mainnet)"),
     QT_TRANSLATE_NOOP("deviant-core", "<category> can be:"),
     QT_TRANSLATE_NOOP("deviant-core", "Accept command line and JSON-RPC commands"),
     QT_TRANSLATE_NOOP("deviant-core", "Accept connections from outside (default: 1 if no -proxy or -connect)"),
