@@ -2830,6 +2830,165 @@ QPushButton[cssClass="btn-faq-options"]:checked {
   color: none;
 }
 
+/*HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+HH      INTRO
+HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+ */
+*[cssClass="text-intro-white"] {
+  color: #ffffff;
+  font-size: 16px;
+}
+
+QPushButton[cssClass="btn-dots-welcome"] {
+  border: 1px solid #fbb03b;
+  background-color: #fbb03b;
+  font-size: 18px;
+  padding: 8px;
+  color: #ffffff;
+  border-radius: 2px;
+}
+
+QPushButton[cssClass="btn-dots-welcome"]:hover {
+  border: 1px solid #fbb03b;
+  background-color: #bf8c6a;
+  font-size: 18px;
+  padding: 8px;
+  color: #ffffff;
+  border-radius: 2px;
+}
+
+QPushButton[cssClass="btn-dots-welcome"]:pressed {
+  border: 1px solid #fbb03b;
+  background-color: #bf8c6a;
+  font-size: 18px;
+  padding: 8px;
+  color: #fbb03b;
+  border-radius: 2px;
+}
+
+*[cssClass="edit-primary-welcome"] {
+  border: 1px solid #fbb03b;
+  border-right: 0px;
+  background-color: #221710;
+  font-size: 18px;
+  border-radius: 2px;
+  padding: 8px;
+  color: #ffffff;
+}
+
+*[cssClass="edit-primary-welcome"]:focus {
+  border: 1px solid #fbb03b;
+  border-right: 0px;
+}
+
+*[cssClass="edit-primary-welcome"]:focus:hover {
+  border: 1px solid #fbb03b;
+  border-right: 0px;
+}
+
+*[cssClass="edit-primary-welcome"]:hover {
+  border: 1px solid #fbb03b;
+  border-right: 0px;
+}
+
+*[cssClass="edit-primary-welcome-disabled"] {
+  border: 1px solid #ffffff;
+  border-right: 0px;
+  background-color: #221710;
+  font-size: 18px;
+  border-radius: 2px;
+  padding: 8px;
+  color: #ffffff;
+}
+
+QRadioButton[cssClass="radio-welcome"]:checked {
+  color: #fbb03b;
+  font-size: 20px;
+}
+
+QRadioButton[cssClass="radio-welcome"]:unchecked {
+  color: #bababa;
+  font-size: 20px;
+}
+
+QRadioButton[cssClass="radio-welcome"] {
+  color: #bababa;
+  font-size: 20px;
+  spacing: 20px;
+}
+
+QRadioButton[cssClass="radio-welcome"]::indicator {
+  width: 26px;
+  height: 26px;
+}
+
+QRadioButton[cssClass="radio-welcome"]::indicator:checked {
+  background: url("://ic-radio-liliac-on");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+QRadioButton[cssClass="radio-welcome"]::indicator:unchecked {
+  background: url("://btn-radio-off");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+*[cssClass="GovernancePage-ProposalFrame"] {
+  border-radius: 5px;
+  margin: 2px;
+  max-height: 250px;
+  border: 1px solid #d7d7d7;
+}
+
+*[cssClass="GovernancePage-ProposalFrame-proposalFrame"] {
+  background-color: qlineargradient(
+    y1: 0,
+    y2: 1,
+    stop: 0 #0f0b16,
+    stop: 1 #4f3c74
+  );
+  border-radius: 5px;
+  margin: 2px;
+  max-height: 250px;
+  border: 1px solid #f2cc93;
+}
+
+*[cssClass="GovernancePage-ProposalFrame-proposalFramePassing"] {
+  background-color: qlineargradient(
+    x1: 0,
+    y1: 0,
+    x2: 1,
+    y2: 0,
+    stop: 0 #00cc00,
+    stop: 1 #00ef00
+  );
+  border-radius: 5px;
+  margin: 2px;
+  max-height: 250px;
+  border: 1px solid #00ef00;
+}
+
+*[cssClass="GovernancePage-ProposalFrame-QLabel-strProposalName"] {
+  font-size: 18pt;
+  color: white;
+}
+
+*[cssClass="GovernancePage-ProposalFrame-QLabel-strProposalURL"] {
+  font-size: 14pt;
+}
+
+*[cssClass="GovernancePage-scrollArea"] {
+  background-color: #161525;
+}
+
+*[cssClass="GovernancePage-proposalGrid"]
+  QWidget#GovernancePage
+  .QGridLayout#proposalGrid {
+  margin-right: 35px !important;
+  padding-right: 35px !important;
+}
+
 /*HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
 HH       WELCOME
 HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH*/
@@ -3182,7 +3341,7 @@ HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH*/
   background-color: #fbb03b;
 }
 
-#treeWidget::branch: !selected {
+#treeWidget::branch:!selected {
   background-color: #fbb03b;
 }
 
@@ -3260,163 +3419,4 @@ HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
 *[cssClass="text-loading"] {
   color: #ffffff;
   font-size: 20px;
-}
-
-/*HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
-HH      INTRO
-HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
- */
-*[cssClass="text-intro-white"] {
-  color: #ffffff;
-  font-size: 16px;
-}
-
-QPushButton[cssClass="btn-dots-welcome"] {
-  border: 1px solid #fbb03b;
-  background-color: #fbb03b;
-  font-size: 18px;
-  padding: 8px;
-  color: #ffffff;
-  border-radius: 2px;
-}
-
-QPushButton[cssClass="btn-dots-welcome"]:hover {
-  border: 1px solid #fbb03b;
-  background-color: #bf8c6a;
-  font-size: 18px;
-  padding: 8px;
-  color: #ffffff;
-  border-radius: 2px;
-}
-
-QPushButton[cssClass="btn-dots-welcome"]:pressed {
-  border: 1px solid #fbb03b;
-  background-color: #bf8c6a;
-  font-size: 18px;
-  padding: 8px;
-  color: #fbb03b;
-  border-radius: 2px;
-}
-
-*[cssClass="edit-primary-welcome"] {
-  border: 1px solid #fbb03b;
-  border-right: 0px;
-  background-color: #221710;
-  font-size: 18px;
-  border-radius: 2px;
-  padding: 8px;
-  color: #ffffff;
-}
-
-*[cssClass="edit-primary-welcome"]:focus {
-  border: 1px solid #fbb03b;
-  border-right: 0px;
-}
-
-*[cssClass="edit-primary-welcome"]:focus:hover {
-  border: 1px solid #fbb03b;
-  border-right: 0px;
-}
-
-*[cssClass="edit-primary-welcome"]:hover {
-  border: 1px solid #fbb03b;
-  border-right: 0px;
-}
-
-*[cssClass="edit-primary-welcome-disabled"] {
-  border: 1px solid #ffffff;
-  border-right: 0px;
-  background-color: #221710;
-  font-size: 18px;
-  border-radius: 2px;
-  padding: 8px;
-  color: #ffffff;
-}
-
-QRadioButton[cssClass="radio-welcome"]:checked {
-  color: #fbb03b;
-  font-size: 20px;
-}
-
-QRadioButton[cssClass="radio-welcome"]:unchecked {
-  color: #bababa;
-  font-size: 20px;
-}
-
-QRadioButton[cssClass="radio-welcome"] {
-  color: #bababa;
-  font-size: 20px;
-  spacing: 20px;
-}
-
-QRadioButton[cssClass="radio-welcome"]::indicator {
-  width: 26px;
-  height: 26px;
-}
-
-QRadioButton[cssClass="radio-welcome"]::indicator:checked {
-  background: url("://ic-radio-liliac-on");
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
-QRadioButton[cssClass="radio-welcome"]::indicator:unchecked {
-  background: url("://btn-radio-off");
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
-*[cssClass="GovernancePage-ProposalFrame"] {
-  border-radius: 5px;
-  margin: 2px;
-  max-height: 250px;
-  border: 1px solid #d7d7d7;
-}
-
-*[cssClass="GovernancePage-ProposalFrame-proposalFrame"] {
-  background-color: qlineargradient(
-    y1: 0,
-    y2: 1,
-    stop: 0 #0f0b16,
-    stop: 1 #4f3c74
-  );
-  border-radius: 5px;
-  margin: 2px;
-  max-height: 250px;
-  border: 1px solid #f2cc93;
-}
-
-*[cssClass="GovernancePage-ProposalFrame-proposalFramePassing"] {
-  background-color: qlineargradient(
-    x1: 0,
-    y1: 0,
-    x2: 1,
-    y2: 0,
-    stop: 0 #00cc00,
-    stop: 1 #00ef00
-  );
-  border-radius: 5px;
-  margin: 2px;
-  max-height: 250px;
-  border: 1px solid #00ef00;
-}
-
-*[cssClass="GovernancePage-ProposalFrame-QLabel-strProposalName"] {
-  font-size: 18pt;
-  color: white;
-}
-
-*[cssClass="GovernancePage-ProposalFrame-QLabel-strProposalURL"] {
-  font-size: 14pt;
-}
-
-*[cssClass="GovernancePage-scrollArea"] {
-  background-color: #161525;
-}
-
-*[cssClass="GovernancePage-proposalGrid"]
-  QWidget#GovernancePage
-  .QGridLayout#proposalGrid {
-  margin-right: 35px !important;
-  padding-right: 35px !important;
 }
