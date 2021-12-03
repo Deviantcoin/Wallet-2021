@@ -24,6 +24,9 @@ class CBlockHeader
 {
 public:
     // header
+    static const int32_t BLOCK_4_VERSION=4;
+    static const int32_t BLOCK_5_VERSION=5;
+    static const int32_t BLOCK_6_VERSION=6;
     static const int32_t CURRENT_VERSION=7;     //!> Version 7 removes nAccumulatorCheckpoint from serialization
     int32_t nVersion;
     uint256 hashPrevBlock;
