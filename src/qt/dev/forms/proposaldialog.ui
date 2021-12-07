@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1845</width>
+    <width>600</width>
     <height>290</height>
    </rect>
   </property>
@@ -52,6 +52,9 @@
         <property name="text">
          <string>Fill out the form below to create a budget proposal.  Before beginning, make sure your wallet is unlocked to pay the budget proposal fee of 350 DEV.  After the proposal is submitted, wait for the transaction confirmations to complete, and then click Finish Proposal to submit the proposal for voting.  The screen will update to help guide you. Do not close the dialog after paying the transaction fee
                     --it will close automatically once the proposal is submitted.</string>
+        </property>
+        <property name="wordWrap">
+         <bool>true</bool>
         </property>
        </widget>
       </item>
