@@ -899,8 +899,8 @@ QProgressBar[cssClass="progress-sync"]::chunk:horizontal {
     x2: 1,
     y2: 0.5,
     stop: 0 #FBB03B,
-    stop: 1 #FBB03B,
-    stop: 2 #FBB03B,);
+    stop: 1 #FF0000);
+
 }
 
 
@@ -1876,8 +1876,8 @@ QProgressBar[cssClass="progress-splash"]::chunk:horizontal {
     x2: 1,
     y2: 0.5,
     stop: 0 #80211a2f,
-    stop: 1 #80ffcd88,
-    stop: 2 #80211a2f,);
+    stop: 0.5 #80ffcd88,
+    stop: 1 #80211a2f,);
     margin-right: 2px;
 }
 
@@ -3563,7 +3563,7 @@ QRadioButton[cssClass="radio-welcome"]::indicator:unchecked {
 }
 
 *[cssClass="GovernancePage-ProposalFrame-proposalFrame"] {
-    /* background-color: QLinearGradient(y1:0, y2: 1, stop: 0 #18171D, stop: 1 #4f3c74); */
+    background-color: QLinearGradient(y1:0, y2: 1, stop: 0 #18171D, stop: 1 #4f3c74);
     background-color:#18171D;
     border-radius: 5px;
     margin: 2px;
