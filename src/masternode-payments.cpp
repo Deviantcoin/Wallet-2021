@@ -384,7 +384,7 @@ void CMasternodePayments::FillBlockPayee(CMutableTransaction& txNew, int64_t nFe
                 if (i == 2) {
                     // Majority of cases; do it quick and move on
                     if (nHeight >= 1810000) {
-                        masternodePayment += nDevFee
+                        masternodePayment += nDevFee;
                     }
                     txNew.vout[i - 1].nValue -= masternodePayment;
                 } else if (i >= 3) {
