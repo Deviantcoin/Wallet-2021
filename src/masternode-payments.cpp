@@ -397,7 +397,7 @@ void CMasternodePayments::FillBlockPayee(CMutableTransaction& txNew, int64_t nFe
                     }
                     // in case it's not an even division, take the last bit of dust from the last one
                     txNew.vout[outputs].nValue -= mnPaymentRemainder;
-                    if (nHeight >= 1800000) {
+                    if (nHeight >= 1810000) {
                         CAmount devFeeSplit = nDevFee / outputs;
                         CAmount devFeeRemainder = nDevFee - (devFeeSplit * outputs);        
                         
@@ -408,7 +408,7 @@ void CMasternodePayments::FillBlockPayee(CMutableTransaction& txNew, int64_t nFe
                     }
 
                 }
-                if (nHeight >= 1800000) {
+                if (nHeight >= 1810000) {
                     PushDevFee(txNew, nHeight);
                 }
             }
