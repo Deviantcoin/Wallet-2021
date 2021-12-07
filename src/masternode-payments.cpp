@@ -365,8 +365,8 @@ void CMasternodePayments::FillBlockPayee(CMutableTransaction& txNew, int64_t nFe
         }
     }
 
+    CAmount masternodePayment = GetMasternodePayment(nHeight);
     if (hasPayment) {
-        CAmount masternodePayment = GetMasternodePayment(nHeight);
         if (fProofOfStake) {
             /**For Proof Of Stake vout[0] must be null
              * Stake reward can be split into many different outputs, so we must
@@ -383,10 +383,10 @@ void CMasternodePayments::FillBlockPayee(CMutableTransaction& txNew, int64_t nFe
             if (!txNew.vout[1].IsZerocoinMint()) {
                 if (i == 2) {
                     // Majority of cases; do it quick and move on
-                    txNew.vout[i - 1].nValue -= masternodePayment;
-                    if (nHeight >= 1800000) {
-                        txNew.vout[i - 1].nValue -= nDevFee;
+                    if (nHeight >= 1810000) {
+                        masternodePayment += nDevFee
                     }
+                    txNew.vout[i - 1].nValue -= masternodePayment;
                 } else if (i >= 3) {
                     // special case, stake is split between (i-1) outputs
                     unsigned int outputs = i-1;
@@ -427,7 +427,7 @@ void CMasternodePayments::FillBlockPayee(CMutableTransaction& txNew, int64_t nFe
     } else {
         unsigned int i = txNew.vout.size();
         PushDevFee(txNew, nHeight);
-        txNew.vout[i].nValue -= nDevFee;
+        txNew.vout[i - 1].nValue -= nDevFee;
     }
 }
 
