@@ -12,6 +12,10 @@
         <file alias="lock_open">res/icons/lock_open.png</file>
         <file alias="governance">res/icons/governance.png</file>
         <file alias="governance_dark">res/icons/governance_dark.png</file>
+        <file alias="tx_mined">res/icons/tx_mined.png</file>
+        <file alias="tx_input">res/icons/tx_input.png</file>
+        <file alias="tx_output">res/icons/tx_output.png</file>
+        <file alias="tx_inout">res/icons/tx_inout.png</file>
     </qresource>
     <qresource prefix="/css">
         <file>res/css/default.css</file>
