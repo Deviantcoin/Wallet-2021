@@ -20,7 +20,7 @@
     <qresource prefix="/css">
         <file>res/css/default.css</file>
         <file alias="default-dark">dev/res/css/style_dark.css</file>
-        <file alias="default">dev/res/css/style_dark.css</file>
+        <file alias="default">dev/res/css/style_light.css</file>
     </qresource>
     <qresource prefix="/images">
         <file alias="about">res/images/about.png</file>
