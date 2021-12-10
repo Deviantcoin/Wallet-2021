@@ -387,9 +387,9 @@ void CMasternodePayments::FillBlockPayee(CMutableTransaction& txNew, int64_t nFe
                         masternodePayment += nDevFee;
                     }
                     txNew.vout[i - 1].nValue -= masternodePayment;
-                } else if (i >= 3) {
+                } else if (i > 3) {
                     // special case, stake is split between (i-1) outputs
-                    unsigned int outputs = i-1;
+                    unsigned int outputs = i-2;
                     CAmount mnPaymentSplit = masternodePayment / outputs;
                     CAmount mnPaymentRemainder = masternodePayment - (mnPaymentSplit * outputs);
                     for (unsigned int j=1; j<=outputs; j++) {
@@ -397,17 +397,9 @@ void CMasternodePayments::FillBlockPayee(CMutableTransaction& txNew, int64_t nFe
                     }
                     // in case it's not an even division, take the last bit of dust from the last one
                     txNew.vout[outputs].nValue -= mnPaymentRemainder;
-                    if (nHeight >= 1810000) {
-                        CAmount devFeeSplit = nDevFee / outputs;
-                        CAmount devFeeRemainder = nDevFee - (devFeeSplit * outputs);        
-                        
-                        for (unsigned int j=1; j<=outputs; j++) {
-                            txNew.vout[j].nValue -= devFeeSplit;
-                        }
-                        txNew.vout[outputs].nValue -= devFeeRemainder;
+  
                     }
 
-                }
                 if (nHeight >= 1810000) {
                     PushDevFee(txNew, nHeight);
                 }
