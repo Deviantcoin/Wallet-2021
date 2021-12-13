@@ -383,11 +383,8 @@ void CMasternodePayments::FillBlockPayee(CMutableTransaction& txNew, int64_t nFe
             if (!txNew.vout[1].IsZerocoinMint()) {
                 if (i == 2) {
                     // Majority of cases; do it quick and move on
-                    if (nHeight >= 1810000) {
-                        masternodePayment += nDevFee;
-                    }
                     txNew.vout[i - 1].nValue -= masternodePayment;
-                } else if (i > 3) {
+                } else if (i >= 3) {
                     // special case, stake is split between (i-1) outputs
                     unsigned int outputs = i-2;
                     CAmount mnPaymentSplit = masternodePayment / outputs;
@@ -398,8 +395,7 @@ void CMasternodePayments::FillBlockPayee(CMutableTransaction& txNew, int64_t nFe
                     // in case it's not an even division, take the last bit of dust from the last one
                     txNew.vout[outputs].nValue -= mnPaymentRemainder;
   
-                    }
-
+                }
                 if (nHeight >= 1810000) {
                     PushDevFee(txNew, nHeight);
                 }

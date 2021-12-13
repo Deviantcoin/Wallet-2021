@@ -1651,7 +1651,7 @@ int64_t GetMasternodePayment(int nHeight)
 
     if (nSubsidy == 0) return 0;
     
-    ret = nSubsidy * 0.8;
+    ret = (nSubsidy * 0.8) * COIN;
 
     return ret;
 
