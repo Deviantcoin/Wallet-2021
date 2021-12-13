@@ -282,7 +282,7 @@ public:
     std::string GetRequiredPaymentsString(int nBlockHeight);
     void FillBlockPayee(CMutableTransaction& txNew, int64_t nFees, bool fProofOfStake, bool fZDEVStake);
     std::string ToString() const;
-    void PushDevFee(CMutableTransaction& txNew, const int nHeight);
+    void PushDevFee(CMutableTransaction& txNew, const int nHeight, CAmount nDevReward);
     int GetOldestBlock();
     int GetNewestBlock();
 

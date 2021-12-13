@@ -346,6 +346,7 @@ void CMasternodePayments::FillBlockPayee(CMutableTransaction& txNew, int64_t nFe
 {
     CBlockIndex* pindexPrev = chainActive.Tip();
     if (!pindexPrev) return;
+    int nHeight = pindexPrev->nHeight + 1;
 
     bool hasPayment = true;
     CScript payee;
@@ -363,8 +364,7 @@ void CMasternodePayments::FillBlockPayee(CMutableTransaction& txNew, int64_t nFe
     }
 
     CAmount blockValue = GetBlockValue(pindexPrev->nHeight + 1);
-    CAmount masternodePayment = GetMasternodePayment();
-    int nHeight = pindexPrev->nHeight + 1;
+    CAmount masternodePayment = GetMasternodePayment(nHeight);
 
     if (hasPayment) {
         if (fProofOfStake) {
