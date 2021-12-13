@@ -345,18 +345,15 @@ std::string GetRequiredPaymentsString(int nBlockHeight)
 void CMasternodePayments::FillBlockPayee(CMutableTransaction& txNew, int64_t nFees, bool fProofOfStake, bool fZDEVStake)
 {
     CBlockIndex* pindexPrev = chainActive.Tip();
-    int nHeight = pindexPrev->nHeight + 1;
-    if (nHeight == 0) return;
+    if (!pindexPrev) return;
 
     bool hasPayment = true;
     CScript payee;
 
-    CAmount nDevFee = GetDevReward(nHeight);
-
     //spork
-    if (!masternodePayments.GetBlockPayee(nHeight, payee)) {
+    if (!masternodePayments.GetBlockPayee(pindexPrev->nHeight + 1, payee)) {
         //no masternode detected
-        const CMasternode* winningNode = mnodeman.GetCurrentMasterNode(1);
+        CMasternode* winningNode = mnodeman.GetCurrentMasterNode(1);
         if (winningNode) {
             payee = GetScriptForDestination(winningNode->pubKeyCollateralAddress.GetID());
         } else {
@@ -365,7 +362,10 @@ void CMasternodePayments::FillBlockPayee(CMutableTransaction& txNew, int64_t nFe
         }
     }
 
-    CAmount masternodePayment = GetMasternodePayment(nHeight);
+    CAmount blockValue = GetBlockValue(pindexPrev->nHeight + 1);
+    CAmount masternodePayment = GetMasternodePayment();
+    int nHeight = pindexPrev->nHeight + 1;
+
     if (hasPayment) {
         if (fProofOfStake) {
             /**For Proof Of Stake vout[0] must be null
@@ -376,68 +376,59 @@ void CMasternodePayments::FillBlockPayee(CMutableTransaction& txNew, int64_t nFe
             unsigned int i = txNew.vout.size();
             txNew.vout.resize(i + 1);
 
+            CAmount nDevReward = blockValue * .1;
+            if (nDevReward > 0) {
+                PushDevFee(txNew, nHeight, nDevReward);
+            }
+
             txNew.vout[i].scriptPubKey = payee;
             txNew.vout[i].nValue = masternodePayment;
 
             //subtract mn payment from the stake reward
             if (!txNew.vout[1].IsZerocoinMint()) {
-                if (i == 2) {
-                    // Majority of cases; do it quick and move on
-                    txNew.vout[i - 1].nValue -= masternodePayment;
-                    if (nHeight >= 1810000) {
-                        txNew.vout[i - 1].nValue -= nDevFee;
-                    }
-                } else if (i >= 3) {
-                    // special case, stake is split between (i-1) outputs
-                    unsigned int outputs = i-2;
-                    CAmount mnPaymentSplit = masternodePayment / outputs;
-                    CAmount mnPaymentRemainder = masternodePayment - (mnPaymentSplit * outputs);
-                    for (unsigned int j=1; j<=outputs; j++) {
-                        txNew.vout[j].nValue -= mnPaymentSplit;
-
-                    }
-                    // in case it's not an even division, take the last bit of dust from the last one
-                    txNew.vout[outputs].nValue -= mnPaymentRemainder;
-/*                    if (nHeight >= 1810000) {
-                        CAmount devFeeSplit = nDevFee / outputs;
-                        CAmount devFeeRemainder = nDevFee - (devFeeSplit * outputs);        
-                        
-                        for (unsigned int j=1; j<=outputs; j++) {
-                            txNew.vout[j].nValue -= devFeeSplit;
-                        }
-                        txNew.vout[outputs].nValue -= devFeeRemainder;
-                    }*/
-                }
-                if (nHeight >= 1810000) {
-                    PushDevFee(txNew, nHeight);
-                }
-            }
-        } else {
+                // Majority of cases; do it quick and move on
+                txNew.vout[i - 1].nValue -= masternodePayment + nDevReward;                    // in case it's not an even division, take the last bit of dust from the last one
+            } else {
                 txNew.vout.resize(2);
                 txNew.vout[1].scriptPubKey = payee;
                 txNew.vout[1].nValue = masternodePayment;
-                txNew.vout[0].nValue = GetBlockValue(nHeight) - masternodePayment;
+                txNew.vout[0].nValue = blockValue - masternodePayment;
             }
 
-            CTxDestination address1;
-            ExtractDestination(payee, address1);
-            CBitcoinAddress address2(address1);
+        CTxDestination address1;
+        ExtractDestination(payee, address1);
+        CBitcoinAddress address2(address1);
 
-            LogPrint(BCLog::MASTERNODE,"Masternode payment of %s to %s\n", FormatMoney(masternodePayment).c_str(), address2.ToString().c_str());
-            if(nHeight >= 1810000) {
-                unsigned int i = txNew.vout.size();
-                PushDevFee(txNew, nHeight);
-                txNew.vout[1].nValue -= nDevFee;
+        LogPrint(BCLog::MASTERNODE,"Masternode payment of %s to %s\n", FormatMoney(masternodePayment).c_str(), address2.ToString().c_str());
+    } else {
+        if (fProofOfStake) {
+            /**For Proof Of Stake vout[0] must be null
+             * Stake reward can be split into many different outputs, so we must
+             * use vout.size() to align with several different cases.
+             */
+
+            unsigned int i = txNew.vout.size();
+
+            // <DEV
+            CAmount nDevReward = blockValue * .1;
+            if (nDevReward > 0) {
+                PushDevFee(txNew, nHeight, nDevReward);
             }
-    }        
+
+            //subtract mn payment from the stake reward
+            if (!txNew.vout[1].IsZerocoinMint())
+                txNew.vout[i].nValue -= nDevReward;
+            }
+        }
+    }
 }
 
-void CMasternodePayments::PushDevFee(CMutableTransaction& txNew, const int nHeight) 
+void CMasternodePayments::PushDevFee(CMutableTransaction& txNew, const int nHeight, CAmount nDevReward) 
 {
-    CAmount nDevFee = GetDevReward(nHeight);
+    //CAmount nDevFee = GetDevReward(nHeight);
     CTxDestination destination = CBitcoinAddress(Params().DevAddress()).Get();
     CScript DEV_SCRIPT = GetScriptForDestination(destination);
-    txNew.vout.push_back(CTxOut(nDevFee, CScript(DEV_SCRIPT.begin(), DEV_SCRIPT.end())));
+    txNew.vout.push_back(CTxOut(nDevReward, CScript(DEV_SCRIPT.begin(), DEV_SCRIPT.end())));
 }
 
 int CMasternodePayments::GetMinMasternodePaymentsProto()
