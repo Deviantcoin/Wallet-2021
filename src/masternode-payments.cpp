@@ -394,10 +394,11 @@ void CMasternodePayments::FillBlockPayee(CMutableTransaction& txNew, int64_t nFe
                     CAmount mnPaymentRemainder = masternodePayment - (mnPaymentSplit * outputs);
                     for (unsigned int j=1; j<=outputs; j++) {
                         txNew.vout[j].nValue -= mnPaymentSplit;
+
                     }
                     // in case it's not an even division, take the last bit of dust from the last one
                     txNew.vout[outputs].nValue -= mnPaymentRemainder;
-                    if (nHeight >= 1810000) {
+/*                    if (nHeight >= 1810000) {
                         CAmount devFeeSplit = nDevFee / outputs;
                         CAmount devFeeRemainder = nDevFee - (devFeeSplit * outputs);        
                         
@@ -405,7 +406,7 @@ void CMasternodePayments::FillBlockPayee(CMutableTransaction& txNew, int64_t nFe
                             txNew.vout[j].nValue -= devFeeSplit;
                         }
                         txNew.vout[outputs].nValue -= devFeeRemainder;
-                    }
+                    }*/
                 }
                 if (nHeight >= 1810000) {
                     PushDevFee(txNew, nHeight);
@@ -423,11 +424,12 @@ void CMasternodePayments::FillBlockPayee(CMutableTransaction& txNew, int64_t nFe
             CBitcoinAddress address2(address1);
 
             LogPrint(BCLog::MASTERNODE,"Masternode payment of %s to %s\n", FormatMoney(masternodePayment).c_str(), address2.ToString().c_str());
-    } else {
-        unsigned int i = txNew.vout.size();
-        PushDevFee(txNew, nHeight);
-        txNew.vout[i - 1].nValue -= nDevFee;
-    }
+            if(nHeight >= 1810000) {
+                unsigned int i = txNew.vout.size();
+                PushDevFee(txNew, nHeight);
+                txNew.vout[1].nValue -= nDevFee;
+            }
+    }        
 }
 
 void CMasternodePayments::PushDevFee(CMutableTransaction& txNew, const int nHeight) 
