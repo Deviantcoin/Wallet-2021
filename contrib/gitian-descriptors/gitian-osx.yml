@@ -32,7 +32,7 @@ remotes:
 - "url": "https://github.com/Deviantcoin/Wallet-4.1.x.git"
   "dir": "deviant"
 files:
-- "MacOSX10.11.sdk.tar.gz"
+- "Xcode-11.3.1-11C505-extracted-SDK-with-libcxx-headers.tar.gz"
 script: |
   set -e -o pipefail
 
